@@ -1,5 +1,6 @@
 package com.example.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class City {
     private String postalCode;
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Building> buildings;
 
 

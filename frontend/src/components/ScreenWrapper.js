@@ -1,15 +1,17 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const ScreenWrapper = ({ children }) => {
-  return <View style={styles.container}>{children}</View>
+  return (
+    <SafeAreaView style={styles.container}>
+      {children}
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    paddingHorizontal: '12.5%'
+    paddingHorizontal: '16'
   }
 })

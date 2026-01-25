@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native"
-import { SectionTitle, HorizontalList, CityCard, HorizontalListCard } from "../ui"
+import { SectionTitle, HorizontalList, CityCard } from "../ui"
 
 export default function PopularSection ({ cities }) {
    return (

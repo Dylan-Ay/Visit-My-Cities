@@ -7,9 +7,9 @@ import java.util.List;
 public interface ICityService {
 
 
-    public List<City> getAllCities();
-    public City getCityById(Long id);
-    public City saveCity(City city);
-    public City updateCity(Long id, City city);
-    public void deleteCity(Long id);
+    List<City> getAllCities();
+    City getCityById(Long id);
+    City saveCity(City city);
+    City updateCity(Long id, City city);
+    void deleteCity(Long id);
 }

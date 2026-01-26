@@ -16,7 +16,7 @@ public class Building {
     private String description;
 
     @Column(name = "annee_construction")
-    private int yearConstruction;
+    private Integer yearConstruction;
 
     @Column(name = "image_url")
     private String imageURL;
@@ -46,8 +46,8 @@ public class Building {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public int getYearConstruction() { return yearConstruction; }
-    public void setYearConstruction(int yearConstruction) { this.yearConstruction = yearConstruction; }
+    public Integer getYearConstruction() { return yearConstruction; }
+    public void setYearConstruction(Integer yearConstruction) { this.yearConstruction = yearConstruction; }
 
     public String getImageURL() { return imageURL; }
     public void setImageURL(String imageURL) { this.imageURL = imageURL; }

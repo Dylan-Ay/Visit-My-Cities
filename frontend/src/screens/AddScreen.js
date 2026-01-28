@@ -1,9 +1,9 @@
-import { ScreenWrapper, HeaderTitle } from "../components"
+import { ScreenWrapper, HeaderTitle } from "../components/ui"
 
 export const AddScreen = ({ navigation }) => {
   return (
     <ScreenWrapper>
-      <HeaderTitle text="Ajouter un bâtiment" />
+      <HeaderTitle>Ajouter un bâtiment</HeaderTitle>
     </ScreenWrapper>
   )
 }

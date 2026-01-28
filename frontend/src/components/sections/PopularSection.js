@@ -17,6 +17,6 @@ export default function PopularSection ({ title, data, renderItem }) {
 
 const styles = StyleSheet.create({
    container: {
-      paddingVertical: 24
+      paddingTop: 20
    }
 })

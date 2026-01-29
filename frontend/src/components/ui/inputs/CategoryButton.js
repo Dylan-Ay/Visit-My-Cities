@@ -1,12 +1,14 @@
-import { StyleSheet, Text, TouchableOpacity} from "react-native"
-import { CATEGORY_COLORS } from "../../../constants/categoryColors"
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { CATEGORY_COLORS } from '../../../constants/categoryColors'
 
 export const CategoryChip = ({ id, name, icon }) => {
-   const backgroundColor = CATEGORY_COLORS[id] ?? '#D0EBFF';
-   
-   return(
+   const backgroundColor = CATEGORY_COLORS[id] ?? '#D0EBFF'
+
+   return (
       <TouchableOpacity style={[styles.chip, { backgroundColor }]}>
-         <Text style={styles.name}>{icon} {name}</Text>
+         <Text style={styles.name}>
+            {icon} {name}
+         </Text>
       </TouchableOpacity>
    )
 }
@@ -16,11 +18,11 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       padding: 20,
       margin: 5,
-      borderRadius: 30
+      borderRadius: 30,
    },
 
    name: {
       fontSize: 16,
-      fontWeight: '500'
-   }
+      fontWeight: '500',
+   },
 })

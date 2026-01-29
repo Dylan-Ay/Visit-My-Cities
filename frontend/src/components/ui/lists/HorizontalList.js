@@ -1,9 +1,9 @@
-import { View, StyleSheet, FlatList } from "react-native"
+import { View, StyleSheet, FlatList } from 'react-native'
 
 export const HorizontalList = ({ data, renderItem, keyExtractor }) => {
    return (
       <View style={styles.container}>
-         <FlatList 
+         <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
             data={data}
@@ -11,11 +11,11 @@ export const HorizontalList = ({ data, renderItem, keyExtractor }) => {
             keyExtractor={keyExtractor}
          />
       </View>
-   ) 
+   )
 }
 
 const styles = StyleSheet.create({
    container: {
-      marginVertical: 8
-   }
+      marginVertical: 8,
+   },
 })

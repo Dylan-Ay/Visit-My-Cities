@@ -5,4 +5,4 @@ export const CATEGORY_COLORS = {
    4: '#FFD6E7',
    5: '#C3FAE8',
    6: '#FFD8A8',
-};
+}

@@ -12,4 +12,5 @@ public interface IBuildingService {
     List<Building> getBuildingsByCityName(String name);
     Building updateBuilding(Long id, Building building);
     void deleteBuilding(Long id);
+    List<Building> getBuildingsByCategorieId(Long id);
 }

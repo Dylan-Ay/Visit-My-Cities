@@ -1,11 +1,8 @@
-import { StyleSheet, ImageBackground, Text } from "react-native"
+import { StyleSheet, ImageBackground, Text } from 'react-native'
 
-export const HeroBanner = ({ title, image}) => {
+export const HeroBanner = ({ title, image }) => {
    return (
-      <ImageBackground
-         source={image}
-         style={styles.banner}
-      >
+      <ImageBackground source={image} style={styles.banner}>
          <Text style={styles.bannerText}>{title}</Text>
       </ImageBackground>
    )
@@ -16,18 +13,18 @@ const styles = StyleSheet.create({
       height: 280,
       justifyContent: 'flex-end',
       alignItems: 'center',
-      paddingHorizontal: 16
+      paddingHorizontal: 16,
    },
-   
+
    bannerContainer: {
       gap: 12,
-      width: '100%'
+      width: '100%',
    },
-   
+
    bannerText: {
       color: '#fff',
       fontSize: 30,
       fontWeight: 'bold',
-      marginBottom: 10
-   }
+      marginBottom: 10,
+   },
 })

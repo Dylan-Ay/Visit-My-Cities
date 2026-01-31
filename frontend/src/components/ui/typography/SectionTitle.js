@@ -12,6 +12,6 @@ const styles = StyleSheet.create({
    sectionTitle: {
       fontSize: 26,
       fontWeight: '600',
-      color: '#222222'
-   }
+      color: '#222222',
+   },
 })

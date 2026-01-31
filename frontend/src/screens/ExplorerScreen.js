@@ -1,4 +1,4 @@
-import { ScreenWrapper, HeaderTitle } from "../components/ui"
+import { ScreenWrapper, HeaderTitle } from '../components/ui'
 
 export const ExplorerScreen = ({ navigation }) => {
    return (

@@ -1,21 +1,21 @@
-import { View, StyleSheet } from 'react-native'
-import { SectionTitle, HorizontalList, CategoryChip } from '../ui'
+import { View } from 'react-native'
+import { SectionTitle, CategoryButton, PlacesCarousel } from '../ui'
 import { groupCategories } from '../../utils/utils'
 
 export default function CategorySection({ title, data }) {
    const groupedCategories = groupCategories(data)
 
    return (
-      <View style={styles.container}>
+      <View>
          <SectionTitle>{title}</SectionTitle>
 
-         <HorizontalList
+         <PlacesCarousel
             data={groupedCategories}
             keyExtractor={(_, index) => index}
             renderItem={({ item }) => (
                <View>
                   {item.map((cat) => (
-                     <CategoryChip
+                     <CategoryButton
                         key={cat.id}
                         id={cat.id}
                         name={cat.name}
@@ -28,9 +28,3 @@ export default function CategorySection({ title, data }) {
       </View>
    )
 }
-
-const styles = StyleSheet.create({
-   container: {
-      paddingTop: 16,
-   },
-})

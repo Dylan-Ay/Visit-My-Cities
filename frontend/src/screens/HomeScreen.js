@@ -20,7 +20,7 @@ export const HomeScreen = ({ navigation }) => {
 
                <PopularSection
                   title={'Villes populaires'}
-                  data={cities}
+                  data={cities.slice(0, 6)}
                   renderItem={({ item }) => (
                      <CarouselItem>
                         <PlaceCard name={item.name} image={item.image} />

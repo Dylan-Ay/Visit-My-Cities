@@ -1,5 +1,5 @@
 // Exemple de données
-export const popularCities = [
+export const cities = [
    {
       id: '1',
       name: 'Paris',

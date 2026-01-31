@@ -1,26 +1,21 @@
 import { StyleSheet, TouchableOpacity, Text, Image } from 'react-native'
 
-const PlaceCard = ({ image, name }) => {
+export const PlaceCard = ({ image, name, style }) => {
    return (
-      <TouchableOpacity style={styles.card}>
-         <Image source={{ uri: image }} style={styles.image} />
+      <TouchableOpacity style={[styles.card, style]}>
+         <Image
+            source={{ uri: image }}
+            style={styles.image}
+            resizeMode="cover"
+         />
          <Text style={styles.name}>{name}</Text>
       </TouchableOpacity>
    )
 }
 
-export const CityCard = ({ city }) => (
-   <PlaceCard image={city.image} name={city.name} />
-)
-
-export const BuildingCard = ({ building }) => (
-   <PlaceCard image={building.image} name={building.name} />
-)
-
 const styles = StyleSheet.create({
    card: {
-      width: 130,
-      marginRight: 16,
+      width: '100%',
       borderRadius: 8,
       overflow: 'hidden',
    },
@@ -31,7 +26,7 @@ const styles = StyleSheet.create({
    },
 
    name: {
-      marginTop: 4,
+      paddingTop: 4,
       textAlign: 'center',
       fontSize: 16,
    },

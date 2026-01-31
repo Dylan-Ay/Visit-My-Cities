@@ -1,9 +1,10 @@
 // prettier-ignore
-import { ScreenWrapper, SearchInput, CityCard, BuildingCard, ContentContainer, HeroBanner } from "../components/ui"
+import { ScreenWrapper, SearchInput, CityCard, BuildingCard, ContentContainer, HeroBanner, PlaceCard } from "../components/ui"
 import { ScrollView } from 'react-native'
 import PopularSection from '../components/sections/PopularSection'
 import CategorySection from '../components/sections/CategorySection'
-import { popularBuildings, popularCities, categories } from '../services/data'
+import { popularBuildings, cities, categories } from '../services/data'
+import { CarouselItem } from '../components/ui/layout/CarouselItem'
 
 export const HomeScreen = ({ navigation }) => {
    return (
@@ -14,19 +15,27 @@ export const HomeScreen = ({ navigation }) => {
                image={require('../../assets/HomeScreenBanner.png')}
             />
 
-            <ContentContainer>
+            <ContentContainer style={{ paddingBottom: 20 }}>
                <SearchInput placeholder={'Rechercher une ville'}></SearchInput>
 
                <PopularSection
                   title={'Villes populaires'}
-                  data={popularCities}
-                  renderItem={({ item }) => <CityCard city={item} />}
+                  data={cities}
+                  renderItem={({ item }) => (
+                     <CarouselItem>
+                        <PlaceCard name={item.name} image={item.image} />
+                     </CarouselItem>
+                  )}
                />
 
                <PopularSection
                   title={'Bâtiments populaires'}
                   data={popularBuildings}
-                  renderItem={({ item }) => <BuildingCard building={item} />}
+                  renderItem={({ item }) => (
+                     <CarouselItem>
+                        <PlaceCard name={item.name} image={item.image} />
+                     </CarouselItem>
+                  )}
                />
 
                <CategorySection title={'Catégories'} data={categories} />

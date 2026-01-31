@@ -1,5 +1,11 @@
-import { View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
-export const ContentContainer = ({ children }) => (
-   <View style={{ paddingHorizontal: 16, marginBottom: 20 }}>{children}</View>
+export const ContentContainer = ({ children, style }) => (
+   <View style={[styles.container, style]}>{children}</View>
 )
+
+const styles = StyleSheet.create({
+   container: {
+      paddingHorizontal: 16,
+   },
+})

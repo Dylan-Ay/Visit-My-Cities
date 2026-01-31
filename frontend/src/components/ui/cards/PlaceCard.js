@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity, Text, Image } from 'react-native'
 
-const HorizontalListCard = ({ image, name }) => {
+const PlaceCard = ({ image, name }) => {
    return (
       <TouchableOpacity style={styles.card}>
          <Image source={{ uri: image }} style={styles.image} />
@@ -10,11 +10,11 @@ const HorizontalListCard = ({ image, name }) => {
 }
 
 export const CityCard = ({ city }) => (
-   <HorizontalListCard image={city.image} name={city.name} />
+   <PlaceCard image={city.image} name={city.name} />
 )
 
 export const BuildingCard = ({ building }) => (
-   <HorizontalListCard image={building.image} name={building.name} />
+   <PlaceCard image={building.image} name={building.name} />
 )
 
 const styles = StyleSheet.create({

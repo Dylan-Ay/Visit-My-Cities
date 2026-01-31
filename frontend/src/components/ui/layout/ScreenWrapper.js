@@ -1,20 +1,20 @@
 import { StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export const ScreenWrapper = ({ children, useEdges = true }) => {
    return (
-      <SafeAreaView 
+      <SafeAreaView
          style={styles.container}
          edges={useEdges ? ['top', 'bottom', 'left', 'right'] : []}
       >
          {children}
       </SafeAreaView>
-  );
+   )
 }
 
 const styles = StyleSheet.create({
    container: {
       flex: 1,
-      backgroundColor: '#F6F6F6'
-   }
+      backgroundColor: '#F6F6F6',
+   },
 })

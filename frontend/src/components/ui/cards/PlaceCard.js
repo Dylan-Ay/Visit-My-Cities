@@ -1,11 +1,11 @@
 import { StyleSheet, TouchableOpacity, Text, Image } from 'react-native'
 
-export const PlaceCard = ({ image, name, style }) => {
+export const PlaceCard = ({ image, name, style, imgStyle }) => {
    return (
       <TouchableOpacity style={[styles.card, style]}>
          <Image
             source={{ uri: image }}
-            style={styles.image}
+            style={[styles.image, imgStyle]}
             resizeMode="cover"
          />
          <Text style={styles.name}>{name}</Text>
@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
    card: {
       width: '100%',
       borderRadius: 8,
-      overflow: 'hidden',
    },
 
    image: {
       width: '100%',
-      height: 130,
+      height: 120,
+      borderRadius: 8,
    },
 
    name: {

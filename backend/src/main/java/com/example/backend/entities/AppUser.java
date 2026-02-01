@@ -15,19 +15,26 @@ public class AppUser {
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    private AppRole roles;
-    @ManyToMany
-    private List<Building> buildings ;
+    private AppRole role;
+
 
     public AppUser() {
     }
 
-    public AppUser(Long id, String username, String email, String password, AppRole roles) {
+    public AppUser(Long id, String username, String email, String password, AppRole role) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.roles = roles;
+        this.role = role;
+    }
+
+    public AppRole getRole() {
+        return role;
+    }
+
+    public void setRole(AppRole role) {
+        this.role = role;
     }
 
     public Long getId() {
@@ -62,19 +69,7 @@ public class AppUser {
         this.password = password;
     }
 
-    public List<Building> getBuildings() {
-        return buildings;
-    }
 
-    public void setBuildings(List<Building> buildings) {
-        this.buildings = buildings;
-    }
 
-    public AppRole getRoles() {
-        return roles;
-    }
 
-    public void setRoles(AppRole roles) {
-        this.roles = roles;
-    }
 }

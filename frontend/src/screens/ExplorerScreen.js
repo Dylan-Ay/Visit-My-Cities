@@ -19,10 +19,14 @@ export const ExplorerScreen = ({ navigation }) => {
                <ContentContainer
                   style={{
                      flex: 1,
-                     padding: 6,
+                     paddingBottom: 16,
                   }}
                >
-                  <PlaceCard image={item.image} name={item.name} />
+                  <PlaceCard
+                     image={item.image}
+                     name={item.name}
+                     imgStyle={{ height: 150 }}
+                  />
                </ContentContainer>
             )}
             ListHeaderComponent={

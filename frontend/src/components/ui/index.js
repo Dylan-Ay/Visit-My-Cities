@@ -9,6 +9,6 @@ export * from './inputs/CategoryButton'
 
 export * from './cards/PlaceCard'
 
-export * from './lists/HorizontalList'
+export * from './lists/PlacesCarousel'
 
 export * from './banners/HeroBanner'

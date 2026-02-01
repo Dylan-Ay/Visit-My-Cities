@@ -1,22 +1,16 @@
-import { View, StyleSheet } from 'react-native'
-import { SectionTitle, HorizontalList } from '../ui'
+import { View } from 'react-native'
+import { SectionTitle, PlacesCarousel } from '../ui'
 
 export default function PopularSection({ title, data, renderItem }) {
    return (
-      <View style={styles.container}>
+      <View>
          <SectionTitle>{title}</SectionTitle>
 
-         <HorizontalList
+         <PlacesCarousel
             data={data}
-            renderItem={renderItem}
             keyExtractor={(item) => item.id}
+            renderItem={renderItem}
          />
       </View>
    )
 }
-
-const styles = StyleSheet.create({
-   container: {
-      paddingTop: 20,
-   },
-})

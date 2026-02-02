@@ -23,7 +23,15 @@ export const HomeScreen = ({ navigation }) => {
                   data={cities.slice(0, 6)}
                   renderItem={({ item }) => (
                      <CarouselItem>
-                        <PlaceCard name={item.name} image={item.image} />
+                        <PlaceCard
+                           name={item.name}
+                           image={item.image}
+                           onPress={() =>
+                              navigation.navigate('CityDetail', {
+                                 cityId: item.id,
+                              })
+                           }
+                        />
                      </CarouselItem>
                   )}
                />
@@ -33,7 +41,15 @@ export const HomeScreen = ({ navigation }) => {
                   data={popularBuildings}
                   renderItem={({ item }) => (
                      <CarouselItem>
-                        <PlaceCard name={item.name} image={item.image} />
+                        <PlaceCard
+                           name={item.name}
+                           image={item.image}
+                           onPress={() =>
+                              navigation.navigate('BuildingDetail', {
+                                 buildingId: item.id,
+                              })
+                           }
+                        />
                      </CarouselItem>
                   )}
                />

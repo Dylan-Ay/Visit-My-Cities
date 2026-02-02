@@ -1,7 +1,7 @@
 // prettier-ignore
-import { ScreenWrapper, HeroBanner, SearchInput, ContentContainer, PlaceCard, SectionTitle } from '../components/ui'
+import { ScreenWrapper, HeroBanner, SearchInput, ContentContainer, PlaceCard, SectionTitle } from '../../components/ui'
 import { FlatList } from 'react-native'
-import { cities } from '../services/data'
+import { cities } from '../../services/data'
 
 {
    /* Liste de villes de la db avec barre de recherche, carousel vertical, clique sur la ville -> affichage des bâtiments -> clique sur bâtiment -> détail du bâtiment. 
@@ -33,7 +33,7 @@ export const ExplorerScreen = ({ navigation }) => {
                <>
                   <HeroBanner
                      title="Planifions vos prochaines vacances !"
-                     image={require('../../assets/ExplorerScreenBanner.jpg')}
+                     image={require('../../../assets/ExplorerScreenBanner.jpg')}
                   />
                   <ContentContainer>
                      <SearchInput placeholder="Rechercher une ville" />

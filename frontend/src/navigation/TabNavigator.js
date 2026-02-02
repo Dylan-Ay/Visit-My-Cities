@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { HomeScreen } from '../screens/HomeScreen'
 import { Ionicons } from '@expo/vector-icons'
-import { ExplorerScreen } from '../screens/ExplorerScreen'
-import { VisitScreen } from '../screens/VisitScreen'
-import { AddScreen } from '../screens/AddScreen'
-import { ProfileScreen } from '../screens/ProfileScreen'
+import { HomeScreen } from '../screens/tabs/HomeScreen'
+import { ExplorerScreen } from '../screens/tabs/ExplorerScreen'
+import { VisitScreen } from '../screens/tabs/VisitScreen'
+import { AddScreen } from '../screens/tabs/AddScreen'
+import { ProfileScreen } from '../screens/tabs/ProfileScreen'
 
 const Tab = createBottomTabNavigator()
 

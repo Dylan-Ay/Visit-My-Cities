@@ -1,5 +1,5 @@
 // prettier-ignore
-import { ScreenWrapper, SearchInput, CityCard, BuildingCard, ContentContainer, HeroBanner, PlaceCard } from "../components/ui"
+import { ScreenWrapper, SearchInput, ContentContainer, HeroBanner, PlaceCard } from "../components/ui"
 import { ScrollView } from 'react-native'
 import PopularSection from '../components/sections/PopularSection'
 import CategorySection from '../components/sections/CategorySection'

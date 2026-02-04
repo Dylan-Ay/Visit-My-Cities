@@ -54,7 +54,11 @@ export const HomeScreen = ({ navigation }) => {
                   )}
                />
 
-               <CategorySection title={'Catégories'} data={categories} />
+               <CategorySection
+                  title={'Catégories'}
+                  data={categories}
+                  navigation={navigation}
+               />
             </ContentContainer>
          </ScrollView>
       </ScreenWrapper>

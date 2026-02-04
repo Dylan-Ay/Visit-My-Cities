@@ -2,7 +2,7 @@ import { View } from 'react-native'
 import { SectionTitle, CategoryButton, PlacesCarousel } from '../ui'
 import { groupCategories } from '../../utils/utils'
 
-export default function CategorySection({ title, data }) {
+export default function CategorySection({ navigation, title, data }) {
    const groupedCategories = groupCategories(data)
 
    return (
@@ -20,6 +20,11 @@ export default function CategorySection({ title, data }) {
                         id={cat.id}
                         name={cat.name}
                         icon={cat.icon}
+                        onPress={() =>
+                           navigation.navigate('CategoryDetail', {
+                              categoryId: cat.id,
+                           })
+                        }
                      />
                   ))}
                </View>

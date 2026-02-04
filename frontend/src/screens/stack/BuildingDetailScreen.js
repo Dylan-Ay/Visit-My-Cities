@@ -1,9 +1,13 @@
 import { HeaderTitle, ScreenWrapper } from '../../components/ui'
+import { buildings } from '../../services/data'
 
-export default function BuildingDetailScreen({ route }) {
+export const BuildingDetailScreen = ({ route }) => {
+   const { buildingId } = route.params
+   const building = buildings.find((element) => (element.id = buildingId))
+
    return (
       <ScreenWrapper>
-         <HeaderTitle>Détail d'un bâtiment</HeaderTitle>
+         <HeaderTitle>Détail du bâtiment {building.name}</HeaderTitle>
       </ScreenWrapper>
    )
 }

@@ -3,7 +3,7 @@ import { ScreenWrapper, SearchInput, ContentContainer, HeroBanner, PlaceCard } f
 import { ScrollView } from 'react-native'
 import PopularSection from '../../components/sections/PopularSection'
 import CategorySection from '../../components/sections/CategorySection'
-import { popularBuildings, cities, categories } from '../../services/data'
+import { buildings, cities, categories } from '../../services/data'
 import { CarouselItem } from '../../components/ui/layout/CarouselItem'
 
 export const HomeScreen = ({ navigation }) => {
@@ -38,7 +38,7 @@ export const HomeScreen = ({ navigation }) => {
 
                <PopularSection
                   title={'Bâtiments populaires'}
-                  data={popularBuildings}
+                  data={buildings}
                   renderItem={({ item }) => (
                      <CarouselItem>
                         <PlaceCard

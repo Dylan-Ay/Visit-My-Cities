@@ -62,7 +62,7 @@ export const cities = [
    },
 ]
 
-export const popularBuildings = [
+export const buildings = [
    {
       id: '1',
       cityId: '1',

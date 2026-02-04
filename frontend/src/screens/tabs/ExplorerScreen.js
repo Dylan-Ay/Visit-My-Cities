@@ -26,6 +26,11 @@ export const ExplorerScreen = ({ navigation }) => {
                      image={item.image}
                      name={item.name}
                      imgStyle={{ height: 150 }}
+                     onPress={() =>
+                        navigation.navigate('CityDetail', {
+                           cityId: item.id,
+                        })
+                     }
                   />
                </ContentContainer>
             )}

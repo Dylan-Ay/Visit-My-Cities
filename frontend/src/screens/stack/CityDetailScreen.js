@@ -3,7 +3,7 @@ import { cities } from '../../services/data'
 
 export const CityDetailScreen = ({ route }) => {
    const { cityId } = route.params
-   const city = cities.find((element) => (element.id = cityId))
+   const city = cities.find((element) => element.id == cityId)
 
    return (
       <ScreenWrapper>

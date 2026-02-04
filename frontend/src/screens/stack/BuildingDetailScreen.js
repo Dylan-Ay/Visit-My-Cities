@@ -3,7 +3,7 @@ import { buildings } from '../../services/data'
 
 export const BuildingDetailScreen = ({ route }) => {
    const { buildingId } = route.params
-   const building = buildings.find((element) => (element.id = buildingId))
+   const building = buildings.find((element) => element.id == buildingId)
 
    return (
       <ScreenWrapper>

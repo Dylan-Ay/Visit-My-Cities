@@ -22,6 +22,8 @@ public class City {
 
     @Column(name = "code_postal")
     private String postalCode;
+    @Column(name = "image_url")
+    private String imageURL ;
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -37,12 +39,22 @@ public class City {
         this.postalCode = postalCode;
     }
 
-    public City(String name, String country, String description, String postalCode, List<Building> buildings) {
+    public City(Long id, String name, String country, String description, String postalCode, String imageURL, List<Building> buildings) {
+        this.id = id;
         this.name = name;
         this.country = country;
         this.description = description;
         this.postalCode = postalCode;
+        this.imageURL = imageURL;
         this.buildings = buildings;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public Long getId() {

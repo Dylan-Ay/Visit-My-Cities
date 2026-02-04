@@ -70,4 +70,15 @@ public class BuildingServiceImpl implements IBuildingService{
       Building buildingToDelete = this.buildingRepository.findById(id).orElseThrow(() -> new BuildingNotFoundException("Batiment non trouvé."));
         this.buildingRepository.delete(buildingToDelete);
     }
+
+    @Override
+    public List<Building> getBuildingsByCategorieId(Long id) {
+      List<Building> buildings = this.buildingRepository.findBuildingsByCategoriesId(id);
+      if(buildings.isEmpty()){
+          throw new BuildingNotFoundException("Aucun batiment dans cette catégorie");
+      }
+      return buildings;
+
+    }
+
 }

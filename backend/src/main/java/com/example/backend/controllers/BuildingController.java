@@ -52,4 +52,9 @@ public class BuildingController {
         return new ResponseEntity<>(this.buildingServiceImpl.updateBuilding(id,building), HttpStatus.OK);
     }
 
+    @GetMapping("/categorie/{id}")
+    public ResponseEntity<List<Building>> getBuildingsByCategorieId(@PathVariable Long id){
+        return new ResponseEntity<>(this.buildingServiceImpl.getBuildingsByCategorieId(id),HttpStatus.OK );
+    }
+
 }

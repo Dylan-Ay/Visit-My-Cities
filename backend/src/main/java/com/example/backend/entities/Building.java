@@ -2,6 +2,8 @@ package com.example.backend.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "batiment")
 public class Building {
@@ -9,21 +11,18 @@ public class Building {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "nom")
     private String name;
-
     private String description;
-
     @Column(name = "annee_construction")
     private Integer yearConstruction;
-
     @Column(name = "image_url")
     private String imageURL;
-
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
+    @ManyToMany
+    private List<Category> categories;
 
 
     public Building() {}
@@ -36,6 +35,13 @@ public class Building {
         this.city = city;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

@@ -18,7 +18,7 @@ export const ExplorerScreen = ({ navigation }) => {
             renderItem={({ item }) => (
                <ContentContainer
                   style={{
-                     flex: 1,
+                     width: '50%',
                      paddingBottom: 16,
                   }}
                >

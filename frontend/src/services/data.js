@@ -3,7 +3,7 @@ export const cities = [
    {
       id: '1',
       name: 'Paris',
-      image: 'https://www.secretdeparis.com/blog/wp-content/uploads/2025/04/eiffel-tower-975004_1280.jpg',
+      image: 'https://www.allsuites.com/wp-content/uploads/2024/09/Paris.jpg',
    },
    {
       id: '2',
@@ -70,10 +70,22 @@ export const buildings = [
       image: 'https://i.notretemps.com/2000x1125/smart/2023/10/19/musee-du-louvre.jpg',
    },
    {
+      id: '10',
+      cityId: '1',
+      name: 'Tour Eiffel',
+      image: 'https://www.secretdeparis.com/blog/wp-content/uploads/2025/04/eiffel-tower-975004_1280.jpg',
+   },
+   {
       id: '2',
       cityId: '2',
       name: 'Sanctuaire Asakusa',
       image: 'https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg?s=612x612&w=0&k=20&c=0mRZPy-eg603K8FPB7k_O73e7tqHLv4PIDjWIKcXXH4=',
+   },
+   {
+      id: '11',
+      cityId: '2',
+      name: 'Tokyo Tower',
+      image: 'https://byfood.b-cdn.net/api/public/assets/59153/content?optimizer=image',
    },
    {
       id: '3',
@@ -82,10 +94,22 @@ export const buildings = [
       image: 'https://cdn.calendarz.com/uploads/events/may/1/41113/empire-state-building_compressed.jpg',
    },
    {
-      id: '4',
+      id: '12',
+      cityId: '3',
+      name: 'Statut de la liberté',
+      image: 'https://cdn.sortiraparis.com/images/80/66131/1184658-connaissez-vous-les-origines-parisiennes-de-la-statue-de-la-liberte-de-new-york.jpg',
+   },
+   {
+      id: '13',
       cityId: '4',
       name: 'Buckingham Palace',
       image: 'https://cdn-imgix.headout.com/media/images/31a4bf553f447246bf5bd92b00cb1707-12286-london-changing-of-the-guard-tour-with-optional-buckingham-palace-entry-11.jpg?auto=compress%2Cformat&w=1216.3200000000002&h=760.2&q=210&ar=16%3A10&crop=faces&fit=crop',
+   },
+   {
+      id: '14',
+      cityId: '4',
+      name: 'Tower Bridge',
+      image: 'https://cdn.britannica.com/35/156335-050-62245FCA/Tower-Bridge-River-Thames-London.jpg',
    },
    {
       id: '5',
@@ -94,10 +118,22 @@ export const buildings = [
       image: 'https://as2.ftcdn.net/v2/jpg/01/21/87/47/1000_F_121874733_ObMVN0dprpejLPmvkQumpLRvxOWOI7sW.jpg',
    },
    {
+      id: '15',
+      cityId: '5',
+      name: 'Le Panthéon',
+      image: 'https://voyageur-attitude.fr/wp-content/uploads/Le-Pantheon-1024x644.jpg',
+   },
+   {
       id: '6',
       cityId: '6',
       name: 'Sagrada Família',
       image: 'https://lelephant-larevue.fr/wp-content/uploads/2018/03/%CE%A3%CE%B1%CE%B3%CF%81%CE%B1%CC%81%CE%B4%CE%B1_%CE%A6%CE%B1%CE%BC%CE%B9%CC%81%CE%BB%CE%B9%CE%B1_2941.jpg',
+   },
+   {
+      id: '16',
+      cityId: '6',
+      name: 'Parque Güell',
+      image: 'https://www.guidesulysse.com/images/destinations/iStock-534846887.jpg',
    },
 ]
 

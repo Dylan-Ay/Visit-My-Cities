@@ -3,7 +3,7 @@ export const cities = [
    {
       id: '1',
       name: 'Paris',
-      image: 'https://www.secretdeparis.com/blog/wp-content/uploads/2025/04/eiffel-tower-975004_1280.jpg',
+      image: 'https://www.allsuites.com/wp-content/uploads/2024/09/Paris.jpg',
    },
    {
       id: '2',

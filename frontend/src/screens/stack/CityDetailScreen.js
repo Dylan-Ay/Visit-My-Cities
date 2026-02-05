@@ -1,4 +1,5 @@
-import { HeaderTitle, ScreenWrapper } from '../../components/ui'
+import { ScrollView } from 'react-native'
+import { HeroBanner, ScreenWrapper } from '../../components/ui'
 import { cities } from '../../services/data'
 
 export const CityDetailScreen = ({ route }) => {
@@ -6,8 +7,14 @@ export const CityDetailScreen = ({ route }) => {
    const city = cities.find((element) => element.id == cityId)
 
    return (
-      <ScreenWrapper>
-         <HeaderTitle>Détail de la ville de {city.name}</HeaderTitle>
+      <ScreenWrapper useEdges={false}>
+         <ScrollView>
+            <HeroBanner
+               title={city.name}
+               image={{ uri: city.image }}
+               style={{ fontSize: 34 }}
+            />
+         </ScrollView>
       </ScreenWrapper>
    )
 }

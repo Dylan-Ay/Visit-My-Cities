@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { CityDetailScreen } from '../screens/stack/CityDetailScreen'
 import { BuildingDetailScreen } from '../screens/stack/BuildingDetailScreen'
 import { CategoryDetailScreen } from '../screens/stack/CategoryDetailScreen'
-import { CustomBackButton } from '../components/ui'
+import { HeaderIconButton } from '../components/ui/inputs/HeaderIconButton'
 
 const Stack = createStackNavigator()
 
@@ -22,7 +22,17 @@ export default function RootStack() {
                headerTransparent: true,
                headerTitle: '',
                headerLeft: () => (
-                  <CustomBackButton onPress={() => navigation.goBack()} />
+                  <HeaderIconButton
+                     icon={'chevron-back-outline'}
+                     style={{ marginLeft: 16 }}
+                     onPress={() => navigation.goBack()}
+                  />
+               ),
+               headerRight: () => (
+                  <HeaderIconButton
+                     icon={'heart-outline'}
+                     style={{ marginRight: 16 }}
+                  />
                ),
             })}
          />

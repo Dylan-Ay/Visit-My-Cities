@@ -6,6 +6,7 @@ export * from './typography/SectionTitle'
 
 export * from './inputs/SearchInput'
 export * from './inputs/CategoryButton'
+export * from './inputs/CustomBackButton'
 
 export * from './cards/PlaceCard'
 

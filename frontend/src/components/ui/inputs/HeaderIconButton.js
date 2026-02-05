@@ -1,10 +1,10 @@
 import { Ionicons } from '@expo/vector-icons'
 import { Pressable, StyleSheet } from 'react-native'
 
-export const CustomBackButton = ({ onPress }) => {
+export const HeaderIconButton = ({ icon, onPress, style }) => {
    return (
-      <Pressable style={styles.buttonContainer} onPress={onPress}>
-         <Ionicons style={{ fontSize: 20 }} name="chevron-back-outline" />
+      <Pressable style={[styles.buttonContainer, style]} onPress={onPress}>
+         <Ionicons style={{ fontSize: 20 }} name={icon} />
       </Pressable>
    )
 }
@@ -17,6 +17,5 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 30,
-      marginLeft: 16,
    },
 })

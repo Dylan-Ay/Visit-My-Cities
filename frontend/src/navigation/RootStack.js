@@ -36,7 +36,28 @@ export default function RootStack() {
                ),
             })}
          />
-         <Stack.Screen name="BuildingDetail" component={BuildingDetailScreen} />
+         <Stack.Screen
+            name="BuildingDetail"
+            component={BuildingDetailScreen}
+            options={() => ({
+               headerTransparent: true,
+               headerTitle: '',
+               headerLeft: () => (
+                  <HeaderIconButton
+                     icon={'chevron-back-outline'}
+                     style={{ marginLeft: 16 }}
+                     onPress={() => navigation.goBack()}
+                  />
+               ),
+               headerRight: () => (
+                  <HeaderIconButton
+                     icon={'heart-outline'}
+                     style={{ marginRight: 16 }}
+                     onPress={() => navigation.goBack()}
+                  />
+               ),
+            })}
+         />
          <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} />
       </Stack.Navigator>
    )

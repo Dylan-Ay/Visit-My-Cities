@@ -9,6 +9,7 @@ export * from './inputs/CategoryButton'
 export * from './inputs/HeaderIconButton'
 
 export * from './cards/PlaceCard'
+export * from './cards/KeyInfoItem'
 
 export * from './lists/PlacesCarousel'
 

@@ -10,7 +10,10 @@ export const groupCategories = (categories) => {
    return result
 }
 
-export const divideOddsAndEvens = (items, leftColumn, rightColumn) => {
+export const divideOddsAndEvens = (items) => {
+   const leftColumn = []
+   const rightColumn = []
+
    for (let i = 0; i < items.length; i++) {
       if (i % 2 == 0) {
          leftColumn.push(items[i])
@@ -18,6 +21,8 @@ export const divideOddsAndEvens = (items, leftColumn, rightColumn) => {
          rightColumn.push(items[i])
       }
    }
+
+   return { leftColumn, rightColumn }
 }
 
 export const getBuildingInfos = (building) => {

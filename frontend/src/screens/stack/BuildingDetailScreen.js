@@ -1,10 +1,11 @@
 // prettier-ignore
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, } from 'react-native'
 // prettier-ignore
 import { ContentContainer, HeroBanner, ScreenWrapper, SectionTitle, SectionDivider } from '../../components/ui'
 import { buildings } from '../../services/data'
 import { Ionicons } from '@expo/vector-icons'
 import KeyInfosSection from '../../components/sections/KeyInfosSection/KeyInfosSection'
+import DescriptionSection from '../../components/sections/DescriptionSection'
 
 export const BuildingDetailScreen = ({ navigation, route }) => {
    const { buildingId } = route.params
@@ -20,34 +21,12 @@ export const BuildingDetailScreen = ({ navigation, route }) => {
 
                <SectionDivider />
 
-               <View>
-                  <SectionTitle style={{ fontSize: 22 }}>
-                     Description
-                  </SectionTitle>
-                  <Text numberOfLines={4} ellipsizeMode="tail">
-                     Construite pour l'Exposition universelle de 1889, la Tour
-                     Eiffel est l'un des monuments les plus emblématiques de
-                     Paris et de la France. Imaginée par l'ingénieur Gustave
-                     Eiffel, elle devait initialement être une installation
-                     temporaire destinée à démontrer le savoir-faire industriel
-                     français de la fin du XIXᵉ siècle. Avec ses 324 mètres de
-                     hauteur, la tour a longtemps été la plus haute structure du
-                     monde. Entièrement composée de fer puddlé, elle incarne
-                     l'architecture industrielle et l'audace technique de son
-                     époque. Malgré de nombreuses critiques lors de sa
-                     construction, elle est rapidement devenue un symbole
-                     universel de modernité et d'innovation. Aujourd'hui, la
-                     Tour Eiffel attire des millions de visiteurs chaque année.
-                     Accessible à différents niveaux, elle offre des points de
-                     vue spectaculaires sur Paris et demeure un repère
-                     incontournable du paysage urbain parisien.
-                  </Text>
-                  <TouchableOpacity style={{ marginTop: 10 }}>
-                     <Text style={{ fontSize: 16, fontWeight: 600 }}>
-                        Voir plus
-                     </Text>
-                  </TouchableOpacity>
-               </View>
+               <DescriptionSection
+                  text={
+                     "Construite pour l'Exposition universelle de 1889, la Tour Eiffel est l'un des monuments les plus emblématiques de Paris et de la France. Imaginée par l'ingénieur Gustave Eiffel, elle devait initialement être une installation temporaire destinée à démontrer le savoir-faire industriel français de la fin du XIXᵉ siècle. Avec ses 324 mètres de hauteur, la tour a longtemps été la plus haute structure du monde. Entièrement composée de fer puddlé, elle incarne l'architecture industrielle et l'audace technique de son époque. Malgré de nombreuses critiques lors de sa construction, elle est rapidement devenue un symbole universel de modernité et d'innovation. Aujourd'hui, la Tour Eiffel attire des millions de visiteurs chaque année. Accessible à différents niveaux, elle offre des points de vue spectaculaires sur Paris et demeure un repère incontournable du paysage urbain parisien."
+                  }
+                  // onPress={() => onPress}
+               />
 
                <SectionDivider />
 

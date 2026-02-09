@@ -1,5 +1,6 @@
 export * from './layout/ScreenWrapper'
 export * from './layout/ContentContainer'
+export * from './layout/SectionDivider'
 
 export * from './typography/HeaderTitle'
 export * from './typography/SectionTitle'

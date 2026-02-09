@@ -1,7 +1,7 @@
 // prettier-ignore
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native'
 // prettier-ignore
-import { ContentContainer, HeroBanner, ScreenWrapper, SectionTitle, } from '../../components/ui'
+import { ContentContainer, HeroBanner, ScreenWrapper, SectionTitle, SectionDivider } from '../../components/ui'
 import { buildings } from '../../services/data'
 import { Ionicons } from '@expo/vector-icons'
 import KeyInfosSection from '../../components/sections/KeyInfosSection/KeyInfosSection'
@@ -18,15 +18,9 @@ export const BuildingDetailScreen = ({ navigation, route }) => {
             <ContentContainer style={{ paddingBottom: 20 }}>
                <KeyInfosSection building={building} />
 
-               <View
-                  style={{
-                     borderWidth: 0.6,
-                     borderColor: '#dedede',
-                     flex: 1,
-                  }}
-               ></View>
+               <SectionDivider />
 
-               <View style={{ marginBottom: 20 }}>
+               <View>
                   <SectionTitle style={{ fontSize: 22 }}>
                      Description
                   </SectionTitle>
@@ -55,13 +49,7 @@ export const BuildingDetailScreen = ({ navigation, route }) => {
                   </TouchableOpacity>
                </View>
 
-               <View
-                  style={{
-                     borderWidth: 0.6,
-                     borderColor: '#dedede',
-                     flex: 1,
-                  }}
-               ></View>
+               <SectionDivider />
 
                <SectionTitle style={{ fontSize: 22 }}>
                   Informations de Visite

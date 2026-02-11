@@ -6,7 +6,7 @@ export const KeyInfoItem = ({ icon, label, value }) => {
       <View style={styles.container}>
          <Ionicons style={styles.icon} name={icon} />
          <View style={styles.textContainer}>
-            <Text style={{ color: '#6B7280' }}>{label}</Text>
+            <Text style={styles.label}>{label}</Text>
             <Text style={styles.value} numberOfLines={2} ellipsizeMode="tail">
                {value}
             </Text>
@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
    },
    textContainer: {
       flex: 1,
+   },
+   label: {
+      color: '#6B7280',
    },
    value: {
       fontWeight: 600,

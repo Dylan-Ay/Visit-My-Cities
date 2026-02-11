@@ -85,8 +85,13 @@ export const BuildingDetailScreen = ({ navigation, route }) => {
                   >
                      <Ionicons style={styles.icon} name="pricetag-outline" />
                      <View style={{ gap: 4 }}>
-                        <Text style={{ fontWeight: 600 }}>Tarifs</Text>
-                        <Text>A partir de 11€</Text>
+                        <Text style={{ fontWeight: 600 }}>Tarif</Text>
+                        <Text>
+                           {building.ticketPrice === 0
+                              ? 'Gratuit'
+                              : building.ticketPrice + '€'}
+                           {}
+                        </Text>
                      </View>
                   </View>
 
@@ -109,13 +114,10 @@ export const BuildingDetailScreen = ({ navigation, route }) => {
                         width: '48%',
                      }}
                   >
-                     <Ionicons
-                        style={styles.icon}
-                        name="checkmark-circle-outline"
-                     />
+                     <Ionicons style={styles.icon} name="hourglass-outline" />
                      <View style={{ gap: 4 }}>
-                        <Text style={{ fontWeight: 600 }}>Statut</Text>
-                        <Text>Accès public</Text>
+                        <Text style={{ fontWeight: 600 }}>Temps de visite</Text>
+                        <Text>{building.visitDuration}</Text>
                      </View>
                   </View>
 
@@ -143,8 +145,12 @@ export const BuildingDetailScreen = ({ navigation, route }) => {
                         name="accessibility-outline"
                      />
                      <View style={{ gap: 4 }}>
-                        <Text style={{ fontWeight: 600 }}>Accès</Text>
-                        <Text>Accessible</Text>
+                        <Text style={{ fontWeight: 600 }}>Accessibilité</Text>
+                        <Text>
+                           {building.accessiblePRM
+                              ? 'Accessible'
+                              : 'Non accessible'}
+                        </Text>
                      </View>
                   </View>
                </View>

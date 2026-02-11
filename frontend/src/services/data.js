@@ -77,6 +77,7 @@ export const buildings = [
          "Ancien palais royal transformé en musée à la Révolution française, le Musée du Louvre est aujourd'hui l'un des plus grands et des plus célèbres musées du monde. Situé au cœur de Paris, il abrite des collections exceptionnelles couvrant plusieurs millénaires d'histoire et de civilisations. De l'Égypte antique à l'art occidental du XIXᵉ siècle, ses galeries rassemblent des œuvres emblématiques comme la Joconde ou la Vénus de Milo. Son architecture mêle héritage classique et modernité, notamment avec la pyramide de verre inaugurée en 1989. Symbole culturel majeur, le Louvre attire chaque année des millions de visiteurs venus admirer la richesse artistique qu'il conserve.",
       ticketPrice: 17,
       visitDuration: '2h-4h',
+      booking: 'Recommandée',
       accessiblePRM: true,
    },
    {
@@ -93,6 +94,7 @@ export const buildings = [
          "Construite pour l'Exposition universelle de 1889, la Tour Eiffel est devenue le symbole emblématique de Paris et de la France. Imaginée par l'ingénieur Gustave Eiffel, elle devait initialement être démontée après l'événement et illustrer le savoir-faire industriel français de la fin du XIXᵉ siècle. Haute de 324 mètres, elle fut pendant plus de quarante ans la plus haute structure du monde. Entièrement réalisée en fer puddlé, elle incarne l'audace technique et l'innovation de son époque. D'abord vivement critiquée, elle est aujourd'hui l'un des monuments les plus visités au monde et offre des panoramas exceptionnels sur la capitale.",
       ticketPrice: 29,
       visitDuration: '1h30-2h30',
+      booking: 'Obligatoire',
       accessiblePRM: true,
    },
    {
@@ -109,6 +111,7 @@ export const buildings = [
          "Fondé au VIIᵉ siècle, le sanctuaire d'Asakusa, également connu sous le nom de Sensō-ji, est l'un des plus anciens et des plus vénérés temples bouddhistes de Tokyo. Reconstruit à plusieurs reprises au fil des siècles, il demeure un symbole spirituel majeur de la capitale japonaise. Son imposante porte Kaminarimon et sa pagode à cinq étages attirent fidèles et visiteurs venus découvrir l'architecture traditionnelle japonaise. Entouré d'une rue commerçante animée, le sanctuaire incarne l'équilibre entre héritage religieux et vie urbaine moderne. Lieu de festivals et de cérémonies, il conserve une atmosphère solennelle tout en restant profondément ancré dans le quotidien tokyoïte.",
       ticketPrice: 0,
       visitDuration: '45-60 min',
+      booking: 'Non nécessaire',
       accessiblePRM: false,
    },
    {
@@ -125,6 +128,7 @@ export const buildings = [
          "Inaugurée en 1958, la Tokyo Tower s'inspire de la Tour Eiffel tout en affirmant une identité propre au Japon d'après-guerre. Haute de 333 mètres, elle fut construite pour soutenir les antennes de diffusion télévisuelle et symboliser le renouveau économique du pays. Peinte en blanc et orange pour répondre aux normes aériennes, elle domine le paysage tokyoïte et offre des plateformes panoramiques spectaculaires. Mélange de fonctionnalité technique et d'esthétique moderne, la tour est devenue un repère iconique de la capitale. Elle demeure aujourd'hui un lieu touristique incontournable, particulièrement appréciée au coucher du soleil et de nuit.",
       ticketPrice: 9,
       visitDuration: '1h-1h30',
+      booking: 'Recommandée',
       accessiblePRM: true,
    },
    {
@@ -141,6 +145,7 @@ export const buildings = [
          "Achevé en 1931 au cœur de Manhattan, l'Empire State Building est l'un des gratte-ciel les plus célèbres au monde. Construit en pleine Grande Dépression, il incarnait l'ambition et la résilience américaines. Son style Art déco, caractérisé par des lignes élancées et des détails géométriques, en fait un chef-d'œuvre architectural du XXᵉ siècle. Pendant près de quarante ans, il fut le plus haut immeuble du monde. Ses observatoires offrent une vue panoramique exceptionnelle sur New York et ses environs. Véritable icône de la skyline new-yorkaise, il demeure un symbole fort de modernité et de puissance urbaine.",
       ticketPrice: 41,
       visitDuration: '1h-2h',
+      booking: 'Recommandée',
       accessiblePRM: true,
    },
    {
@@ -157,6 +162,7 @@ export const buildings = [
          "Offerte par la France aux États-Unis en 1886, la Statue de la Liberté est devenue l'un des symboles les plus puissants de liberté et de démocratie. Conçue par le sculpteur Frédéric Auguste Bartholdi avec une structure interne imaginée par Gustave Eiffel, elle accueille les visiteurs à l'entrée du port de New York. Haute de 93 mètres avec son piédestal, elle représente la déesse romaine Libertas tenant une torche et une tablette gravée de la date de l'indépendance américaine. Monument néo-classique monumental, elle incarne l'espoir et l'émancipation. Aujourd'hui encore, elle demeure un repère historique et culturel majeur.",
       ticketPrice: 22,
       visitDuration: '2h-3h',
+      booking: 'Obligatoire',
       accessiblePRM: true,
    },
    {
@@ -173,6 +179,7 @@ export const buildings = [
          "Résidence officielle des souverains britanniques à Londres, Buckingham Palace est un symbole majeur de la monarchie britannique. Construit au début du XVIIIᵉ siècle puis agrandi au fil du temps, il adopte un style néo-classique sobre et monumental. Le palais compte plus de 700 pièces, dont des salons d'apparat utilisés lors de cérémonies officielles et de réceptions d'État. La célèbre relève de la garde attire quotidiennement de nombreux visiteurs. Au-delà de sa fonction résidentielle, Buckingham Palace représente la continuité et la tradition de la Couronne au cœur de la capitale britannique.",
       ticketPrice: 32,
       visitDuration: '1h30-2h30',
+      booking: 'Obligatoire',
       accessiblePRM: true,
    },
    {
@@ -189,6 +196,7 @@ export const buildings = [
          "Inauguré en 1894, le Tower Bridge est l'un des ponts les plus reconnaissables de Londres. Conçu dans un style néogothique afin de s'harmoniser avec la Tour de Londres voisine, il combine esthétique historique et prouesse technique. Son mécanisme basculant permet aux navires de grande taille de circuler sur la Tamise. Les passerelles supérieures offrent aujourd'hui une vue panoramique sur la ville et retracent l'histoire industrielle du pont. Véritable emblème londonien, il illustre l'ingénierie victorienne et demeure un élément central du paysage urbain.",
       ticketPrice: 12,
       visitDuration: '1h-1h30',
+      booking: 'Recommandée',
       accessiblePRM: true,
    },
    {
@@ -205,6 +213,7 @@ export const buildings = [
          "Achevée en 1762, la Fontaine de Trevi est l'un des chefs-d'œuvre du baroque romain. Conçue par Nicola Salvi, elle marque le point d'arrivée de l'ancien aqueduc de l'Acqua Vergine. Son décor spectaculaire représente Neptune sur un char tiré par des chevaux marins, entouré de sculptures allégoriques. La composition théâtrale, les jeux d'eau et la richesse des détails en font un monument particulièrement impressionnant. Selon la tradition, jeter une pièce dans la fontaine garantit un retour à Rome. Elle demeure aujourd'hui l'un des sites les plus visités et photographiés de la capitale italienne.",
       ticketPrice: 0,
       visitDuration: '20-30 min',
+      booking: 'Non nécessaire',
       accessiblePRM: true,
    },
    {
@@ -221,6 +230,7 @@ export const buildings = [
          "Construit au IIᵉ siècle sous l'empereur Hadrien, le Panthéon de Rome est l'un des monuments antiques les mieux conservés au monde. Dédié à l'ensemble des divinités romaines, il impressionne par son immense coupole en béton coiffée d'un oculus central laissant pénétrer la lumière naturelle. Son portique à colonnes corinthiennes témoigne du génie architectural de l'Antiquité. Transformé en église chrétienne au VIIᵉ siècle, il a ainsi échappé à la destruction. Chef-d'œuvre d'ingénierie antique, le Panthéon continue de fasciner par l'harmonie de ses proportions et sa longévité exceptionnelle.",
       ticketPrice: 5,
       visitDuration: '45-60 min',
+      booking: 'Recommandée',
       accessiblePRM: false,
    },
    {
@@ -237,6 +247,7 @@ export const buildings = [
          "Commencée en 1882, la Sagrada Família est l'œuvre monumentale d'Antoni Gaudí et l'un des symboles majeurs de Barcelone. Mélange unique de spiritualité, de nature et d'innovation architecturale, elle incarne le modernisme catalan dans toute sa créativité. Ses façades richement sculptées racontent des épisodes bibliques tandis que l'intérieur, baigné de lumière colorée, évoque une forêt de colonnes élancées. Toujours en construction plus d'un siècle après son lancement, la basilique témoigne d'un projet artistique ambitieux et visionnaire. Classée au patrimoine mondial de l'UNESCO, elle attire des millions de visiteurs chaque année.",
       ticketPrice: 26,
       visitDuration: '1h30-2h',
+      booking: 'Obligatoire',
       accessiblePRM: true,
    },
    {
@@ -253,6 +264,7 @@ export const buildings = [
          "Imaginé au début du XXᵉ siècle par Antoni Gaudí, le Parc Güell est un vaste ensemble paysager mêlant architecture et nature. Conçu à l'origine comme un projet résidentiel, il est devenu un parc public emblématique de Barcelone. Ses mosaïques colorées, ses formes ondulantes et ses structures organiques illustrent pleinement le modernisme catalan. La célèbre salamandre en céramique et la terrasse panoramique offrent des points de vue spectaculaires sur la ville. Véritable œuvre d'art à ciel ouvert, le parc reflète la vision poétique et innovante de son architecte.",
       ticketPrice: 10,
       visitDuration: '1h-2h',
+      booking: 'Recommandée',
       accessiblePRM: true,
    },
 ]

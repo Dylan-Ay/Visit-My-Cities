@@ -2,6 +2,7 @@ package com.example.backend.services;
 
 import com.example.backend.entities.AppUser;
 import com.example.backend.enums.AppRole;
+import com.example.backend.exceptions.AuthentificationNotFoundException;
 import com.example.backend.repository.AppUserRepository;
 import com.example.backend.security.UserLoader;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class AuthentificationService {
@@ -43,8 +43,8 @@ try{
 
     UserDetails userDetails = userLoader.loadUserByUsername(email);
     return jwtService.generateToken(userDetails);
-}catch(UsernameNotFoundException | BadCredentialsException ex){
-    throw new RuntimeException("Email ou mot de passe incorrect");
+}catch(UsernameNotFoundException | BadCredentialsException e  ){
+    throw new AuthentificationNotFoundException(e.getMessage());
 }
 
 

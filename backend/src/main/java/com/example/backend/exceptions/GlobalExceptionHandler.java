@@ -2,9 +2,10 @@ package com.example.backend.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -20,6 +21,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorMessage> handleBuildingNotFound(BuildingNotFoundException e){
 
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.value(),e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+    }
+    @ExceptionHandler({UsernameNotFoundException.class, BadCredentialsException.class, AuthentificationNotFoundException.class})
+    public ResponseEntity<ErrorMessage> handleEmailNotFound(Exception e){
+
+        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.UNAUTHORIZED.value(),e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
 }

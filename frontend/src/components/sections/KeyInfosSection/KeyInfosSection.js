@@ -1,10 +1,10 @@
 import { SectionTitle } from '../../ui'
 import KeyInfosGrid from './KeyInfosGrid'
 import { View } from 'react-native'
-import { getBuildingInfos } from '../../../utils/utils'
+import { getBuildingKeyInfos } from '../../../utils/buildings'
 
 export default function KeyInfosSection({ building }) {
-   const buildingKeyInfos = getBuildingInfos(building)
+   const buildingKeyInfos = getBuildingKeyInfos(building)
 
    return (
       <View>

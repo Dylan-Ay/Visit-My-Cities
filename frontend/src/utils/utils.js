@@ -25,12 +25,12 @@ export const divideOddsAndEvens = (items) => {
    return { leftColumn, rightColumn }
 }
 
-export const getBuildingInfos = (building) => {
+export const getBuildingKeyInfos = (building) => {
    const buildingKeyInfos = [
       {
          label: 'Ville',
          icon: KEY_INFO_ICONS.city,
-         value: building.city + ', ' + building.country ?? 'Non renseigné',
+         value: `${building.city ?? 'Ville non renseignée'}, ${building.country ?? 'Pays non renseigné'}`,
       },
       {
          label: 'Année',

@@ -1,4 +1,5 @@
 import { KEY_INFO_ICONS } from '../constants/keyInfoIcons'
+import { VISIT_INFO_ICONS } from '../constants/visitInfoIcons'
 
 export const getBuildingKeyInfos = (building) => {
    const buildingKeyInfos = [
@@ -25,4 +26,34 @@ export const getBuildingKeyInfos = (building) => {
    ]
 
    return buildingKeyInfos
+}
+
+export const getBuildingVisitInfos = (building) => {
+   const buildingVisitInfos = [
+      {
+         label: 'Tarif',
+         icon: VISIT_INFO_ICONS.price,
+         value:
+            building.ticketPrice != null
+               ? `${building.ticketPrice}€`
+               : 'Non renseigné',
+      },
+      {
+         label: 'Temps de visite',
+         icon: VISIT_INFO_ICONS.time,
+         value: building.visitDuration ?? 'Non renseigné',
+      },
+      {
+         label: 'Réservation',
+         icon: VISIT_INFO_ICONS.ticket,
+         value: building.booking ?? 'Non renseigné',
+      },
+      {
+         label: 'Accessibilité',
+         icon: VISIT_INFO_ICONS.accessibility,
+         value: building.accessiblePRM ? 'Accessible' : 'Non accessible',
+      },
+   ]
+
+   return buildingVisitInfos
 }

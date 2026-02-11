@@ -39,7 +39,7 @@ export default function RootStack() {
          <Stack.Screen
             name="BuildingDetail"
             component={BuildingDetailScreen}
-            options={() => ({
+            options={({ navigation }) => ({
                headerTransparent: true,
                headerTitle: '',
                headerLeft: () => (
@@ -53,7 +53,6 @@ export default function RootStack() {
                   <HeaderIconButton
                      icon={'heart-outline'}
                      style={{ marginRight: 16 }}
-                     onPress={() => navigation.goBack()}
                   />
                ),
             })}

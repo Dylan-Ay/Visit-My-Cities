@@ -87,7 +87,7 @@ export const buildings = [
       architect: 'Gustave Eiffel',
       style: 'Industrielle',
       description:
-         "Construite pour l'Exposition universelle de 1889, la Tour Eiffel est l'un des monuments les plus emblématiques de Paris et de la France. Imaginée par l'ingénieur Gustave Eiffel, elle devait initialement être une installation temporaire destinée à démontrer le savoir-faire industriel français de la fin du XIXᵉ siècle. Avec ses 324 mètres de hauteur, la tour a longtemps été la plus haute structure du monde. Entièrement composée de fer puddlé, elle incarne l'architecture industrielle et l'audace technique de son époque. Malgré de nombreuses critiques lors de sa construction, elle est rapidement devenue un symbole universel de modernité et d'innovation. Aujourd'hui, la Tour Eiffel attire des millions de visiteurs chaque année. Accessible à différents niveaux, elle offre des points de vue spectaculaires sur Paris et demeure un repère incontournable du paysage urbain parisien.",
+         "Construite pour l'Exposition universelle de 1889, la Tour Eiffel est devenue le symbole emblématique de Paris et de la France. Imaginée par l'ingénieur Gustave Eiffel, elle devait initialement être démontée après l'événement et illustrer le savoir-faire industriel français de la fin du XIXᵉ siècle. Haute de 324 mètres, elle fut pendant plus de quarante ans la plus haute structure du monde. Entièrement réalisée en fer puddlé, elle incarne l'audace technique et l'innovation de son époque. D'abord vivement critiquée, elle est aujourd'hui l'un des monuments les plus visités au monde et offre des panoramas exceptionnels sur la capitale.",
    },
    {
       id: '2',

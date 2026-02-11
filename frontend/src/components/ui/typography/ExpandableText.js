@@ -1,17 +1,25 @@
 import { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-export const ExpandableText = ({ text, onPress }) => {
-   const [isNumberOfLines, setNumberOfLines] = useState()
+export const ExpandableText = ({ linesNumber, text }) => {
+   const [isExpanded, setIsExpanded] = useState(false)
 
    return (
       <View>
-         <Text numberOfLines={4} ellipsizeMode="tail">
+         <Text
+            numberOfLines={!isExpanded ? linesNumber : 0}
+            ellipsizeMode="tail"
+         >
             {text}
          </Text>
-         <TouchableOpacity style={styles.button}>
-            <Text style={styles.textButton} onPress={onPress}>
-               Voir plus
+         <TouchableOpacity
+            style={styles.button}
+            onPress={() =>
+               !isExpanded ? setIsExpanded(true) : setIsExpanded(false)
+            }
+         >
+            <Text style={styles.textButton}>
+               {!isExpanded ? 'Voir plus' : 'Voir moins'}
             </Text>
          </TouchableOpacity>
       </View>

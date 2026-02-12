@@ -15,3 +15,6 @@ export * from './cards/KeyInfoItem'
 export * from './lists/PlacesCarousel'
 
 export * from './banners/HeroBanner'
+
+export * from './accordion/Accordion'
+export * from './accordion/AccordionPanel'

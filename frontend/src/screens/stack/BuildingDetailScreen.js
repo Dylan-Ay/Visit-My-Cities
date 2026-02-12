@@ -5,6 +5,7 @@ import { buildings } from '../../services/data'
 import KeyInfosSection from '../../components/sections/KeyInfosSection/KeyInfosSection'
 import DescriptionSection from '../../components/sections/DescriptionSection'
 import VisitInfoSection from '../../components/sections/VisitInfoSection/VisitInfoSection'
+import SchedulesSection from '../../components/sections/SchedulesSection'
 
 export const BuildingDetailScreen = ({ route }) => {
    const { buildingId } = route.params
@@ -28,8 +29,11 @@ export const BuildingDetailScreen = ({ route }) => {
                <SectionDivider />
 
                <VisitInfoSection building={building} />
+
+               <SectionDivider />
+
+               <SchedulesSection buildingSchedules={building.schedules} />
             </ContentContainer>
-            {/* Horaires */}
             {/* Map localisation */}
          </ScrollView>
       </ScreenWrapper>

@@ -78,8 +78,8 @@ export const buildings = [
       ticketPrice: 17,
       visitDuration: '2h-4h',
       booking: 'Recommandée',
+      accessStatus: 'Visitable',
       accessiblePRM: true,
-      isVisitable: true,
    },
    {
       id: '10',
@@ -96,8 +96,8 @@ export const buildings = [
       ticketPrice: 29,
       visitDuration: '1h30-2h30',
       booking: 'Obligatoire',
+      accessStatus: 'Visitable',
       accessiblePRM: true,
-      isVisitable: true,
    },
    {
       id: '2',
@@ -113,9 +113,9 @@ export const buildings = [
          "Fondé au VIIᵉ siècle, le sanctuaire d'Asakusa, également connu sous le nom de Sensō-ji, est l'un des plus anciens et des plus vénérés temples bouddhistes de Tokyo. Reconstruit à plusieurs reprises au fil des siècles, il demeure un symbole spirituel majeur de la capitale japonaise. Son imposante porte Kaminarimon et sa pagode à cinq étages attirent fidèles et visiteurs venus découvrir l'architecture traditionnelle japonaise. Entouré d'une rue commerçante animée, le sanctuaire incarne l'équilibre entre héritage religieux et vie urbaine moderne. Lieu de festivals et de cérémonies, il conserve une atmosphère solennelle tout en restant profondément ancré dans le quotidien tokyoïte.",
       ticketPrice: 0,
       visitDuration: '45-60 min',
-      booking: 'Non nécessaire',
+      booking: 'Non requis',
+      accessStatus: 'Accès libre',
       accessiblePRM: false,
-      isVisitable: true,
    },
    {
       id: '11',
@@ -132,8 +132,8 @@ export const buildings = [
       ticketPrice: 9,
       visitDuration: '1h-1h30',
       booking: 'Recommandée',
+      accessStatus: 'Visitable',
       accessiblePRM: true,
-      isVisitable: true,
    },
    {
       id: '3',
@@ -150,8 +150,8 @@ export const buildings = [
       ticketPrice: 41,
       visitDuration: '1h-2h',
       booking: 'Recommandée',
+      accessStatus: 'Visitable',
       accessiblePRM: true,
-      isVisitable: true,
    },
    {
       id: '12',
@@ -168,8 +168,8 @@ export const buildings = [
       ticketPrice: 22,
       visitDuration: '2h-3h',
       booking: 'Obligatoire',
+      accessStatus: 'Visitable',
       accessiblePRM: true,
-      isVisitable: true,
    },
    {
       id: '13',
@@ -186,8 +186,8 @@ export const buildings = [
       ticketPrice: 32,
       visitDuration: '1h30-2h30',
       booking: 'Obligatoire',
+      accessStatus: 'Accès restreint',
       accessiblePRM: true,
-      isVisitable: true,
    },
    {
       id: '14',
@@ -204,8 +204,8 @@ export const buildings = [
       ticketPrice: 12,
       visitDuration: '1h-1h30',
       booking: 'Recommandée',
+      accessStatus: 'Visitable',
       accessiblePRM: true,
-      isVisitable: true,
    },
    {
       id: '5',
@@ -221,9 +221,9 @@ export const buildings = [
          "Achevée en 1762, la Fontaine de Trevi est l'un des chefs-d'œuvre du baroque romain. Conçue par Nicola Salvi, elle marque le point d'arrivée de l'ancien aqueduc de l'Acqua Vergine. Son décor spectaculaire représente Neptune sur un char tiré par des chevaux marins, entouré de sculptures allégoriques. La composition théâtrale, les jeux d'eau et la richesse des détails en font un monument particulièrement impressionnant. Selon la tradition, jeter une pièce dans la fontaine garantit un retour à Rome. Elle demeure aujourd'hui l'un des sites les plus visités et photographiés de la capitale italienne.",
       ticketPrice: 0,
       visitDuration: '20-30 min',
-      booking: 'Non nécessaire',
+      booking: 'Non requis',
+      accessStatus: 'Accès libre',
       accessiblePRM: true,
-      isVisitable: false,
    },
    {
       id: '15',
@@ -240,8 +240,8 @@ export const buildings = [
       ticketPrice: 5,
       visitDuration: '45-60 min',
       booking: 'Recommandée',
+      accessStatus: 'Visitable',
       accessiblePRM: false,
-      isVisitable: true,
    },
    {
       id: '6',
@@ -258,8 +258,8 @@ export const buildings = [
       ticketPrice: 26,
       visitDuration: '1h30-2h',
       booking: 'Obligatoire',
+      accessStatus: 'Visitable',
       accessiblePRM: true,
-      isVisitable: true,
    },
    {
       id: '16',
@@ -276,8 +276,8 @@ export const buildings = [
       ticketPrice: 10,
       visitDuration: '1h-2h',
       booking: 'Recommandée',
+      accessStatus: 'Visitable',
       accessiblePRM: true,
-      isVisitable: true,
    },
 ]
 

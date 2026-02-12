@@ -46,20 +46,24 @@ export const getBuildingVisitInfos = (building) => {
          value: building.visitDuration ?? 'Non renseigné',
       },
       {
-         label: building.isVisitable ? 'Réservation' : 'Statut',
-         icon: building.isVisitable
-            ? VISIT_INFO_ICONS.ticket
-            : VISIT_INFO_ICONS.status,
-         value: !building.isVisitable
-            ? 'Accès libre'
-            : building.booking == null
-              ? 'Non renseigné'
-              : building.booking,
+         label: 'Statut',
+         icon: VISIT_INFO_ICONS.status,
+         value: building.accessStatus ?? 'Non renseigné',
       },
       {
          label: 'Accessibilité',
          icon: VISIT_INFO_ICONS.accessibility,
-         value: building.accessiblePRM ? 'Accessible' : 'Non accessible',
+         value:
+            building.accessiblePRM == null
+               ? 'Non renseigné'
+               : building.accessiblePRM == true
+                 ? 'Accessible'
+                 : 'Non accessible',
+      },
+      {
+         label: 'Réservation',
+         icon: VISIT_INFO_ICONS.ticket,
+         value: building.booking ?? 'Non renseigné',
       },
    ]
 

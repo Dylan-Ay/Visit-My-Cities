@@ -22,3 +22,7 @@ export const divideOddsAndEvens = (items) => {
 
    return { leftColumn, rightColumn }
 }
+
+export const firstChartToUpperCase = (value) => {
+   return value.charAt(0).toUpperCase() + value.slice(1)
+}

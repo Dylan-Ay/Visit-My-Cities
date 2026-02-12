@@ -80,6 +80,19 @@ export const buildings = [
       booking: 'Recommandée',
       accessStatus: 'Visitable',
       accessiblePRM: true,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '09:00', end: '18:00' }],
+            mardi: [],
+            mercredi: [{ start: '09:00', end: '21:00' }],
+            jeudi: [{ start: '09:00', end: '18:00' }],
+            vendredi: [{ start: '09:00', end: '21:00' }],
+            samedi: [{ start: '09:00', end: '18:00' }],
+            dimanche: [{ start: '09:00', end: '18:00' }],
+         },
+         note: 'Fermé le mardi. Dernière admission 1h avant la fermeture, évacuation 30 min avant.',
+      },
    },
    {
       id: '10',
@@ -98,6 +111,19 @@ export const buildings = [
       booking: 'Obligatoire',
       accessStatus: 'Visitable',
       accessiblePRM: true,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '09:30', end: '23:00' }],
+            mardi: [{ start: '09:30', end: '23:00' }],
+            mercredi: [{ start: '09:30', end: '23:00' }],
+            jeudi: [{ start: '09:30', end: '23:00' }],
+            vendredi: [{ start: '09:30', end: '23:00' }],
+            samedi: [{ start: '09:30', end: '23:00' }],
+            dimanche: [{ start: '09:30', end: '23:00' }],
+         },
+         note: 'Horaires susceptibles de varier selon la saison et l’affluence. Vérifier le jour même si besoin.',
+      },
    },
    {
       id: '2',
@@ -116,6 +142,19 @@ export const buildings = [
       booking: 'Non requis',
       accessStatus: 'Accès libre',
       accessiblePRM: false,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '06:00', end: '17:00' }],
+            mardi: [{ start: '06:00', end: '17:00' }],
+            mercredi: [{ start: '06:00', end: '17:00' }],
+            jeudi: [{ start: '06:00', end: '17:00' }],
+            vendredi: [{ start: '06:00', end: '17:00' }],
+            samedi: [{ start: '06:00', end: '17:00' }],
+            dimanche: [{ start: '06:00', end: '17:00' }],
+         },
+         note: 'En général : le hall principal est ~06:00–17:00 (peut ouvrir à 06:30 d’octobre à mars). Les abords/enceinte sont accessibles en continu.',
+      },
    },
    {
       id: '11',
@@ -134,6 +173,19 @@ export const buildings = [
       booking: 'Recommandée',
       accessStatus: 'Visitable',
       accessiblePRM: true,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '09:00', end: '23:00' }],
+            mardi: [{ start: '09:00', end: '23:00' }],
+            mercredi: [{ start: '09:00', end: '23:00' }],
+            jeudi: [{ start: '09:00', end: '23:00' }],
+            vendredi: [{ start: '09:00', end: '23:00' }],
+            samedi: [{ start: '09:00', end: '23:00' }],
+            dimanche: [{ start: '09:00', end: '23:00' }],
+         },
+         note: 'Main Deck : dernière admission ~22:30. Top Deck Tour : ~09:00–22:45 (dernier tour ~22:15).',
+      },
    },
    {
       id: '3',
@@ -152,6 +204,19 @@ export const buildings = [
       booking: 'Recommandée',
       accessStatus: 'Visitable',
       accessiblePRM: true,
+      schedules: {
+         type: 'Variable',
+         days: {
+            lundi: [],
+            mardi: [],
+            mercredi: [],
+            jeudi: [],
+            vendredi: [],
+            samedi: [],
+            dimanche: [],
+         },
+         note: 'Horaires variables selon les dates (calendrier officiel). Exemple : du 6 jan au 12 fév : 10:00–21:00 (entrée ferme 20:00).',
+      },
    },
    {
       id: '12',
@@ -170,6 +235,19 @@ export const buildings = [
       booking: 'Obligatoire',
       accessStatus: 'Visitable',
       accessiblePRM: true,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '09:00', end: '16:30' }],
+            mardi: [{ start: '09:00', end: '16:30' }],
+            mercredi: [{ start: '09:00', end: '16:30' }],
+            jeudi: [{ start: '09:00', end: '16:30' }],
+            vendredi: [{ start: '09:00', end: '16:30' }],
+            samedi: [{ start: '09:00', end: '16:30' }],
+            dimanche: [{ start: '09:00', end: '16:30' }],
+         },
+         note: 'Accès uniquement via ferry (horaires de départ/retour variables). Prévoir large.',
+      },
    },
    {
       id: '13',
@@ -188,6 +266,19 @@ export const buildings = [
       booking: 'Obligatoire',
       accessStatus: 'Accès restreint',
       accessiblePRM: true,
+      schedules: {
+         type: 'Variable',
+         days: {
+            lundi: [],
+            mardi: [],
+            mercredi: [],
+            jeudi: [],
+            vendredi: [],
+            samedi: [],
+            dimanche: [],
+         },
+         note: 'Ouverture au public surtout en été pour les State Rooms (en 2026 : 9 juillet → 27 septembre). Hors saison : seulement certaines dates (visites guidées).',
+      },
    },
    {
       id: '14',
@@ -206,6 +297,19 @@ export const buildings = [
       booking: 'Recommandée',
       accessStatus: 'Visitable',
       accessiblePRM: true,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '09:30', end: '18:00' }],
+            mardi: [{ start: '09:30', end: '18:00' }],
+            mercredi: [{ start: '09:30', end: '18:00' }],
+            jeudi: [{ start: '09:30', end: '18:00' }],
+            vendredi: [{ start: '09:30', end: '18:00' }],
+            samedi: [{ start: '09:30', end: '18:00' }],
+            dimanche: [{ start: '09:30', end: '18:00' }],
+         },
+         note: 'Dernière entrée : 17:00.',
+      },
    },
    {
       id: '5',
@@ -224,6 +328,19 @@ export const buildings = [
       booking: 'Non requis',
       accessStatus: 'Accès libre',
       accessiblePRM: true,
+      schedules: {
+         type: 'Accès libre',
+         days: {
+            lundi: [{ start: '00:00', end: '23:59' }],
+            mardi: [{ start: '00:00', end: '23:59' }],
+            mercredi: [{ start: '00:00', end: '23:59' }],
+            jeudi: [{ start: '00:00', end: '23:59' }],
+            vendredi: [{ start: '00:00', end: '23:59' }],
+            samedi: [{ start: '00:00', end: '23:59' }],
+            dimanche: [{ start: '00:00', end: '23:59' }],
+         },
+         note: 'La place reste accessible. Depuis le 2 fév 2026, l’accès au bord (zone la plus proche) est payant à certaines heures : lun–ven ~11:30–22:00 ; week-end ~09:00–22:00.',
+      },
    },
    {
       id: '15',
@@ -242,6 +359,19 @@ export const buildings = [
       booking: 'Recommandée',
       accessStatus: 'Visitable',
       accessiblePRM: false,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '09:00', end: '19:00' }],
+            mardi: [{ start: '09:00', end: '19:00' }],
+            mercredi: [{ start: '09:00', end: '19:00' }],
+            jeudi: [{ start: '09:00', end: '19:00' }],
+            vendredi: [{ start: '09:00', end: '19:00' }],
+            samedi: [{ start: '09:00', end: '19:00' }],
+            dimanche: [{ start: '09:00', end: '19:00' }],
+         },
+         note: 'Dernière entrée ~18:45. Fermé : 1er janvier, 15 août, 25 décembre (et variations possibles lors de célébrations).',
+      },
    },
    {
       id: '6',
@@ -260,6 +390,19 @@ export const buildings = [
       booking: 'Obligatoire',
       accessStatus: 'Visitable',
       accessiblePRM: true,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '09:00', end: '18:00' }],
+            mardi: [{ start: '09:00', end: '18:00' }],
+            mercredi: [{ start: '09:00', end: '18:00' }],
+            jeudi: [{ start: '09:00', end: '18:00' }],
+            vendredi: [{ start: '09:00', end: '18:00' }],
+            samedi: [{ start: '09:00', end: '18:00' }],
+            dimanche: [{ start: '10:30', end: '18:00' }],
+         },
+         note: 'Horaires saisonniers (différents en mars/oct et avril→sept).',
+      },
    },
    {
       id: '16',
@@ -278,6 +421,19 @@ export const buildings = [
       booking: 'Recommandée',
       accessStatus: 'Visitable',
       accessiblePRM: true,
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '09:30', end: '18:00' }],
+            mardi: [{ start: '09:30', end: '18:00' }],
+            mercredi: [{ start: '09:30', end: '18:00' }],
+            jeudi: [{ start: '09:30', end: '18:00' }],
+            vendredi: [{ start: '09:30', end: '18:00' }],
+            samedi: [{ start: '09:30', end: '18:00' }],
+            dimanche: [{ start: '09:30', end: '18:00' }],
+         },
+         note: 'Créneaux de visite (tickets) + plages réservées aux résidents/adhérents (hors visite touristique). Horaires pouvant varier selon périodes.',
+      },
    },
 ]
 

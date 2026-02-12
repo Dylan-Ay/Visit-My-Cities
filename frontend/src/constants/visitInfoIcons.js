@@ -3,4 +3,5 @@ export const VISIT_INFO_ICONS = {
    time: 'time-outline',
    ticket: 'ticket-outline',
    accessibility: 'accessibility-outline',
+   status: 'checkmark-circle-outline',
 }

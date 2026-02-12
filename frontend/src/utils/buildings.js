@@ -34,9 +34,11 @@ export const getBuildingVisitInfos = (building) => {
          label: 'Tarif',
          icon: VISIT_INFO_ICONS.price,
          value:
-            building.ticketPrice != null
-               ? `${building.ticketPrice}€`
-               : 'Non renseigné',
+            building.ticketPrice == null
+               ? 'Non renseigné'
+               : building.ticketPrice === 0
+                 ? 'Gratuit'
+                 : `${building.ticketPrice}€`,
       },
       {
          label: 'Temps de visite',
@@ -44,9 +46,15 @@ export const getBuildingVisitInfos = (building) => {
          value: building.visitDuration ?? 'Non renseigné',
       },
       {
-         label: 'Réservation',
-         icon: VISIT_INFO_ICONS.ticket,
-         value: building.booking ?? 'Non renseigné',
+         label: building.isVisitable ? 'Réservation' : 'Statut',
+         icon: building.isVisitable
+            ? VISIT_INFO_ICONS.ticket
+            : VISIT_INFO_ICONS.status,
+         value: !building.isVisitable
+            ? 'Accès libre'
+            : building.booking == null
+              ? 'Non renseigné'
+              : building.booking,
       },
       {
          label: 'Accessibilité',

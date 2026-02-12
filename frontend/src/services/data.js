@@ -79,6 +79,7 @@ export const buildings = [
       visitDuration: '2h-4h',
       booking: 'Recommandée',
       accessiblePRM: true,
+      isVisitable: true,
    },
    {
       id: '10',
@@ -96,6 +97,7 @@ export const buildings = [
       visitDuration: '1h30-2h30',
       booking: 'Obligatoire',
       accessiblePRM: true,
+      isVisitable: true,
    },
    {
       id: '2',
@@ -113,6 +115,7 @@ export const buildings = [
       visitDuration: '45-60 min',
       booking: 'Non nécessaire',
       accessiblePRM: false,
+      isVisitable: true,
    },
    {
       id: '11',
@@ -130,6 +133,7 @@ export const buildings = [
       visitDuration: '1h-1h30',
       booking: 'Recommandée',
       accessiblePRM: true,
+      isVisitable: true,
    },
    {
       id: '3',
@@ -147,6 +151,7 @@ export const buildings = [
       visitDuration: '1h-2h',
       booking: 'Recommandée',
       accessiblePRM: true,
+      isVisitable: true,
    },
    {
       id: '12',
@@ -164,6 +169,7 @@ export const buildings = [
       visitDuration: '2h-3h',
       booking: 'Obligatoire',
       accessiblePRM: true,
+      isVisitable: true,
    },
    {
       id: '13',
@@ -181,6 +187,7 @@ export const buildings = [
       visitDuration: '1h30-2h30',
       booking: 'Obligatoire',
       accessiblePRM: true,
+      isVisitable: true,
    },
    {
       id: '14',
@@ -198,6 +205,7 @@ export const buildings = [
       visitDuration: '1h-1h30',
       booking: 'Recommandée',
       accessiblePRM: true,
+      isVisitable: true,
    },
    {
       id: '5',
@@ -215,6 +223,7 @@ export const buildings = [
       visitDuration: '20-30 min',
       booking: 'Non nécessaire',
       accessiblePRM: true,
+      isVisitable: false,
    },
    {
       id: '15',
@@ -232,6 +241,7 @@ export const buildings = [
       visitDuration: '45-60 min',
       booking: 'Recommandée',
       accessiblePRM: false,
+      isVisitable: true,
    },
    {
       id: '6',
@@ -249,6 +259,7 @@ export const buildings = [
       visitDuration: '1h30-2h',
       booking: 'Obligatoire',
       accessiblePRM: true,
+      isVisitable: true,
    },
    {
       id: '16',
@@ -266,6 +277,7 @@ export const buildings = [
       visitDuration: '1h-2h',
       booking: 'Recommandée',
       accessiblePRM: true,
+      isVisitable: true,
    },
 ]
 

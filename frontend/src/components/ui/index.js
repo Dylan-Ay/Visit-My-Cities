@@ -18,3 +18,5 @@ export * from './banners/HeroBanner'
 
 export * from './accordion/Accordion'
 export * from './accordion/AccordionPanel'
+
+export * from './map/MapViewCustom'

@@ -5,7 +5,6 @@ export const Accordion = ({ title, children }) => {
    return (
       <>
          <AccordionPanel title={title}>{children}</AccordionPanel>
-         <SectionDivider />
       </>
    )
 }

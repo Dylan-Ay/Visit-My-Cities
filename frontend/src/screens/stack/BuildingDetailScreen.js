@@ -6,6 +6,7 @@ import KeyInfosSection from '../../components/sections/KeyInfosSection/KeyInfosS
 import DescriptionSection from '../../components/sections/DescriptionSection'
 import VisitInfoSection from '../../components/sections/VisitInfoSection/VisitInfoSection'
 import SchedulesSection from '../../components/sections/SchedulesSection'
+import MapSection from '../../components/sections/MapSection'
 
 export const BuildingDetailScreen = ({ route }) => {
    const { buildingId } = route.params
@@ -33,8 +34,13 @@ export const BuildingDetailScreen = ({ route }) => {
                <SectionDivider />
 
                <SchedulesSection buildingSchedules={building.schedules} />
+
+               <SectionDivider />
+
+               <MapSection />
+
+               <SectionDivider />
             </ContentContainer>
-            {/* Map localisation */}
          </ScrollView>
       </ScreenWrapper>
    )

@@ -91,7 +91,8 @@ export const buildings = [
             samedi: [{ start: '09:00', end: '18:00' }],
             dimanche: [{ start: '09:00', end: '18:00' }],
          },
-         note: 'Fermé le mardi. Dernière admission 1h avant la fermeture, évacuation 30 min avant.',
+         note: "Fermé le mardi. La dernière admission est 1h avant la fermeture, l'évacuation 30 min avant.",
+         officialHoursUrl: 'https://www.louvre.fr/visiter',
       },
    },
    {
@@ -122,7 +123,8 @@ export const buildings = [
             samedi: [{ start: '09:30', end: '23:00' }],
             dimanche: [{ start: '09:30', end: '23:00' }],
          },
-         note: 'Horaires susceptibles de varier selon la saison et l’affluence. Vérifier le jour même si besoin.',
+         note: "Horaires susceptibles de varier selon la saison et l'affluence. Vérifier le jour même si besoin.",
+         officialHoursUrl: 'https://www.toureiffel.paris/fr/tarifs-horaires',
       },
    },
    {
@@ -153,7 +155,8 @@ export const buildings = [
             samedi: [{ start: '06:00', end: '17:00' }],
             dimanche: [{ start: '06:00', end: '17:00' }],
          },
-         note: 'En général : le hall principal est ~06:00–17:00 (peut ouvrir à 06:30 d’octobre à mars). Les abords/enceinte sont accessibles en continu.',
+         note: "En général : le hall principal est ouvert de 06h00 à 17h00 (il peut ouvrir à 06h30 d'octobre à mars). Les abords et l'enceinte sont accessibles en continu.",
+         officialHoursUrl: null,
       },
    },
    {
@@ -184,7 +187,8 @@ export const buildings = [
             samedi: [{ start: '09:00', end: '23:00' }],
             dimanche: [{ start: '09:00', end: '23:00' }],
          },
-         note: 'Main Deck : dernière admission ~22:30. Top Deck Tour : ~09:00–22:45 (dernier tour ~22:15).',
+         note: 'Pour le Main Deck : la dernière admission est à 22h30. Le Top Deck Tour est ouvert de 09h00 à 22h45 (dernier tour aux alentours de 22h15).',
+         officialHoursUrl: 'https://www.tokyotower.co.jp/fee/',
       },
    },
    {
@@ -215,7 +219,8 @@ export const buildings = [
             samedi: [],
             dimanche: [],
          },
-         note: 'Horaires variables selon les dates (calendrier officiel). Exemple : du 6 jan au 12 fév : 10:00–21:00 (entrée ferme 20:00).',
+         note: "Les horaires varient d'un jour à l'autre. Par exemple du 6 janvier au 12 février, ce sera ouvert de 10h00 à 21h00 (l'entrée ferme à 20h00).",
+         officialHoursUrl: 'https://www.esbnyc.com/fr/visit/hours-of-operation',
       },
    },
    {
@@ -246,7 +251,8 @@ export const buildings = [
             samedi: [{ start: '09:00', end: '16:30' }],
             dimanche: [{ start: '09:00', end: '16:30' }],
          },
-         note: 'Accès uniquement via ferry (horaires de départ/retour variables). Prévoir large.',
+         note: 'Accès uniquement via le ferry, les horaires de départ et de retour sont variables). Prévoir assez de temps.',
+         officialHoursUrl: 'https://www.nps.gov/stli/planyourvisit/index.htm',
       },
    },
    {
@@ -277,7 +283,8 @@ export const buildings = [
             samedi: [],
             dimanche: [],
          },
-         note: 'Ouverture au public surtout en été pour les State Rooms (en 2026 : 9 juillet → 27 septembre). Hors saison : seulement certaines dates (visites guidées).',
+         note: 'Ouverture au public surtout en été pour les State Rooms (en 2026 : du 9 juillet au 27 septembre). Hors saison : seulement certaines dates notamment en visites guidées).',
+         officialHoursUrl: 'https://www.rct.uk/visit/buckingham-palace',
       },
    },
    {
@@ -308,7 +315,8 @@ export const buildings = [
             samedi: [{ start: '09:30', end: '18:00' }],
             dimanche: [{ start: '09:30', end: '18:00' }],
          },
-         note: 'Dernière entrée : 17:00.',
+         note: 'Dernière entrée à 17h00.',
+         officialHoursUrl: 'https://www.towerbridge.org.uk/',
       },
    },
    {
@@ -339,7 +347,9 @@ export const buildings = [
             samedi: [{ start: '00:00', end: '23:59' }],
             dimanche: [{ start: '00:00', end: '23:59' }],
          },
-         note: 'La place reste accessible. Depuis le 2 fév 2026, l’accès au bord (zone la plus proche) est payant à certaines heures : lun–ven ~11:30–22:00 ; week-end ~09:00–22:00.',
+         note: "La place est accessible toute la journée. Depuis le 2 février 2026, l'accès au bord de la fontaine est payant à certaines heures : du lundi au vendredi de 11h30 à 22h00 et le week-end de 09h00 à 22h00.",
+         officialHoursUrl:
+            'https://www.turismoroma.it/en/places/trevi-fountain',
       },
    },
    {
@@ -370,7 +380,8 @@ export const buildings = [
             samedi: [{ start: '09:00', end: '19:00' }],
             dimanche: [{ start: '09:00', end: '19:00' }],
          },
-         note: 'Dernière entrée ~18:45. Fermé : 1er janvier, 15 août, 25 décembre (et variations possibles lors de célébrations).',
+         note: 'Dernière entrée à 18:45. Fermé : 1er janvier, 15 août, 25 décembre (et variations possibles lors de célébrations).',
+         officialHoursUrl: 'https://www.pantheonroma.com/en/openings-info',
       },
    },
    {
@@ -401,7 +412,8 @@ export const buildings = [
             samedi: [{ start: '09:00', end: '18:00' }],
             dimanche: [{ start: '10:30', end: '18:00' }],
          },
-         note: 'Horaires saisonniers (différents en mars/oct et avril→sept).',
+         note: "Horaires saisonniers (différents de Mars à Octobre et d'Avril à Septembre).",
+         officialHoursUrl: 'https://sagradafamilia.org/fr/schedules-how-to-get',
       },
    },
    {
@@ -433,6 +445,8 @@ export const buildings = [
             dimanche: [{ start: '09:30', end: '18:00' }],
          },
          note: 'Créneaux de visite (tickets) + plages réservées aux résidents/adhérents (hors visite touristique). Horaires pouvant varier selon périodes.',
+         officialHoursUrl:
+            'https://parkguell.barcelona/fr/planifiez-votre-visite/horaires-et-tarifs',
       },
    },
 ]

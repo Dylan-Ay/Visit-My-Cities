@@ -32,7 +32,7 @@ export const AccordionPanel = ({ title, children }) => {
                </SectionTitle>
             </View>
          </Pressable>
-         {isExpanded ? <View>{children}</View> : ''}
+         {isExpanded && <View>{children}</View>}
       </View>
    )
 }

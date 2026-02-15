@@ -11,6 +11,7 @@ import MapSection from '../../components/sections/MapSection'
 export const BuildingDetailScreen = ({ route }) => {
    const { buildingId } = route.params
    const building = buildings.find((element) => element.id == buildingId)
+   const fullAdress = [building.address, building.postalCode]
 
    return (
       <ScreenWrapper useEdges={false}>
@@ -19,26 +20,25 @@ export const BuildingDetailScreen = ({ route }) => {
 
             <ContentContainer style={{ paddingBottom: 20 }}>
                <KeyInfosSection building={building} />
-
                <SectionDivider />
 
                <DescriptionSection
                   text={building.description}
                   linesNumber={4}
                />
-
                <SectionDivider />
 
                <VisitInfoSection building={building} />
-
                <SectionDivider />
 
                <SchedulesSection buildingSchedules={building.schedules} />
-
                <SectionDivider />
 
-               <MapSection />
-
+               <MapSection
+                  name={building.name}
+                  address={fullAdress}
+                  region={building.coords}
+               />
                <SectionDivider />
             </ContentContainer>
          </ScrollView>

@@ -1,7 +1,6 @@
-//prettier-ignore
-import { ContentContainer, HeroBanner, PlaceCard, ScreenWrapper, SearchInput, SectionTitle } from '../../components/ui'
-import { FlatList } from 'react-native'
+import { ScreenWrapper } from '../../components/ui'
 import { buildings, cities } from '../../services/data'
+import ExploreGridSection from '../../components/sections/ExploreGridSection'
 
 export const CityDetailScreen = ({ navigation, route }) => {
    const { cityId } = route.params
@@ -16,44 +15,17 @@ export const CityDetailScreen = ({ navigation, route }) => {
 
    return (
       <ScreenWrapper useEdges={false}>
-         <FlatList
+         <ExploreGridSection
             data={cityBuildings}
-            keyExtractor={(item) => item.id}
-            numColumns={2}
-            renderItem={({ item }) => (
-               <ContentContainer
-                  style={{
-                     width: '50%',
-                     paddingBottom: 16,
-                  }}
-               >
-                  <PlaceCard
-                     image={item.image}
-                     name={item.name}
-                     imgStyle={{ height: 150 }}
-                     onPress={() =>
-                        navigation.navigate('BuildingDetail', {
-                           buildingId: item.id,
-                        })
-                     }
-                  />
-               </ContentContainer>
-            )}
-            ListHeaderComponent={
-               <>
-                  <HeroBanner
-                     title={city.name}
-                     image={{ uri: city.image }}
-                     style={{ fontSize: 34 }}
-                  />
-                  <ContentContainer>
-                     <SearchInput placeholder="Rechercher un monument/bâtiment" />
-                     <SectionTitle>Monuments et bâtiments</SectionTitle>
-                  </ContentContainer>
-               </>
+            heroTitle={city.name}
+            heroImg={{ uri: city.image }}
+            searchInputPlaceHolder={'Rechercher un monument/bâtiment'}
+            sectionTitle={'Monuments et bâtiments'}
+            onPressItem={(item) =>
+               navigation.navigate('BuildingDetail', {
+                  buildingId: item.id,
+               })
             }
-            contentContainerStyle={{ paddingBottom: 20 }}
-            showsVerticalScrollIndicator={false}
          />
       </ScreenWrapper>
    )

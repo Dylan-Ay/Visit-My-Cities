@@ -1,9 +1,17 @@
 package com.example.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "batiment")
 public class Building {
@@ -22,42 +30,11 @@ public class Building {
     @JoinColumn(name = "city_id")
     private City city;
     @ManyToMany
+    @JsonIgnore
     private List<Category> categories;
+    @OneToMany(mappedBy = "building")
+    @JsonIgnore
+    private List<Favorite> favorites;
 
 
-    public Building() {}
-
-    public Building(String name, String description, int yearConstruction, String imageURL, City city) {
-        this.name = name;
-        this.description = description;
-        this.yearConstruction = yearConstruction;
-        this.imageURL = imageURL;
-        this.city = city;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
-    public Integer getYearConstruction() { return yearConstruction; }
-    public void setYearConstruction(Integer yearConstruction) { this.yearConstruction = yearConstruction; }
-
-    public String getImageURL() { return imageURL; }
-    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
-
-    public City getCity() { return city; }
-    public void setCity(City city) { this.city = city; }
 }

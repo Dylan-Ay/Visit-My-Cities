@@ -18,7 +18,7 @@ public class BuildingController {
         this.buildingServiceImpl = buildingServiceImpl;
     }
 
-    @PostMapping("/add")
+    @PostMapping("/add/add")
     public ResponseEntity<Building> addBuilding(@RequestBody Building building){
        return new ResponseEntity<>(this.buildingServiceImpl.saveBuilding(building), HttpStatus.CREATED) ;
     }
@@ -27,12 +27,12 @@ public class BuildingController {
         return new ResponseEntity<>(this.buildingServiceImpl.getAllBuildings(), HttpStatus.OK);
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/city/{id}")
     public ResponseEntity<List<Building>> getBuildingsByCityId(@PathVariable Long id){
         return new ResponseEntity<>(this.buildingServiceImpl.getBuildingsByCityId(id), HttpStatus.OK);
     }
 
-    @GetMapping("/name/{name}")
+    @GetMapping("/cityname/{name}")
     public ResponseEntity<List<Building>> getBuildingsByCityName(@PathVariable String name){
         return new ResponseEntity<>(this.buildingServiceImpl.getBuildingsByCityName(name), HttpStatus.OK);
     }

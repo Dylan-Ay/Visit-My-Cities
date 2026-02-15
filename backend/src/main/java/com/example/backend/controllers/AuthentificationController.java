@@ -14,11 +14,11 @@ public class AuthentificationController {
 
 
     private final AuthentificationService authentificationService;
-    private final JwtService jwtService;
 
-    public AuthentificationController(AuthentificationService authentificationService, JwtService jwtService) {
+
+    public AuthentificationController(AuthentificationService authentificationService) {
         this.authentificationService = authentificationService;
-        this.jwtService = jwtService;
+
     }
 
     @PostMapping("/register")

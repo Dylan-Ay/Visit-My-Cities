@@ -42,9 +42,5 @@ private final PasswordEncoder passwordEncoder;
 addExpert("Ghilas", "ghilas@expert.com", "1234", AppRole.ROLE_EXPERT );
 addExpert("Jerome", "jerome@expert.com", "1234", AppRole.ROLE_EXPERT );
 
-
-
-
-
     }
 }

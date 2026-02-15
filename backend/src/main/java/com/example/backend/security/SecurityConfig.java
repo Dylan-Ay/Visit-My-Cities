@@ -23,42 +23,51 @@ public class SecurityConfig {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
-
-
-
     @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
                 http
-
-
                         .csrf(csrf -> csrf.disable())
                         .sessionManagement(session ->
                                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                        .authorizeHttpRequests(auth ->
+                        .authorizeHttpRequests(auth -> auth
 
-                            auth .requestMatchers(
-                                    "/swagger-ui/**",
-                                    "/v3/api-docs/**",
+                                // PUBLIC
+                                .requestMatchers(
+                                        "/swagger-ui/**",
+                                        "/v3/api-docs/**",
+                                        "/auth/**",
+                                        "/register/**",
+                                        "/city/cities",
+                                        "/building/buildings",
+                                        "/category/categories",
+                                        "/building/categorie/*",
+                                        "/city/*",
+                                        "/building/*",
+                                        "/building/city/*",
+                                        "/building/cityname/*"
+                                ).permitAll()
 
-                                            "/auth/**",
-                                            "/register/**",
-                                    "/city/cities",
-                                    "/city/*",
-                                    "/building/buildings",
-                                    "/building/*",
-                                    "/category/categories" ).permitAll()
-                                    .requestMatchers(
-                                            "/comment/**",
-                                            "/like/**",
-                                            "/favorite/**" ).authenticated()
-                                    .requestMatchers(
-                                            "/city/add",
-                                            "/city/update/**",
-                                            "/city/delete/**",
-                                            "/building/add",
-                                            "/building/update/**",
-                                            "/building/delete/**" ).hasRole("EXPERT") .anyRequest().authenticated())
+                                // EXPERT ONLY
+                                .requestMatchers(
+                                        "/city/add/**",
+                                        "/city/update/**",
+                                        "/city/delete/**",
+                                        "/building/add",
+                                        "/building/update/**",
+                                        "/building/delete/**",
+                                        "/building/add/**"
+                                ).hasRole("EXPERT")
+
+                                // AUTHENTICATED
+                                .requestMatchers(
+                                        "/comment/**",
+                                        "/like/**",
+                                        "/favorites/**"
+                                ).authenticated()
+
+                                .anyRequest().authenticated()
+                        )
 
                         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

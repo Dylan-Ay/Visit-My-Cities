@@ -18,7 +18,7 @@ public class CityController {
         this.cityServiceImpl = cityServiceImpl;
     }
 
-    @PostMapping("/add")
+    @PostMapping("/add/add")
     public ResponseEntity<City> saveCity(@RequestBody City city){
         return new ResponseEntity<>(this.cityServiceImpl.saveCity(city), HttpStatus.CREATED);
     }

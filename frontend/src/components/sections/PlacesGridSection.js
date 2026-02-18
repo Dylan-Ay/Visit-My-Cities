@@ -1,8 +1,8 @@
 //prettier-ignore
-import { ContentContainer, HeroBanner, PlaceCard, SearchInput, SectionTitle } from '../../components/ui'
+import { ContentContainer, HeroBanner, PlaceCard, SearchInput, SectionTitle } from '../ui'
 import { FlatList } from 'react-native'
 
-export default function ExploreGridSection({
+export default function PlacesGridSection({
    data,
    heroTitle,
    heroImg,

@@ -1,10 +1,15 @@
 import { View } from 'react-native'
 import { SectionTitle, PlacesCarousel } from '../ui'
 
-export default function PopularSection({ title, data, renderItem }) {
+export default function PlacesCarouselSection({
+   title,
+   titleStyle,
+   data,
+   renderItem,
+}) {
    return (
       <View>
-         <SectionTitle>{title}</SectionTitle>
+         <SectionTitle style={titleStyle}>{title}</SectionTitle>
 
          <PlacesCarousel
             data={data}

@@ -11,15 +11,18 @@ export const EmptyState = ({ headerTitle, text }) => {
 
 const styles = StyleSheet.create({
    container: {
-      maxWidth: 340,
+      maxWidth: 345,
       paddingVertical: 14,
    },
    headerTitle: {
       fontWeight: 600,
       textAlign: 'center',
       marginBottom: 6,
+      fontSize: 16,
    },
    text: {
       textAlign: 'center',
+      fontSize: 16,
+      color: '#6B7280',
    },
 })

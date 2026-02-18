@@ -33,7 +33,7 @@ export const VisitScreen = ({ navigation }) => {
                      <EmptyState
                         headerTitle={"Aucune ville favorite pour l'instant"}
                         text={
-                           'Une fois que vous aurez ajouté une ville à vos favoris, elle apparaitra ici.'
+                           'Une fois que vous aurez ajouté une ville à vos favoris, elle apparaîtra ici.'
                         }
                      />
                   }
@@ -63,7 +63,7 @@ export const VisitScreen = ({ navigation }) => {
                      <EmptyState
                         headerTitle={"Aucun bâtiment favori pour l'instant"}
                         text={
-                           'Une fois que vous aurez ajouté un bâtiment à vos favoris, il apparaitra ici.'
+                           'Une fois que vous aurez ajouté un bâtiment à vos favoris, il apparaîtra ici.'
                         }
                      />
                   }

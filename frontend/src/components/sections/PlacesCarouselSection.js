@@ -6,6 +6,8 @@ export default function PlacesCarouselSection({
    titleStyle,
    data,
    renderItem,
+   emptyComponent,
+   scrollEnabled,
 }) {
    return (
       <View>
@@ -15,6 +17,8 @@ export default function PlacesCarouselSection({
             data={data}
             keyExtractor={(item) => item.id}
             renderItem={renderItem}
+            emptyComponent={emptyComponent}
+            scrollEnabled={scrollEnabled}
          />
       </View>
    )

@@ -5,6 +5,7 @@ import { BuildingDetailScreen } from '../screens/stack/BuildingDetailScreen'
 import { CategoryDetailScreen } from '../screens/stack/CategoryDetailScreen'
 import { HeaderIconButton } from '../components/ui/inputs/HeaderIconButton'
 import { FavoriteCityHeaderButton } from '../components/ui/inputs/FavoriteCityHeaderButton'
+import { FavorteBuildingHeaderButton } from '../components/ui/inputs/FavoriteBuildingHeaderButton'
 
 const Stack = createStackNavigator()
 
@@ -35,7 +36,7 @@ export default function RootStack() {
          <Stack.Screen
             name="BuildingDetail"
             component={BuildingDetailScreen}
-            options={({ navigation }) => ({
+            options={({ navigation, route }) => ({
                headerTransparent: true,
                headerTitle: '',
                headerLeft: () => (
@@ -45,12 +46,7 @@ export default function RootStack() {
                      onPress={() => navigation.goBack()}
                   />
                ),
-               headerRight: () => (
-                  <HeaderIconButton
-                     icon={'heart-outline'}
-                     style={{ marginRight: 16 }}
-                  />
-               ),
+               headerRight: () => <FavorteBuildingHeaderButton route={route} />,
             })}
          />
          <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} />

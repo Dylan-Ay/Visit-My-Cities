@@ -15,7 +15,7 @@ import { getPlacesByIds } from '../../utils/utils'
 
 export const VisitScreen = ({ navigation }) => {
    // prettier-ignore
-   const buildingsFavIds = useFavorite((state) => state.favoritesBuildings) ?? []
+   const buildingsFavIds = useFavorite((state) => state.favoriteBuildings) ?? []
    const citiesFavIds = useFavorite((state) => state.favoriteCities) ?? []
 
    const citiesFav = getPlacesByIds(citiesFavIds, cities)

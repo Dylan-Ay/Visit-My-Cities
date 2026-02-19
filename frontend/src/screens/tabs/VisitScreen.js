@@ -14,7 +14,8 @@ import { useFavorite } from '../../store/favoritesStore'
 export const VisitScreen = ({ navigation }) => {
    const citiesFav = useFavorite((state) => state.favoriteCities) ?? []
    const buildingsFav = useFavorite((state) => state.favoritesBuildings) ?? []
-
+   console.log(citiesFav)
+   // Créer une fonction qui permet de récupérer une liste de bâtiments selon les ids
    return (
       <ScreenWrapper>
          <ScrollView showsVerticalScrollIndicator={false}>

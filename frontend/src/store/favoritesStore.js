@@ -4,7 +4,7 @@ import { AsyncStorage } from '@react-native-async-storage/async-storage'
 
 export const useFavorite = create(
    persist(
-      (set) => ({
+      (set, get) => ({
          favoriteCities: [],
          favoriteBuildings: [],
 

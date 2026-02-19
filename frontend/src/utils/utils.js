@@ -26,3 +26,15 @@ export const divideOddsAndEvens = (items) => {
 export const firstChartToUpperCase = (value) => {
    return value.charAt(0).toUpperCase() + value.slice(1)
 }
+
+export const getPlacesByIds = (idsArray, placesList) => {
+   const result = []
+
+   placesList.forEach((place) => {
+      if (idsArray.includes(place.id)) {
+         result.push(place)
+      }
+   })
+
+   return result
+}

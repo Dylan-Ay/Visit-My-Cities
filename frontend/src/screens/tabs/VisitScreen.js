@@ -9,12 +9,12 @@ import {
 } from '../../components/ui'
 import { CarouselItem } from '../../components/ui/layout/CarouselItem'
 import { EmptyState } from '../../components/ui/EmptyState'
-// import { buildings } from '../../services/data'
-import { cities } from '../../services/data'
+import { useFavorite } from '../../store/favoritesStore'
 
 export const VisitScreen = ({ navigation }) => {
-   // const cities = []
-   const buildings = []
+   const citiesFav = useFavorite((state) => state.favoriteCities) ?? []
+   const buildingsFav = useFavorite((state) => state.favoritesBuildings) ?? []
+
    return (
       <ScreenWrapper>
          <ScrollView showsVerticalScrollIndicator={false}>
@@ -26,9 +26,9 @@ export const VisitScreen = ({ navigation }) => {
                </SectionTitle>
 
                <PlacesCarouselSection
-                  title={`Mes villes favorites ${cities.length > 0 ? `(${cities.length})` : ''}`}
+                  title={`Mes villes favorites ${citiesFav.length > 0 ? `(${citiesFav.length})` : ''}`}
                   titleStyle={{ fontSize: 22 }}
-                  data={cities}
+                  data={citiesFav}
                   emptyComponent={
                      <EmptyState
                         headerTitle={"Aucune ville favorite pour l'instant"}
@@ -37,7 +37,7 @@ export const VisitScreen = ({ navigation }) => {
                         }
                      />
                   }
-                  scrollEnabled={cities.length > 0}
+                  scrollEnabled={citiesFav.length > 0}
                   renderItem={({ item }) => (
                      <CarouselItem>
                         <PlaceCard
@@ -56,9 +56,9 @@ export const VisitScreen = ({ navigation }) => {
                <SectionDivider style={{ marginBottom: 8 }} />
 
                <PlacesCarouselSection
-                  title={`Mes bâtiments favoris ${buildings.length > 0 ? `(${buildings.length})` : ''}`}
+                  title={`Mes bâtiments favoris ${buildingsFav.length > 0 ? `(${buildingsFav.length})` : ''}`}
                   titleStyle={{ fontSize: 22 }}
-                  data={buildings}
+                  data={buildingsFav}
                   emptyComponent={
                      <EmptyState
                         headerTitle={"Aucun bâtiment favori pour l'instant"}
@@ -67,7 +67,7 @@ export const VisitScreen = ({ navigation }) => {
                         }
                      />
                   }
-                  scrollEnabled={buildings.length > 0}
+                  scrollEnabled={buildingsFav.length > 0}
                   renderItem={({ item }) => (
                      <CarouselItem>
                         <PlaceCard

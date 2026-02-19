@@ -10,12 +10,17 @@ import {
 import { CarouselItem } from '../../components/ui/layout/CarouselItem'
 import { EmptyState } from '../../components/ui/EmptyState'
 import { useFavorite } from '../../store/favoritesStore'
+import { buildings, cities } from '../../services/data'
+import { getPlacesByIds } from '../../utils/utils'
 
 export const VisitScreen = ({ navigation }) => {
-   const citiesFav = useFavorite((state) => state.favoriteCities) ?? []
-   const buildingsFav = useFavorite((state) => state.favoritesBuildings) ?? []
-   console.log(citiesFav)
-   // Créer une fonction qui permet de récupérer une liste de bâtiments selon les ids
+   // prettier-ignore
+   const buildingsFavIds = useFavorite((state) => state.favoritesBuildings) ?? []
+   const citiesFavIds = useFavorite((state) => state.favoriteCities) ?? []
+
+   const citiesFav = getPlacesByIds(citiesFavIds, cities)
+   const buildingsFav = getPlacesByIds(buildingsFavIds, buildings)
+
    return (
       <ScreenWrapper>
          <ScrollView showsVerticalScrollIndicator={false}>

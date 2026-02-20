@@ -1,62 +1,62 @@
 // Exemple de données
 export const cities = [
    {
-      id: '1',
+      id: 1,
       name: 'Paris',
       image: 'https://www.allsuites.com/wp-content/uploads/2024/09/Paris.jpg',
    },
    {
-      id: '2',
+      id: 2,
       name: 'Tokyo',
       image: 'https://cdn-blog.superprof.com/blog_fr/wp-content/uploads/2018/03/palais-imperial-tokyo.jpg',
    },
    {
-      id: '3',
+      id: 3,
       name: 'New York',
       image: 'https://cdn-imgix.headout.com/tour/30357/TOUR-IMAGE/6cdcf542-452d-4897-beed-76cf68f154e4-1act-de005e04-05d9-4715-96b0-6a089d5c3460.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&ar=16%3A9&crop=faces&fit=crop',
    },
    {
-      id: '4',
+      id: 4,
       name: 'Londres',
       image: 'https://media.clondres.com/resize/uploads/sites/5/2018/03/big-ben-londres-696x478.jpg?format=auto',
    },
    {
-      id: '5',
+      id: 5,
       name: 'Rome',
       image: 'https://www.webcity.fr/wp-content/uploads/2017/11/monument-rome-1.jpg',
    },
    {
-      id: '6',
+      id: 6,
       name: 'Barcelone',
       image: 'https://jacheteenespagne.com/wp-content/uploads/2024/06/0bda496746574de3ac1ec5c68616272b-1.jpg',
    },
    {
-      id: '7',
+      id: 7,
       name: 'Paris',
       image: 'https://www.secretdeparis.com/blog/wp-content/uploads/2025/04/eiffel-tower-975004_1280.jpg',
    },
    {
-      id: '8',
+      id: 8,
       name: 'Tokyo',
       image: 'https://cdn-blog.superprof.com/blog_fr/wp-content/uploads/2018/03/palais-imperial-tokyo.jpg',
    },
    {
-      id: '9',
+      id: 9,
       name: 'New York',
       image: 'https://cdn-imgix.headout.com/tour/30357/TOUR-IMAGE/6cdcf542-452d-4897-beed-76cf68f154e4-1act-de005e04-05d9-4715-96b0-6a089d5c3460.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&ar=16%3A9&crop=faces&fit=crop',
    },
    {
-      id: '10',
+      id: 10,
       name: 'Londres',
       image: 'https://media.clondres.com/resize/uploads/sites/5/2018/03/big-ben-londres-696x478.jpg?format=auto',
    },
    {
-      id: '11',
+      id: 11,
       name: 'Rome',
       image: 'https://www.webcity.fr/wp-content/uploads/2017/11/monument-rome-1.jpg',
    },
    {
-      id: '12',
+      id: 12,
       name: 'Barcelone',
       image: 'https://jacheteenespagne.com/wp-content/uploads/2024/06/0bda496746574de3ac1ec5c68616272b-1.jpg',
    },
@@ -560,10 +560,40 @@ export const buildings = [
 ]
 
 export const categories = [
-   { id: '1', name: 'Musées', icon: '🏛' },
-   { id: '2', name: 'Ponts', icon: '🌉' },
-   { id: '3', name: 'Religieux', icon: '⛪' },
-   { id: '4', name: 'Gratte-ciels', icon: '🏙' },
-   { id: '5', name: 'Châteaux & palais', icon: '🏰' },
-   { id: '6', name: 'Bâtiments civils', icon: '🏢' },
+   {
+      id: 1,
+      name: 'Musées',
+      icon: '🏛',
+      img: 'https://www.ecomusee-montmorillonnais.org/wp-content/uploads/2023/11/musees.jpg',
+   },
+   {
+      id: 2,
+      name: 'Ponts',
+      icon: '🌉',
+      img: 'https://cms.visitczechia.com/cms/getmedia/f5078b1a-8314-4d4e-b751-aa41692036ef/prague-troja-bridge-shutterstock_633423338-Nadezda-Murmakova.jpg?width=1000&height=666',
+   },
+   {
+      id: 3,
+      name: 'Lieux de culte',
+      icon: '⛪',
+      img: 'https://cdn.generationvoyage.fr/2014/10/lieux-de-culte-sites-religieux-spectaculaires-monde-24.jpg',
+   },
+   {
+      id: 4,
+      name: 'Gratte-ciels',
+      icon: '🏙',
+      img: 'https://ewnqp79wvj7.exactdn.com/wp-content/uploads/2024/07/One-World-Trade-Center-New-York-gratte-ciel.jpeg',
+   },
+   {
+      id: 5,
+      name: 'Châteaux & palais',
+      icon: '🏰',
+      img: 'https://www.barnes-proprietes-chateaux.com/wp-content/uploads/2017/01/chateau-chantilly-renaissance.jpg',
+   },
+   {
+      id: 6,
+      name: 'Bâtiments civils',
+      icon: '🏢',
+      img: 'https://media.istockphoto.com/id/1140466131/photo/shenzhen-downtown-area-during-sunset.jpg?s=612x612&w=0&k=20&c=t5AlLy589h5yGMQtOQ8dIrkWD67yYWyauDqkqyo6VPY=',
+   },
 ]

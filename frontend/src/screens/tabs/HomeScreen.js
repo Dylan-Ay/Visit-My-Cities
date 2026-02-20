@@ -1,7 +1,7 @@
 // prettier-ignore
 import { ScreenWrapper, SearchInput, ContentContainer, HeroBanner, PlaceCard } from "../../components/ui"
 import { ScrollView } from 'react-native'
-import PopularSection from '../../components/sections/PopularSection'
+import PlacesCarouselSection from '../../components/sections/PlacesCarouselSection'
 import CategorySection from '../../components/sections/CategorySection'
 import { buildings, cities, categories } from '../../services/data'
 import { CarouselItem } from '../../components/ui/layout/CarouselItem'
@@ -18,7 +18,7 @@ export const HomeScreen = ({ navigation }) => {
             <ContentContainer style={{ paddingBottom: 20 }}>
                <SearchInput placeholder={'Rechercher une ville'}></SearchInput>
 
-               <PopularSection
+               <PlacesCarouselSection
                   title={'Villes populaires'}
                   data={cities.slice(0, 6)}
                   renderItem={({ item }) => (
@@ -36,7 +36,7 @@ export const HomeScreen = ({ navigation }) => {
                   )}
                />
 
-               <PopularSection
+               <PlacesCarouselSection
                   title={'Bâtiments populaires'}
                   data={buildings}
                   renderItem={({ item }) => (

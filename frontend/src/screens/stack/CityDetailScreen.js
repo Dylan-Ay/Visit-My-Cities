@@ -1,6 +1,6 @@
 import { ScreenWrapper } from '../../components/ui'
 import { buildings, cities } from '../../services/data'
-import ExploreGridSection from '../../components/sections/ExploreGridSection'
+import PlacesGridSection from '../../components/sections/PlacesGridSection'
 
 export const CityDetailScreen = ({ navigation, route }) => {
    const { cityId } = route.params
@@ -15,7 +15,7 @@ export const CityDetailScreen = ({ navigation, route }) => {
 
    return (
       <ScreenWrapper useEdges={false}>
-         <ExploreGridSection
+         <PlacesGridSection
             data={cityBuildings}
             heroTitle={city.name}
             heroImg={{ uri: city.image }}

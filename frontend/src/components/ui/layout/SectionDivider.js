@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native'
 
-export const SectionDivider = () => {
-   return <View style={styles.container}></View>
+export const SectionDivider = ({ style }) => {
+   return <View style={[styles.container, style]}></View>
 }
 
 const styles = StyleSheet.create({

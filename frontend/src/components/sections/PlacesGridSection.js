@@ -8,6 +8,7 @@ export default function PlacesGridSection({
    heroImg,
    searchInputPlaceHolder,
    sectionTitle,
+   titleContainerStyle,
    onPressItem,
 }) {
    return (
@@ -35,7 +36,9 @@ export default function PlacesGridSection({
                <HeroBanner title={heroTitle} image={heroImg} />
                <ContentContainer>
                   <SearchInput placeholder={searchInputPlaceHolder} />
-                  <SectionTitle>{sectionTitle}</SectionTitle>
+                  <SectionTitle containerStyle={titleContainerStyle}>
+                     {sectionTitle}
+                  </SectionTitle>
                </ContentContainer>
             </>
          }

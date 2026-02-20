@@ -49,7 +49,21 @@ export default function RootStack() {
                headerRight: () => <FavorteBuildingHeaderButton route={route} />,
             })}
          />
-         <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} />
+         <Stack.Screen
+            name="CategoryDetail"
+            component={CategoryDetailScreen}
+            options={({ navigation }) => ({
+               headerTransparent: true,
+               headerTitle: '',
+               headerLeft: () => (
+                  <HeaderIconButton
+                     icon={'chevron-back-outline'}
+                     style={{ marginLeft: 16 }}
+                     onPress={() => navigation.goBack()}
+                  />
+               ),
+            })}
+         />
       </Stack.Navigator>
    )
 }

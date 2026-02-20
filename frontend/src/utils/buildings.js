@@ -69,3 +69,15 @@ export const getBuildingVisitInfos = (building) => {
 
    return buildingVisitInfos
 }
+
+export const getBuildingsByCity = (buildings, cityId) => {
+   const result = []
+
+   buildings.forEach((item) => {
+      if (item.cityId == cityId) {
+         result.push(item)
+      }
+   })
+
+   return result
+}

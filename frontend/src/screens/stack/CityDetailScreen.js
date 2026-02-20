@@ -1,17 +1,12 @@
 import { ScreenWrapper } from '../../components/ui'
 import { buildings, cities } from '../../services/data'
 import PlacesGridSection from '../../components/sections/PlacesGridSection'
+import { getBuildingsByCity } from '../../utils/buildings'
 
 export const CityDetailScreen = ({ navigation, route }) => {
    const { cityId } = route.params
    const city = cities.find((cityItem) => cityItem.id == cityId)
-
-   let cityBuildings = []
-   buildings.forEach((buildingItem) => {
-      if (buildingItem.cityId == cityId) {
-         cityBuildings.push(buildingItem)
-      }
-   })
+   const cityBuildings = getBuildingsByCity(buildings, cityId)
 
    return (
       <ScreenWrapper useEdges={false}>

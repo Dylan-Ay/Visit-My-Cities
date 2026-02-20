@@ -586,7 +586,7 @@ export const categories = [
    },
    {
       id: 5,
-      name: 'Châteaux & palais',
+      name: 'Châteaux & Palais',
       icon: '🏰',
       img: 'https://www.barnes-proprietes-chateaux.com/wp-content/uploads/2017/01/chateau-chantilly-renaissance.jpg',
    },

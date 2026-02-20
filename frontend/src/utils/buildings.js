@@ -81,3 +81,15 @@ export const getBuildingsByCity = (buildings, cityId) => {
 
    return result
 }
+
+export const getBuildingsByCategory = (buildings, categoryId) => {
+   const result = []
+
+   buildings.forEach((item) => {
+      if (item.categoryId == categoryId) {
+         result.push(item)
+      }
+   })
+
+   return result
+}

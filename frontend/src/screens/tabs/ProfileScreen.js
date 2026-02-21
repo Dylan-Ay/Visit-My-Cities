@@ -38,8 +38,8 @@ export const ProfileScreen = ({ navigation }) => {
                <AuthActionsSection
                   primaryTitle={'Connexion'}
                   secondaryTitle={'Créer un compte'}
-                  primaryOnPress={''}
-                  secondaryOnPress={''}
+                  primaryOnPress={() => navigation.navigate('LoginScreen')}
+                  secondaryOnPress={() => navigation.navigate('RegisterScreen')}
                />
             </View>
          </ContentContainer>

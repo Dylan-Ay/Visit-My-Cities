@@ -6,6 +6,8 @@ import { CategoryDetailScreen } from '../screens/stack/CategoryDetailScreen'
 import { HeaderIconButton } from '../components/ui/inputs/HeaderIconButton'
 import { FavoriteCityHeaderButton } from '../components/ui/inputs/FavoriteCityHeaderButton'
 import { FavorteBuildingHeaderButton } from '../components/ui/inputs/FavoriteBuildingHeaderButton'
+import { LoginScreen } from '../screens/stack/LoginScreen'
+import { RegisterScreen } from '../screens/stack/RegisterScreen'
 
 const Stack = createStackNavigator()
 
@@ -52,6 +54,36 @@ export default function RootStack() {
          <Stack.Screen
             name="CategoryDetail"
             component={CategoryDetailScreen}
+            options={({ navigation }) => ({
+               headerTransparent: true,
+               headerTitle: '',
+               headerLeft: () => (
+                  <HeaderIconButton
+                     icon={'chevron-back-outline'}
+                     style={{ marginLeft: 16 }}
+                     onPress={() => navigation.goBack()}
+                  />
+               ),
+            })}
+         />
+         <Stack.Screen
+            name="LoginScreen"
+            component={LoginScreen}
+            options={({ navigation }) => ({
+               headerTransparent: true,
+               headerTitle: '',
+               headerLeft: () => (
+                  <HeaderIconButton
+                     icon={'chevron-back-outline'}
+                     style={{ marginLeft: 16 }}
+                     onPress={() => navigation.goBack()}
+                  />
+               ),
+            })}
+         />
+         <Stack.Screen
+            name="RegisterScreen"
+            component={RegisterScreen}
             options={({ navigation }) => ({
                headerTransparent: true,
                headerTitle: '',

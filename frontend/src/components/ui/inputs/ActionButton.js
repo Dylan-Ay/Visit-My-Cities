@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-export const NavigationButton = ({ title, onPress }) => {
+export const ActionButton = ({ title, onPress }) => {
    return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
          <Text style={styles.text}>{title}</Text>

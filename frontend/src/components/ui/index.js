@@ -8,7 +8,7 @@ export * from './typography/SectionTitle'
 export * from './inputs/SearchInput'
 export * from './inputs/CategoryButton'
 export * from './inputs/HeaderIconButton'
-export * from './inputs/NavigationButton'
+export * from './inputs/ActionButton'
 
 export * from './cards/PlaceCard'
 export * from './cards/KeyInfoItem'

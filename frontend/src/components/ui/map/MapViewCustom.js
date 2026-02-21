@@ -1,6 +1,6 @@
 import { Linking, StyleSheet, Text, View } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
-import { NavigationButton } from '../inputs/NavigationButton'
+import { ActionButton } from '../inputs/ActionButton'
 
 export const MapViewCustom = ({ name, address, region }) => {
    return (
@@ -16,7 +16,7 @@ export const MapViewCustom = ({ name, address, region }) => {
          <View style={styles.addressContainer}>
             <Text style={styles.name}>{name}</Text>
             <Text style={styles.address}>{address.join(' • ')}</Text>
-            <NavigationButton
+            <ActionButton
                title={"Afficher l'itinéraire"}
                onPress={() =>
                   Linking.openURL(

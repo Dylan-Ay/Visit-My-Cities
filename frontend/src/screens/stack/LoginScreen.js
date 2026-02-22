@@ -3,6 +3,7 @@ import { ContentContainer, FormInput, ScreenWrapper } from '../../components/ui'
 import { View } from 'react-native'
 import AuthActionsSection from '../../components/sections/AuthActionsSection'
 import { HeaderSection } from '../../components/sections/HeaderSection'
+import { StackActions } from '@react-navigation/native'
 
 export const LoginScreen = ({ navigation }) => {
    return (
@@ -20,14 +21,12 @@ export const LoginScreen = ({ navigation }) => {
                <View style={styles.inputsContainer}>
                   <FormInput
                      label={'Adresse email'}
-                     placeholder={'Insérez votre adresse email'}
                      keyboardType={'email-address'}
                      icon={'close-outline'}
                      returnKeyType={'next'}
                   />
                   <FormInput
                      label={'Mot de passe'}
-                     placeholder={'Insérez votre mot de passe'}
                      keyboardType={'default'}
                      secureTextEntry={true}
                      icon={'close-outline'}
@@ -41,7 +40,9 @@ export const LoginScreen = ({ navigation }) => {
                      navigation.navigate('Tabs', { screen: 'Profil' })
                   }
                   secondaryTitle={'Créer un compte'}
-                  secondaryOnPress={() => navigation.navigate('RegisterScreen')}
+                  secondaryOnPress={() =>
+                     navigation.dispatch(StackActions.replace('RegisterScreen'))
+                  }
                />
             </ContentContainer>
          </ScrollView>

@@ -77,6 +77,7 @@ export default function RootStack() {
                      icon={'chevron-back-outline'}
                      style={{ marginLeft: 16 }}
                      onPress={() => navigation.goBack()}
+                     isBoxShadow={true}
                   />
                ),
             })}
@@ -92,6 +93,7 @@ export default function RootStack() {
                      icon={'chevron-back-outline'}
                      style={{ marginLeft: 16 }}
                      onPress={() => navigation.goBack()}
+                     isBoxShadow={true}
                   />
                ),
             })}

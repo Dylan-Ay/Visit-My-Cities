@@ -18,6 +18,7 @@ public class Category {
     private Long id;
     @Column(name = "nom_categorie")
     private String name;
+    private String icon;
 
 
 }

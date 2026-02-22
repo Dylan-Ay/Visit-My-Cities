@@ -32,7 +32,7 @@ public class SecurityConfig {
                                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                         .authorizeHttpRequests(auth -> auth
 
-                                // PUBLIC
+                                // public tout le monde
                                 .requestMatchers(
                                         "/swagger-ui/**",
                                         "/v3/api-docs/**",
@@ -45,28 +45,32 @@ public class SecurityConfig {
                                         "/city/*",
                                         "/building/*",
                                         "/building/city/*",
-                                        "/building/cityname/*"
+                                        "/building/cityname/*",
+                                        "/building/buildingdto/*",
+                                        "/building/buildingsdto/city/*",
+                                        "/building/buildingsdto/category/*",
+                                        "/building/buildingdto/cityname/*"
                                 ).permitAll()
 
-                                // EXPERT ONLY
+                                // EXPERT juste c tt
                                 .requestMatchers(
                                         "/city/add/**",
                                         "/city/update/**",
                                         "/city/delete/**",
-                                        "/building/add",
                                         "/building/update/**",
                                         "/building/delete/**",
                                         "/building/add/**"
                                 ).hasRole("EXPERT")
 
-                                // AUTHENTICATED
+                                //auhentifier c tt
                                 .requestMatchers(
                                         "/comment/**",
                                         "/like/**",
                                         "/favorites/**"
-                                ).authenticated()
+                                ).authenticated() //permitAll() ici ca fait pas mal pour tester sans token
 
-                                .anyRequest().authenticated()
+                                .anyRequest().authenticated() //permitAll() ici aussi
+
                         )
 
                         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

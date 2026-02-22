@@ -1,5 +1,6 @@
 package com.example.backend.controllers;
 
+import com.example.backend.dto.BuildingDTO;
 import com.example.backend.entities.Building;
 import com.example.backend.services.BuildingServiceImpl;
 import org.springframework.http.HttpStatus;
@@ -14,10 +15,45 @@ public class BuildingController {
 
     private final BuildingServiceImpl buildingServiceImpl;
 
+
     public BuildingController(BuildingServiceImpl buildingServiceImpl) {
         this.buildingServiceImpl = buildingServiceImpl;
+
+    }
+//-------------------------------------Ici building dto-----------------------------------------------------
+
+@GetMapping("/buildingsdto")
+   public ResponseEntity<List<BuildingDTO>> getAllBuildingsDTO() {
+     return new ResponseEntity<>(
+             this.buildingServiceImpl.getAllBuildingsDTO(), HttpStatus.OK);
     }
 
+
+@GetMapping("/buildingdto/{id}")
+public ResponseEntity<BuildingDTO> getBDTOById(@PathVariable Long id){
+
+        return new ResponseEntity<>(this.buildingServiceImpl.getBuildingDtoById(id), HttpStatus.OK);
+}
+
+@GetMapping("/buildingsdto/city/{id}")
+public ResponseEntity<List<BuildingDTO>>
+getBuildingsDtoByCityId(@PathVariable Long id){
+return new ResponseEntity<>(this.buildingServiceImpl.getBuildingsDtoByCityId(id), HttpStatus.OK);
+}
+
+@GetMapping("/buildingsdto/category/{id}")
+public ResponseEntity<List<BuildingDTO>> getBuildingsDtoByCategorieId(@PathVariable Long id){
+    return new ResponseEntity<>(this.buildingServiceImpl.getBuildingsByCategoryId(id),HttpStatus.OK);
+}
+
+    @GetMapping("/buildingdto/cityname/{name}")
+    public ResponseEntity<List<BuildingDTO>> getBuildingsDtoByCityName(@PathVariable String name){
+        return new ResponseEntity<>(this.buildingServiceImpl.getBuildingsDtoByCityName(name), HttpStatus.OK);
+    }
+
+
+
+    //-------------------------------------Ici building tout cours-----------------------------------------------------
     @PostMapping("/add/add")
     public ResponseEntity<Building> addBuilding(@RequestBody Building building){
        return new ResponseEntity<>(this.buildingServiceImpl.saveBuilding(building), HttpStatus.CREATED) ;

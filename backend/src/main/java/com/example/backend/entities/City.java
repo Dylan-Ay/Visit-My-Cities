@@ -31,7 +31,7 @@ public class City {
     @Column(name = "code_postal")
     private String postalCode;
     @Column(name = "image_url")
-    private String imageURL ;
+    private String image ;
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL) //ici cascade All car quand je supprime une ville tout les batiment vont etre supprimer
     @JsonIgnore

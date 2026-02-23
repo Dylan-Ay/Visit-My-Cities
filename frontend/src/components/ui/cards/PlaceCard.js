@@ -1,8 +1,8 @@
 import { StyleSheet, TouchableOpacity, Text, Image } from 'react-native'
 
-export const PlaceCard = ({ image, name, style, imgStyle }) => {
+export const PlaceCard = ({ image, name, style, imgStyle, onPress }) => {
    return (
-      <TouchableOpacity style={[styles.card, style]}>
+      <TouchableOpacity style={[styles.card, style]} onPress={onPress}>
          <Image
             source={{ uri: image }}
             style={[styles.image, imgStyle]}

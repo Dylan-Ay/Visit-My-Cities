@@ -1,6 +1,12 @@
-import { FlatList } from 'react-native'
+import { FlatList, Text } from 'react-native'
 
-export const PlacesCarousel = ({ data, renderItem, keyExtractor }) => {
+export const PlacesCarousel = ({
+   data,
+   renderItem,
+   keyExtractor,
+   emptyComponent,
+   scrollEnabled,
+}) => {
    return (
       <FlatList
          horizontal
@@ -8,6 +14,8 @@ export const PlacesCarousel = ({ data, renderItem, keyExtractor }) => {
          data={data}
          renderItem={renderItem}
          keyExtractor={keyExtractor}
+         ListEmptyComponent={emptyComponent}
+         scrollEnabled={scrollEnabled}
       />
    )
 }

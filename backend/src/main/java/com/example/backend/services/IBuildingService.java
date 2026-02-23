@@ -1,5 +1,6 @@
 package com.example.backend.services;
 
+import com.example.backend.dto.BuildingDTO;
 import com.example.backend.entities.Building;
 
 import java.util.List;
@@ -13,4 +14,12 @@ public interface IBuildingService {
     Building updateBuilding(Long id, Building building);
     void deleteBuilding(Long id);
     List<Building> getBuildingsByCategorieId(Long id);
+
+    //methodes avec dto pour dylan
+     List<BuildingDTO> getAllBuildingsDTO();
+     BuildingDTO getBuildingDtoById(Long id);
+    List<BuildingDTO> getBuildingsDtoByCityId(Long id);
+    List<BuildingDTO> getBuildingsByCategoryId(Long id);
+    List<BuildingDTO> getBuildingsDtoByCityName(String cityName);
+
 }

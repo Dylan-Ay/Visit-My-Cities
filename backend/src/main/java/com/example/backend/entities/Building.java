@@ -1,63 +1,60 @@
 package com.example.backend.entities;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
+@Data
 @Table(name = "batiment")
 public class Building {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "nom")
-    private String name;
-    private String description;
-    @Column(name = "annee_construction")
-    private Integer yearConstruction;
-    @Column(name = "image_url")
-    private String imageURL;
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
-    @ManyToMany
-    private List<Category> categories;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+
+       // private String cityId;
+        private String name;
+        private String image;
+        private String address;
+        private String postalCode;
+       // private String city;
+        private String country;
+        private String constructionYear;
+        private String architect;
+        private String style;
+
+        @Column(columnDefinition = "TEXT")
+        private String description;
+
+        private Integer ticketPrice;
+        private String visitDuration;
+        private String booking;
+        private String accessStatus;
+        private boolean accessiblePRM;
+        private Double latitude;
+        private Double longitude;
+
+//type TEXT pour pouvoir unjson de plusieursoctects jusqau 65ko, c nn un varchar c que 255 char
+        @Column(columnDefinition = "TEXT")
+        private String schedules;
+
+        @Column(columnDefinition = "TEXT")
+        private String coords;
+
+        @ManyToOne
+        @JoinColumn(name = "city_id")
+        private City city;
+        @ManyToOne//bcp de batiement appartiennt a une seul categorie, lors de creation de batiement je donne la categorie
+        @JsonIgnore
+        private Category categories;
+        @OneToMany(mappedBy = "building")
+        @JsonIgnore
+        private List<Favorite> favorites;
 
 
-    public Building() {}
-
-    public Building(String name, String description, int yearConstruction, String imageURL, City city) {
-        this.name = name;
-        this.description = description;
-        this.yearConstruction = yearConstruction;
-        this.imageURL = imageURL;
-        this.city = city;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
-    public Integer getYearConstruction() { return yearConstruction; }
-    public void setYearConstruction(Integer yearConstruction) { this.yearConstruction = yearConstruction; }
-
-    public String getImageURL() { return imageURL; }
-    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
-
-    public City getCity() { return city; }
-    public void setCity(City city) { this.city = city; }
 }
+

@@ -44,4 +44,9 @@ public class CityController {
         return new ResponseEntity<>(this.cityServiceImpl.updateCity(id, city), HttpStatus.OK);
 
     }
+
+    @GetMapping("/city/{name}")
+    public ResponseEntity<City> getCityByName(@PathVariable String name){
+        return new ResponseEntity<>(this.cityServiceImpl.getCityByName(name),HttpStatus.OK);
+    }
 }

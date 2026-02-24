@@ -126,7 +126,7 @@ if(categoryRepository.count() == 0){
                 29, "1h30-2h30", "Obligatoire", "Visitable", true,
                 48.8584, 2.2945, tourEiffelHoraires());
 
-        creer_un_batiment(tokyo,  lieuxDeCulte,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg",
+        creer_un_batiment(tokyo,  lieuxDeCulte,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg?s=612x612&w=0&k=20&c=0mRZPy-eg603K8FPB7k_O73e7tqHLv4PIDjWIKcXXH4=",
                 "2-3-1 Asakusa, Taito City", "111-0032", "645", "Inconnu", "Traditionnelle japonaise",
                 "Fondé au VIIᵉ siècle, le sanctuaire d'Asakusa, également connu sous le nom de Sensō-ji, est l'un des plus anciens et des plus vénérés temples bouddhistes de Tokyo. Reconstruit à plusieurs reprises au fil des siècles, il demeure un symbole spirituel majeur de la capitale japonaise. Son imposante porte Kaminarimon et sa pagode à cinq étages attirent fidèles et visiteurs venus découvrir l'architecture traditionnelle japonaise. Entouré d'une rue commerçante animée, le sanctuaire incarne l'équilibre entre héritage religieux et vie urbaine moderne. Lieu de festivals et de cérémonies, il conserve une atmosphère solennelle tout en restant profondément ancré dans le quotidien tokyoïte.",
                 0, "45-60 min", "Non requis", "Accès libre", false,
@@ -232,7 +232,7 @@ if(categoryRepository.count() == 0){
 
         creer_un_batiment(barcelone, lieuxDeCulte,
                 "Sagrada Família",
-                "https://lelephant-larevue.fr/wp-content/uploads/2018/03/%CE%A3%CE%B1%CE%B3%CF%81%CE%B1%CC%81%CE%B4%CE%B1_%CE%A6%CE%B1%CC%81%CE%B5%CE%B0%CE%B9%CC%81%CE%BB%CE%B9%CE%B1_2941.jpg",
+                "https://lelephant-larevue.fr/wp-content/uploads/2018/03/%CE%A3%CE%B1%CE%B3%CF%81%CE%B1%CC%81%CE%B4%CE%B1_%CE%A6%CE%B1%CE%BC%CE%B9%CC%81%CE%BB%CE%B9%CE%B1_2941.jpg",
                 "Carrer de Mallorca, 401",
                 "08013",
                 "1882",

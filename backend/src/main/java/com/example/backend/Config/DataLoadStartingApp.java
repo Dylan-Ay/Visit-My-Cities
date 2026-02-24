@@ -52,9 +52,9 @@ if(categoryRepository.count() == 0){
 
             new Category(null, "Musées","🏛"),
             new Category(null, "Ponts","🌉"),
-            new Category(null, "Religieux","⛪"),
-            new Category(null, "Grattes_ciels","🏙"),
-            new Category(null, "Châtaux & palais","🏰"),
+            new Category(null, "Lieux de culte","⛪"),
+            new Category(null, "Gratte-ciels","🏙"),
+            new Category(null, "Châteaux & Palais","🏰"),
             new Category(null, "Bâtiments civils", "🏢"));
     categoryRepository.saveAll(categories);
 }
@@ -76,10 +76,10 @@ if(categoryRepository.count() == 0){
 
         Category musee = categoryRepository.findById(1L).get(); //Musée
         Category pont = categoryRepository.findById(2L).get(); //Ponts
-        Category religieux = categoryRepository.findById(3L).get(); //religieux
-        Category gc = categoryRepository.findById(4L).get(); //grattes ciel
-        Category cp = categoryRepository.findById(5L).get(); //chataux palais
-        Category bc = categoryRepository.findById(6L).get(); //batiement civils
+        Category lieuxDeCulte = categoryRepository.findById(3L).get(); //Lieux de culte
+        Category gc = categoryRepository.findById(4L).get(); //Gratte-ciels
+        Category cp = categoryRepository.findById(5L).get(); //Chateaux & palais
+        Category bc = categoryRepository.findById(6L).get(); //Bâtiments civils
 
 
         // création des villes manuellement en dur
@@ -126,7 +126,7 @@ if(categoryRepository.count() == 0){
                 29, "1h30-2h30", "Obligatoire", "Visitable", true,
                 48.8584, 2.2945, tourEiffeilHoraires());
 
-        creer_un_batiment(tokyo,  religieux,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg",
+        creer_un_batiment(tokyo,  lieuxDeCulte,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg",
                 "2-3-1 Asakusa, Taito City", "111-0032", "645", "Inconnu", "Traditionnelle japonaise",
                 "Fondé au VIIᵉ siècle, le sanctuaire d'Asakusa, également connu sous le nom de Sensō-ji, est l'un des plus anciens et des plus vénérés temples bouddhistes de Tokyo. Reconstruit à plusieurs reprises au fil des siècles, il demeure un symbole spirituel majeur de la capitale japonaise. Son imposante porte Kaminarimon et sa pagode à cinq étages attirent fidèles et visiteurs venus découvrir l'architecture traditionnelle japonaise. Entouré d'une rue commerçante animée, le sanctuaire incarne l'équilibre entre héritage religieux et vie urbaine moderne. Lieu de festivals et de cérémonies, il conserve une atmosphère solennelle tout en restant profondément ancré dans le quotidien tokyoïte.",
                 0, "45-60 min", "Non requis", "Accès libre", false,
@@ -179,7 +179,24 @@ if(categoryRepository.count() == 0){
                 51.5014, -0.1419,
                 buckinghamHoraires());
 
-        creer_un_batiment(rome,     pont,
+        creer_un_batiment(londres,    pont,
+                "Tower Bridge",
+                "https://cdn.britannica.com/35/156335-050-62245FCA/Tower-Bridge-River-Thames-London.jpg",
+                "Tower Bridge Rd",
+                "SE1 2UP",
+                "1894",
+                "Horace Jones",
+                "Néogothique",
+                "Inauguré en 1894, le Tower Bridge est l'un des ponts les plus reconnaissables de Londres. Conçu dans un style néogothique afin de s'harmoniser avec la Tour de Londres voisine, il combine esthétique historique et prouesse technique. Son mécanisme basculant permet aux navires de grande taille de circuler sur la Tamise. Les passerelles supérieures offrent aujourd'hui une vue panoramique sur la ville et retracent l'histoire industrielle du pont. Véritable emblème londonien, il illustre l'ingénierie victorienne et demeure un élément central du paysage urbain.",
+                12,
+                "1h-1h30",
+                "Recommandée",
+                "Visitable",
+                true,
+                51.5055, -0.0754,
+                towerBridgeHoraires());
+
+        creer_un_batiment(rome,     bc,
                 "Fontaine de Trevi",
                 "https://as2.ftcdn.net/v2/jpg/01/21/87/47/1000_F_121874733_ObMVN0dprpejLPmvkQumpLRvxOWOI7sW.jpg",
                 "Piazza di Trevi",
@@ -196,7 +213,7 @@ if(categoryRepository.count() == 0){
                 41.9009, 12.4833,
                 treviHoraires());
 
-        creer_un_batiment(rome,      cp,
+        creer_un_batiment(rome,      lieuxDeCulte,
                 "Le Panthéon",
                 "https://voyageur-attitude.fr/wp-content/uploads/Le-Pantheon-1024x644.jpg",
                 "Piazza della Rotonda",
@@ -306,13 +323,13 @@ return  days;
     private Map<String, List<Map<String, String>>> ESBHoraires() {
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
-        days.put("lundi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("mardi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("mercredi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("jeudi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("vendredi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("samedi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("dimanche", List.of(Map.of("start","09:00","end","23:00")));
+        days.put("lundi", List.of());
+        days.put("mardi", List.of());
+        days.put("mercredi", List.of());
+        days.put("jeudi", List.of());
+        days.put("vendredi", List.of());
+        days.put("samedi", List.of());
+        days.put("dimanche", List.of());
 
         return days;
     }
@@ -344,6 +361,21 @@ return  days;
 
         return days;
     }
+
+    private Map<String, List<Map<String, String>>> towerBridgeHoraires() {
+        Map<String, List<Map<String, String>>> days = new HashMap<>();
+
+        days.put("lundi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("mardi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("mercredi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("jeudi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("vendredi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("samedi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("dimanche", List.of(Map.of("start","09:30","end","18:00")));
+
+        return days;
+    }
+
     private Map<String, List<Map<String, String>>> treviHoraires() {
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -361,13 +393,13 @@ return  days;
     private Map<String, List<Map<String, String>>> pantheonHoraires() {
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
-        days.put("lundi", List.of(Map.of("start","09:30","end","18:00")));
-        days.put("mardi", List.of(Map.of("start","09:30","end","18:00")));
-        days.put("mercredi", List.of(Map.of("start","09:30","end","18:00")));
-        days.put("jeudi", List.of(Map.of("start","09:30","end","18:00")));
-        days.put("vendredi", List.of(Map.of("start","09:30","end","18:00")));
-        days.put("samedi", List.of(Map.of("start","09:30","end","18:00")));
-        days.put("dimanche", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("lundi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("mardi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("mercredi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("jeudi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("vendredi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("samedi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("dimanche", List.of(Map.of("start","09:00","end","19:00")));
 
         return days;
     }

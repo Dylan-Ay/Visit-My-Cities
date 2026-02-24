@@ -5,7 +5,7 @@ export const ScreenWrapper = ({ children, useEdges = true }) => {
    return (
       <SafeAreaView
          style={styles.container}
-         edges={useEdges ? ['top', 'bottom', 'left', 'right'] : []}
+         edges={useEdges && ['top', 'bottom', 'left', 'right']}
       >
          {children}
       </SafeAreaView>

@@ -33,11 +33,13 @@ public class BuildingMapper {
 
         try {
             if (building.getSchedules() != null) {
-                Map<String, List<BuildingDTO.TimeSlot>> days = mapper.readValue(
-                        building.getSchedules(),
-                        new TypeReference<Map<String, List<BuildingDTO.TimeSlot>>>() {}
-                );
-                scheduleDTO.setDays(days);
+                BuildingDTO.ScheduleDTO parsed =
+                        mapper.readValue(building.getSchedules(), BuildingDTO.ScheduleDTO.class);
+
+                scheduleDTO.setType(parsed.getType());
+                scheduleDTO.setDays(parsed.getDays());
+                scheduleDTO.setNote(parsed.getNote());
+                scheduleDTO.setOfficialHoursUrl(parsed.getOfficialHoursUrl());
             } else {
                 scheduleDTO.setDays(new HashMap<>());
             }

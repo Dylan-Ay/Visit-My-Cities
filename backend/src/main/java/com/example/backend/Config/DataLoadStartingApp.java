@@ -52,9 +52,9 @@ if(categoryRepository.count() == 0){
 
             new Category(null, "Musées","🏛"),
             new Category(null, "Ponts","🌉"),
-            new Category(null, "Religieux","⛪"),
-            new Category(null, "Grattes_ciels","🏙"),
-            new Category(null, "Châtaux & palais","🏰"),
+            new Category(null, "Lieux de culte","⛪"),
+            new Category(null, "Gratte-ciels","🏙"),
+            new Category(null, "Châteaux & Palais","🏰"),
             new Category(null, "Bâtiments civils", "🏢"));
     categoryRepository.saveAll(categories);
 }
@@ -76,10 +76,10 @@ if(categoryRepository.count() == 0){
 
         Category musee = categoryRepository.findById(1L).get(); //Musée
         Category pont = categoryRepository.findById(2L).get(); //Ponts
-        Category religieux = categoryRepository.findById(3L).get(); //religieux
-        Category gc = categoryRepository.findById(4L).get(); //grattes ciel
-        Category cp = categoryRepository.findById(5L).get(); //chataux palais
-        Category bc = categoryRepository.findById(6L).get(); //batiement civils
+        Category lieuxDeCulte = categoryRepository.findById(3L).get(); //Lieux de culte
+        Category gc = categoryRepository.findById(4L).get(); //Gratte-ciels
+        Category cp = categoryRepository.findById(5L).get(); //Chateaux & palais
+        Category bc = categoryRepository.findById(6L).get(); //Bâtiments civils
 
 
         // création des villes manuellement en dur
@@ -117,22 +117,22 @@ if(categoryRepository.count() == 0){
                 "Recommandée",
                 "Visitable",
                 true,
-                48.8606, 2.3376, louvre_Horaires());
+                48.8606, 2.3376, louvreHoraires());
 
 
         creer_un_batiment(paris,  bc,"Tour Eiffel", "https://www.secretdeparis.com/blog/wp-content/uploads/2025/04/eiffel-tower-975004_1280.jpg",
                 "Champ de Mars, 5 Avenue Anatole France", "75007", "1889", "Gustave Eiffel", "Industrielle",
                 "Construite pour l'Exposition universelle de 1889, la Tour Eiffel est devenue le symbole emblématique de Paris et de la France. Imaginée par l'ingénieur Gustave Eiffel, elle devait initialement être démontée après l'événement et illustrer le savoir-faire industriel français de la fin du XIXᵉ siècle. Haute de 324 mètres, elle fut pendant plus de quarante ans la plus haute structure du monde. Entièrement réalisée en fer puddlé, elle incarne l'audace technique et l'innovation de son époque. D'abord vivement critiquée, elle est aujourd'hui l'un des monuments les plus visités au monde et offre des panoramas exceptionnels sur la capitale.",
                 29, "1h30-2h30", "Obligatoire", "Visitable", true,
-                48.8584, 2.2945, tourEiffeilHoraires());
+                48.8584, 2.2945, tourEiffelHoraires());
 
-        creer_un_batiment(tokyo,  religieux,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg",
+        creer_un_batiment(tokyo,  lieuxDeCulte,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg",
                 "2-3-1 Asakusa, Taito City", "111-0032", "645", "Inconnu", "Traditionnelle japonaise",
                 "Fondé au VIIᵉ siècle, le sanctuaire d'Asakusa, également connu sous le nom de Sensō-ji, est l'un des plus anciens et des plus vénérés temples bouddhistes de Tokyo. Reconstruit à plusieurs reprises au fil des siècles, il demeure un symbole spirituel majeur de la capitale japonaise. Son imposante porte Kaminarimon et sa pagode à cinq étages attirent fidèles et visiteurs venus découvrir l'architecture traditionnelle japonaise. Entouré d'une rue commerçante animée, le sanctuaire incarne l'équilibre entre héritage religieux et vie urbaine moderne. Lieu de festivals et de cérémonies, il conserve une atmosphère solennelle tout en restant profondément ancré dans le quotidien tokyoïte.",
                 0, "45-60 min", "Non requis", "Accès libre", false,
                 35.7148, 139.7967, asakusaHoraires());
 
-        creer_un_batiment(tokyo, gc,"Tokyo Tower", "https://byfood.b-cdn.net/api/public/assets/59153/content?optimizer=image",
+        creer_un_batiment(tokyo, bc,"Tokyo Tower", "https://byfood.b-cdn.net/api/public/assets/59153/content?optimizer=image",
                 "4-2-8 Shibakoen, Minato City", "105-0011", "1958", "Tachū Naitō", "Moderne",
                 "Inaugurée en 1958, la Tokyo Tower s'inspire de la Tour Eiffel tout en affirmant une identité propre au Japon d'après-guerre. Haute de 333 mètres, elle fut construite pour soutenir les antennes de diffusion télévisuelle et symboliser le renouveau économique du pays. Peinte en blanc et orange pour répondre aux normes aériennes, elle domine le paysage tokyoïte et offre des plateformes panoramiques spectaculaires. Mélange de fonctionnalité technique et d'esthétique moderne, la tour est devenue un repère iconique de la capitale. Elle demeure aujourd'hui un lieu touristique incontournable, particulièrement appréciée au coucher du soleil et de nuit.",
                 9, "1h-1h30", "Recommandée", "Visitable", true,
@@ -179,7 +179,24 @@ if(categoryRepository.count() == 0){
                 51.5014, -0.1419,
                 buckinghamHoraires());
 
-        creer_un_batiment(rome,     pont,
+        creer_un_batiment(londres,    pont,
+                "Tower Bridge",
+                "https://cdn.britannica.com/35/156335-050-62245FCA/Tower-Bridge-River-Thames-London.jpg",
+                "Tower Bridge Rd",
+                "SE1 2UP",
+                "1894",
+                "Horace Jones",
+                "Néogothique",
+                "Inauguré en 1894, le Tower Bridge est l'un des ponts les plus reconnaissables de Londres. Conçu dans un style néogothique afin de s'harmoniser avec la Tour de Londres voisine, il combine esthétique historique et prouesse technique. Son mécanisme basculant permet aux navires de grande taille de circuler sur la Tamise. Les passerelles supérieures offrent aujourd'hui une vue panoramique sur la ville et retracent l'histoire industrielle du pont. Véritable emblème londonien, il illustre l'ingénierie victorienne et demeure un élément central du paysage urbain.",
+                12,
+                "1h-1h30",
+                "Recommandée",
+                "Visitable",
+                true,
+                51.5055, -0.0754,
+                towerBridgeHoraires());
+
+        creer_un_batiment(rome,     bc,
                 "Fontaine de Trevi",
                 "https://as2.ftcdn.net/v2/jpg/01/21/87/47/1000_F_121874733_ObMVN0dprpejLPmvkQumpLRvxOWOI7sW.jpg",
                 "Piazza di Trevi",
@@ -196,7 +213,7 @@ if(categoryRepository.count() == 0){
                 41.9009, 12.4833,
                 treviHoraires());
 
-        creer_un_batiment(rome,      cp,
+        creer_un_batiment(rome,      lieuxDeCulte,
                 "Le Panthéon",
                 "https://voyageur-attitude.fr/wp-content/uploads/Le-Pantheon-1024x644.jpg",
                 "Piazza della Rotonda",
@@ -212,6 +229,42 @@ if(categoryRepository.count() == 0){
                 false,
                 41.8986, 12.4769,
                 pantheonHoraires());
+
+        creer_un_batiment(barcelone, lieuxDeCulte,
+                "Sagrada Família",
+                "https://lelephant-larevue.fr/wp-content/uploads/2018/03/%CE%A3%CE%B1%CE%B3%CF%81%CE%B1%CC%81%CE%B4%CE%B1_%CE%A6%CE%B1%CC%81%CE%B5%CE%B0%CE%B9%CC%81%CE%BB%CE%B9%CE%B1_2941.jpg",
+                "Carrer de Mallorca, 401",
+                "08013",
+                "1882",
+                "Antoni Gaudí",
+                "Modernisme catalan",
+                "Commencée en 1882, la Sagrada Família est l'œuvre monumentale d'Antoni Gaudí et l'un des symboles majeurs de Barcelone. Mélange unique de spiritualité, de nature et d'innovation architecturale, elle incarne le modernisme catalan dans toute sa créativité. Ses façades richement sculptées racontent des épisodes bibliques tandis que l'intérieur, baigné de lumière colorée, évoque une forêt de colonnes élancées. Toujours en construction plus d'un siècle après son lancement, la basilique témoigne d'un projet artistique ambitieux et visionnaire. Classée au patrimoine mondial de l'UNESCO, elle attire des millions de visiteurs chaque année.",
+                26,
+                "1h30-2h",
+                "Obligatoire",
+                "Visitable",
+                true,
+                41.4036, 2.1744,
+                sagradaFamiliaHoraires()
+        );
+
+        creer_un_batiment(barcelone, bc,
+                "Parc Güell",
+                "https://www.guidesulysse.com/images/destinations/iStock-534846887.jpg",
+                "Carrer d'Olot, 5",
+                "08024",
+                "1900",
+                "Antoni Gaudí",
+                "Modernisme catalan",
+                "Imaginé au début du XXᵉ siècle par Antoni Gaudí, le Parc Güell est un vaste ensemble paysager mêlant architecture et nature. Conçu à l'origine comme un projet résidentiel, il est devenu un parc public emblématique de Barcelone. Ses mosaïques colorées, ses formes ondulantes et ses structures organiques illustrent pleinement le modernisme catalan. La célèbre salamandre en céramique et la terrasse panoramique offrent des points de vue spectaculaires sur la ville. Véritable œuvre d'art à ciel ouvert, le parc reflète la vision poétique et innovante de son architecte.",
+                10,
+                "1h-2h",
+                "Recommandée",
+                "Visitable",
+                true,
+                41.4145, 2.1527,
+                parcGuellHoraires()
+        );
     }
 
 
@@ -221,7 +274,7 @@ if(categoryRepository.count() == 0){
     private void creer_un_batiment(City city,Category category, String name, String image, String address, String postalCode,
                                 String year, String architect, String style, String description,
                                 Integer ticketPrice, String visitDuration, String booking, String accessStatus, boolean accessible,
-                                double lat, double lng, Map<String, List<Map<String, String>>> horaires) throws JsonProcessingException {
+                                double lat, double lng, Map<String, Object> horaires) throws JsonProcessingException {
         Building building = new Building();
         building.setCity(city);
         building.setName(name);
@@ -250,8 +303,14 @@ if(categoryRepository.count() == 0){
     }
 
     // --- Horaires exemple pour chaque bâtiment ---
-    private Map<String, List<Map<String, String>>> louvre_Horaires() {
+    private Map<String, Object> louvreHoraires() {
+
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
         Map<String, List<Map<String, String>>> days = new HashMap<>();
+
         days.put("lundi", List.of(Map.of("start","09:00","end","18:00")));
         days.put("mardi", List.of());
         days.put("mercredi", List.of(Map.of("start","09:00","end","21:00")));
@@ -259,10 +318,21 @@ if(categoryRepository.count() == 0){
         days.put("vendredi", List.of(Map.of("start","09:00","end","21:00")));
         days.put("samedi", List.of(Map.of("start","09:00","end","18:00")));
         days.put("dimanche", List.of(Map.of("start","09:00","end","18:00")));
-        return days;
+
+        horaires.put("days", days);
+
+        horaires.put("note", "Fermé le mardi. La dernière admission est 1h avant la fermeture, l'évacuation 30 min avant.");
+
+        horaires.put("officialHoursUrl", "https://www.louvre.fr/visiter");
+
+        return horaires;
     }
 
-    private Map<String, List<Map<String, String>>> tourEiffeilHoraires() {
+    private Map<String, Object> tourEiffelHoraires() {
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
         Map<String, List<Map<String, String>>> days = new HashMap<>();
         days.put("lundi", List.of(Map.of("start","09:30","end","23:00")));
         days.put("mardi", List.of(Map.of("start","09:30","end","23:00")));
@@ -271,10 +341,21 @@ if(categoryRepository.count() == 0){
         days.put("vendredi", List.of(Map.of("start","09:30","end","23:00")));
         days.put("samedi", List.of(Map.of("start","09:30","end","23:00")));
         days.put("dimanche", List.of(Map.of("start","09:30","end","23:00")));
-        return days;
+
+        horaires.put("days", days);
+
+        horaires.put("note", "Horaires susceptibles de varier selon la saison et l'affluence. Vérifier le jour même si besoin.");
+        horaires.put("officialHoursUrl", "https://www.toureiffel.paris/fr/tarifs-horaires");
+
+        return horaires;
     }
 
-    private Map<String, List<Map<String, String>>> asakusaHoraires() {
+    private Map<String, Object> asakusaHoraires() {
+
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
         days.put("lundi", List.of(Map.of("start","06:00","end","17:00")));
@@ -285,10 +366,21 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","06:00","end","17:00")));
         days.put("dimanche", List.of(Map.of("start","06:00","end","17:00")));
 
-return  days;
+        horaires.put("days", days);
+
+        horaires.put("note", "En général : le hall principal est ouvert de 06h00 à 17h00 (il peut ouvrir à 06h30 d'octobre à mars). Les abords et l'enceinte sont accessibles en continu.");
+
+        horaires.put("officialHoursUrl", null);
+
+        return horaires;
     }
 
-    private Map<String, List<Map<String, String>>> tokyoTowerHoraires() {
+    private Map<String, Object> tokyoTowerHoraires() {
+
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
         days.put("lundi", List.of(Map.of("start","09:00","end","23:00")));
@@ -299,39 +391,21 @@ return  days;
         days.put("samedi", List.of(Map.of("start","09:00","end","23:00")));
         days.put("dimanche", List.of(Map.of("start","09:00","end","23:00")));
 
+        horaires.put("days", days);
 
-        return days;
+        horaires.put("note", "Pour le Main Deck : la dernière admission est à 22h30. Le Top Deck Tour est ouvert de 09h00 à 22h45 (dernier tour aux alentours de 22h15).");
+
+        horaires.put("officialHoursUrl", "https://www.tokyotower.co.jp/fee/");
+
+        return horaires;
     }
 
-    private Map<String, List<Map<String, String>>> ESBHoraires() {
-        Map<String, List<Map<String, String>>> days = new HashMap<>();
+    private Map<String, Object> ESBHoraires() {
 
-        days.put("lundi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("mardi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("mercredi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("jeudi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("vendredi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("samedi", List.of(Map.of("start","09:00","end","23:00")));
-        days.put("dimanche", List.of(Map.of("start","09:00","end","23:00")));
+        Map<String, Object> horaires = new HashMap<>();
 
-        return days;
-    }
+        horaires.put("type", "Variable");
 
-    private Map<String, List<Map<String, String>>> statueLiberteHoraires() {
-        Map<String, List<Map<String, String>>> days = new HashMap<>();
-
-        days.put("lundi", List.of(Map.of("start","09:00","end","16:30")));
-        days.put("mardi", List.of(Map.of("start","09:00","end","16:30")));
-        days.put("mercredi", List.of(Map.of("start","09:00","end","16:30")));
-        days.put("jeudi", List.of(Map.of("start","09:00","end","16:30")));
-        days.put("vendredi", List.of(Map.of("start","09:00","end","16:30")));
-        days.put("samedi", List.of(Map.of("start","09:00","end","16:30")));
-        days.put("dimanche", List.of(Map.of("start","09:00","end","16:30")));
-
-        return days;
-    }
-
-    private Map<String, List<Map<String, String>>> buckinghamHoraires() {
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
         days.put("lundi", List.of());
@@ -342,23 +416,71 @@ return  days;
         days.put("samedi", List.of());
         days.put("dimanche", List.of());
 
-        return days;
+        horaires.put("days", days);
+
+        horaires.put("note", "Les horaires varient d'un jour à l'autre. Par exemple du 6 janvier au 12 février, ce sera ouvert de 10h00 à 21h00 (l'entrée ferme à 20h00).");
+
+        horaires.put("officialHoursUrl", "https://www.esbnyc.com/fr/visit/hours-of-operation");
+
+        return horaires;
     }
-    private Map<String, List<Map<String, String>>> treviHoraires() {
+
+    private Map<String, Object> statueLiberteHoraires() {
+
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
-        days.put("lundi", List.of(Map.of("start","00:00","end","23:59")));
-        days.put("mardi", List.of(Map.of("start","00:00","end","23:59")));
-        days.put("mercredi", List.of(Map.of("start","00:00","end","23:59")));
-        days.put("jeudi", List.of(Map.of("start","00:00","end","23:59")));
-        days.put("vendredi", List.of(Map.of("start","00:00","end","23:59")));
-        days.put("samedi", List.of(Map.of("start","00:00","end","23:59")));
-        days.put("dimanche", List.of(Map.of("start","00:00","end","23:59")));
+        days.put("lundi", List.of(Map.of("start","09:00","end","16:30")));
+        days.put("mardi", List.of(Map.of("start","09:00","end","16:30")));
+        days.put("mercredi", List.of(Map.of("start","09:00","end","16:30")));
+        days.put("jeudi", List.of(Map.of("start","09:00","end","16:30")));
+        days.put("vendredi", List.of(Map.of("start","09:00","end","16:30")));
+        days.put("samedi", List.of(Map.of("start","09:00","end","16:30")));
+        days.put("dimanche", List.of(Map.of("start","09:00","end","16:30")));
 
-        return days;
+        horaires.put("days", days);
+
+        horaires.put("note", "Accès uniquement via le ferry, les horaires de départ et de retour sont variables). Prévoir assez de temps.");
+
+        horaires.put("officialHoursUrl", "https://www.nps.gov/stli/planyourvisit/index.htm");
+
+        return horaires;
     }
 
-    private Map<String, List<Map<String, String>>> pantheonHoraires() {
+    private Map<String, Object> buckinghamHoraires() {
+
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Variable");
+
+        Map<String, List<Map<String, String>>> days = new HashMap<>();
+
+        days.put("lundi", List.of());
+        days.put("mardi", List.of());
+        days.put("mercredi", List.of());
+        days.put("jeudi", List.of());
+        days.put("vendredi", List.of());
+        days.put("samedi", List.of());
+        days.put("dimanche", List.of());
+
+        horaires.put("days", days);
+
+        horaires.put("note", "Ouverture au public surtout en été pour les State Rooms (en 2026 : du 9 juillet au 27 septembre). Hors saison : seulement certaines dates notamment en visites guidées).");
+
+        horaires.put("officialHoursUrl", "https://www.rct.uk/visit/buckingham-palace");
+
+        return horaires;
+    }
+
+    private Map<String, Object> towerBridgeHoraires() {
+
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
         days.put("lundi", List.of(Map.of("start","09:30","end","18:00")));
@@ -369,10 +491,107 @@ return  days;
         days.put("samedi", List.of(Map.of("start","09:30","end","18:00")));
         days.put("dimanche", List.of(Map.of("start","09:30","end","18:00")));
 
-        return days;
+        horaires.put("days", days);
+
+        horaires.put("note", "Dernière entrée à 17h00.");
+
+        horaires.put("officialHoursUrl", "https://www.towerbridge.org.uk/");
+
+        return horaires;
     }
 
+    private Map<String, Object> treviHoraires() {
 
+        Map<String, Object> horaires = new HashMap<>();
 
+        horaires.put("type", "Accès libre");
 
+        Map<String, List<Map<String, String>>> days = new HashMap<>();
+
+        days.put("lundi", List.of(Map.of("start","00:00","end","23:59")));
+        days.put("mardi", List.of(Map.of("start","00:00","end","23:59")));
+        days.put("mercredi", List.of(Map.of("start","00:00","end","23:59")));
+        days.put("jeudi", List.of(Map.of("start","00:00","end","23:59")));
+        days.put("vendredi", List.of(Map.of("start","00:00","end","23:59")));
+        days.put("samedi", List.of(Map.of("start","00:00","end","23:59")));
+        days.put("dimanche", List.of(Map.of("start","00:00","end","23:59")));
+
+        horaires.put("days", days);
+
+        horaires.put("note", "La place est accessible toute la journée. Depuis le 2 février 2026, l'accès au bord de la fontaine est payant à certaines heures : du lundi au vendredi de 11h30 à 22h00 et le week-end de 09h00 à 22h00."
+        );
+
+        horaires.put("officialHoursUrl", "https://www.turismoroma.it/en/places/trevi-fountain");
+
+        return horaires;
+    }
+
+    private Map<String, Object> pantheonHoraires() {
+
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
+        Map<String, List<Map<String, String>>> days = new HashMap<>();
+
+        days.put("lundi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("mardi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("mercredi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("jeudi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("vendredi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("samedi", List.of(Map.of("start","09:00","end","19:00")));
+        days.put("dimanche", List.of(Map.of("start","09:00","end","19:00")));
+
+        horaires.put("days", days);
+
+        horaires.put("note", "Dernière entrée à 18:45. Fermé : 1er janvier, 15 août, 25 décembre (et variations possibles lors de célébrations).");
+
+        horaires.put("officialHoursUrl","https://www.pantheonroma.com/en/openings-info");
+
+        return horaires;
+    }
+
+    private Map<String, Object> sagradaFamiliaHoraires() {
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
+        Map<String, List<Map<String, String>>> days = new HashMap<>();
+        days.put("lundi", List.of(Map.of("start","09:00","end","18:00")));
+        days.put("mardi", List.of(Map.of("start","09:00","end","18:00")));
+        days.put("mercredi", List.of(Map.of("start","09:00","end","18:00")));
+        days.put("jeudi", List.of(Map.of("start","09:00","end","18:00")));
+        days.put("vendredi", List.of(Map.of("start","09:00","end","18:00")));
+        days.put("samedi", List.of(Map.of("start","09:00","end","18:00")));
+        days.put("dimanche", List.of(Map.of("start","10:30","end","18:00")));
+
+        horaires.put("days", days);
+
+        horaires.put("note", "Horaires saisonniers (différents de Mars à Octobre et d'Avril à Septembre).");
+        horaires.put("officialHoursUrl", "https://sagradafamilia.org/fr/schedules-how-to-get");
+
+        return horaires;
+    }
+
+    private Map<String, Object> parcGuellHoraires() {
+        Map<String, Object> horaires = new HashMap<>();
+
+        horaires.put("type", "Horaires");
+
+        Map<String, List<Map<String, String>>> days = new HashMap<>();
+        days.put("lundi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("mardi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("mercredi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("jeudi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("vendredi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("samedi", List.of(Map.of("start","09:30","end","18:00")));
+        days.put("dimanche", List.of(Map.of("start","09:30","end","18:00")));
+
+        horaires.put("days", days);
+
+        horaires.put("note", "Créneaux de visite (tickets) + plages réservées aux résidents/adhérents (hors visite touristique). Horaires pouvant varier selon périodes.");
+        horaires.put("officialHoursUrl", "https://parkguell.barcelona/fr/planifiez-votre-visite/horaires-et-tarifs");
+
+        return horaires;
+    }
 }

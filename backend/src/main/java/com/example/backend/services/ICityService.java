@@ -12,4 +12,5 @@ public interface ICityService {
     City saveCity(City city);
     City updateCity(Long id, City city);
     void deleteCity(Long id);
+    City getCityByName(String name);
 }

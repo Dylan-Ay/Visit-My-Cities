@@ -50,12 +50,12 @@ public class DataLoadStartingApp {
 if(categoryRepository.count() == 0){
     List<Category> categories= List.of(
 
-            new Category(null, "Musées","🏛"),
-            new Category(null, "Ponts","🌉"),
-            new Category(null, "Lieux de culte","⛪"),
-            new Category(null, "Gratte-ciels","🏙"),
-            new Category(null, "Châteaux & Palais","🏰"),
-            new Category(null, "Bâtiments civils", "🏢"));
+            new Category(null, "Musées","🏛", "https://www.ecomusee-montmorillonnais.org/wp-content/uploads/2023/11/musees.jpg"),
+            new Category(null, "Ponts","🌉", "https://cms.visitczechia.com/cms/getmedia/f5078b1a-8314-4d4e-b751-aa41692036ef/prague-troja-bridge-shutterstock_633423338-Nadezda-Murmakova.jpg?width=1000&height=666"),
+            new Category(null, "Lieux de culte","⛪", "https://cdn.generationvoyage.fr/2014/10/lieux-de-culte-sites-religieux-spectaculaires-monde-24.jpg"),
+            new Category(null, "Gratte-ciels","🏙", "https://ewnqp79wvj7.exactdn.com/wp-content/uploads/2024/07/One-World-Trade-Center-New-York-gratte-ciel.jpeg"),
+            new Category(null, "Châteaux & Palais","🏰", "https://www.barnes-proprietes-chateaux.com/wp-content/uploads/2017/01/chateau-chantilly-renaissance.jpg"),
+            new Category(null, "Bâtiments civils", "🏢", "https://media.istockphoto.com/id/1140466131/photo/shenzhen-downtown-area-during-sunset.jpg?s=612x612&w=0&k=20&c=t5AlLy589h5yGMQtOQ8dIrkWD67yYWyauDqkqyo6VPY="));
     categoryRepository.saveAll(categories);
 }
 

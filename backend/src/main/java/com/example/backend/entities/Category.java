@@ -19,6 +19,7 @@ public class Category {
     @Column(name = "nom_categorie")
     private String name;
     private String icon;
+    private String image;
 
 
 }

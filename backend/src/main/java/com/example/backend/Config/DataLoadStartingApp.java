@@ -50,12 +50,12 @@ public class DataLoadStartingApp {
 if(categoryRepository.count() == 0){
     List<Category> categories= List.of(
 
-            new Category(null, "Musées","🏛"),
-            new Category(null, "Ponts","🌉"),
-            new Category(null, "Lieux de culte","⛪"),
-            new Category(null, "Gratte-ciels","🏙"),
-            new Category(null, "Châteaux & Palais","🏰"),
-            new Category(null, "Bâtiments civils", "🏢"));
+            new Category(null, "Musées","🏛", "https://www.ecomusee-montmorillonnais.org/wp-content/uploads/2023/11/musees.jpg"),
+            new Category(null, "Ponts","🌉", "https://cms.visitczechia.com/cms/getmedia/f5078b1a-8314-4d4e-b751-aa41692036ef/prague-troja-bridge-shutterstock_633423338-Nadezda-Murmakova.jpg?width=1000&height=666"),
+            new Category(null, "Lieux de culte","⛪", "https://cdn.generationvoyage.fr/2014/10/lieux-de-culte-sites-religieux-spectaculaires-monde-24.jpg"),
+            new Category(null, "Gratte-ciels","🏙", "https://ewnqp79wvj7.exactdn.com/wp-content/uploads/2024/07/One-World-Trade-Center-New-York-gratte-ciel.jpeg"),
+            new Category(null, "Châteaux & Palais","🏰", "https://www.barnes-proprietes-chateaux.com/wp-content/uploads/2017/01/chateau-chantilly-renaissance.jpg"),
+            new Category(null, "Bâtiments civils", "🏢", "https://media.istockphoto.com/id/1140466131/photo/shenzhen-downtown-area-during-sunset.jpg?s=612x612&w=0&k=20&c=t5AlLy589h5yGMQtOQ8dIrkWD67yYWyauDqkqyo6VPY="));
     categoryRepository.saveAll(categories);
 }
 
@@ -126,7 +126,7 @@ if(categoryRepository.count() == 0){
                 29, "1h30-2h30", "Obligatoire", "Visitable", true,
                 48.8584, 2.2945, tourEiffelHoraires());
 
-        creer_un_batiment(tokyo,  lieuxDeCulte,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg",
+        creer_un_batiment(tokyo,  lieuxDeCulte,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg?s=612x612&w=0&k=20&c=0mRZPy-eg603K8FPB7k_O73e7tqHLv4PIDjWIKcXXH4=",
                 "2-3-1 Asakusa, Taito City", "111-0032", "645", "Inconnu", "Traditionnelle japonaise",
                 "Fondé au VIIᵉ siècle, le sanctuaire d'Asakusa, également connu sous le nom de Sensō-ji, est l'un des plus anciens et des plus vénérés temples bouddhistes de Tokyo. Reconstruit à plusieurs reprises au fil des siècles, il demeure un symbole spirituel majeur de la capitale japonaise. Son imposante porte Kaminarimon et sa pagode à cinq étages attirent fidèles et visiteurs venus découvrir l'architecture traditionnelle japonaise. Entouré d'une rue commerçante animée, le sanctuaire incarne l'équilibre entre héritage religieux et vie urbaine moderne. Lieu de festivals et de cérémonies, il conserve une atmosphère solennelle tout en restant profondément ancré dans le quotidien tokyoïte.",
                 0, "45-60 min", "Non requis", "Accès libre", false,
@@ -232,7 +232,7 @@ if(categoryRepository.count() == 0){
 
         creer_un_batiment(barcelone, lieuxDeCulte,
                 "Sagrada Família",
-                "https://lelephant-larevue.fr/wp-content/uploads/2018/03/%CE%A3%CE%B1%CE%B3%CF%81%CE%B1%CC%81%CE%B4%CE%B1_%CE%A6%CE%B1%CC%81%CE%B5%CE%B0%CE%B9%CC%81%CE%BB%CE%B9%CE%B1_2941.jpg",
+                "https://lelephant-larevue.fr/wp-content/uploads/2018/03/%CE%A3%CE%B1%CE%B3%CF%81%CE%B1%CC%81%CE%B4%CE%B1_%CE%A6%CE%B1%CE%BC%CE%B9%CC%81%CE%BB%CE%B9%CE%B1_2941.jpg",
                 "Carrer de Mallorca, 401",
                 "08013",
                 "1882",

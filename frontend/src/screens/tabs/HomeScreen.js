@@ -1,36 +1,24 @@
 // prettier-ignore
 import { ScreenWrapper, SearchInput, ContentContainer, HeroBanner, PlaceCard } from "../../components/ui"
-import { Alert, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import PlacesCarouselSection from '../../components/sections/PlacesCarouselSection'
 import CategorySection from '../../components/sections/CategorySection'
-import { getBuildings } from '../../services/buildings/buildings.service'
-import { getCities } from '../../services/cities/cities.service'
-import { getCategories } from '../../services/categories/categories.service'
 import { CarouselItem } from '../../components/ui/layout/CarouselItem'
-import { useEffect, useState } from 'react'
+import useBuildings from '../../services/hooks/useBuildings'
+import useCities from '../../services/hooks/useCities'
+import useCategories from '../../services/hooks/useCategories'
+import { Loader } from '../../components/ui/Loader'
 
 export const HomeScreen = ({ navigation }) => {
-   const [popularBuildings, setPopularBuildings] = useState([])
-   const [popularCities, setPopularCities] = useState([])
-   const [categories, setCategories] = useState([])
+   const { buildings, isLoading: isBuildingsLoading } = useBuildings()
+   const { cities, isLoading: isCitiesLoading } = useCities()
+   const { categories, isLoading: isCategoriesLoading } = useCategories()
 
-   useEffect(() => {
-      loadHomeCarousels()
-   }, [])
+   const isLoadingGlobal =
+      isBuildingsLoading || isCitiesLoading || isCategoriesLoading
 
-   const loadHomeCarousels = async () => {
-      try {
-         const cities = await getCities()
-         const buildings = await getBuildings()
-         const categories = await getCategories()
-
-         setPopularCities(cities.slice(0, 6))
-         setPopularBuildings(buildings.slice(0, 6))
-         setCategories(categories)
-      } catch (error) {
-         Alert.alert('Une erreur est survenue')
-         console.log(error)
-      }
+   if (isLoadingGlobal) {
+      return <Loader />
    }
 
    return (
@@ -46,7 +34,7 @@ export const HomeScreen = ({ navigation }) => {
 
                <PlacesCarouselSection
                   title={'Villes populaires'}
-                  data={popularCities}
+                  data={cities.slice(0, 6)}
                   renderItem={({ item }) => (
                      <CarouselItem>
                         <PlaceCard
@@ -64,7 +52,7 @@ export const HomeScreen = ({ navigation }) => {
 
                <PlacesCarouselSection
                   title={'Bâtiments populaires'}
-                  data={popularBuildings}
+                  data={buildings.slice(0, 6)}
                   renderItem={({ item }) => (
                      <CarouselItem>
                         <PlaceCard

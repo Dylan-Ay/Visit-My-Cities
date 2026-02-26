@@ -1,6 +1,4 @@
-export const API_BASE_URL = 'http://localhost:8080' // Sur iOS Simulator
-// Android Emulator : http://10.0.2.2:8080
-// Téléphone réel : http://192.168.x.x:8080 (IP Locale)
+export const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL_ANDROID_EMULATOR
 
 export const API_ROUTES = {
    BUILDING: {

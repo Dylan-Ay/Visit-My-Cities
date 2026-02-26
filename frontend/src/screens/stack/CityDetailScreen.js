@@ -1,17 +1,22 @@
 import { ScreenWrapper } from '../../components/ui'
-import { buildings, cities } from '../../services/data'
 import PlacesGridSection from '../../components/sections/PlacesGridSection'
-import { getBuildingsByCity } from '../../utils/buildings'
+import useBuildingsByCity from '../../services/hooks/useBuildingsByCitiy'
+import { Loader } from '../../components/ui/Loader'
+import useCity from '../../services/hooks/useCity'
 
 export const CityDetailScreen = ({ navigation, route }) => {
    const { cityId } = route.params
-   const city = cities.find((cityItem) => cityItem.id == cityId)
-   const cityBuildings = getBuildingsByCity(buildings, cityId)
+   const { city } = useCity(cityId)
+   const { buildingsByCity, isLoading } = useBuildingsByCity(cityId)
+
+   if (isLoading) {
+      return <Loader />
+   }
 
    return (
       <ScreenWrapper useEdges={false}>
          <PlacesGridSection
-            data={cityBuildings}
+            data={buildingsByCity}
             heroTitle={city.name}
             heroImg={{ uri: city.image }}
             searchInputPlaceHolder={'Rechercher un monument/bâtiment'}

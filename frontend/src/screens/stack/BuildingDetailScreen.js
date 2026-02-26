@@ -13,12 +13,13 @@ import { Loader } from '../../components/ui/Loader'
 export const BuildingDetailScreen = ({ route }) => {
    const { buildingId } = route.params
    const { building, isLoading } = useBuilding(buildingId)
-   const fullAdress = [building.address, building.postalCode]
    const showLoader = useDelayLoader(isLoading)
 
-   if (showLoader || !building?.schedules || !building?.coords) {
+   if (showLoader || !building) {
       return <Loader />
    }
+
+   const fullAdress = [building.address, building.postalCode]
 
    return (
       <ScreenWrapper useEdges={false}>

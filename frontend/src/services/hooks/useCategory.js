@@ -8,7 +8,7 @@ export default function useCategory(id) {
 
    useEffect(() => {
       loadCategory()
-   }, [])
+   }, [id])
 
    const loadCategory = async () => {
       try {

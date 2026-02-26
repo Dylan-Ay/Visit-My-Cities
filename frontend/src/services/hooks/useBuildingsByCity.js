@@ -8,7 +8,7 @@ export default function useBuildingsByCity(id) {
 
    useEffect(() => {
       loadBuildingsByCity()
-   }, [])
+   }, [id])
 
    const loadBuildingsByCity = async () => {
       try {

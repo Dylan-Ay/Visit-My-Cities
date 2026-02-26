@@ -8,7 +8,7 @@ export default function useBuildingsByCategory(id) {
 
    useEffect(() => {
       loadBuildingsByCategory()
-   }, [])
+   }, [id])
 
    const loadBuildingsByCategory = async () => {
       try {

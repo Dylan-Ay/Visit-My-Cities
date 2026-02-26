@@ -1,15 +1,18 @@
 import { ScreenWrapper } from '../../components/ui'
 import PlacesGridSection from '../../components/sections/PlacesGridSection'
-import useBuildingsByCity from '../../services/hooks/useBuildingsByCitiy'
+import useBuildingsByCity from '../../services/hooks/useBuildingsByCity'
 import { Loader } from '../../components/ui/Loader'
 import useCity from '../../services/hooks/useCity'
+import useDelayLoader from '../../services/hooks/useDelayedLoader'
 
 export const CityDetailScreen = ({ navigation, route }) => {
    const { cityId } = route.params
    const { city } = useCity(cityId)
    const { buildingsByCity, isLoading } = useBuildingsByCity(cityId)
 
-   if (isLoading) {
+   const showLoader = useDelayLoader(isLoading)
+
+   if (showLoader) {
       return <Loader />
    }
 

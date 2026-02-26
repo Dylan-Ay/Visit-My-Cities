@@ -3,18 +3,18 @@ import { getBuildingsByCity } from '../buildings/buildings.service'
 import { Alert } from 'react-native'
 
 export default function useBuildingsByCity(id) {
-   const [buildingsByCity, setBuildings] = useState([])
-   const [isLoading, setIsLoading] = useState(true)
+   const [buildingsByCity, setBuildingsByCity] = useState([])
+   const [isLoading, setIsLoading] = useState(false)
 
    useEffect(() => {
-      loadBuildings()
+      loadBuildingsByCity()
    }, [])
 
-   const loadBuildings = async () => {
+   const loadBuildingsByCity = async () => {
       try {
          setIsLoading(true)
          const data = await getBuildingsByCity(id)
-         setBuildings(data)
+         setBuildingsByCity(data)
       } catch (error) {
          Alert.alert('Une erreur est survenue')
          console.log(error)

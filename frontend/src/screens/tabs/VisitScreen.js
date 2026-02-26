@@ -10,13 +10,23 @@ import {
 import { CarouselItem } from '../../components/ui/layout/CarouselItem'
 import { EmptyState } from '../../components/ui/EmptyState'
 import { useFavorite } from '../../store/favoritesStore'
-import { buildings, cities } from '../../services/data'
 import { getPlacesByIds } from '../../utils/utils'
+import useBuildings from '../../services/hooks/useBuildings'
+import useCities from '../../services/hooks/useCities'
+import useDelayLoader from '../../services/hooks/useDelayedLoader'
+import { Loader } from '../../components/ui/Loader'
 
 export const VisitScreen = ({ navigation }) => {
-   // prettier-ignore
-   const buildingsFavIds = useFavorite((state) => state.favoriteBuildings) ?? []
-   const citiesFavIds = useFavorite((state) => state.favoriteCities) ?? []
+   const buildingsFavIds = useFavorite((state) => state.favoriteBuildings)
+   const citiesFavIds = useFavorite((state) => state.favoriteCities)
+   const { buildings, isLoadingBuild } = useBuildings()
+   const { cities, isLoadingCity } = useCities()
+   const loaderGlobal = isLoadingBuild || isLoadingCity
+   const showLoader = useDelayLoader(loaderGlobal)
+
+   if (showLoader || !cities || !buildings) {
+      return <Loader />
+   }
 
    const citiesFav = getPlacesByIds(citiesFavIds, cities)
    const buildingsFav = getPlacesByIds(buildingsFavIds, buildings)

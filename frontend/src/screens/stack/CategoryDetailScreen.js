@@ -1,19 +1,26 @@
 import PlacesGridSection from '../../components/sections/PlacesGridSection'
 import { ScreenWrapper } from '../../components/ui'
-import { buildings, categories } from '../../services/data'
-import { getBuildingsByCategory } from '../../utils/buildings'
+import useBuildingsByCategory from '../../services/hooks/useBuildingsByCategory'
+import useCategory from '../../services/hooks/useCategory'
+import useDelayLoader from '../../services/hooks/useDelayedLoader'
+import { Loader } from '../../components/ui/Loader'
 
 export const CategoryDetailScreen = ({ navigation, route }) => {
    const { categoryId } = route.params
-   const category = categories.find((c) => c.id == categoryId)
-   const buildingsByCat = getBuildingsByCategory(buildings, categoryId)
+   const { category } = useCategory(categoryId)
+   const { buildingsByCategory, isLoading } = useBuildingsByCategory(categoryId)
+   const showLoader = useDelayLoader(isLoading)
+
+   if (showLoader || !category) {
+      return <Loader />
+   }
 
    return (
       <ScreenWrapper useEdges={false}>
          <PlacesGridSection
-            data={buildingsByCat}
+            data={buildingsByCategory}
             heroTitle={`Les ${category.name}`}
-            heroImg={{ uri: category.img }}
+            heroImg={{ uri: category.image }}
             searchInputPlaceHolder={'Rechercher un bâtiment'}
             sectionTitle={''}
             titleContainerStyle={{ paddingBottom: 0, paddingTop: 12 }}

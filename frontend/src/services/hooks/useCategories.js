@@ -3,8 +3,8 @@ import { getCategories } from '../categories/categories.service'
 import { Alert } from 'react-native'
 
 export default function useCategories() {
-   const [categories, setCategories] = useState([])
-   const [isLoading, setLoading] = useState(true)
+   const [categories, setCategories] = useState(null)
+   const [isLoadingCat, setLoadingCat] = useState(false)
 
    useEffect(() => {
       loadCategories()
@@ -12,16 +12,16 @@ export default function useCategories() {
 
    const loadCategories = async () => {
       try {
-         setLoading(true)
+         setLoadingCat(true)
          const data = await getCategories()
          setCategories(data)
       } catch (error) {
          Alert.alert('Une erreur est survenue')
          console.log(error)
       } finally {
-         setLoading(false)
+         setLoadingCat(false)
       }
    }
 
-   return { categories, isLoading }
+   return { categories, isLoadingCat }
 }

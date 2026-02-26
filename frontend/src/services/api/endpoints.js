@@ -15,6 +15,7 @@ export const API_ROUTES = {
    },
    CATEGORY: {
       FINDALL: '/category/categories',
+      FIND_BY_ID: (id) => `/category/${id}`,
       FIND_BUILDINGS_BY_CATEGORY: (id) =>
          `/building/buildingsdto/category/${id}`,
    },

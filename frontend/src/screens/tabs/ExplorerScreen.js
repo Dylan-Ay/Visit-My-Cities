@@ -2,11 +2,13 @@ import { ScreenWrapper } from '../../components/ui'
 import PlacesGridSection from '../../components/sections/PlacesGridSection'
 import useCities from '../../services/hooks/useCities'
 import { Loader } from '../../components/ui/Loader'
+import useDelayLoader from '../../services/hooks/useDelayedLoader'
 
 export const ExplorerScreen = ({ navigation }) => {
-   const { cities, isLoading } = useCities()
+   const { cities, isLoadingCity } = useCities()
+   const showLoader = useDelayLoader(isLoadingCity)
 
-   if (isLoading) {
+   if (showLoader || !cities) {
       return <Loader />
    }
 

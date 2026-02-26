@@ -38,3 +38,9 @@ export const getPlacesByIds = (idsArray, placesList) => {
 
    return result
 }
+
+// Version optimisé de getPlacesByIds si un jour l'appli avait énormément de données :
+// export const getPlacesByIds = (idsArray = [], placesList = []) => {
+//   const idsSet = new Set(idsArray)
+//   return placesList.filter((place) => idsSet.has(place.id))
+// }

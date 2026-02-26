@@ -8,16 +8,17 @@ import useBuildings from '../../services/hooks/useBuildings'
 import useCities from '../../services/hooks/useCities'
 import useCategories from '../../services/hooks/useCategories'
 import { Loader } from '../../components/ui/Loader'
+import useDelayLoader from '../../services/hooks/useDelayedLoader'
 
 export const HomeScreen = ({ navigation }) => {
-   const { buildings, isLoading: isBuildingsLoading } = useBuildings()
-   const { cities, isLoading: isCitiesLoading } = useCities()
-   const { categories, isLoading: isCategoriesLoading } = useCategories()
+   const { buildings, isLoadingBuild } = useBuildings()
+   const { cities, isLoadingCity } = useCities()
+   const { categories, isLoadingCat } = useCategories()
 
-   const isLoadingGlobal =
-      isBuildingsLoading || isCitiesLoading || isCategoriesLoading
+   const isLoadingGlobal = isLoadingBuild || isLoadingCity || isLoadingCat
+   const showGlobalLoader = useDelayLoader(isLoadingGlobal)
 
-   if (isLoadingGlobal) {
+   if (showGlobalLoader || !buildings || !cities || !categories) {
       return <Loader />
    }
 

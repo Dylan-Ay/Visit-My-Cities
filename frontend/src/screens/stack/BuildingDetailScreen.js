@@ -1,17 +1,24 @@
 // prettier-ignore
 import { ContentContainer, HeroBanner, ScreenWrapper, SectionDivider } from '../../components/ui'
 import { ScrollView } from 'react-native'
-import { buildings } from '../../services/data'
 import KeyInfosSection from '../../components/sections/KeyInfosSection/KeyInfosSection'
 import DescriptionSection from '../../components/sections/DescriptionSection'
 import VisitInfoSection from '../../components/sections/VisitInfoSection/VisitInfoSection'
 import SchedulesSection from '../../components/sections/SchedulesSection'
 import MapSection from '../../components/sections/MapSection'
+import useBuilding from '../../services/hooks/useBuilding'
+import useDelayLoader from '../../services/hooks/useDelayedLoader'
+import { Loader } from '../../components/ui/Loader'
 
 export const BuildingDetailScreen = ({ route }) => {
    const { buildingId } = route.params
-   const building = buildings.find((element) => element.id == buildingId)
+   const { building, isLoading } = useBuilding(buildingId)
    const fullAdress = [building.address, building.postalCode]
+   const showLoader = useDelayLoader(isLoading)
+
+   if (showLoader || !building?.schedules || !building?.coords) {
+      return <Loader />
+   }
 
    return (
       <ScreenWrapper useEdges={false}>

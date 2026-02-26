@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 
 export default function useBuildings() {
    const [buildings, setBuildings] = useState([])
-   const [isLoading, setLoading] = useState(true)
+   const [isLoadingBuild, setLoadingBuild] = useState(false)
 
    useEffect(() => {
       loadBuildings()
@@ -12,16 +12,16 @@ export default function useBuildings() {
 
    const loadBuildings = async () => {
       try {
-         setLoading(true)
+         setLoadingBuild(true)
          const data = await getBuildings()
          setBuildings(data)
       } catch (error) {
          Alert.alert('Une erreur est survenue')
          console.log(error)
       } finally {
-         setLoading(false)
+         setLoadingBuild(false)
       }
    }
 
-   return { buildings, isLoading }
+   return { buildings, isLoadingBuild }
 }

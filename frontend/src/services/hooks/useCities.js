@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 
 export default function useCities() {
    const [cities, setCities] = useState([])
-   const [isLoading, setLoading] = useState(true)
+   const [isLoadingCity, setLoadingCity] = useState(false)
 
    useEffect(() => {
       loadCities()
@@ -12,16 +12,16 @@ export default function useCities() {
 
    const loadCities = async () => {
       try {
-         setLoading(true)
+         setLoadingCity(true)
          const data = await getCities()
          setCities(data)
       } catch (error) {
          Alert.alert('Une erreur est survenue')
          console.log(error)
       } finally {
-         setLoading(false)
+         setLoadingCity(false)
       }
    }
 
-   return { cities, isLoading }
+   return { cities, isLoadingCity }
 }

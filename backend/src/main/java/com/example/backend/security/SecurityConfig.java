@@ -42,6 +42,7 @@ public class SecurityConfig {
                                         "/city/city/*",
                                         "/building/buildings",
                                         "/category/categories",
+                                        "/category/*",
                                         "/building/categorie/*",
                                         "/city/*",
                                         "/building/*",

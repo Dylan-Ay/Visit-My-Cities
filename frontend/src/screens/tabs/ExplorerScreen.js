@@ -1,8 +1,15 @@
 import { ScreenWrapper } from '../../components/ui'
-import { cities } from '../../services/data'
 import PlacesGridSection from '../../components/sections/PlacesGridSection'
+import useCities from '../../services/hooks/useCities'
+import { Loader } from '../../components/ui/Loader'
 
 export const ExplorerScreen = ({ navigation }) => {
+   const { cities, isLoading } = useCities()
+
+   if (isLoading) {
+      return <Loader />
+   }
+
    return (
       <ScreenWrapper useEdges={false}>
          <PlacesGridSection

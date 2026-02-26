@@ -18,7 +18,7 @@ export const HomeScreen = ({ navigation }) => {
    const isLoadingGlobal = isLoadingBuild || isLoadingCity || isLoadingCat
    const showGlobalLoader = useDelayLoader(isLoadingGlobal)
 
-   if (showGlobalLoader) {
+   if (showGlobalLoader || !buildings || !cities || !categories) {
       return <Loader />
    }
 

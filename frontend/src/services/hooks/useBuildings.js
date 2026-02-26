@@ -3,7 +3,7 @@ import { getBuildings } from '../buildings/buildings.service'
 import { Alert } from 'react-native'
 
 export default function useBuildings() {
-   const [buildings, setBuildings] = useState([])
+   const [buildings, setBuildings] = useState(null)
    const [isLoadingBuild, setLoadingBuild] = useState(false)
 
    useEffect(() => {

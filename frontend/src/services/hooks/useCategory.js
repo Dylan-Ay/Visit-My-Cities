@@ -3,7 +3,7 @@ import { getCategoryById } from '../../services/categories/categories.service'
 import { Alert } from 'react-native'
 
 export default function useCategory(id) {
-   const [category, setCategory] = useState([])
+   const [category, setCategory] = useState(null)
    const [isLoading, setIsLoading] = useState(false)
 
    useEffect(() => {

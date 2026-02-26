@@ -9,10 +9,9 @@ export const CategoryDetailScreen = ({ navigation, route }) => {
    const { categoryId } = route.params
    const { category } = useCategory(categoryId)
    const { buildingsByCategory, isLoading } = useBuildingsByCategory(categoryId)
-
    const showLoader = useDelayLoader(isLoading)
 
-   if (showLoader) {
+   if (showLoader || !category) {
       return <Loader />
    }
 

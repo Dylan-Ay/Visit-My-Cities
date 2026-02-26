@@ -5,10 +5,10 @@ import { Loader } from '../../components/ui/Loader'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
 
 export const ExplorerScreen = ({ navigation }) => {
-   const { cities, isLoading } = useCities()
-   const showLoader = useDelayLoader(isLoading)
+   const { cities, isLoadingCity } = useCities()
+   const showLoader = useDelayLoader(isLoadingCity)
 
-   if (showLoader) {
+   if (showLoader || !cities) {
       return <Loader />
    }
 

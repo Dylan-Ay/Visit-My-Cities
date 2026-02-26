@@ -9,10 +9,9 @@ export const CityDetailScreen = ({ navigation, route }) => {
    const { cityId } = route.params
    const { city } = useCity(cityId)
    const { buildingsByCity, isLoading } = useBuildingsByCity(cityId)
-
    const showLoader = useDelayLoader(isLoading)
 
-   if (showLoader) {
+   if (showLoader || !city) {
       return <Loader />
    }
 

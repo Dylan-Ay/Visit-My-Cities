@@ -3,7 +3,7 @@ import { getCities } from '../cities/cities.service'
 import { Alert } from 'react-native'
 
 export default function useCities() {
-   const [cities, setCities] = useState([])
+   const [cities, setCities] = useState(null)
    const [isLoadingCity, setLoadingCity] = useState(false)
 
    useEffect(() => {

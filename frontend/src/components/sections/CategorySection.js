@@ -3,7 +3,7 @@ import { SectionTitle, CategoryButton, PlacesCarousel } from '../ui'
 import { groupCategories } from '../../utils/utils'
 
 export default function CategorySection({ navigation, title, data }) {
-   const groupedCategories = groupCategories(data)
+   const groupedCategories = groupCategories(data ?? [])
 
    return (
       <View>

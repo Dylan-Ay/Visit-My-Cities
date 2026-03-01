@@ -15,7 +15,6 @@ export default function useDelayLoader(isLoading) {
             setShowLoader(true)
          }, 250)
       } else {
-         // Si le loading se termine
          if (appearTimer.current) {
             clearTimeout(appearTimer.current)
          }

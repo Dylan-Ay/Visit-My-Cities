@@ -1,4 +1,4 @@
-import { Image } from 'react-native'
+import { Image, TouchableOpacity } from 'react-native'
 import {
    ContentContainer,
    ScreenWrapper,
@@ -8,8 +8,26 @@ import { View } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { Text } from 'react-native'
 import AuthActionsSection from '../../components/sections/AuthActionsSection'
+import { useUserStore } from '../../store/useUserStore'
+import { getAccessToken, removeAccessToken } from '../../auth/tokenStorage'
 
 export const ProfileScreen = ({ navigation }) => {
+   // async function test() {
+   //    const test = await getAccessToken()
+
+   //    return console.log(
+   //       'token: ' + JSON.stringify(useUserStore.getState().token)
+   //    )
+   // }
+
+   const handleLogout = async () => {
+      await removeAccessToken()
+      useUserStore.getState().logout()
+
+      navigation.navigate('Accueil')
+   }
+
+   // test()
    return (
       <ScreenWrapper>
          <ContentContainer>
@@ -41,6 +59,10 @@ export const ProfileScreen = ({ navigation }) => {
                   primaryOnPress={() => navigation.navigate('LoginScreen')}
                   secondaryOnPress={() => navigation.navigate('RegisterScreen')}
                />
+
+               <TouchableOpacity onPress={handleLogout}>
+                  <Text>Se déconnecter</Text>
+               </TouchableOpacity>
             </View>
          </ContentContainer>
       </ScreenWrapper>

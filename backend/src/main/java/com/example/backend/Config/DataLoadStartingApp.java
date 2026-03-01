@@ -221,7 +221,7 @@ if(categoryRepository.count() == 0){
                 "125",
                 "Apollodore de Damas",
                 "Antique",
-                "Construit au IIᵉ siècle sous l'empereur Hadrien, le Panthéon de Rome est l'un des monuments antiques les mieux conservés au monde...",
+                "Construit au IIᵉ siècle sous l'empereur Hadrien, le Panthéon de Rome est l'un des monuments antiques les mieux conservés au monde. Dédié à l'ensemble des divinités romaines, il impressionne par son immense coupole en béton coiffée d'un oculus central laissant pénétrer la lumière naturelle. Son portique à colonnes corinthiennes témoigne du génie architectural de l'Antiquité. Transformé en église chrétienne au VIIᵉ siècle, il a ainsi échappé à la destruction. Chef-d'œuvre d'ingénierie antique, le Panthéon continue de fasciner par l'harmonie de ses proportions et sa longévité exceptionnelle.",
                 5,
                 "45-60 min",
                 "Recommandée",

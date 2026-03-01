@@ -3,7 +3,7 @@ import { API_ROUTES } from '../api/endpoints'
 import { saveAccessToken } from '../../auth/tokenStorage'
 
 export async function login(email, password) {
-   const data = client(API_ROUTES.AUTH.LOGIN, {
+   const data = await client(API_ROUTES.AUTH.LOGIN, {
       method: 'POST',
       body: JSON.stringify({ email, password }),
    })

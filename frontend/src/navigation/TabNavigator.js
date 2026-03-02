@@ -10,6 +10,7 @@ import { useUserStore } from '../store/useUserStore'
 const Tab = createBottomTabNavigator()
 
 export default function TabNavigator() {
+   const isLoggedIn = useUserStore((state) => state.isLoggedIn())
    const userRole = useUserStore((state) => state.user?.role)
 
    return (
@@ -50,7 +51,7 @@ export default function TabNavigator() {
                ),
             }}
          />
-         {userRole === 'ROLE_EXPERT' && (
+         {isLoggedIn && userRole === 'ROLE_EXPERT' && (
             <Tab.Screen
                name="Ajouter"
                component={AddScreen}

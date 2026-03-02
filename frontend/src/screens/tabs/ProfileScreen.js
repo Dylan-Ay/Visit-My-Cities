@@ -1,4 +1,4 @@
-import { Image, TouchableOpacity } from 'react-native'
+import { Image } from 'react-native'
 import {
    ContentContainer,
    ScreenWrapper,

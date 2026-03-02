@@ -35,8 +35,9 @@ public class DataLoadStartingApp {
     @PostConstruct
     public void init() throws JsonProcessingException {
         //les experts ici jerome et ghilas
-        ajouter_un_expert("Ghilas", "ghilas@expert.com", "1234", AppRole.ROLE_EXPERT);
-        ajouter_un_expert("Jerome", "jerome@expert.com", "1234", AppRole.ROLE_EXPERT);
+        ajouter_un_utilisateur("Ghilas", "ghilas@expert.com", "12345678", AppRole.ROLE_EXPERT);
+        ajouter_un_utilisateur("Jerome", "jerome@expert.com", "12345678", AppRole.ROLE_EXPERT);
+        ajouter_un_utilisateur("Théo", "theo@expert.com", "12345678", AppRole.ROLE_VISITEUR);
 
         // --- Villes et Bâtiments ---
         if (cityRepository.count() == 0) {
@@ -61,7 +62,7 @@ if(categoryRepository.count() == 0){
 
     }
 
-    private void ajouter_un_expert(String username, String email, String password, AppRole role) {
+    private void ajouter_un_utilisateur(String username, String email, String password, AppRole role) {
         if (appUserRepository.findByEmail(email).isEmpty()) {
             AppUser user = new AppUser();
             user.setUsername(username);

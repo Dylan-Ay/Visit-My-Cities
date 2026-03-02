@@ -12,7 +12,8 @@ import { useUserStore } from '../../store/useUserStore'
 import { removeAccessToken } from '../../auth/tokenStorage'
 
 export const ProfileScreen = ({ navigation }) => {
-   const userIsLoggedIn = useUserStore((state) => state.isLoggedIn())
+   const isLoggedIn = useUserStore((state) => state.isLoggedIn())
+   const user = useUserStore((state) => state.user)
 
    const handleLogout = async () => {
       await removeAccessToken()
@@ -42,19 +43,29 @@ export const ProfileScreen = ({ navigation }) => {
                      l'avance par ville, grâce à votre liste de favoris.
                   </Text>
                </View>
-               <SectionDivider style={{ width: '100%', marginBottom: 28 }} />
+               <SectionDivider style={{ width: '100%' }} />
+
+               {isLoggedIn && user.email && (
+                  <View style={styles.infoContainer}>
+                     <Text style={styles.infoTitle}>Mes informations :</Text>
+                     <Text style={styles.infoText}>Nom : {user?.username}</Text>
+                     <Text style={styles.infoText}>
+                        Adresse email : {user?.email}
+                     </Text>
+                  </View>
+               )}
 
                <AuthActionsSection
-                  isLoggedIn={userIsLoggedIn}
-                  primaryTitle={!userIsLoggedIn ? 'Connexion' : 'Déconnexion'}
+                  containerStyle={!isLoggedIn && { marginTop: 28 }}
+                  primaryTitle={!isLoggedIn ? 'Connexion' : 'Déconnexion'}
                   primaryOnPress={
-                     !userIsLoggedIn
+                     !isLoggedIn
                         ? () => navigation.navigate('LoginScreen')
                         : handleLogout
                   }
-                  secondaryTitle={!userIsLoggedIn && 'Créer un compte'}
+                  secondaryTitle={!isLoggedIn && 'Créer un compte'}
                   secondaryOnPress={
-                     !userIsLoggedIn
+                     !isLoggedIn
                         ? () => navigation.navigate('RegisterScreen')
                         : null
                   }
@@ -88,5 +99,21 @@ const styles = StyleSheet.create({
       color: '#6B7280',
       textAlign: 'center',
       fontSize: 16,
+   },
+   infoContainer: {
+      marginTop: 10,
+      marginBottom: 20,
+      alignSelf: 'stretch',
+      textAlign: 'center',
+      alignItems: 'center',
+   },
+   infoTitle: {
+      fontSize: 18,
+      paddingBottom: 6,
+      fontWeight: 500,
+      textAlign: 'center',
+   },
+   infoText: {
+      fontSize: 14,
    },
 })

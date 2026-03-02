@@ -15,11 +15,9 @@ export default function useDelayLoader(isLoading) {
             setShowLoader(true)
          }, 250)
       } else {
-         if (appearTimer.current) {
-            clearTimeout(appearTimer.current)
-         }
+         clearTimeout(appearTimer.current)
 
-         if (showLoader) {
+         if (visibleSince.current) {
             const elapsed = Date.now() - visibleSince.current
             const remaining = Math.max(600 - elapsed, 0)
 

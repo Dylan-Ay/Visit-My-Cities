@@ -9,16 +9,10 @@ import { StyleSheet } from 'react-native'
 import { Text } from 'react-native'
 import AuthActionsSection from '../../components/sections/AuthActionsSection'
 import { useUserStore } from '../../store/useUserStore'
-import { getAccessToken, removeAccessToken } from '../../auth/tokenStorage'
+import { removeAccessToken } from '../../auth/tokenStorage'
 
 export const ProfileScreen = ({ navigation }) => {
-   // async function test() {
-   //    const test = await getAccessToken()
-
-   //    return console.log(
-   //       'token: ' + JSON.stringify(useUserStore.getState().token)
-   //    )
-   // }
+   const userIsLoggedIn = useUserStore((state) => state.isLoggedIn())
 
    const handleLogout = async () => {
       await removeAccessToken()
@@ -27,7 +21,6 @@ export const ProfileScreen = ({ navigation }) => {
       navigation.navigate('Accueil')
    }
 
-   // test()
    return (
       <ScreenWrapper>
          <ContentContainer>
@@ -37,7 +30,6 @@ export const ProfileScreen = ({ navigation }) => {
                   style={styles.img}
                />
                <Text style={styles.title}>Bienvenue sur Visit My Cities</Text>
-
                <View style={styles.textContainer}>
                   <Text style={styles.text}>
                      Visit My Cities vous permet de découvrir les différents
@@ -50,19 +42,23 @@ export const ProfileScreen = ({ navigation }) => {
                      l'avance par ville, grâce à votre liste de favoris.
                   </Text>
                </View>
-
                <SectionDivider style={{ width: '100%', marginBottom: 28 }} />
 
                <AuthActionsSection
-                  primaryTitle={'Connexion'}
-                  secondaryTitle={'Créer un compte'}
-                  primaryOnPress={() => navigation.navigate('LoginScreen')}
-                  secondaryOnPress={() => navigation.navigate('RegisterScreen')}
+                  isLoggedIn={userIsLoggedIn}
+                  primaryTitle={!userIsLoggedIn ? 'Connexion' : 'Déconnexion'}
+                  primaryOnPress={
+                     !userIsLoggedIn
+                        ? () => navigation.navigate('LoginScreen')
+                        : handleLogout
+                  }
+                  secondaryTitle={!userIsLoggedIn && 'Créer un compte'}
+                  secondaryOnPress={
+                     !userIsLoggedIn
+                        ? () => navigation.navigate('RegisterScreen')
+                        : null
+                  }
                />
-
-               <TouchableOpacity onPress={handleLogout}>
-                  <Text>Se déconnecter</Text>
-               </TouchableOpacity>
             </View>
          </ContentContainer>
       </ScreenWrapper>

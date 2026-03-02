@@ -15,10 +15,11 @@ export default function AuthActionsSection({
             textStyle={styles.textInput}
             onPress={primaryOnPress}
          />
-
-         <TouchableOpacity onPress={secondaryOnPress}>
-            <Text style={styles.textInput}>{secondaryTitle}</Text>
-         </TouchableOpacity>
+         {secondaryTitle && secondaryOnPress && (
+            <TouchableOpacity onPress={secondaryOnPress}>
+               <Text style={styles.textInput}>{secondaryTitle}</Text>
+            </TouchableOpacity>
+         )}
       </View>
    )
 }

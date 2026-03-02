@@ -8,7 +8,7 @@ export const useUserStore = create(
          user: {
             username: null,
             email: null,
-            role: null,
+            role: 'ROLE_VISITEUR',
          },
          token: null,
 

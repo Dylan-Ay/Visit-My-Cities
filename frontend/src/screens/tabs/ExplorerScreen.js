@@ -8,7 +8,7 @@ export const ExplorerScreen = ({ navigation }) => {
    const { cities, isLoadingCity } = useCities()
    const showLoader = useDelayLoader(isLoadingCity)
 
-   if (showLoader || !cities) {
+   if (showLoader) {
       return <Loader />
    }
 

@@ -35,8 +35,9 @@ public class DataLoadStartingApp {
     @PostConstruct
     public void init() throws JsonProcessingException {
         //les experts ici jerome et ghilas
-        ajouter_un_expert("Ghilas", "ghilas@expert.com", "1234", AppRole.ROLE_EXPERT);
-        ajouter_un_expert("Jerome", "jerome@expert.com", "1234", AppRole.ROLE_EXPERT);
+        ajouter_un_utilisateur("Ghilas", "ghilas@expert.com", "12345678", AppRole.ROLE_EXPERT);
+        ajouter_un_utilisateur("Jerome", "jerome@expert.com", "12345678", AppRole.ROLE_EXPERT);
+        ajouter_un_utilisateur("Théo", "theo@expert.com", "12345678", AppRole.ROLE_VISITEUR);
 
         // --- Villes et Bâtiments ---
         if (cityRepository.count() == 0) {
@@ -61,7 +62,7 @@ if(categoryRepository.count() == 0){
 
     }
 
-    private void ajouter_un_expert(String username, String email, String password, AppRole role) {
+    private void ajouter_un_utilisateur(String username, String email, String password, AppRole role) {
         if (appUserRepository.findByEmail(email).isEmpty()) {
             AppUser user = new AppUser();
             user.setUsername(username);
@@ -221,7 +222,7 @@ if(categoryRepository.count() == 0){
                 "125",
                 "Apollodore de Damas",
                 "Antique",
-                "Construit au IIᵉ siècle sous l'empereur Hadrien, le Panthéon de Rome est l'un des monuments antiques les mieux conservés au monde...",
+                "Construit au IIᵉ siècle sous l'empereur Hadrien, le Panthéon de Rome est l'un des monuments antiques les mieux conservés au monde. Dédié à l'ensemble des divinités romaines, il impressionne par son immense coupole en béton coiffée d'un oculus central laissant pénétrer la lumière naturelle. Son portique à colonnes corinthiennes témoigne du génie architectural de l'Antiquité. Transformé en église chrétienne au VIIᵉ siècle, il a ainsi échappé à la destruction. Chef-d'œuvre d'ingénierie antique, le Panthéon continue de fasciner par l'harmonie de ses proportions et sa longévité exceptionnelle.",
                 5,
                 "45-60 min",
                 "Recommandée",

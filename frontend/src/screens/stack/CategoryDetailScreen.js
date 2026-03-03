@@ -11,7 +11,7 @@ export const CategoryDetailScreen = ({ navigation, route }) => {
    const { buildingsByCategory, isLoading } = useBuildingsByCategory(categoryId)
    const showLoader = useDelayLoader(isLoading)
 
-   if (showLoader || !category) {
+   if (showLoader) {
       return <Loader />
    }
 
@@ -19,8 +19,8 @@ export const CategoryDetailScreen = ({ navigation, route }) => {
       <ScreenWrapper useEdges={false}>
          <PlacesGridSection
             data={buildingsByCategory}
-            heroTitle={`Les ${category.name}`}
-            heroImg={{ uri: category.image }}
+            heroTitle={`Les ${category?.name}`}
+            heroImg={{ uri: category?.image }}
             searchInputPlaceHolder={'Rechercher un bâtiment'}
             sectionTitle={''}
             titleContainerStyle={{ paddingBottom: 0, paddingTop: 12 }}

@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
    StyleSheet,
    Text,
@@ -11,30 +11,24 @@ import {
 export const FormInput = ({
    label,
    placeholder,
-   keyboardType,
+   keyboardType = 'default',
    secureTextEntry = false,
-   icon,
    returnKeyType,
+   value,
+   onChangeText,
 }) => {
-   const [isIcon, setIcon] = useState('')
-   const [value, setValue] = useState('')
-
-   const handleChangeText = (text) => {
-      setValue(text)
-
-      if (isIcon == '') {
-         setIcon(icon)
-      }
-
-      if (text == '') {
-         setIcon('')
-      }
-   }
+   const [isIcon, setIsIcon] = useState(true)
 
    const handleIconPress = () => {
-      setValue('')
-      setIcon('')
+      setIsIcon(false)
+      onChangeText('')
    }
+
+   useEffect(() => {
+      if (value == '' && !isIcon) {
+         setIsIcon(true)
+      }
+   }, [isIcon])
 
    return (
       <View style={styles.container}>
@@ -45,17 +39,17 @@ export const FormInput = ({
                placeholder={placeholder}
                keyboardType={keyboardType}
                secureTextEntry={secureTextEntry}
-               onChangeText={handleChangeText}
+               onChangeText={onChangeText}
                value={value}
                returnKeyType={returnKeyType}
                placeholderTextColor={'#a4a8b1c2'}
             />
-            {value != '' && (
+            {value != '' && isIcon && (
                <TouchableOpacity
                   style={styles.iconContainer}
                   onPress={handleIconPress}
                >
-                  <Ionicons style={styles.icon} name={isIcon} />
+                  <Ionicons style={styles.icon} name={'close-outline'} />
                </TouchableOpacity>
             )}
          </View>

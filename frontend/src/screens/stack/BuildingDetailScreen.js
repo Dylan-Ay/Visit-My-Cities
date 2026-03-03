@@ -15,40 +15,45 @@ export const BuildingDetailScreen = ({ route }) => {
    const { building, isLoading } = useBuilding(buildingId)
    const showLoader = useDelayLoader(isLoading)
 
-   if (showLoader || !building) {
+   if (showLoader) {
       return <Loader />
    }
-
-   const fullAdress = [building.address, building.postalCode]
 
    return (
       <ScreenWrapper useEdges={false}>
          <ScrollView>
-            <HeroBanner title={building.name} image={{ uri: building.image }} />
+            {!showLoader && building && (
+               <>
+                  <HeroBanner
+                     title={building.name}
+                     image={{ uri: building.image }}
+                  />
 
-            <ContentContainer style={{ paddingBottom: 20 }}>
-               <KeyInfosSection building={building} />
-               <SectionDivider />
+                  <ContentContainer style={{ paddingBottom: 20 }}>
+                     <KeyInfosSection building={building} />
+                     <SectionDivider />
 
-               <DescriptionSection
-                  text={building.description}
-                  linesNumber={4}
-               />
-               <SectionDivider />
+                     <DescriptionSection
+                        text={building.description}
+                        linesNumber={4}
+                     />
+                     <SectionDivider />
 
-               <VisitInfoSection building={building} />
-               <SectionDivider />
+                     <VisitInfoSection building={building} />
+                     <SectionDivider />
 
-               <SchedulesSection buildingSchedules={building.schedules} />
-               <SectionDivider />
+                     <SchedulesSection buildingSchedules={building.schedules} />
+                     <SectionDivider />
 
-               <MapSection
-                  name={building.name}
-                  address={fullAdress}
-                  region={building.coords}
-               />
-               <SectionDivider />
-            </ContentContainer>
+                     <MapSection
+                        name={building.name}
+                        address={[building.address, building.postalCode]}
+                        region={building.coords}
+                     />
+                     <SectionDivider />
+                  </ContentContainer>
+               </>
+            )}
          </ScrollView>
       </ScreenWrapper>
    )

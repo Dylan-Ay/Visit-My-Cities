@@ -8,8 +8,20 @@ import { View } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { Text } from 'react-native'
 import AuthActionsSection from '../../components/sections/AuthActionsSection'
+import { useUserStore } from '../../store/useUserStore'
+import { removeAccessToken } from '../../auth/tokenStorage'
 
 export const ProfileScreen = ({ navigation }) => {
+   const isLoggedIn = useUserStore((state) => state.isLoggedIn())
+   const user = useUserStore((state) => state.user)
+
+   const handleLogout = async () => {
+      await removeAccessToken()
+      useUserStore.getState().logout()
+
+      navigation.navigate('Accueil')
+   }
+
    return (
       <ScreenWrapper>
          <ContentContainer>
@@ -19,7 +31,6 @@ export const ProfileScreen = ({ navigation }) => {
                   style={styles.img}
                />
                <Text style={styles.title}>Bienvenue sur Visit My Cities</Text>
-
                <View style={styles.textContainer}>
                   <Text style={styles.text}>
                      Visit My Cities vous permet de découvrir les différents
@@ -32,14 +43,32 @@ export const ProfileScreen = ({ navigation }) => {
                      l'avance par ville, grâce à votre liste de favoris.
                   </Text>
                </View>
+               <SectionDivider style={{ width: '100%' }} />
 
-               <SectionDivider style={{ width: '100%', marginBottom: 28 }} />
+               {isLoggedIn && user.email && (
+                  <View style={styles.infoContainer}>
+                     <Text style={styles.infoTitle}>Mes informations :</Text>
+                     <Text style={styles.infoText}>Nom : {user?.username}</Text>
+                     <Text style={styles.infoText}>
+                        Adresse email : {user?.email}
+                     </Text>
+                  </View>
+               )}
 
                <AuthActionsSection
-                  primaryTitle={'Connexion'}
-                  secondaryTitle={'Créer un compte'}
-                  primaryOnPress={() => navigation.navigate('LoginScreen')}
-                  secondaryOnPress={() => navigation.navigate('RegisterScreen')}
+                  containerStyle={!isLoggedIn && { marginTop: 28 }}
+                  primaryTitle={!isLoggedIn ? 'Connexion' : 'Déconnexion'}
+                  primaryOnPress={
+                     !isLoggedIn
+                        ? () => navigation.navigate('LoginScreen')
+                        : handleLogout
+                  }
+                  secondaryTitle={!isLoggedIn && 'Créer un compte'}
+                  secondaryOnPress={
+                     !isLoggedIn
+                        ? () => navigation.navigate('RegisterScreen')
+                        : null
+                  }
                />
             </View>
          </ContentContainer>
@@ -70,5 +99,21 @@ const styles = StyleSheet.create({
       color: '#6B7280',
       textAlign: 'center',
       fontSize: 16,
+   },
+   infoContainer: {
+      marginTop: 10,
+      marginBottom: 20,
+      alignSelf: 'stretch',
+      textAlign: 'center',
+      alignItems: 'center',
+   },
+   infoTitle: {
+      fontSize: 18,
+      paddingBottom: 6,
+      fontWeight: 500,
+      textAlign: 'center',
+   },
+   infoText: {
+      fontSize: 14,
    },
 })

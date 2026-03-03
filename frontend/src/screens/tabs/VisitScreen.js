@@ -24,12 +24,12 @@ export const VisitScreen = ({ navigation }) => {
    const loaderGlobal = isLoadingBuild || isLoadingCity
    const showLoader = useDelayLoader(loaderGlobal)
 
-   if (showLoader || !cities || !buildings) {
+   if (showLoader) {
       return <Loader />
    }
 
-   const citiesFav = getPlacesByIds(citiesFavIds, cities)
-   const buildingsFav = getPlacesByIds(buildingsFavIds, buildings)
+   const citiesFav = getPlacesByIds(citiesFavIds, cities ?? [])
+   const buildingsFav = getPlacesByIds(buildingsFavIds, buildings ?? [])
 
    return (
       <ScreenWrapper>

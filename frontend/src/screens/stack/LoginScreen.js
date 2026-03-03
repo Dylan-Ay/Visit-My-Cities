@@ -1,11 +1,45 @@
-import { ScrollView, StyleSheet } from 'react-native'
+import { Alert, ScrollView, StyleSheet } from 'react-native'
 import { ContentContainer, FormInput, ScreenWrapper } from '../../components/ui'
 import { View } from 'react-native'
 import AuthActionsSection from '../../components/sections/AuthActionsSection'
 import { HeaderSection } from '../../components/sections/HeaderSection'
 import { StackActions } from '@react-navigation/native'
+import { useUserStore } from '../../store/useUserStore'
+import { useState } from 'react'
+import { login } from '../../services/auth/auth.service'
+import { validators } from '../../utils/validation'
 
 export const LoginScreen = ({ navigation }) => {
+   const [email, setEmail] = useState('')
+   const [password, setPassword] = useState('')
+
+   const handleLogin = async () => {
+      if (!validators.required(email) || !validators.required(password)) {
+         Alert.alert("L'adresse email et le mot de passe sont requis.")
+         return
+      }
+
+      if (!validators.email(email)) {
+         Alert.alert("L'adresse email est invalide.")
+         return
+      }
+
+      if (!validators.minLength(password, 8)) {
+         Alert.alert('Le mot de passe doit contenir au minimum 8 caractères.')
+         return
+      }
+
+      try {
+         const { user, access_token: token } = await login(email, password)
+         useUserStore.getState().setUser({ user, token })
+
+         navigation.navigate('Tabs', { screen: 'Profil' })
+      } catch (error) {
+         Alert.alert('Une erreur est survenue')
+         console.log(error)
+      }
+   }
+
    return (
       <ScreenWrapper>
          <ScrollView
@@ -20,25 +54,25 @@ export const LoginScreen = ({ navigation }) => {
 
                <View style={styles.inputsContainer}>
                   <FormInput
+                     value={email}
+                     onChangeText={setEmail}
                      label={'Adresse email'}
                      keyboardType={'email-address'}
-                     icon={'close-outline'}
                      returnKeyType={'next'}
                   />
                   <FormInput
+                     value={password}
+                     onChangeText={setPassword}
                      label={'Mot de passe'}
                      keyboardType={'default'}
                      secureTextEntry={true}
-                     icon={'close-outline'}
                      returnKeyType={'send'}
                   />
                </View>
 
                <AuthActionsSection
                   primaryTitle={'Se Connecter'}
-                  primaryOnPress={() =>
-                     navigation.navigate('Tabs', { screen: 'Profil' })
-                  }
+                  primaryOnPress={handleLogin}
                   secondaryTitle={'Créer un compte'}
                   secondaryOnPress={() =>
                      navigation.dispatch(StackActions.replace('RegisterScreen'))

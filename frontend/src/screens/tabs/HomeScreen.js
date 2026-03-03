@@ -18,7 +18,7 @@ export const HomeScreen = ({ navigation }) => {
    const isLoadingGlobal = isLoadingBuild || isLoadingCity || isLoadingCat
    const showGlobalLoader = useDelayLoader(isLoadingGlobal)
 
-   if (showGlobalLoader || !buildings || !cities || !categories) {
+   if (showGlobalLoader) {
       return <Loader />
    }
 
@@ -35,7 +35,7 @@ export const HomeScreen = ({ navigation }) => {
 
                <PlacesCarouselSection
                   title={'Villes populaires'}
-                  data={cities.slice(0, 6)}
+                  data={cities?.slice(0, 6)}
                   renderItem={({ item }) => (
                      <CarouselItem>
                         <PlaceCard
@@ -53,7 +53,7 @@ export const HomeScreen = ({ navigation }) => {
 
                <PlacesCarouselSection
                   title={'Bâtiments populaires'}
-                  data={buildings.slice(0, 6)}
+                  data={buildings?.slice(0, 6)}
                   renderItem={({ item }) => (
                      <CarouselItem>
                         <PlaceCard

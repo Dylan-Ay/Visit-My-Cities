@@ -6,19 +6,24 @@ export default function AuthActionsSection({
    primaryOnPress,
    secondaryTitle,
    secondaryOnPress,
+   containerStyle,
 }) {
    return (
-      <View style={styles.inputsContainer}>
+      <View style={[styles.inputsContainer, containerStyle]}>
          <ActionButton
             title={primaryTitle}
-            containerStyle={styles.loginInput}
-            textStyle={styles.textInput}
+            containerStyle={styles.primaryContainer}
+            textStyle={styles.primaryText}
             onPress={primaryOnPress}
          />
-
-         <TouchableOpacity onPress={secondaryOnPress}>
-            <Text style={styles.textInput}>{secondaryTitle}</Text>
-         </TouchableOpacity>
+         {secondaryTitle && secondaryOnPress && (
+            <TouchableOpacity
+               style={styles.secondaryBtn}
+               onPress={secondaryOnPress}
+            >
+               <Text style={styles.secondaryText}>{secondaryTitle}</Text>
+            </TouchableOpacity>
+         )}
       </View>
    )
 }
@@ -27,15 +32,20 @@ const styles = StyleSheet.create({
    inputsContainer: {
       width: '100%',
       alignItems: 'center',
-      gap: 40,
+      gap: 14,
    },
-   loginInput: {
+   primaryContainer: {
       backgroundColor: '#3853d9',
       width: '100%',
       padding: 14,
    },
-   textInput: {
+   primaryText: {
       fontSize: 16,
       fontWeight: 500,
+   },
+   secondaryText: {
+      fontSize: 16,
+      fontWeight: 500,
+      padding: 20,
    },
 })

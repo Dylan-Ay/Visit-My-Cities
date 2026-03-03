@@ -1,6 +1,10 @@
-export const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL_ANDROID_EMULATOR
+export const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL_TELEPHONE
 
 export const API_ROUTES = {
+   AUTH: {
+      REGISTER: '/auth/register',
+      LOGIN: '/auth/login',
+   },
    BUILDING: {
       FINDALL: '/building/buildingsdto',
       FIND_BY_ID: (id) => `/building/buildingdto/${id}`,

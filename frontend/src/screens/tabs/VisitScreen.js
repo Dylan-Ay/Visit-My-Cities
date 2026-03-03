@@ -15,6 +15,7 @@ import useBuildings from '../../services/hooks/useBuildings'
 import useCities from '../../services/hooks/useCities'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
 import { Loader } from '../../components/ui/Loader'
+import { HeaderSection } from '../../components/sections/HeaderSection'
 
 export const VisitScreen = ({ navigation }) => {
    const buildingsFavIds = useFavorite((state) => state.favoriteBuildings)
@@ -35,11 +36,12 @@ export const VisitScreen = ({ navigation }) => {
       <ScreenWrapper>
          <ScrollView showsVerticalScrollIndicator={false}>
             <ContentContainer>
-               <SectionTitle
-                  style={{ fontSize: 30, paddingTop: 45, paddingBottom: 14 }}
-               >
-                  Vos favoris
-               </SectionTitle>
+               <HeaderSection
+                  title={'Vos favoris'}
+                  subTitle={
+                     'Toutes vos villes et bâtiments préférés, réunis au même endroit.'
+                  }
+               />
 
                <PlacesCarouselSection
                   title={`Mes villes favorites ${citiesFav.length > 0 ? `(${citiesFav.length})` : ''}`}

@@ -2,12 +2,13 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Accordion } from '../ui'
 import { firstChartToUpperCase } from '../../utils/utils'
 import { Linking } from 'react-native'
+import { orderDaysProperly } from '../../utils/buildings'
 
 export default function SchedulesSection({ buildingSchedules }) {
-   const schedulesDays = buildingSchedules.days
    const schedulesType = buildingSchedules.type
    const schedulesNote = buildingSchedules.note
    const schedulesUrl = buildingSchedules.officialHoursUrl
+   const schedulesDays = orderDaysProperly(buildingSchedules.days)
 
    return (
       <View>

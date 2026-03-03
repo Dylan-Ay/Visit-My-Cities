@@ -93,3 +93,23 @@ export const getBuildingsByCategory = (buildings, categoryId) => {
 
    return result
 }
+
+export const orderDaysProperly = (schedulesDays) => {
+   const orderedDays = {
+      lundi: 0,
+      mardi: 1,
+      mercredi: 2,
+      jeudi: 3,
+      vendredi: 4,
+      samedi: 5,
+      dimanche: 6,
+   }
+
+   const sortedDays = Object.fromEntries(
+      Object.entries(schedulesDays).sort(
+         (a, b) => orderedDays[a[0]] - orderedDays[b[0]]
+      )
+   )
+
+   return sortedDays
+}

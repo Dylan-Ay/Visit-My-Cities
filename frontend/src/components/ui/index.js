@@ -10,6 +10,7 @@ export * from './inputs/CategoryButton'
 export * from './inputs/HeaderIconButton'
 export * from './inputs/ActionButton'
 export * from './inputs/FormInput'
+export * from './inputs/DropDown'
 
 export * from './cards/PlaceCard'
 export * from './cards/KeyInfoItem'

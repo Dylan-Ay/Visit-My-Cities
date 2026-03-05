@@ -16,6 +16,11 @@ export const FormInput = ({
    returnKeyType,
    value,
    onChangeText,
+   onPress,
+   numberOfLines,
+   multiline,
+   style,
+   containerStyle,
 }) => {
    const [isIcon, setIsIcon] = useState(true)
 
@@ -31,9 +36,9 @@ export const FormInput = ({
    }, [isIcon])
 
    return (
-      <View style={styles.container}>
+      <View style={[styles.container, containerStyle]}>
          <Text style={styles.label}>{label}</Text>
-         <View style={styles.inputContainer}>
+         <View style={[styles.inputContainer, style]}>
             <TextInput
                style={styles.input}
                placeholder={placeholder}
@@ -43,11 +48,13 @@ export const FormInput = ({
                value={value}
                returnKeyType={returnKeyType}
                placeholderTextColor={'#a4a8b1c2'}
+               multiline={multiline}
+               numberOfLines={numberOfLines}
             />
             {value != '' && isIcon && (
                <TouchableOpacity
                   style={styles.iconContainer}
-                  onPress={handleIconPress}
+                  onPress={onPress ? onPress : handleIconPress}
                >
                   <Ionicons style={styles.icon} name={'close-outline'} />
                </TouchableOpacity>

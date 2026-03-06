@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import {
    ScreenWrapper,
    ContentContainer,
@@ -14,10 +14,11 @@ import useCities from '../../services/hooks/useCities'
 import useCategories from '../../services/hooks/useCategories'
 import { Loader } from '../../components/ui/Loader'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller, useFieldArray } from 'react-hook-form'
 import { ACCESS_STATUS_DATA } from '../../constants/accessStatusData'
 import { BOOKING_DATA } from '../../constants/bookingData'
 import { ACCESSIBILITY_DATA } from '../../constants/accessibilityData'
+import { SCHEDULES_TYPE_DATA } from '../../constants/schedulesTypeData'
 
 export const AddScreen = ({ navigation }) => {
    const { cities, isLoadingCity } = useCities()
@@ -63,6 +64,20 @@ export const AddScreen = ({ navigation }) => {
          accessible_prm: '',
          latitude: '',
          longitude: '',
+         schedules: {
+            type: '',
+            note: '',
+            officialHoursUrl: '',
+            days: {
+               lundi: [],
+               mardi: [],
+               mercredi: [],
+               jeudi: [],
+               vendredi: [],
+               samedi: [],
+               dimanche: [],
+            },
+         },
       },
    })
 
@@ -345,34 +360,57 @@ export const AddScreen = ({ navigation }) => {
                      Horaires
                   </SectionTitle>
 
-                  <FormInput
-                     value={''}
-                     onChangeText={''}
-                     label={'Jours'}
-                     returnKeyType={'next'}
+                  <Controller
+                     control={control}
+                     name="schedules.type"
+                     render={({ field: { value, onChange } }) => (
+                        <DropDown
+                           data={SCHEDULES_TYPE_DATA}
+                           value={value}
+                           onChange={onChange}
+                           label={"Type d'horaire"}
+                           placeholder={"Sélectionner un type d'horaire"}
+                           search={false}
+                        />
+                     )}
                   />
 
-                  <FormInput
-                     value={''}
-                     onChangeText={''}
-                     label={'Heures'}
-                     returnKeyType={'next'}
+                  <Controller
+                     control={control}
+                     name="schedules.note"
+                     render={({ field: { value, onChange } }) => (
+                        <FormInput
+                           value={value}
+                           onChangeText={onChange}
+                           label={"Note d'information"}
+                           returnKeyType={'next'}
+                        />
+                     )}
                   />
 
-                  <FormInput
-                     value={''}
-                     onChangeText={''}
-                     label={"Note d'information"}
-                     returnKeyType={'next'}
+                  <Controller
+                     control={control}
+                     name="schedules.officialHoursUrl"
+                     render={({ field: { value, onChange } }) => (
+                        <FormInput
+                           value={value}
+                           onChangeText={onChange}
+                           label={'URL des horaires officiels'}
+                           returnKeyType={'next'}
+                        />
+                     )}
                   />
 
-                  <FormInput
-                     value={''}
-                     onChangeText={''}
-                     label={'Lien des horaires officiels'}
-                     keyboardType="url"
-                     returnKeyType={'next'}
-                  />
+                  {/* {fields.map((item, index) => (
+                     <Controller
+                        key={item.id}
+                        control={control}
+                        name={`schedules.days.${day}.${index}.end`}
+                        render={({ field: { onChange, value } }) => (
+                           <TextInput value={value} onChangeText={onChange} />
+                        )}
+                     />
+                  ))} */}
 
                   <SectionDivider style={{ marginTop: 10 }} />
                   <SectionTitle

@@ -1,20 +1,26 @@
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 import { SectionTitle } from '../typography/SectionTitle'
 import { Controller } from 'react-hook-form'
 import { FormInput } from '../inputs/FormInput'
-import { DropDown } from '../inputs/DropDown'
+import { CustomDropDown } from '../inputs/CustomDropDown'
 import { SectionDivider } from '../layout/SectionDivider'
 import { StyleSheet } from 'react-native'
 import { ACCESS_STATUS_DATA } from '../../../constants/accessStatusData'
 import { BOOKING_DATA } from '../../../constants/bookingData'
 import { ACCESSIBILITY_DATA } from '../../../constants/accessibilityData'
 import { SCHEDULES_TYPE_DATA } from '../../../constants/schedulesTypeData'
+import { generateTimeSlots } from '../../../utils/utils'
+import { TwoColumns } from '../layout/TwoColumns'
+import { Checkbox } from 'expo-checkbox'
 
 export const AddBuildingForm = ({
    control,
    cityDropDown,
    categoryDropDown,
+   watch,
 }) => {
+   const sameForAllDays = watch('schedules.sameForAllDays')
+
    return (
       <View style={styles.inputsContainer}>
          <SectionTitle
@@ -71,7 +77,7 @@ export const AddBuildingForm = ({
             control={control}
             name="city_id"
             render={({ field: { value, onChange } }) => (
-               <DropDown
+               <CustomDropDown
                   data={cityDropDown}
                   value={value}
                   onChange={onChange}
@@ -85,7 +91,7 @@ export const AddBuildingForm = ({
             control={control}
             name="categories_id"
             render={({ field: { value, onChange } }) => (
-               <DropDown
+               <CustomDropDown
                   data={categoryDropDown}
                   value={value}
                   onChange={onChange}
@@ -185,12 +191,7 @@ export const AddBuildingForm = ({
             Infos de visite
          </SectionTitle>
 
-         <View
-            style={{
-               flexDirection: 'row',
-               justifyContent: 'space-between',
-            }}
-         >
+         <TwoColumns>
             <Controller
                control={control}
                name="ticket_price"
@@ -221,13 +222,13 @@ export const AddBuildingForm = ({
                   />
                )}
             />
-         </View>
+         </TwoColumns>
 
          <Controller
             control={control}
             name="booking"
             render={({ field: { value, onChange } }) => (
-               <DropDown
+               <CustomDropDown
                   data={BOOKING_DATA}
                   value={value}
                   onChange={onChange}
@@ -242,7 +243,7 @@ export const AddBuildingForm = ({
             control={control}
             name="access_status"
             render={({ field: { value, onChange } }) => (
-               <DropDown
+               <CustomDropDown
                   data={ACCESS_STATUS_DATA}
                   value={value}
                   onChange={onChange}
@@ -257,7 +258,7 @@ export const AddBuildingForm = ({
             control={control}
             name="accessibleprm"
             render={({ field: { value, onChange } }) => (
-               <DropDown
+               <CustomDropDown
                   data={ACCESSIBILITY_DATA}
                   value={value}
                   onChange={onChange}
@@ -276,11 +277,296 @@ export const AddBuildingForm = ({
             Horaires
          </SectionTitle>
 
+         <View style={styles.checkboxContainer}>
+            <Text style={styles.checkboxLabel}>
+               Les horaires sont les mêmes tous les jours
+            </Text>
+            <Controller
+               control={control}
+               name="schedules.sameForAllDays"
+               render={({ field: { value, onChange } }) => (
+                  <Checkbox
+                     style={styles.checkbox}
+                     value={value}
+                     onValueChange={onChange}
+                  />
+               )}
+            />
+         </View>
+         <TwoColumns>
+            <Controller
+               control={control}
+               name="schedules.globalStart"
+               render={({ field: { value, onChange } }) => (
+                  <CustomDropDown
+                     data={generateTimeSlots()}
+                     value={value}
+                     onChange={onChange}
+                     placeholder={"Heure d'ouverture"}
+                     containerStyle={{ width: '48%' }}
+                     isLabel={false}
+                     search={false}
+                  />
+               )}
+            />
+
+            <Controller
+               control={control}
+               name="schedules.globalEnd"
+               render={({ field: { value, onChange } }) => (
+                  <CustomDropDown
+                     data={generateTimeSlots()}
+                     value={value}
+                     onChange={onChange}
+                     placeholder={'Heure de fermeture'}
+                     containerStyle={{ width: '48%' }}
+                     isLabel={false}
+                     search={false}
+                  />
+               )}
+            />
+         </TwoColumns>
+
+         {!sameForAllDays && (
+            <>
+               <TwoColumns>
+                  <Controller
+                     control={control}
+                     name="schedules.days.lundi.0.start"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           label={'Lundi'}
+                           placeholder={"Heure d'ouverture"}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+
+                  <Controller
+                     control={control}
+                     name="schedules.days.lundi.0.end"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           placeholder={'Heure de fermeture'}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+               </TwoColumns>
+
+               <TwoColumns>
+                  <Controller
+                     control={control}
+                     name="schedules.days.mardi.0.start"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           label={'Mardi'}
+                           placeholder={"Heure d'ouverture"}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+
+                  <Controller
+                     control={control}
+                     name="schedules.days.mardi.0.end"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           placeholder={'Heure de fermeture'}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+               </TwoColumns>
+
+               <TwoColumns>
+                  <Controller
+                     control={control}
+                     name="schedules.days.mercredi.0.start"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           label={'Mercredi'}
+                           placeholder={"Heure d'ouverture"}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+
+                  <Controller
+                     control={control}
+                     name="schedules.days.mercredi.0.end"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           placeholder={'Heure de fermeture'}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+               </TwoColumns>
+
+               <TwoColumns>
+                  <Controller
+                     control={control}
+                     name="schedules.days.jeudi.0.start"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           label={'Jeudi'}
+                           placeholder={"Heure d'ouverture"}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+
+                  <Controller
+                     control={control}
+                     name="schedules.days.jeudi.0.end"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           placeholder={'Heure de fermeture'}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+               </TwoColumns>
+
+               <TwoColumns>
+                  <Controller
+                     control={control}
+                     name="schedules.days.vendredi.0.start"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           label={'Vendredi'}
+                           placeholder={"Heure d'ouverture"}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+
+                  <Controller
+                     control={control}
+                     name="schedules.days.vendredi.0.end"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           placeholder={'Heure de fermeture'}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+               </TwoColumns>
+
+               <TwoColumns>
+                  <Controller
+                     control={control}
+                     name="schedules.days.samedi.0.start"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           label={'Samedi'}
+                           placeholder={"Heure d'ouverture"}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+
+                  <Controller
+                     control={control}
+                     name="schedules.days.samedi.0.end"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           placeholder={'Heure de fermeture'}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+               </TwoColumns>
+
+               <TwoColumns>
+                  <Controller
+                     control={control}
+                     name="schedules.days.dimanche.0.start"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           label={'Dimanche'}
+                           placeholder={"Heure d'ouverture"}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+
+                  <Controller
+                     control={control}
+                     name="schedules.days.dimanche.0.end"
+                     render={({ field: { value, onChange } }) => (
+                        <CustomDropDown
+                           data={generateTimeSlots()}
+                           value={value}
+                           onChange={onChange}
+                           placeholder={'Heure de fermeture'}
+                           containerStyle={{ width: '48%' }}
+                           search={false}
+                        />
+                     )}
+                  />
+               </TwoColumns>
+            </>
+         )}
+
          <Controller
             control={control}
             name="schedules.type"
             render={({ field: { value, onChange } }) => (
-               <DropDown
+               <CustomDropDown
                   data={SCHEDULES_TYPE_DATA}
                   value={value}
                   onChange={onChange}
@@ -298,6 +584,7 @@ export const AddBuildingForm = ({
                <FormInput
                   value={value}
                   onChangeText={onChange}
+                  onPress={() => onChange('')}
                   label={"Note d'information"}
                   returnKeyType={'next'}
                />
@@ -311,6 +598,7 @@ export const AddBuildingForm = ({
                <FormInput
                   value={value}
                   onChangeText={onChange}
+                  onPress={() => onChange('')}
                   label={'URL des horaires officiels'}
                   returnKeyType={'next'}
                />
@@ -362,5 +650,13 @@ const styles = StyleSheet.create({
    inputsContainer: {
       gap: 24,
       paddingBottom: 20,
+   },
+   checkboxContainer: {
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+      gap: 6,
+   },
+   checkboxLabel: {
+      fontSize: 16,
    },
 })

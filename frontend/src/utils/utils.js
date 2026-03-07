@@ -44,3 +44,22 @@ export const getPlacesByIds = (idsArray, placesList) => {
 //   const idsSet = new Set(idsArray)
 //   return placesList.filter((place) => idsSet.has(place.id))
 // }
+
+export const generateTimeSlots = () => {
+   const slots = []
+
+   for (let hour = 0; hour < 24; hour++) {
+      for (let minute of [0, 30]) {
+         const h = hour.toString().padStart(2, '0')
+         const m = minute.toString().padStart(2, '0')
+         const time = `${h}:${m}`
+
+         slots.push({
+            label: time,
+            value: time,
+         })
+      }
+   }
+
+   return slots
+}

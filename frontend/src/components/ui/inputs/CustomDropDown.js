@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown'
 
-export const DropDown = ({
+export const CustomDropDown = ({
    data,
    value,
    onChange,

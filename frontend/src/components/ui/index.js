@@ -24,4 +24,4 @@ export * from './accordion/AccordionPanel'
 
 export * from './map/MapViewCustom'
 
-export * from './form/AddBuildingForm'
+export * from './forms/AddBuildingForm'

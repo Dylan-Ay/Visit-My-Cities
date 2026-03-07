@@ -36,9 +36,20 @@ export const AddScreen = ({ navigation }) => {
       [categories]
    )
 
-   const { control, handleSubmit } = useForm({
+   const { control, watch, handleSubmit } = useForm({
       defaultValues: addBuildingDefaultValues,
    })
+
+   const onSubmit = (data) => {
+      if (data.schedules.sameForAllDays) {
+         const days = Object.keys(data.schedules.days)
+         days.forEach((day) => {
+            data.schedules.days[day][0].start = data.schedules.globalStart
+            data.schedules.days[day][0].end = data.schedules.globalEnd
+         })
+      }
+      console.log(data)
+   }
 
    const isLoadingGlobal = isLoadingCity || isLoadingCat
    const showGlobalLoader = useDelayLoader(isLoadingGlobal)
@@ -50,7 +61,6 @@ export const AddScreen = ({ navigation }) => {
    return (
       <ScreenWrapper>
          <ScrollView
-            showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
             automaticallyAdjustKeyboardInsets={true}
          >
@@ -66,11 +76,12 @@ export const AddScreen = ({ navigation }) => {
                   control={control}
                   cityDropDown={cityDropDown}
                   categoryDropDown={categoryDropDown}
+                  watch={watch}
                />
 
                <ActionsSections
                   primaryTitle={'Valider'}
-                  primaryOnPress={handleSubmit}
+                  primaryOnPress={handleSubmit(onSubmit)}
                />
             </ContentContainer>
          </ScrollView>

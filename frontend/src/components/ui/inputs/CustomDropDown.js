@@ -7,11 +7,13 @@ export const CustomDropDown = ({
    onChange,
    label,
    placeholder,
+   containerStyle,
+   isLabel = true,
    search = true,
 }) => {
    return (
-      <View style={styles.container}>
-         <Text style={styles.label}>{label}</Text>
+      <View style={[styles.container, containerStyle]}>
+         {isLabel && <Text style={styles.label}>{label}</Text>}
          <Dropdown
             style={styles.dropDown}
             search={search}

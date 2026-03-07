@@ -293,39 +293,41 @@ export const AddBuildingForm = ({
                )}
             />
          </View>
-         <TwoColumns>
-            <Controller
-               control={control}
-               name="schedules.globalStart"
-               render={({ field: { value, onChange } }) => (
-                  <CustomDropDown
-                     data={generateTimeSlots()}
-                     value={value}
-                     onChange={onChange}
-                     placeholder={"Heure d'ouverture"}
-                     containerStyle={{ width: '48%' }}
-                     isLabel={false}
-                     search={false}
-                  />
-               )}
-            />
+         {sameForAllDays && (
+            <TwoColumns>
+               <Controller
+                  control={control}
+                  name="schedules.globalStart"
+                  render={({ field: { value, onChange } }) => (
+                     <CustomDropDown
+                        data={generateTimeSlots()}
+                        value={value}
+                        onChange={onChange}
+                        placeholder={"Heure d'ouverture"}
+                        containerStyle={{ width: '48%' }}
+                        isLabel={false}
+                        search={false}
+                     />
+                  )}
+               />
 
-            <Controller
-               control={control}
-               name="schedules.globalEnd"
-               render={({ field: { value, onChange } }) => (
-                  <CustomDropDown
-                     data={generateTimeSlots()}
-                     value={value}
-                     onChange={onChange}
-                     placeholder={'Heure de fermeture'}
-                     containerStyle={{ width: '48%' }}
-                     isLabel={false}
-                     search={false}
-                  />
-               )}
-            />
-         </TwoColumns>
+               <Controller
+                  control={control}
+                  name="schedules.globalEnd"
+                  render={({ field: { value, onChange } }) => (
+                     <CustomDropDown
+                        data={generateTimeSlots()}
+                        value={value}
+                        onChange={onChange}
+                        placeholder={'Heure de fermeture'}
+                        containerStyle={{ width: '48%' }}
+                        isLabel={false}
+                        search={false}
+                     />
+                  )}
+               />
+            </TwoColumns>
+         )}
 
          {!sameForAllDays && (
             <>

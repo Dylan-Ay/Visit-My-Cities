@@ -17,6 +17,7 @@ export default function useDelayLoader(isLoading) {
       } else {
          clearTimeout(appearTimer.current)
 
+         // Affiche le loader minimum 600 ms
          if (visibleSince.current) {
             const elapsed = Date.now() - visibleSince.current
             const remaining = Math.max(600 - elapsed, 0)

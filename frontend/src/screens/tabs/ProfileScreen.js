@@ -7,7 +7,7 @@ import {
 import { View } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { Text } from 'react-native'
-import AuthActionsSection from '../../components/sections/AuthActionsSection'
+import ActionsSections from '../../components/sections/ActionsSections'
 import { useUserStore } from '../../store/useUserStore'
 import { removeAccessToken } from '../../auth/tokenStorage'
 
@@ -55,7 +55,7 @@ export const ProfileScreen = ({ navigation }) => {
                   </View>
                )}
 
-               <AuthActionsSection
+               <ActionsSections
                   containerStyle={!isLoggedIn && { marginTop: 28 }}
                   primaryTitle={!isLoggedIn ? 'Connexion' : 'Déconnexion'}
                   primaryOnPress={

@@ -1,7 +1,7 @@
 import { Alert, ScrollView, StyleSheet, View } from 'react-native'
 import { ContentContainer, FormInput, ScreenWrapper } from '../../components/ui'
 import { HeaderSection } from '../../components/sections/HeaderSection'
-import AuthActionsSection from '../../components/sections/AuthActionsSection'
+import ActionsSections from '../../components/sections/ActionsSections'
 import { StackActions } from '@react-navigation/native'
 import { useState } from 'react'
 import { validators } from '../../utils/validation'
@@ -79,7 +79,7 @@ export const RegisterScreen = ({ navigation }) => {
                   />
                </View>
 
-               <AuthActionsSection
+               <ActionsSections
                   primaryTitle={'Valider'}
                   primaryOnPress={handleRegister}
                   secondaryTitle={'Se connecter'}

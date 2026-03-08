@@ -36,7 +36,12 @@ export const AddScreen = ({ navigation }) => {
       [categories]
    )
 
-   const { control, watch, handleSubmit } = useForm({
+   const {
+      control,
+      watch,
+      formState: { errors },
+      handleSubmit,
+   } = useForm({
       defaultValues: addBuildingDefaultValues,
    })
 
@@ -48,7 +53,8 @@ export const AddScreen = ({ navigation }) => {
             data.schedules.days[day][0].end = data.schedules.globalEnd
          })
       }
-      console.log(data)
+
+      // console.log(data)
    }
 
    const isLoadingGlobal = isLoadingCity || isLoadingCat
@@ -74,6 +80,7 @@ export const AddScreen = ({ navigation }) => {
 
                <AddBuildingForm
                   control={control}
+                  errors={errors}
                   cityDropDown={cityDropDown}
                   categoryDropDown={categoryDropDown}
                   watch={watch}

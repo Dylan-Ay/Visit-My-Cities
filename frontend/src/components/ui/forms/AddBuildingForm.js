@@ -12,9 +12,11 @@ import { SCHEDULES_TYPE_DATA } from '../../../constants/schedulesTypeData'
 import { generateTimeSlots } from '../../../utils/utils'
 import { TwoColumns } from '../layout/TwoColumns'
 import { Checkbox } from 'expo-checkbox'
+import { Ionicons } from '@expo/vector-icons'
 
 export const AddBuildingForm = ({
    control,
+   errors,
    cityDropDown,
    categoryDropDown,
    watch,
@@ -32,6 +34,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="name"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -43,6 +48,12 @@ export const AddBuildingForm = ({
                />
             )}
          />
+         {errors.name && (
+            <Text style={styles.error}>
+               <Ionicons name="alert-circle-outline" style={styles.errorIcon} />{' '}
+               Le nom est requis.
+            </Text>
+         )}
 
          <Controller
             control={control}
@@ -659,6 +670,13 @@ const styles = StyleSheet.create({
       gap: 6,
    },
    checkboxLabel: {
+      fontSize: 16,
+   },
+   error: {
+      color: 'red',
+      marginTop: -14,
+   },
+   errorIcon: {
       fontSize: 16,
    },
 })

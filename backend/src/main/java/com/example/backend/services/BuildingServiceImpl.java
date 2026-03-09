@@ -1,9 +1,15 @@
 package com.example.backend.services;
 
+import com.example.backend.dto.BuildingCreateDTO;
 import com.example.backend.dto.BuildingDTO;
 import com.example.backend.entities.Building;
+import com.example.backend.entities.Category;
+import com.example.backend.entities.City;
 import com.example.backend.exceptions.BuildingNotFoundException;
 import com.example.backend.repository.BuildingRepository;
+import com.example.backend.repository.CategoryRepository;
+import com.example.backend.repository.CityRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
@@ -14,19 +20,56 @@ import java.util.List;
 public class BuildingServiceImpl implements IBuildingService{
 
     private final BuildingRepository buildingRepository;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final CategoryRepository categoryRepository;
+    private final CityRepository cityRepository;
     private final BuildingMapper buildingMapper;
 
-    public BuildingServiceImpl(BuildingRepository buildingRepository, BuildingMapper buildingMapper) {
+    public BuildingServiceImpl(BuildingRepository buildingRepository, CategoryRepository categoryRepository, CityRepository cityRepository, BuildingMapper buildingMapper) {
         this.buildingRepository = buildingRepository;
+        this.categoryRepository = categoryRepository;
+        this.cityRepository = cityRepository;
         this.buildingMapper = buildingMapper;
     }
 
     //-----------------------------------building service dto juste en bas ----------------------------------------------
 
     @Override
-    public Building saveBuilding(Building building) {
-        return this.buildingRepository.save(building);
+    public void saveBuilding(BuildingCreateDTO dto) throws JsonProcessingException {
+        Building building = new Building();
+        building.setName(dto.getName());
+        building.setImage(dto.getImage());
+        building.setAddress(dto.getAddress());
+        building.setPostalCode(dto.getPostalCode());
+        building.setCountry(dto.getCountry());
+        building.setConstructionYear(dto.getConstructionYear());
+        building.setArchitect(dto.getArchitect());
+        building.setStyle(dto.getStyle());
+        building.setDescription(dto.getDescription());
+        building.setTicketPrice(dto.getTicketPrice());
+        building.setVisitDuration(dto.getVisitDuration());
+        building.setBooking(dto.getBooking());
+        building.setAccessStatus(dto.getAccessStatus());
+        building.setAccessiblePRM(dto.isAccessiblePRM());
+        building.setLatitude(dto.getLatitude());
+        building.setLongitude(dto.getLongitude());
+
+        // JSON brut
+        ObjectMapper mapper = new ObjectMapper();
+        building.setSchedules(mapper.writeValueAsString(dto.getSchedules()));
+
+        // Relations ManyToOne
+        if(dto.getCityId() != null) {
+            City city = cityRepository.findById(dto.getCityId())
+                    .orElseThrow(() -> new RuntimeException("City not found"));
+            building.setCity(city);
+        }
+        if(dto.getCategoriesId() != null) {
+            Category category = categoryRepository.findById(dto.getCategoriesId())
+                    .orElseThrow(() -> new RuntimeException("Category not found"));
+            building.setCategories(category);
+        }
+
+        buildingRepository.save(building);
     }
 
     @Override

@@ -1,8 +1,10 @@
 package com.example.backend.controllers;
 
+import com.example.backend.dto.BuildingCreateDTO;
 import com.example.backend.dto.BuildingDTO;
 import com.example.backend.entities.Building;
 import com.example.backend.services.BuildingServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,9 +57,11 @@ public ResponseEntity<List<BuildingDTO>> getBuildingsDtoByCategorieId(@PathVaria
 
     //-------------------------------------Ici building tout cours-----------------------------------------------------
     @PostMapping("/add/add")
-    public ResponseEntity<Building> addBuilding(@RequestBody Building building){
-       return new ResponseEntity<>(this.buildingServiceImpl.saveBuilding(building), HttpStatus.CREATED) ;
+    public ResponseEntity<Void> addBuilding(@RequestBody BuildingCreateDTO dto) throws JsonProcessingException {
+        this.buildingServiceImpl.saveBuilding(dto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     @GetMapping("/buildings")
     public ResponseEntity<List<Building>> getAllBuildings(){
         return new ResponseEntity<>(this.buildingServiceImpl.getAllBuildings(), HttpStatus.OK);

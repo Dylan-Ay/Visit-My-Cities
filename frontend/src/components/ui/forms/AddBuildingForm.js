@@ -9,6 +9,8 @@ import { ACCESS_STATUS_DATA } from '../../../constants/accessStatusData'
 import { BOOKING_DATA } from '../../../constants/bookingData'
 import { ACCESSIBILITY_DATA } from '../../../constants/accessibilityData'
 import { SCHEDULES_TYPE_DATA } from '../../../constants/schedulesTypeData'
+import { STYLE_ARCHITECTURE_DATA } from '../../../constants/styleArchitectureData'
+import { VISIT_TIMES_DATA } from '../../../constants/visitTimesData'
 import { generateTimeSlots } from '../../../utils/utils'
 import { TwoColumns } from '../layout/TwoColumns'
 import { Checkbox } from 'expo-checkbox'
@@ -81,7 +83,7 @@ export const AddBuildingForm = ({
             rules={{
                required: true,
             }}
-            name="postal_code"
+            name="postalCode"
             render={({ field: { value, onChange } }) => (
                <FormInput
                   value={value}
@@ -89,7 +91,7 @@ export const AddBuildingForm = ({
                   onPress={() => onChange('')}
                   label={'Code postal'}
                   errorMessage={
-                     errors.postal_code && (
+                     errors.postalCode && (
                         <ErrorMessage message={'Le code postal est requis.'} />
                      )
                   }
@@ -103,7 +105,7 @@ export const AddBuildingForm = ({
             rules={{
                required: true,
             }}
-            name="city_id"
+            name="cityId"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
                   data={cityDropDown}
@@ -111,7 +113,7 @@ export const AddBuildingForm = ({
                   onChange={onChange}
                   label={'Ville'}
                   errorMessage={
-                     errors.city_id && (
+                     errors.cityId && (
                         <ErrorMessage message={'La ville est requise.'} />
                      )
                   }
@@ -125,7 +127,7 @@ export const AddBuildingForm = ({
             rules={{
                required: true,
             }}
-            name="categories_id"
+            name="categoriesId"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
                   data={categoryDropDown}
@@ -133,7 +135,7 @@ export const AddBuildingForm = ({
                   onChange={onChange}
                   label={'Catégorie'}
                   errorMessage={
-                     errors.categories_id && (
+                     errors.categoriesId && (
                         <ErrorMessage message={'La catégorie est requise'} />
                      )
                   }
@@ -176,7 +178,7 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
-            name="construction_year"
+            name="constructionYear"
             render={({ field: { value, onChange } }) => (
                <FormInput
                   value={value}
@@ -210,19 +212,19 @@ export const AddBuildingForm = ({
             }}
             name="style"
             render={({ field: { value, onChange } }) => (
-               <FormInput
+               <CustomDropDown
+                  data={STYLE_ARCHITECTURE_DATA}
                   value={value}
-                  onChangeText={onChange}
-                  onPress={() => onChange('')}
+                  onChange={onChange}
                   label={"Style d'architecture"}
+                  placeholder={'Sélectionner un style'}
                   errorMessage={
                      errors.style && (
                         <ErrorMessage
-                           message={"Le style d'architecture est requis."}
+                           message={'Le style architectural est requis.'}
                         />
                      )
                   }
-                  returnKeyType={'next'}
                />
             )}
          />
@@ -239,7 +241,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Description'}
-                  style={{ height: 80 }}
+                  style={{ height: 120 }}
                   multiline={true}
                   numberOfLines={3}
                   errorMessage={
@@ -266,7 +268,7 @@ export const AddBuildingForm = ({
                rules={{
                   required: true,
                }}
-               name="ticket_price"
+               name="ticketPrice"
                render={({ field: { value, onChange } }) => (
                   <FormInput
                      value={value}
@@ -276,7 +278,7 @@ export const AddBuildingForm = ({
                      keyboardType="numeric"
                      containerStyle={{ width: '48%' }}
                      errorMessage={
-                        errors.ticket_price && (
+                        errors.ticketPrice && (
                            <ErrorMessage message={'Le tarif est requis.'} />
                         )
                      }
@@ -287,15 +289,23 @@ export const AddBuildingForm = ({
 
             <Controller
                control={control}
-               name="visit_duration"
+               name="visitDuration"
                render={({ field: { value, onChange } }) => (
-                  <FormInput
+                  <CustomDropDown
+                     data={VISIT_TIMES_DATA}
+                     onChange={onChange}
                      value={value}
-                     onChangeText={onChange}
-                     onPress={() => onChange('')}
                      label={'Temps de visite'}
                      containerStyle={{ width: '48%' }}
-                     returnKeyType={'next'}
+                     search={false}
+                     placeholder={'Sélectionner un temps de visite'}
+                     errorMessage={
+                        errors.visitDuration && (
+                           <ErrorMessage
+                              message={'Le temps de visite est requis.'}
+                           />
+                        )
+                     }
                   />
                )}
             />
@@ -331,7 +341,7 @@ export const AddBuildingForm = ({
             rules={{
                required: true,
             }}
-            name="access_status"
+            name="accessStatus"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
                   data={ACCESS_STATUS_DATA}
@@ -340,7 +350,7 @@ export const AddBuildingForm = ({
                   label={"Statut d'accès"}
                   placeholder={'Sélectionner un statut'}
                   errorMessage={
-                     errors.access_status && (
+                     errors.accessStatus && (
                         <ErrorMessage
                            message={"Le statut d'accès est requis."}
                         />
@@ -353,7 +363,7 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
-            name="accessibleprm"
+            name="accessiblePRM"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
                   data={ACCESSIBILITY_DATA}
@@ -696,6 +706,9 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={"Note d'information"}
+                  multiline={true}
+                  numberOfLines={3}
+                  style={{ height: 100 }}
                   returnKeyType={'next'}
                />
             )}

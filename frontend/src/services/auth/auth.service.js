@@ -12,7 +12,7 @@ export async function login(email, password) {
    return data
 }
 
-export async function register(username, email, password) {
+export function register(username, email, password) {
    return client(API_ROUTES.AUTH.REGISTER, {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),

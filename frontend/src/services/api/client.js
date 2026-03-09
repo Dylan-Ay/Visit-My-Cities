@@ -12,7 +12,7 @@ export async function client(path, options = {}) {
       },
    })
 
-   console.log('URL:', path, 'METHOD:', options.method)
+   console.log('ENDPOINT:', path, 'METHOD:', options.method)
 
    if (!response.ok) {
       const error = await response.json()
@@ -23,5 +23,7 @@ export async function client(path, options = {}) {
       return null
    }
 
-   return await response.json()
+   const text = await response.text()
+
+   return text ? JSON.parse(text) : null
 }

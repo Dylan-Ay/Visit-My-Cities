@@ -10,7 +10,7 @@ export function useAddBuilding() {
          const result = await addBuilding(data)
          return result
       } catch (error) {
-         // console.log(error)
+         console.log(error)
       } finally {
          setLoadingBuild(false)
       }

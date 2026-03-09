@@ -14,6 +14,7 @@ export const API_ROUTES = {
       FIND_BUILDINGS_BY_CITY: (id) => `/building/buildingsdto/city/${id}`,
       SEARCH_BUILDINGS_BY_CITY: (name) =>
          `/buildingdto/cityname/${encodeURIComponent(name)}`,
+      ADD_BUILDING: `/building/add/add`,
    },
    CITY: {
       FINDALL: '/city/cities',

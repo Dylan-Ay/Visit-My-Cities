@@ -16,3 +16,7 @@ export async function getBuildingsByCity(id) {
 export async function searchBuildingsByCity(id) {
    return client(API_ROUTES.BUILDING.SEARCH_BUILDINGS_BY_CITY(id))
 }
+
+export async function addBuilding() {
+   return client(API_ROUTES.BUILDING.ADD_BUILDING)
+}

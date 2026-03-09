@@ -10,6 +10,7 @@ export const CustomDropDown = ({
    containerStyle,
    isLabel = true,
    search = true,
+   errorMessage,
 }) => {
    return (
       <View style={[styles.container, containerStyle]}>
@@ -26,6 +27,7 @@ export const CustomDropDown = ({
             onChange={(item) => onChange(item.value)}
             placeholder={placeholder}
          />
+         {errorMessage}
       </View>
    )
 }

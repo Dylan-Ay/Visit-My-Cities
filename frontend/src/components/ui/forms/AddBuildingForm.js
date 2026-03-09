@@ -12,14 +12,14 @@ import { SCHEDULES_TYPE_DATA } from '../../../constants/schedulesTypeData'
 import { generateTimeSlots } from '../../../utils/utils'
 import { TwoColumns } from '../layout/TwoColumns'
 import { Checkbox } from 'expo-checkbox'
-import { Ionicons } from '@expo/vector-icons'
+import { ErrorMessage } from './ErrorMessage'
 
 export const AddBuildingForm = ({
    control,
    errors,
+   watch,
    cityDropDown,
    categoryDropDown,
-   watch,
 }) => {
    const sameForAllDays = watch('schedules.sameForAllDays')
 
@@ -44,19 +44,21 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Nom'}
+                  errorMessage={
+                     errors.name && (
+                        <ErrorMessage message={'Le nom est requis.'} />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
          />
-         {errors.name && (
-            <Text style={styles.error}>
-               <Ionicons name="alert-circle-outline" style={styles.errorIcon} />{' '}
-               Le nom est requis.
-            </Text>
-         )}
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="address"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -64,6 +66,11 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Adresse'}
+                  errorMessage={
+                     errors.address && (
+                        <ErrorMessage message={"L'adresse est requise."} />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
@@ -71,6 +78,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="postal_code"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -78,7 +88,11 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Code postal'}
-                  keyboardType="numeric"
+                  errorMessage={
+                     errors.postal_code && (
+                        <ErrorMessage message={'Le code postal est requis.'} />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
@@ -86,6 +100,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="city_id"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
@@ -93,6 +110,11 @@ export const AddBuildingForm = ({
                   value={value}
                   onChange={onChange}
                   label={'Ville'}
+                  errorMessage={
+                     errors.city_id && (
+                        <ErrorMessage message={'La ville est requise.'} />
+                     )
+                  }
                   placeholder={'Sélectionner une ville'}
                />
             )}
@@ -100,6 +122,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="categories_id"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
@@ -107,6 +132,11 @@ export const AddBuildingForm = ({
                   value={value}
                   onChange={onChange}
                   label={'Catégorie'}
+                  errorMessage={
+                     errors.categories_id && (
+                        <ErrorMessage message={'La catégorie est requise'} />
+                     )
+                  }
                   placeholder={'Sélectionner une catégorie'}
                />
             )}
@@ -114,6 +144,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="image"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -121,6 +154,13 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={"URL de l'image"}
+                  errorMessage={
+                     errors.image && (
+                        <ErrorMessage
+                           message={"L'URL de l'image est requise."}
+                        />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
@@ -165,6 +205,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="style"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -172,6 +215,13 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={"Style d'architecture"}
+                  errorMessage={
+                     errors.style && (
+                        <ErrorMessage
+                           message={"Le style d'architecture est requis."}
+                        />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
@@ -179,6 +229,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="description"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -189,6 +242,11 @@ export const AddBuildingForm = ({
                   style={{ height: 80 }}
                   multiline={true}
                   numberOfLines={3}
+                  errorMessage={
+                     errors.description && (
+                        <ErrorMessage message={'La description est requise.'} />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
@@ -205,6 +263,9 @@ export const AddBuildingForm = ({
          <TwoColumns>
             <Controller
                control={control}
+               rules={{
+                  required: true,
+               }}
                name="ticket_price"
                render={({ field: { value, onChange } }) => (
                   <FormInput
@@ -214,6 +275,11 @@ export const AddBuildingForm = ({
                      label={'Tarif'}
                      keyboardType="numeric"
                      containerStyle={{ width: '48%' }}
+                     errorMessage={
+                        errors.ticket_price && (
+                           <ErrorMessage message={'Le tarif est requis.'} />
+                        )
+                     }
                      returnKeyType={'next'}
                   />
                )}
@@ -237,6 +303,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="booking"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
@@ -245,6 +314,13 @@ export const AddBuildingForm = ({
                   onChange={onChange}
                   label={'Réservation'}
                   placeholder={'Sélectionner un type de réservation'}
+                  errorMessage={
+                     errors.booking && (
+                        <ErrorMessage
+                           message={'Le type de réservation est requis.'}
+                        />
+                     )
+                  }
                   search={false}
                />
             )}
@@ -252,6 +328,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="access_status"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
@@ -260,6 +339,13 @@ export const AddBuildingForm = ({
                   onChange={onChange}
                   label={"Statut d'accès"}
                   placeholder={'Sélectionner un statut'}
+                  errorMessage={
+                     errors.access_status && (
+                        <ErrorMessage
+                           message={"Le statut d'accès est requis."}
+                        />
+                     )
+                  }
                   search={false}
                />
             )}
@@ -304,6 +390,7 @@ export const AddBuildingForm = ({
                )}
             />
          </View>
+
          {sameForAllDays && (
             <TwoColumns>
                <Controller
@@ -577,6 +664,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="schedules.type"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
@@ -585,6 +675,13 @@ export const AddBuildingForm = ({
                   onChange={onChange}
                   label={"Type d'horaire"}
                   placeholder={"Sélectionner un type d'horaire"}
+                  errorMessage={
+                     errors.schedules?.type && (
+                        <ErrorMessage
+                           message={"Le type d'horaire est requis."}
+                        />
+                     )
+                  }
                   search={false}
                />
             )}
@@ -606,6 +703,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="schedules.officialHoursUrl"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -613,6 +713,13 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'URL des horaires officiels'}
+                  errorMessage={
+                     errors.schedules?.officialHoursUrl && (
+                        <ErrorMessage
+                           message={"L'URL des horaires officiels est requise."}
+                        />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
@@ -628,6 +735,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="latitude"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -636,6 +746,11 @@ export const AddBuildingForm = ({
                   onPress={() => onChange('')}
                   label={'Latitude'}
                   keyboardType="numbers-and-punctuation"
+                  errorMessage={
+                     errors.latitude && (
+                        <ErrorMessage message={'La latitude est requise.'} />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
@@ -643,6 +758,9 @@ export const AddBuildingForm = ({
 
          <Controller
             control={control}
+            rules={{
+               required: true,
+            }}
             name="longitude"
             render={({ field: { value, onChange } }) => (
                <FormInput
@@ -651,10 +769,23 @@ export const AddBuildingForm = ({
                   onPress={() => onChange('')}
                   label={'Longitude'}
                   keyboardType="numbers-and-punctuation"
+                  errorMessage={
+                     errors.longitude && (
+                        <ErrorMessage message={'La longitude est requise'} />
+                     )
+                  }
                   returnKeyType={'next'}
                />
             )}
          />
+
+         {Object.entries(errors).length > 0 && (
+            <ErrorMessage
+               message={
+                  "Un ou plusieurs champs requis n'ont pas été complétés, veuillez réviser le formulaire."
+               }
+            />
+         )}
       </View>
    )
 }
@@ -670,13 +801,6 @@ const styles = StyleSheet.create({
       gap: 6,
    },
    checkboxLabel: {
-      fontSize: 16,
-   },
-   error: {
-      color: 'red',
-      marginTop: -14,
-   },
-   errorIcon: {
       fontSize: 16,
    },
 })

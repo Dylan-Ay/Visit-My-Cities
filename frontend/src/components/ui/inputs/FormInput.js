@@ -21,6 +21,7 @@ export const FormInput = ({
    multiline,
    style,
    containerStyle,
+   errorMessage,
 }) => {
    const [isIcon, setIsIcon] = useState(true)
 
@@ -60,6 +61,7 @@ export const FormInput = ({
                </TouchableOpacity>
             )}
          </View>
+         {errorMessage}
       </View>
    )
 }

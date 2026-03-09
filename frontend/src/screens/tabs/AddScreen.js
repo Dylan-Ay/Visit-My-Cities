@@ -54,7 +54,7 @@ export const AddScreen = ({ navigation }) => {
          })
       }
 
-      // console.log(data)
+      console.log(data)
    }
 
    const isLoadingGlobal = isLoadingCity || isLoadingCat
@@ -81,9 +81,9 @@ export const AddScreen = ({ navigation }) => {
                <AddBuildingForm
                   control={control}
                   errors={errors}
+                  watch={watch}
                   cityDropDown={cityDropDown}
                   categoryDropDown={categoryDropDown}
-                  watch={watch}
                />
 
                <ActionsSections

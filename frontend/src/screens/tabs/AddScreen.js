@@ -19,6 +19,8 @@ export const AddScreen = () => {
    const { cities, isLoadingCity } = useCities()
    const { categories, isLoadingCat } = useCategories()
    const { addBuildingHandler, isLoadingBuild } = useAddBuilding()
+   const isLoadingGlobal = isLoadingCity || isLoadingCat || isLoadingBuild
+   const showGlobalLoader = useDelayLoader(isLoadingGlobal)
 
    const cityDropDown = useMemo(
       () =>
@@ -56,20 +58,26 @@ export const AddScreen = () => {
             data.schedules.days[day][0].end = data.schedules.globalEnd
          })
       }
+      const buildingName = data.name
 
-      // console.log('test')
+      const payload = {
+         ...data,
+         schedules: { ...data.schedules },
+      }
+
+      delete payload.schedules.sameForAllDays
+      delete payload.schedules.globalStart
+      delete payload.schedules.globalEnd
 
       try {
-         const newBuilding = await addBuildingHandler(data)
-         Alert.alert(`Le bâtiment ${newBuilding.name} a bien été ajouté !`)
-         reset()
+         await addBuildingHandler(payload)
+
+         Alert.alert(`Le bâtiment ${buildingName} a bien été ajouté !`)
+         reset(addBuildingDefaultValues)
       } catch {}
    }
 
-   const isLoadingGlobal = isLoadingCity || isLoadingCat
-   const showGlobalLoader = useDelayLoader(isLoadingGlobal)
-
-   if (showGlobalLoader || isLoadingBuild) {
+   if (showGlobalLoader) {
       return <Loader />
    }
 

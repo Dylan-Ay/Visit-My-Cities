@@ -13,7 +13,7 @@ export const addBuildingDefaultValues = {
    visit_duration: '',
    booking: '',
    access_status: '',
-   accessible_prm: '',
+   accessibleprm: '',
    latitude: '',
    longitude: '',
    schedules: {

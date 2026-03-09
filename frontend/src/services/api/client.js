@@ -12,6 +12,8 @@ export async function client(path, options = {}) {
       },
    })
 
+   console.log('URL:', path, 'METHOD:', options.method)
+
    if (!response.ok) {
       const error = await response.json()
       throw new Error(error.message || 'Une erreur est survenue.')

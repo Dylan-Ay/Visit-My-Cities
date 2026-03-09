@@ -1,4 +1,4 @@
-import { ScrollView } from 'react-native'
+import { Alert, ScrollView } from 'react-native'
 import {
    ScreenWrapper,
    ContentContainer,
@@ -13,10 +13,12 @@ import { Loader } from '../../components/ui/Loader'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
 import { useForm } from 'react-hook-form'
 import { addBuildingDefaultValues } from '../config/addBuildingDefaultValues'
+import { useAddBuilding } from '../../services/hooks/useAddBuilding'
 
-export const AddScreen = ({ navigation }) => {
+export const AddScreen = () => {
    const { cities, isLoadingCity } = useCities()
    const { categories, isLoadingCat } = useCategories()
+   const { addBuildingHandler, isLoadingBuild } = useAddBuilding()
 
    const cityDropDown = useMemo(
       () =>
@@ -41,11 +43,12 @@ export const AddScreen = ({ navigation }) => {
       watch,
       formState: { errors },
       handleSubmit,
+      reset,
    } = useForm({
       defaultValues: addBuildingDefaultValues,
    })
 
-   const onSubmit = (data) => {
+   const onSubmit = async (data) => {
       if (data.schedules.sameForAllDays) {
          const days = Object.keys(data.schedules.days)
          days.forEach((day) => {
@@ -54,13 +57,19 @@ export const AddScreen = ({ navigation }) => {
          })
       }
 
-      console.log(data)
+      // console.log('test')
+
+      try {
+         const newBuilding = await addBuildingHandler(data)
+         Alert.alert(`Le bâtiment ${newBuilding.name} a bien été ajouté !`)
+         reset()
+      } catch {}
    }
 
    const isLoadingGlobal = isLoadingCity || isLoadingCat
    const showGlobalLoader = useDelayLoader(isLoadingGlobal)
 
-   if (showGlobalLoader) {
+   if (showGlobalLoader || isLoadingBuild) {
       return <Loader />
    }
 

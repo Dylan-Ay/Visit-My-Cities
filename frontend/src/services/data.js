@@ -557,6 +557,42 @@ export const buildings = [
          longitudeDelta: 0.01,
       },
    },
+   {
+      name: 'Arc de Triomphe',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/a/a8/Arc_de_Triomphe%2C_Paris_23_October_2010.jpg',
+      address: 'Place Charles-de-Gaulle',
+      postal_code: '75008',
+      city_id: 1, // Remplace 1 par l'ID réel de Paris dans ta base
+      country: 'France',
+      construction_year: '1836',
+      architect: 'Jean Chalgrin',
+      style: 'Néoclassique',
+      description:
+         "Monument emblématique érigé pour honorer les armées françaises de Napoléon, l'Arc de Triomphe se situe au centre de la place Charles-de-Gaulle. Inauguré en 1836, il offre une vue panoramique sur les Champs-Élysées et Paris depuis sa terrasse. Il abrite également la tombe du Soldat Inconnu et est le lieu de nombreuses cérémonies officielles. Symbole historique et touristique majeur, il attire chaque année des millions de visiteurs qui peuvent admirer ses bas-reliefs et sa vue exceptionnelle sur la capitale.",
+      ticket_price: 16,
+      visit_duration: '45min-1h',
+      booking: 'Recommandée',
+      access_status: 'Visitable',
+      accessible_PRM: true,
+      latitude: 48.8738,
+      longitude: 2.295,
+      categories_id: [1, 3], // Exemples d'IDs pour catégorie monuments/musées, adapte selon ta base
+      schedules: {
+         type: 'Horaires',
+         days: {
+            lundi: [{ start: '10:00', end: '22:30' }],
+            mardi: [{ start: '11:00', end: '22:30' }],
+            mercredi: [{ start: '10:00', end: '22:30' }],
+            jeudi: [{ start: '10:00', end: '22:30' }],
+            vendredi: [{ start: '10:00', end: '22:30' }],
+            samedi: [{ start: '10:00', end: '23:00' }],
+            dimanche: [{ start: '10:00', end: '23:00' }],
+         },
+         note: 'La dernière admission est 45 minutes avant la fermeture. Fermé le 1er janvier, 1er mai, 8 mai matin, 14 juillet matin, 11 novembre matin et 25 décembre. Vérifiez les horaires officiels pour les exceptions et cérémonies.',
+         official_hours_url:
+            'https://www.paris-arc-de-triomphe.fr/visiter/informations-pratiques',
+      },
+   },
 ]
 
 export const categories = [

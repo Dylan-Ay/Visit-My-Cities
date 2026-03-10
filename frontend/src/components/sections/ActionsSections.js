@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ActionButton } from '../ui'
 
-export default function AuthActionsSection({
+export default function ActionsSections({
    primaryTitle,
    primaryOnPress,
    secondaryTitle,

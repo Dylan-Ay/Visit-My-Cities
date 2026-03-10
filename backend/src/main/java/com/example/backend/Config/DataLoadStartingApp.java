@@ -34,10 +34,9 @@ public class DataLoadStartingApp {
 
     @PostConstruct
     public void init() throws JsonProcessingException {
-        //les experts ici jerome et ghilas
         ajouter_un_utilisateur("Ghilas", "ghilas@expert.com", "12345678", AppRole.ROLE_EXPERT);
-        ajouter_un_utilisateur("Jerome", "jerome@expert.com", "12345678", AppRole.ROLE_EXPERT);
-        ajouter_un_utilisateur("Théo", "theo@expert.com", "12345678", AppRole.ROLE_VISITEUR);
+        ajouter_un_utilisateur("Dylan", "dylan@expert.com", "12345678", AppRole.ROLE_EXPERT);
+        ajouter_un_utilisateur("Théo", "theo@visiteur.com", "12345678", AppRole.ROLE_VISITEUR);
 
         // --- Villes et Bâtiments ---
         if (cityRepository.count() == 0) {

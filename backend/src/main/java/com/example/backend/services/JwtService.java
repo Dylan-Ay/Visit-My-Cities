@@ -39,7 +39,8 @@ import java.util.Date;
 
             Date now = new Date();
 
-            Date expiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60); // 1h
+            long thirtyDaysInMillis = 1000L * 60 * 60 * 24 * 30;
+            Date expiration = new Date(System.currentTimeMillis() + thirtyDaysInMillis); // 30 jours
 
             return Jwts.builder()
                     .setSubject(username)

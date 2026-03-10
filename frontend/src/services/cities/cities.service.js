@@ -1,15 +1,15 @@
 import { client } from '../api/client'
 import { API_ROUTES } from '../api/endpoints'
 
-export async function getCities() {
+export function getCities() {
    return client(API_ROUTES.CITY.FINDALL)
 }
 
-export async function getCityById(id) {
+export function getCityById(id) {
    return client(API_ROUTES.CITY.FIND_BY_ID(id))
 }
 
-export async function deleteCity(id) {
+export function deleteCity(id) {
    return client(API_ROUTES.CITY.DELETE(id), {
       method: 'DELETE',
    })

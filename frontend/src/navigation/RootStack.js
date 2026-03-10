@@ -5,7 +5,7 @@ import { BuildingDetailScreen } from '../screens/stack/BuildingDetailScreen'
 import { CategoryDetailScreen } from '../screens/stack/CategoryDetailScreen'
 import { HeaderIconButton } from '../components/ui/inputs/HeaderIconButton'
 import { FavoriteCityHeaderButton } from '../components/ui/inputs/FavoriteCityHeaderButton'
-import { FavorteBuildingHeaderButton } from '../components/ui/inputs/FavoriteBuildingHeaderButton'
+import { FavoriteBuildingHeaderButton } from '../components/ui/inputs/FavoriteBuildingHeaderButton'
 import { LoginScreen } from '../screens/stack/LoginScreen'
 import { RegisterScreen } from '../screens/stack/RegisterScreen'
 
@@ -48,7 +48,9 @@ export default function RootStack() {
                      onPress={() => navigation.goBack()}
                   />
                ),
-               headerRight: () => <FavorteBuildingHeaderButton route={route} />,
+               headerRight: () => (
+                  <FavoriteBuildingHeaderButton route={route} />
+               ),
             })}
          />
          <Stack.Screen

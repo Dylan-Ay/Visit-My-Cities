@@ -1,4 +1,7 @@
-export const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL_TELEPHONE
+export const API_BASE_URL =
+   process.env.EXPO_PUBLIC_API_URL_TELEPHONE ||
+   process.env.EXPO_PUBLIC_API_URL_ANDROID_EMULATOR ||
+   process.env.EXPO_PUBLIC_API_URL_IOS_SIMULATOR
 
 export const API_ROUTES = {
    AUTH: {
@@ -11,6 +14,7 @@ export const API_ROUTES = {
       FIND_BUILDINGS_BY_CITY: (id) => `/building/buildingsdto/city/${id}`,
       SEARCH_BUILDINGS_BY_CITY: (name) =>
          `/buildingdto/cityname/${encodeURIComponent(name)}`,
+      ADD_BUILDING: `/building/add/add`,
    },
    CITY: {
       FINDALL: '/city/cities',

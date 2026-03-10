@@ -16,6 +16,13 @@ export const FormInput = ({
    returnKeyType,
    value,
    onChangeText,
+   onPress,
+   numberOfLines,
+   multiline,
+   style,
+   containerStyle,
+   errorMessage,
+   isRequired,
 }) => {
    const [isIcon, setIsIcon] = useState(true)
 
@@ -31,9 +38,11 @@ export const FormInput = ({
    }, [isIcon])
 
    return (
-      <View style={styles.container}>
-         <Text style={styles.label}>{label}</Text>
-         <View style={styles.inputContainer}>
+      <View style={[styles.container, containerStyle]}>
+         <Text style={styles.label}>
+            {label} {isRequired && <Text style={styles.required}>*</Text>}
+         </Text>
+         <View style={[styles.inputContainer, style]}>
             <TextInput
                style={styles.input}
                placeholder={placeholder}
@@ -43,16 +52,19 @@ export const FormInput = ({
                value={value}
                returnKeyType={returnKeyType}
                placeholderTextColor={'#a4a8b1c2'}
+               multiline={multiline}
+               numberOfLines={numberOfLines}
             />
             {value != '' && isIcon && (
                <TouchableOpacity
                   style={styles.iconContainer}
-                  onPress={handleIconPress}
+                  onPress={onPress ? onPress : handleIconPress}
                >
                   <Ionicons style={styles.icon} name={'close-outline'} />
                </TouchableOpacity>
             )}
          </View>
+         {errorMessage}
       </View>
    )
 }
@@ -84,5 +96,8 @@ const styles = StyleSheet.create({
    },
    icon: {
       fontSize: 24,
+   },
+   required: {
+      color: 'red',
    },
 })

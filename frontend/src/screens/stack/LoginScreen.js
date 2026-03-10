@@ -1,7 +1,7 @@
 import { Alert, ScrollView, StyleSheet } from 'react-native'
 import { ContentContainer, FormInput, ScreenWrapper } from '../../components/ui'
 import { View } from 'react-native'
-import AuthActionsSection from '../../components/sections/AuthActionsSection'
+import ActionsSections from '../../components/sections/ActionsSections'
 import { HeaderSection } from '../../components/sections/HeaderSection'
 import { StackActions } from '@react-navigation/native'
 import { useUserStore } from '../../store/useUserStore'
@@ -70,7 +70,7 @@ export const LoginScreen = ({ navigation }) => {
                   />
                </View>
 
-               <AuthActionsSection
+               <ActionsSections
                   primaryTitle={'Se Connecter'}
                   primaryOnPress={handleLogin}
                   secondaryTitle={'Créer un compte'}

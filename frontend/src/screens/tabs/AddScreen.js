@@ -1,4 +1,4 @@
-import { Alert, ScrollView } from 'react-native'
+import { Alert, Button, ScrollView } from 'react-native'
 import {
    ScreenWrapper,
    ContentContainer,
@@ -6,7 +6,7 @@ import {
 } from '../../components/ui'
 import { HeaderSection } from '../../components/sections/HeaderSection'
 import ActionsSections from '../../components/sections/ActionsSections'
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import useCities from '../../services/hooks/useCities'
 import useCategories from '../../services/hooks/useCategories'
 import { Loader } from '../../components/ui/Loader'
@@ -14,6 +14,7 @@ import useDelayLoader from '../../services/hooks/useDelayedLoader'
 import { useForm } from 'react-hook-form'
 import { addBuildingDefaultValues } from '../config/addBuildingDefaultValues'
 import { useAddBuilding } from '../../services/hooks/useAddBuilding'
+import { useScrollToTop } from '@react-navigation/native'
 
 export const AddScreen = () => {
    const { cities, isLoadingCity } = useCities()
@@ -21,6 +22,9 @@ export const AddScreen = () => {
    const { addBuildingHandler, isLoadingBuild } = useAddBuilding()
    const isLoadingGlobal = isLoadingCity || isLoadingCat || isLoadingBuild
    const showGlobalLoader = useDelayLoader(isLoadingGlobal)
+   const scrollViewRef = useRef(null)
+
+   useScrollToTop(scrollViewRef)
 
    const cityDropDown = useMemo(
       () =>
@@ -72,8 +76,14 @@ export const AddScreen = () => {
       try {
          await addBuildingHandler(payload)
 
-         Alert.alert(`Le bâtiment ${buildingName} a bien été ajouté !`)
+         scrollViewRef.current?.scrollTo({
+            y: 0,
+            animated: true,
+         })
+
          reset(addBuildingDefaultValues)
+
+         Alert.alert(`Le bâtiment ${buildingName} a bien été ajouté !`)
       } catch {}
    }
 
@@ -84,6 +94,7 @@ export const AddScreen = () => {
    return (
       <ScreenWrapper>
          <ScrollView
+            ref={scrollViewRef}
             keyboardShouldPersistTaps="handled"
             automaticallyAdjustKeyboardInsets={true}
          >

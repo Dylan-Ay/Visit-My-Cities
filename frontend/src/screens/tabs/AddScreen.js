@@ -1,4 +1,4 @@
-import { Alert, Button, ScrollView } from 'react-native'
+import { Alert, ScrollView } from 'react-native'
 import {
    ScreenWrapper,
    ContentContainer,

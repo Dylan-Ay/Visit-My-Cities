@@ -4,8 +4,10 @@
 
 Thanks for checking out this bachelor's degree project.
 
-<img width="275" height="596" alt="Screenshot_1772996691" src="https://github.com/user-attachments/assets/df4fc462-6e87-4b36-9b15-c234f9990579" />
-<img width="275" height="596" alt="Screenshot_1772996707" src="https://github.com/user-attachments/assets/581234a5-5788-4705-a7ae-e3d6fbb3d590" />
+<div>
+  <img width="275" height="596" alt="Screenshot_1772996691" src="frontend/assets/screenshots/HomeScreen.png" />
+<img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/HomeScreen2.png" />
+</div>
 <br>
 (More screenshots down below)
 
@@ -114,3 +116,4 @@ Once the environment variables are configured, restart the development server an
 <img width="275" height="596" alt="Screenshot_1773161786" src="https://github.com/user-attachments/assets/9f14da5a-081f-4ad9-8dfe-34ee11ae8727" />
 <img width="275" height="596" alt="Screenshot_1772982380" src="https://github.com/user-attachments/assets/cbf0480e-8d11-4b20-a2bb-07b5b4f2a228" />
 <img width="275" height="596" alt="Screenshot_1772982603" src="https://github.com/user-attachments/assets/78bec69f-485c-44e4-a729-21d46358b9c9" />
+

@@ -46,6 +46,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Nom'}
+                  isRequired={true}
                   errorMessage={
                      errors.name && (
                         <ErrorMessage message={'Le nom est requis.'} />
@@ -68,6 +69,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Adresse'}
+                  isRequired={true}
                   errorMessage={
                      errors.address && (
                         <ErrorMessage message={"L'adresse est requise."} />
@@ -90,6 +92,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Code postal'}
+                  isRequired={true}
                   errorMessage={
                      errors.postalCode && (
                         <ErrorMessage message={'Le code postal est requis.'} />
@@ -112,6 +115,7 @@ export const AddBuildingForm = ({
                   value={value}
                   onChange={onChange}
                   label={'Ville'}
+                  isRequired={true}
                   errorMessage={
                      errors.cityId && (
                         <ErrorMessage message={'La ville est requise.'} />
@@ -134,6 +138,7 @@ export const AddBuildingForm = ({
                   value={value}
                   onChange={onChange}
                   label={'Catégorie'}
+                  isRequired={true}
                   errorMessage={
                      errors.categoriesId && (
                         <ErrorMessage message={'La catégorie est requise'} />
@@ -156,6 +161,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={"URL de l'image"}
+                  isRequired={true}
                   errorMessage={
                      errors.image && (
                         <ErrorMessage
@@ -217,6 +223,7 @@ export const AddBuildingForm = ({
                   value={value}
                   onChange={onChange}
                   label={"Style d'architecture"}
+                  isRequired={true}
                   placeholder={'Sélectionner un style'}
                   errorMessage={
                      errors.style && (
@@ -241,6 +248,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Description'}
+                  isRequired={true}
                   style={{ height: 120 }}
                   multiline={true}
                   numberOfLines={3}
@@ -275,6 +283,7 @@ export const AddBuildingForm = ({
                      onChangeText={onChange}
                      onPress={() => onChange('')}
                      label={'Tarif'}
+                     isRequired={true}
                      keyboardType="numeric"
                      containerStyle={{ width: '48%' }}
                      errorMessage={
@@ -323,6 +332,7 @@ export const AddBuildingForm = ({
                   value={value}
                   onChange={onChange}
                   label={'Réservation'}
+                  isRequired={true}
                   placeholder={'Sélectionner un type de réservation'}
                   errorMessage={
                      errors.booking && (
@@ -348,6 +358,7 @@ export const AddBuildingForm = ({
                   value={value}
                   onChange={onChange}
                   label={"Statut d'accès"}
+                  isRequired={true}
                   placeholder={'Sélectionner un statut'}
                   errorMessage={
                      errors.accessStatus && (
@@ -684,6 +695,7 @@ export const AddBuildingForm = ({
                   value={value}
                   onChange={onChange}
                   label={"Type d'horaire"}
+                  isRequired={true}
                   placeholder={"Sélectionner un type d'horaire"}
                   errorMessage={
                      errors.schedules?.type && (
@@ -726,6 +738,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'URL des horaires officiels'}
+                  isRequired={true}
                   errorMessage={
                      errors.schedules?.officialHoursUrl && (
                         <ErrorMessage
@@ -758,6 +771,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Latitude'}
+                  isRequired={true}
                   keyboardType="numbers-and-punctuation"
                   errorMessage={
                      errors.latitude && (
@@ -781,6 +795,7 @@ export const AddBuildingForm = ({
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Longitude'}
+                  isRequired={true}
                   keyboardType="numbers-and-punctuation"
                   errorMessage={
                      errors.longitude && (

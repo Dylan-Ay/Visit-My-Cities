@@ -11,10 +11,15 @@ export const CustomDropDown = ({
    isLabel = true,
    search = true,
    errorMessage,
+   isRequired,
 }) => {
    return (
       <View style={[styles.container, containerStyle]}>
-         {isLabel && <Text style={styles.label}>{label}</Text>}
+         {isLabel && (
+            <Text style={styles.label}>
+               {label} {isRequired && <Text style={styles.required}>*</Text>}
+            </Text>
+         )}
          <Dropdown
             style={styles.dropDown}
             search={search}
@@ -51,5 +56,8 @@ const styles = StyleSheet.create({
 
    placeholderStyle: {
       color: '#888',
+   },
+   required: {
+      color: 'red',
    },
 })

@@ -22,6 +22,7 @@ export const FormInput = ({
    style,
    containerStyle,
    errorMessage,
+   isRequired,
 }) => {
    const [isIcon, setIsIcon] = useState(true)
 
@@ -38,7 +39,9 @@ export const FormInput = ({
 
    return (
       <View style={[styles.container, containerStyle]}>
-         <Text style={styles.label}>{label}</Text>
+         <Text style={styles.label}>
+            {label} {isRequired && <Text style={styles.required}>*</Text>}
+         </Text>
          <View style={[styles.inputContainer, style]}>
             <TextInput
                style={styles.input}
@@ -93,5 +96,8 @@ const styles = StyleSheet.create({
    },
    icon: {
       fontSize: 24,
+   },
+   required: {
+      color: 'red',
    },
 })

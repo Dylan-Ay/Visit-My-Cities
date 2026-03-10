@@ -1,7 +1,7 @@
 import { useFavorite } from '../../../store/favoritesStore'
 import { HeaderIconButton } from './HeaderIconButton'
 
-export const FavorteBuildingHeaderButton = ({ route }) => {
+export const FavoriteBuildingHeaderButton = ({ route }) => {
    const { buildingId } = route.params
    // prettier-ignore
    const toggleFavBuilding = useFavorite((state) => state.toggleFavoriteBuilding)

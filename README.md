@@ -103,17 +103,26 @@ Once the environment variables are configured, restart the development server an
 
 ## Screenshots : ##
 
-<img width="275" height="596" alt="Screenshot_1772975188" src="https://github.com/user-attachments/assets/1c03578b-2fcc-4434-9ba9-a467ec7bbf69" />
-<img width="275" height="596" alt="Screenshot_1773163422" src="https://github.com/user-attachments/assets/7c1b9ec0-94d3-453a-b40a-8feccb0571ad" />
+<div>
+  <img width="275" height="596" alt="Screenshot_1772996691" src="frontend/assets/screenshots/Explorer.png" />
+  <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/CityDetailScreen.png" />
+</div>
 <br><br>
-<img width="275" height="596" alt="Screenshot_1772983393" src="https://github.com/user-attachments/assets/7ebe3d0b-d1ec-4655-a2d2-8c28ba4398b9" />
-<img width="275" height="596" alt="Screenshot_1772983485" src="https://github.com/user-attachments/assets/6f243d81-d60a-4fcb-96aa-30cd2aebccbf" />
-<img width="275" height="596" alt="Screenshot_1772983498" src="https://github.com/user-attachments/assets/05dfb681-4563-480c-aab2-575fdc6644dc" />
+<div>
+  <img width="275" height="596" alt="Screenshot_1772996691" src="frontend/assets/screenshots/BuildingScreen.png" />
+  <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/BuildingScreen2.png" />
+  <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/BuildingScreen3.png" />
+</div>
 <br><br>
-<img width="275" height="596" alt="Screenshot_1772983782" src="https://github.com/user-attachments/assets/329787d4-28bb-481e-bc0f-02f8d6968589" />
-<img width="275" height="596" alt="Screenshot_1772981309" src="https://github.com/user-attachments/assets/63c36440-c566-4fcb-a921-03a5ef7bac2e" />
+<div>
+  <img width="275" height="596" alt="Screenshot_1772996691" src="frontend/assets/screenshots/BuildingsByCategory.png" />
+  <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/Favorites.png" />
+</div>
 <br><br>
-<img width="275" height="596" alt="Screenshot_1773161786" src="https://github.com/user-attachments/assets/9f14da5a-081f-4ad9-8dfe-34ee11ae8727" />
-<img width="275" height="596" alt="Screenshot_1772982380" src="https://github.com/user-attachments/assets/cbf0480e-8d11-4b20-a2bb-07b5b4f2a228" />
-<img width="275" height="596" alt="Screenshot_1772982603" src="https://github.com/user-attachments/assets/78bec69f-485c-44e4-a729-21d46358b9c9" />
+<div>
+  <img width="275" height="596" alt="Screenshot_1772996691" src="frontend/assets/screenshots/AddBuildingScreen.png" />
+  <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/ProfileScreen.png" />
+  <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/ProfileScreenLogged.png" />
+</div>
+
 

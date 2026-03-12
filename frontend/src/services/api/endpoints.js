@@ -1,6 +1,6 @@
 export const API_BASE_URL =
-   process.env.EXPO_PUBLIC_API_URL_TELEPHONE ||
    process.env.EXPO_PUBLIC_API_URL_ANDROID_EMULATOR ||
+   process.env.EXPO_PUBLIC_API_URL_TELEPHONE ||
    process.env.EXPO_PUBLIC_API_URL_IOS_SIMULATOR
 
 export const API_ROUTES = {

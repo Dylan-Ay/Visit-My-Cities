@@ -47,7 +47,7 @@ npm run start
 
 This will start the development server.
 
-### Running the application on Android
+### Running the application
 
 You can run the application in two different ways:
 

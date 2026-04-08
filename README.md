@@ -6,14 +6,14 @@ Thanks for checking out this bachelor's degree project.
 
 <div>
   <img width="275" height="596" alt="Screenshot_1772996691" src="frontend/assets/screenshots/HomeScreen.png" />
-<img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/HomeScreen2.png" />
+  <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/HomeScreen2.png" />
 </div>
 <br>
 (More screenshots down below)
 
 ## The Project
 
-The Visit My Cities project catalogs the various notable buildings in each city. A mobile application allows visitors to plan their visits during their time in a city. Visitors can view buildings based on their preferences (year of construction, architectural style, categories). An expert user has the possibility to add new buildings. Each building has plenty of useful informations to plan a visit.
+The Visit My Cities project catalogs the various notable landmark in each city. A mobile application allows visitors to plan their visits during their time in a city. Visitors can view landmarks based on their preferences (year of construction, architectural style, categories). An expert user has the possibility to add new landmarks. Each landmark has plenty of useful informations to plan a visit.
 
 ## License ❗
 
@@ -67,31 +67,30 @@ EXPO_PUBLIC_API_URL_TELEPHONE=http://192.168.X.X:8080
 Once the environment variables are configured, restart the development server and scan the QR code (or run the app) from your device.
 
 **The functionalities are :**
-- Display a list of popular cities and buildings
-- Display a list of building categories
-- Show buildings/places for each city with name and image
-- View detailed information for each building (address, opening hours, description, key info, visit info, location)
-- Navigate between buildings and cities within the app
-- Maintain a list of favorite cities and buildings
-- Add a city or building to the favorites list
-- View a map with building location
-- Basic user profile display (view own information)
-- Sign in and sign up functionality (mainly useful for expert users at the moment)
-- Add new buildings via the form (front-end submission + back-end handling)
-- Display a route from your current location to the building using Google Maps
+- Display a list of popular cities and landmarks
+- Display a list of landmarks by category
+- Display a list of landmarks by city
+- Display detailed information for each landmark (address, opening hours, description, key information, visit information, location)
+- Navigate between landmarks and cities within the application
+- Maintain a list of favorite cities and landmarks
+- Display a map with the landmark’s location
+- Display a route from the user’s current location to the landmark using Google Maps
+- Display a basic user profile once logged in
+- Sign in and sign up functionality, with an admin area for expert users
+- Add new landmarks via a form (front-end submission + back-end processing)
 
 **The functionalities in building :**
 
 - Add the favorite button on place cards
 - Make the search bar work
 - Add filter and sort functionality
-- Create a V2 VisitScreen with the possibility to group buildings by city
-- Implement the planning functionality to create a route between buildings in a city
+- Create a V2 VisitScreen with the possibility to group landmarks by city
+- Implement the planning functionality to create a route between landmarks in a city
 - ProfileScreen with more information (editing personal details)
-- Make a more elaborate external back-office, or add delete and edit functionality for buildings and cities
+- Make a more elaborate external back-office, or add delete and edit functionality for landmarks and cities
 - Add a full-screen map in BuildingDetailScreen to show the user’s current location
 - Add the possibility to open a route with Apple Maps
-- Allow users to suggest a new building
+- Allow users to suggest a new landmark
   
 **Stacks used :**
 - React Native (Zustand, Expo, React Hook Form)

@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.Map;
 @Data
 public class BuildingDTO {
-    private String id;
-    private String cityId;
+    private Long id;
+    private Long cityId;
     private String name;
     private String image;
     private String address;
     private String postalCode;
     private String city;
     private String country;
-    private String constructionYear;
+    private Integer constructionYear;
     private String architect;
     private String style;
     private String description;

@@ -9,7 +9,7 @@ public class BuildingCreateDTO {
     private String address;
     private String postalCode;
     private String country;
-    private String constructionYear;
+    private Integer constructionYear;
     private String architect;
     private String style;
     private String description;

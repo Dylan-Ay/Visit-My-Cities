@@ -49,8 +49,8 @@ public class BuildingMapper {
 
         // --- BuildingDTO ---
         BuildingDTO dto = new BuildingDTO();
-        dto.setId(building.getId() != null ? building.getId().toString() : null);
-        dto.setCityId(building.getCity() != null ? building.getCity().getId().toString() : null);
+        dto.setId(building.getId() != null ? building.getId() : null);
+        dto.setCityId(building.getCity() != null ? building.getCity().getId() : null);
         dto.setCity(building.getCity() != null ? building.getCity().getName() : null);
         dto.setCountry(building.getCity() != null ? building.getCity().getCountry() : null);
         dto.setName(building.getName());

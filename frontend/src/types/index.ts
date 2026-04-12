@@ -67,3 +67,9 @@ export type Building = {
    ticketPrice: number
    visitDuration: string
 }
+
+export type BuildingInfos = {
+   label: string
+   icon: string
+   value: string | number
+}

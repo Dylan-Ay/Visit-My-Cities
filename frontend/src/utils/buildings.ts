@@ -1,7 +1,8 @@
 import { KEY_INFO_ICONS } from '../constants/keyInfoIcons'
 import { VISIT_INFO_ICONS } from '../constants/visitInfoIcons'
+import { Building, BuildingInfos, TimeSlot, WeekDay } from '../types'
 
-export const getBuildingKeyInfos = (building) => {
+export const getBuildingKeyInfos = (building: Building): BuildingInfos[] => {
    const buildingKeyInfos = [
       {
          label: 'Ville',
@@ -28,7 +29,7 @@ export const getBuildingKeyInfos = (building) => {
    return buildingKeyInfos
 }
 
-export const getBuildingVisitInfos = (building) => {
+export const getBuildingVisitInfos = (building: Building): BuildingInfos[] => {
    const buildingVisitInfos = [
       {
          label: 'Tarif',
@@ -70,32 +71,10 @@ export const getBuildingVisitInfos = (building) => {
    return buildingVisitInfos
 }
 
-export const getBuildingsByCity = (buildings, cityId) => {
-   const result = []
-
-   buildings.forEach((item) => {
-      if (item.cityId == cityId) {
-         result.push(item)
-      }
-   })
-
-   return result
-}
-
-export const getBuildingsByCategory = (buildings, categoryId) => {
-   const result = []
-
-   buildings.forEach((item) => {
-      if (item.categoryId == categoryId) {
-         result.push(item)
-      }
-   })
-
-   return result
-}
-
-export const orderDaysProperly = (schedulesDays) => {
-   const orderedDays = {
+export const orderDaysProperly = (
+   schedulesDays: Record<WeekDay, TimeSlot[]>
+) => {
+   const orderedDays: Record<WeekDay, number> = {
       lundi: 0,
       mardi: 1,
       mercredi: 2,
@@ -106,10 +85,10 @@ export const orderDaysProperly = (schedulesDays) => {
    }
 
    const sortedDays = Object.fromEntries(
-      Object.entries(schedulesDays).sort(
+      (Object.entries(schedulesDays) as [WeekDay, TimeSlot[]][]).sort(
          (a, b) => orderedDays[a[0]] - orderedDays[b[0]]
       )
-   )
+   ) as Record<WeekDay, TimeSlot[]>
 
    return sortedDays
 }

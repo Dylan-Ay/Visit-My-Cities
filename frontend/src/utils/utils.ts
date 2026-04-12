@@ -1,4 +1,6 @@
-export const groupCategories = (categories) => {
+import { Category } from '../types'
+
+export const groupCategories = (categories: Category[]) => {
    const result = []
 
    for (let i = 0; i < categories.length; i += 2) {
@@ -8,7 +10,7 @@ export const groupCategories = (categories) => {
    return result
 }
 
-export const divideOddsAndEvens = (items) => {
+export const divideOddsAndEvens = <Type>(items: Type[]) => {
    const leftColumn = []
    const rightColumn = []
 
@@ -23,12 +25,15 @@ export const divideOddsAndEvens = (items) => {
    return { leftColumn, rightColumn }
 }
 
-export const firstChartToUpperCase = (value) => {
+export const firstChartToUpperCase = (value: string) => {
    return value.charAt(0).toUpperCase() + value.slice(1)
 }
 
-export const getPlacesByIds = (idsArray, placesList) => {
-   const result = []
+export const getPlacesByIds = <Type extends { id: number }>(
+   idsArray: number[],
+   placesList: Type[]
+) => {
+   const result: Type[] = []
 
    placesList.forEach((place) => {
       if (idsArray.includes(place.id)) {

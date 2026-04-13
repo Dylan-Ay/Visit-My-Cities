@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { getBuildings } from '../api/buildings.service'
 import { Alert } from 'react-native'
+import { Building } from '../../types/building'
 
 export default function useBuildings() {
-   const [buildings, setBuildings] = useState(null)
+   const [buildings, setBuildings] = useState<Building[] | null>(null)
    const [isLoadingBuild, setLoadingBuild] = useState(false)
 
    useEffect(() => {

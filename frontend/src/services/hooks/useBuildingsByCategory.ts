@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 import { getBuildingsByCategory } from '../api/categories.service'
 import { Alert } from 'react-native'
+import { Building } from '../../types/building'
 
-export default function useBuildingsByCategory(id) {
-   const [buildingsByCategory, setBuildingsByCategory] = useState([])
+export default function useBuildingsByCategory(id: number) {
+   const [buildingsByCategory, setBuildingsByCategory] = useState<Building[]>(
+      []
+   )
    const [isLoading, setIsLoading] = useState(false)
 
    useEffect(() => {

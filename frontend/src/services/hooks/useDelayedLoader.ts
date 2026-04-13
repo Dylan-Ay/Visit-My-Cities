@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function useDelayLoader(isLoading) {
+export default function useDelayLoader(isLoading: boolean) {
    const [showLoader, setShowLoader] = useState(false)
 
-   const appearTimer = useRef(null)
-   const hideTimer = useRef(null)
-   const visibleSince = useRef(null)
+   const appearTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+   const visibleSince = useRef<number | null>(null)
 
    useEffect(() => {
       if (isLoading) {
@@ -15,7 +15,9 @@ export default function useDelayLoader(isLoading) {
             setShowLoader(true)
          }, 250)
       } else {
-         clearTimeout(appearTimer.current)
+         if (appearTimer.current) {
+            clearTimeout(appearTimer.current)
+         }
 
          // Affiche le loader minimum 600 ms
          if (visibleSince.current) {

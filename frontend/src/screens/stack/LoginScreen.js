@@ -6,7 +6,7 @@ import { HeaderSection } from '../../components/sections/HeaderSection'
 import { StackActions } from '@react-navigation/native'
 import { useUserStore } from '../../store/useUserStore'
 import { useState } from 'react'
-import { login } from '../../services/auth/auth.service'
+import { login } from '../../services/api/auth.service'
 import { validators } from '../../utils/validation'
 
 export const LoginScreen = ({ navigation }) => {

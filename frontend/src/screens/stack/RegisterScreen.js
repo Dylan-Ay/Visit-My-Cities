@@ -5,7 +5,7 @@ import ActionsSections from '../../components/sections/ActionsSections'
 import { StackActions } from '@react-navigation/native'
 import { useState } from 'react'
 import { validators } from '../../utils/validation'
-import { register } from '../../services/auth/auth.service'
+import { register } from '../../services/api/auth.service'
 
 export const RegisterScreen = ({ navigation }) => {
    const [email, setEmail] = useState('')

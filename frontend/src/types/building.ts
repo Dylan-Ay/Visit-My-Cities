@@ -20,7 +20,7 @@ export type WeekDay =
    | 'dimanche'
 
 export type Schedules = {
-   type: string
+   type: 'Variable' | 'Horaires' | 'Accès libre'
    note: string
    officialHoursUrl: string
    days: Record<WeekDay, TimeSlot[]>
@@ -31,11 +31,11 @@ export type Building = {
    cityId: number
    city: string
 
-   accessStatus: string
+   accessStatus: 'Visitable' | 'Accès libre' | 'Accès restreint'
    accessiblePRM: boolean
    address: string
    architect: string
-   booking: string
+   booking: 'Recommandée' | 'Obligatoire' | 'Non requis'
 
    constructionYear: number
 
@@ -56,4 +56,29 @@ export type BuildingInfos = {
    label: string
    icon: string
    value: string | number
+}
+
+export type CreateBuildingPayload = {
+   name: string
+   address: string
+   postalCode: string
+
+   cityId: number
+   categoryId: number
+   image: string
+
+   constructionYear: number
+   architect: string
+   style: string
+   description: string
+
+   ticketPrice: number
+   visitDuration: string
+   booking: 'Recommandée' | 'Obligatoire' | 'Non requis'
+   accessStatus: 'Visitable' | 'Accès libre' | 'Accès restreint'
+   accessiblePRM: boolean
+
+   schedules: Schedules
+
+   coords: Coords
 }

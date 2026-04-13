@@ -1,7 +1,7 @@
 import { API_BASE_URL } from './endpoints'
 import { getAccessToken } from '../../auth/tokenStorage'
 
-export async function client(path, options = {}) {
+export async function client(path: string, options: RequestInit = {}) {
    const token = await getAccessToken()
 
    const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -12,7 +12,7 @@ export async function client(path, options = {}) {
       },
    })
 
-   console.log('ENDPOINT:', path, 'METHOD:', options.method)
+   console.log('ENDPOINT:', path, 'METHOD:', options.method ?? 'GET')
 
    if (!response.ok) {
       const error = await response.json()

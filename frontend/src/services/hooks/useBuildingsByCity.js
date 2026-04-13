@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getBuildingsByCity } from '../buildings/buildings.service'
+import { getBuildingsByCity } from '../api/buildings.service'
 import { Alert } from 'react-native'
 
 export default function useBuildingsByCity(id) {

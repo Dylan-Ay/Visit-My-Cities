@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getBuildingsByCategory } from '../categories/categories.service'
+import { getBuildingsByCategory } from '../api/categories.service'
 import { Alert } from 'react-native'
 
 export default function useBuildingsByCategory(id) {

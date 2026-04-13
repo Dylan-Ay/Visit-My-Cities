@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCategories } from '../categories/categories.service'
+import { getCategories } from '../api/categories.service'
 import { Alert } from 'react-native'
 
 export default function useCategories() {

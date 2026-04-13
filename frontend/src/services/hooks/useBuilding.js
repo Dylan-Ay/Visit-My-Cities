@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Alert } from 'react-native'
-import { getBuildingById } from '../buildings/buildings.service'
+import { getBuildingById } from '../api/buildings.service'
 
 export default function useBuilding(id) {
    const [building, setBuilding] = useState(null)

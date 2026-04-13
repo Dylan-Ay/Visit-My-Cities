@@ -1,5 +1,5 @@
-import { client } from '../api/client'
-import { API_ROUTES } from '../api/endpoints'
+import { client } from './client'
+import { API_ROUTES } from './endpoints'
 
 export function getBuildings() {
    return client(API_ROUTES.BUILDING.FINDALL)

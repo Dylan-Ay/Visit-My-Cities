@@ -1,2 +1,5 @@
 export * from './client'
 export * from './endpoints'
+export * from './buildings.service'
+export * from './cities.service'
+export * from './categories.service'

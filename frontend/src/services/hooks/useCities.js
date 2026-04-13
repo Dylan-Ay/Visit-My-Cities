@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCities } from '../cities/cities.service'
+import { getCities } from '../api/cities.service'
 import { Alert } from 'react-native'
 
 export default function useCities() {

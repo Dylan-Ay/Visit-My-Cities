@@ -1,4 +1,4 @@
-import { addBuilding } from '../buildings/buildings.service'
+import { addBuilding } from '../api/buildings.service'
 import { useState } from 'react'
 
 export function useAddBuilding() {

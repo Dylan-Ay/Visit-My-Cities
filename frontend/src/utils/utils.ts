@@ -1,4 +1,4 @@
-import { Category } from '../types'
+import { Category } from '../types/category'
 
 export const groupCategories = (categories: Category[]) => {
    const result = []

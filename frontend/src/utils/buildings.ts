@@ -1,6 +1,6 @@
 import { KEY_INFO_ICONS } from '../constants/keyInfoIcons'
 import { VISIT_INFO_ICONS } from '../constants/visitInfoIcons'
-import { Building, BuildingInfos, TimeSlot, WeekDay } from '../types'
+import { Building, BuildingInfos, TimeSlot, WeekDay } from '../types/building'
 
 export const getBuildingKeyInfos = (building: Building): BuildingInfos[] => {
    const buildingKeyInfos = [

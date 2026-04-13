@@ -1,19 +1,3 @@
-export type City = {
-   id: number
-   name: string
-   country: string
-   description: string | null
-   postalCode: string
-   image: string
-}
-
-export type Category = {
-   id: number
-   name: string
-   icon: string
-   image: string
-}
-
 export type Coords = {
    latitude: number
    longitude: number

@@ -2,14 +2,13 @@ import { ScrollView } from 'react-native'
 import PlacesCarouselSection from '../../components/sections/PlacesCarouselSection'
 import {
    ScreenWrapper,
-   SectionTitle,
    PlaceCard,
    ContentContainer,
    SectionDivider,
 } from '../../components/ui'
 import { CarouselItem } from '../../components/ui/layout/CarouselItem'
 import { EmptyState } from '../../components/ui/EmptyState'
-import { useFavorite } from '../../store/favoritesStore'
+import { useFavoriteStore } from '../../store/useFavoriteStore'
 import { getPlacesByIds } from '../../utils/utils'
 import useBuildings from '../../services/hooks/useBuildings'
 import useCities from '../../services/hooks/useCities'
@@ -18,8 +17,8 @@ import { Loader } from '../../components/ui/Loader'
 import { HeaderSection } from '../../components/sections/HeaderSection'
 
 export const VisitScreen = ({ navigation }) => {
-   const buildingsFavIds = useFavorite((state) => state.favoriteBuildings)
-   const citiesFavIds = useFavorite((state) => state.favoriteCities)
+   const buildingsFavIds = useFavoriteStore((state) => state.favoriteBuildings)
+   const citiesFavIds = useFavoriteStore((state) => state.favoriteCities)
    const { buildings, isLoadingBuild } = useBuildings()
    const { cities, isLoadingCity } = useCities()
    const loaderGlobal = isLoadingBuild || isLoadingCity

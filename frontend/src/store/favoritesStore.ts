@@ -2,13 +2,23 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export const useFavorite = create(
+interface FavoriteState {
+   favoriteCities: number[]
+   favoriteBuildings: number[]
+   toggleFavoriteCity: (id: number) => void
+   toggleFavoriteBuilding: (id: number) => void
+   isFavoriteCity: (id: number) => boolean
+   isFavoriteBuilding: (id: number) => boolean
+   resetStorage: () => void
+}
+
+export const useFavorite = create<FavoriteState>()(
    persist(
       (set, get) => ({
          favoriteCities: [],
          favoriteBuildings: [],
 
-         toggleFavoriteCity: (id) =>
+         toggleFavoriteCity: (id: number) =>
             set((state) => {
                if (!state.favoriteCities.includes(id)) {
                   return {
@@ -23,7 +33,7 @@ export const useFavorite = create(
                   favoriteCities: newFavoriteCities,
                }
             }),
-         toggleFavoriteBuilding: (id) =>
+         toggleFavoriteBuilding: (id: number) =>
             set((state) => {
                if (!state.favoriteBuildings.includes(id)) {
                   return {
@@ -38,8 +48,14 @@ export const useFavorite = create(
                   favoriteBuildings: newFavoriteBuildings,
                }
             }),
-         isFavoriteCity: (id) => get().favoriteCities.includes(id),
-         isFavoriteBuilding: (id) => get().favoriteBuildings.includes(id),
+         resetStorage: () =>
+            set({
+               favoriteCities: [],
+               favoriteBuildings: [],
+            }),
+         isFavoriteCity: (id: number) => get().favoriteCities.includes(id),
+         isFavoriteBuilding: (id: number) =>
+            get().favoriteBuildings.includes(id),
       }),
 
       {

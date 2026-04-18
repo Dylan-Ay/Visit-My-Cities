@@ -6,7 +6,7 @@ export async function getAccessToken() {
    return await SecureStore.getItemAsync(ACCESS_TOKEN_KEY)
 }
 
-export async function saveAccessToken(token) {
+export async function saveAccessToken(token: string) {
    await SecureStore.setItemAsync(ACCESS_TOKEN_KEY, token)
 }
 

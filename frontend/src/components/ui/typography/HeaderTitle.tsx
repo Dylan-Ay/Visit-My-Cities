@@ -1,6 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 
-export const HeaderTitle = ({ children }) => {
+interface HeaderTitleProps {
+   children: React.ReactNode
+}
+
+export const HeaderTitle = ({ children }: HeaderTitleProps) => {
    return (
       <View style={styles.container}>
          <Text style={styles.headerTitle}>{children}</Text>

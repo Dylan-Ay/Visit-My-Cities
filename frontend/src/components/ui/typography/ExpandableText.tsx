@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-export const ExpandableText = ({ linesNumber, text }) => {
+interface ExpandableTextProps {
+   linesNumber: number
+   text: string
+}
+
+export const ExpandableText = ({ linesNumber, text }: ExpandableTextProps) => {
    const [isExpanded, setIsExpanded] = useState(false)
 
    return (

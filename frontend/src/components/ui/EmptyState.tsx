@@ -1,6 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 
-export const EmptyState = ({ headerTitle, text }) => {
+interface EmptyStateProps {
+   headerTitle: string
+   text: string
+}
+
+export const EmptyState = ({ headerTitle, text }: EmptyStateProps) => {
    return (
       <View style={styles.container}>
          <Text style={styles.headerTitle}>{headerTitle}</Text>

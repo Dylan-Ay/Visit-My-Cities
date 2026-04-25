@@ -1,12 +1,20 @@
-import { FlatList, Text } from 'react-native'
+import { FlatList, ListRenderItem } from 'react-native'
 
-export const PlacesCarousel = ({
+interface PlacesCarouselProps<T> {
+   data: T[]
+   renderItem: ListRenderItem<T>
+   keyExtractor: (item: T, index: number) => string
+   emptyComponent?: React.ReactElement
+   scrollEnabled: boolean
+}
+
+export const PlacesCarousel = <T,>({
    data,
    renderItem,
    keyExtractor,
    emptyComponent,
    scrollEnabled,
-}) => {
+}: PlacesCarouselProps<T>) => {
    return (
       <FlatList
          horizontal

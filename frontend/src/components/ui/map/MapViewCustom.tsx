@@ -1,8 +1,17 @@
 import { Linking, StyleSheet, Text, View } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import { ActionButton } from '../inputs/ActionButton'
+import { Coords } from '../../../types/building'
 
-export const MapViewCustom = ({ name, address, region }) => {
+interface MapViewCustomProps {
+   name: string
+   address: string
+   region: Coords
+}
+
+export const MapViewCustom = ({ name, address, region }: MapViewCustomProps) => {
+   const fullAddress = `${address.at(0)} • ${address.at(1)}`
+
    return (
       <View style={styles.container}>
          <MapView style={styles.map} region={region}>
@@ -15,7 +24,7 @@ export const MapViewCustom = ({ name, address, region }) => {
          </MapView>
          <View style={styles.addressContainer}>
             <Text style={styles.name}>{name}</Text>
-            <Text style={styles.address}>{address.join(' • ')}</Text>
+            <Text style={styles.address}>{fullAddress}</Text>
             <ActionButton
                title={"Afficher l'itinéraire"}
                onPress={() =>

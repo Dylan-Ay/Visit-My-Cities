@@ -1,7 +1,11 @@
 import { View } from 'react-native'
 import { StyleSheet } from 'react-native'
 
-export const TwoColumns = ({ children }) => {
+interface TwoColumnsProps {
+   children: React.ReactElement
+}
+
+export const TwoColumns = ({ children }: TwoColumnsProps) => {
    return (
       <View>
          <View style={styles.container}>{children}</View>

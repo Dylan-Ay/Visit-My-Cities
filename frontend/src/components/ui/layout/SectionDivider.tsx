@@ -1,6 +1,10 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 
-export const SectionDivider = ({ style }) => {
+interface SectionDividerProps {
+   style: StyleProp<ViewStyle>
+}
+
+export const SectionDivider = ({ style }: SectionDividerProps) => {
    return <View style={[styles.container, style]}></View>
 }
 

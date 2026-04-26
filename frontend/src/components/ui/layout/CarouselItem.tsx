@@ -1,6 +1,10 @@
 import { StyleSheet, View } from 'react-native'
 
-export const CarouselItem = ({ children }) => {
+interface CarouselItemProps {
+   children: React.ReactElement
+}
+
+export const CarouselItem = ({ children }: CarouselItemProps) => {
    return <View style={styles.item}>{children}</View>
 }
 

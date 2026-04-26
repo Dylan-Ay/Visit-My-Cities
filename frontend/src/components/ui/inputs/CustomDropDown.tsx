@@ -1,5 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ReactNode } from 'react'
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown'
+
+type PlacesDropDown = {
+   label: string
+   value: string
+}
+
+interface CustomDropDownProps {
+   data: PlacesDropDown[]
+   value: string
+   onChange: (item: string) => void
+   label: string
+   placeholder: string
+   containerStyle: StyleProp<ViewStyle>
+   isLabel: boolean
+   isSearch: boolean
+   errorMessage: ReactNode
+   isRequired: boolean
+}
 
 export const CustomDropDown = ({
    data,
@@ -9,10 +28,10 @@ export const CustomDropDown = ({
    placeholder,
    containerStyle,
    isLabel = true,
-   search = true,
+   isSearch = true,
    errorMessage,
    isRequired,
-}) => {
+}: CustomDropDownProps) => {
    return (
       <View style={[styles.container, containerStyle]}>
          {isLabel && (
@@ -22,7 +41,7 @@ export const CustomDropDown = ({
          )}
          <Dropdown
             style={styles.dropDown}
-            search={search}
+            search={isSearch}
             searchPlaceholder="Rechercher"
             placeholderStyle={styles.placeholderStyle}
             labelField="label"

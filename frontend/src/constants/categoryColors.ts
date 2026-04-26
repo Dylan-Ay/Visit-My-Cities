@@ -1,8 +1,1 @@
-export const CATEGORY_COLORS = {
-   1: '#D0EBFF',
-   2: '#FFE066',
-   3: '#E5DBFF',
-   4: '#FFD6E7',
-   5: '#C3FAE8',
-   6: '#FFD8A8',
-}
+export const CATEGORY_COLORS = ['#D0EBFF', '#FFE066', '#E5DBFF', '#FFD6E7', '#C3FAE8', '#FFD8A8']

@@ -1,14 +1,18 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { CATEGORY_COLORS } from '../../../constants/categoryColors'
 
-export const CategoryButton = ({ id, name, icon, onPress }) => {
+interface CategoryButtonProps {
+   id: number
+   name: string
+   icon: string
+   onPress: () => void
+}
+
+export const CategoryButton = ({ id, name, icon, onPress }: CategoryButtonProps) => {
    const backgroundColor = CATEGORY_COLORS[id] ?? '#D0EBFF'
 
    return (
-      <TouchableOpacity
-         style={[styles.chip, { backgroundColor }]}
-         onPress={onPress}
-      >
+      <TouchableOpacity style={[styles.chip, { backgroundColor }]} onPress={onPress}>
          <Text style={styles.name}>
             {icon} {name}
          </Text>

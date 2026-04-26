@@ -1,13 +1,16 @@
+import { RouteProp } from '@react-navigation/native'
 import { useFavoriteStore } from '../../../store/useFavoriteStore'
 import { HeaderIconButton } from './HeaderIconButton'
+import { RootStackParamList } from '../../../navigation/types'
 
-export const FavoriteBuildingHeaderButton = ({ route }) => {
+interface FavoriteBuildingHeaderButtonProps {
+   route: RouteProp<RootStackParamList, 'BuildingDetail'>
+}
+
+export const FavoriteBuildingHeaderButton = ({ route }: FavoriteBuildingHeaderButtonProps) => {
    const { buildingId } = route.params
-   // prettier-ignore
    const toggleFavBuilding = useFavoriteStore((state) => state.toggleFavoriteBuilding)
-   const favoritesBuildings = useFavoriteStore(
-      (state) => state.favoriteBuildings
-   )
+   const favoritesBuildings = useFavoriteStore((state) => state.favoriteBuildings)
    const isFav = favoritesBuildings.includes(buildingId)
 
    return (

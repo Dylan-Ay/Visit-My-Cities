@@ -1,29 +1,48 @@
 import { Ionicons } from '@expo/vector-icons'
-import { useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import {
+   KeyboardTypeOptions,
+   ReturnKeyTypeOptions,
+   StyleProp,
    StyleSheet,
    Text,
    TextInput,
    TouchableOpacity,
    View,
+   ViewStyle,
 } from 'react-native'
 
+interface FormInputProps {
+   value: string
+   label: string
+   placeholder: string
+   errorMessage: ReactNode
+   onChangeText: (item: string) => void
+   keyboardType: KeyboardTypeOptions | undefined
+   returnKeyType: ReturnKeyTypeOptions | undefined
+   secureTextEntry: boolean
+   multiline: boolean
+   numberOfLines: number
+   isRequired: boolean
+   style: StyleProp<ViewStyle>
+   containerStyle: StyleProp<ViewStyle>
+}
+
 export const FormInput = ({
+   value,
    label,
    placeholder,
-   keyboardType = 'default',
-   secureTextEntry = false,
-   returnKeyType,
-   value,
+   errorMessage,
    onChangeText,
-   onPress,
-   numberOfLines,
+   keyboardType = 'default',
+   returnKeyType,
+   secureTextEntry = false,
    multiline,
+   numberOfLines,
+   isRequired,
    style,
    containerStyle,
-   errorMessage,
-   isRequired,
-}) => {
+}: FormInputProps) => {
    const [isIcon, setIsIcon] = useState(true)
 
    const handleIconPress = () => {
@@ -56,10 +75,7 @@ export const FormInput = ({
                numberOfLines={numberOfLines}
             />
             {value != '' && isIcon && (
-               <TouchableOpacity
-                  style={styles.iconContainer}
-                  onPress={onPress ? onPress : handleIconPress}
-               >
+               <TouchableOpacity style={styles.iconContainer} onPress={handleIconPress}>
                   <Ionicons style={styles.icon} name={'close-outline'} />
                </TouchableOpacity>
             )}

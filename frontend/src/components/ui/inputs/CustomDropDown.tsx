@@ -10,27 +10,27 @@ type PlacesDropDown = {
 interface CustomDropDownProps {
    data: PlacesDropDown[]
    value: string
-   onChange: (item: string) => void
    label: string
    placeholder: string
-   containerStyle: StyleProp<ViewStyle>
+   errorMessage: ReactNode
+   onChange: (item: string) => void
    isLabel: boolean
    isSearch: boolean
-   errorMessage: ReactNode
    isRequired: boolean
+   containerStyle: StyleProp<ViewStyle>
 }
 
 export const CustomDropDown = ({
    data,
    value,
-   onChange,
    label,
    placeholder,
-   containerStyle,
+   errorMessage,
+   onChange,
    isLabel = true,
    isSearch = true,
-   errorMessage,
    isRequired,
+   containerStyle,
 }: CustomDropDownProps) => {
    return (
       <View style={[styles.container, containerStyle]}>

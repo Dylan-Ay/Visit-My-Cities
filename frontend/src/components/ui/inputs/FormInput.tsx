@@ -15,17 +15,17 @@ import {
 interface FormInputProps {
    value: string
    label: string
-   placeholder: string
+   placeholder?: string
    errorMessage: ReactNode
    onChangeText: (item: string) => void
-   keyboardType: KeyboardTypeOptions | undefined
-   returnKeyType: ReturnKeyTypeOptions | undefined
-   secureTextEntry: boolean
-   multiline: boolean
-   numberOfLines: number
-   isRequired: boolean
-   style: StyleProp<ViewStyle>
-   containerStyle: StyleProp<ViewStyle>
+   keyboardType?: KeyboardTypeOptions
+   returnKeyType?: ReturnKeyTypeOptions
+   secureTextEntry?: boolean
+   multiline?: boolean
+   numberOfLines?: number
+   isRequired?: boolean
+   style?: StyleProp<ViewStyle>
+   containerStyle?: StyleProp<ViewStyle>
 }
 
 export const FormInput = ({

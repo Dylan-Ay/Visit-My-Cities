@@ -10,14 +10,14 @@ type PlacesDropDown = {
 interface CustomDropDownProps {
    data: PlacesDropDown[]
    value: string
-   label: string
+   label?: string
    placeholder: string
    errorMessage: ReactNode
    onChange: (item: string) => void
-   isLabel: boolean
-   isSearch: boolean
-   isRequired: boolean
-   containerStyle: StyleProp<ViewStyle>
+   isLabel?: boolean
+   isSearch?: boolean
+   isRequired?: boolean
+   containerStyle?: StyleProp<ViewStyle>
 }
 
 export const CustomDropDown = ({

@@ -63,10 +63,10 @@ public class BuildingServiceImpl implements IBuildingService{
                     .orElseThrow(() -> new RuntimeException("City not found"));
             building.setCity(city);
         }
-        if(dto.getCategoriesId() != null) {
-            Category category = categoryRepository.findById(dto.getCategoriesId())
+        if(dto.getCategoryId() != null) {
+            Category category = categoryRepository.findById(dto.getCategoryId())
                     .orElseThrow(() -> new RuntimeException("Category not found"));
-            building.setCategories(category);
+            building.setCategory(category);
         }
 
         buildingRepository.save(building);
@@ -126,7 +126,7 @@ public class BuildingServiceImpl implements IBuildingService{
 
     @Override
     public List<Building> getBuildingsByCategorieId(Long id) {
-      List<Building> buildings = this.buildingRepository.findByCategories_Id(id);
+      List<Building> buildings = this.buildingRepository.findByCategory_Id(id);
       if(buildings.isEmpty()){
           throw new BuildingNotFoundException("Aucun batiment dans cette catégorie");
       }
@@ -166,7 +166,7 @@ public List<BuildingDTO> getAllBuildingsDTO() {
 
     public List<BuildingDTO> getBuildingsByCategoryId(Long id){
 
-         List<Building> buildings =  this.buildingRepository.findByCategories_Id(id);
+         List<Building> buildings =  this.buildingRepository.findByCategory_Id(id);
         List<BuildingDTO> buildingsDTO = new ArrayList<>();
         for(Building b : buildings){
             buildingsDTO.add(buildingMapper.toDTO(b));

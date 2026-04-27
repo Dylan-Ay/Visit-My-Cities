@@ -48,7 +48,7 @@ public class Building {
         private City city;
         @ManyToOne
         @JsonIgnore
-        private Category categories;
+        private Category category;
         @OneToMany(mappedBy = "building")
         @JsonIgnore
         private List<Favorite> favorites;

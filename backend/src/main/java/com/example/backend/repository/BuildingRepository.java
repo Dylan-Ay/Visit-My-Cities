@@ -9,6 +9,6 @@ public interface BuildingRepository extends JpaRepository<Building, Long> {
 
     List<Building> findByCity_Id(Long id);
     List<Building> findByCity_Name(String name);
-    List<Building> findByCategories_Id(Long id);
+    List<Building> findByCategory_Id(Long id);
     List<Building> getBuildingsDtoByCityName(Long id);
 }

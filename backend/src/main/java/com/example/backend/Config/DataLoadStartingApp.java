@@ -290,7 +290,7 @@ if(categoryRepository.count() == 0){
         building.setAccessiblePRM(accessible);
         building.setLatitude(lat);
         building.setLongitude(lng);
-        building.setCategories(category);
+        building.setCategory(category);
 
         // Stocker les horaires en JSON String //modifier les horaires pour stocker les horaires
         //avec le mapper on transforme la Map en string pour stocker en bdd puisqhe la bd stock que de text et string

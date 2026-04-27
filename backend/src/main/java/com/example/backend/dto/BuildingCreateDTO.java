@@ -25,5 +25,5 @@ public class BuildingCreateDTO {
     private Object coords;
 
     private Long cityId;
-    private Long categoriesId;
+    private Long categoryId;
 }

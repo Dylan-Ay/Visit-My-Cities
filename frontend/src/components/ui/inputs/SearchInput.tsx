@@ -1,15 +1,15 @@
 import { View, TextInput, StyleSheet } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { Ionicons } from '@expo/vector-icons'
 
-export const SearchInput = ({ placeholder }) => {
+interface SearchInputProps {
+   placeholder: string
+}
+
+export const SearchInput = ({ placeholder }: SearchInputProps) => {
    return (
       <View style={styles.inputContainer}>
          <Ionicons name="search-outline" style={styles.icon} />
-         <TextInput
-            placeholder={placeholder}
-            placeholderTextColor="#666"
-            style={styles.input}
-         />
+         <TextInput placeholder={placeholder} placeholderTextColor="#666" style={styles.input} />
       </View>
    )
 }

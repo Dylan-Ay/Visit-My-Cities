@@ -1,19 +1,22 @@
 import { Ionicons } from '@expo/vector-icons'
-import { Pressable, StyleSheet } from 'react-native'
+import { Pressable, StyleProp, StyleSheet, ViewStyle } from 'react-native'
+
+interface HeaderIconButtonProps {
+   icon: keyof typeof Ionicons.glyphMap
+   onPress: () => void
+   isBoxShadow?: boolean
+   style?: StyleProp<ViewStyle>
+}
 
 export const HeaderIconButton = ({
    icon,
    onPress,
    style,
    isBoxShadow = false,
-}) => {
+}: HeaderIconButtonProps) => {
    return (
       <Pressable
-         style={[
-            styles.buttonContainer,
-            style,
-            isBoxShadow && styles.boxShadow,
-         ]}
+         style={[styles.buttonContainer, style, isBoxShadow && styles.boxShadow]}
          onPress={onPress}
       >
          <Ionicons style={{ fontSize: 20 }} name={icon} />

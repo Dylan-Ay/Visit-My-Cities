@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native'
 import { SectionTitle } from '../typography/SectionTitle'
-import { Controller } from 'react-hook-form'
+import { Control, Controller, FieldErrors, UseFormWatch } from 'react-hook-form'
 import { FormInput } from '../inputs/FormInput'
 import { CustomDropDown } from '../inputs/CustomDropDown'
 import { SectionDivider } from '../layout/SectionDivider'
@@ -15,6 +15,15 @@ import { generateTimeSlots } from '../../../utils/utils'
 import { TwoColumns } from '../layout/TwoColumns'
 import { Checkbox } from 'expo-checkbox'
 import { ErrorMessage } from './ErrorMessage'
+import { FormsValues, PlacesDropDown } from './types'
+
+interface AddBuildingFormProps {
+   control: Control<FormsValues>
+   errors: FieldErrors<FormsValues>
+   watch: UseFormWatch<FormsValues>
+   cityDropDown: PlacesDropDown[]
+   categoryDropDown: PlacesDropDown[]
+}
 
 export const AddBuildingForm = ({
    control,
@@ -22,7 +31,7 @@ export const AddBuildingForm = ({
    watch,
    cityDropDown,
    categoryDropDown,
-}) => {
+}: AddBuildingFormProps) => {
    const sameForAllDays = watch('schedules.sameForAllDays')
 
    return (
@@ -47,11 +56,7 @@ export const AddBuildingForm = ({
                   onPress={() => onChange('')}
                   label={'Nom'}
                   isRequired={true}
-                  errorMessage={
-                     errors.name && (
-                        <ErrorMessage message={'Le nom est requis.'} />
-                     )
-                  }
+                  errorMessage={errors.name && <ErrorMessage message={'Le nom est requis.'} />}
                   returnKeyType={'next'}
                />
             )}
@@ -71,9 +76,7 @@ export const AddBuildingForm = ({
                   label={'Adresse'}
                   isRequired={true}
                   errorMessage={
-                     errors.address && (
-                        <ErrorMessage message={"L'adresse est requise."} />
-                     )
+                     errors.address && <ErrorMessage message={"L'adresse est requise."} />
                   }
                   returnKeyType={'next'}
                />
@@ -94,9 +97,7 @@ export const AddBuildingForm = ({
                   label={'Code postal'}
                   isRequired={true}
                   errorMessage={
-                     errors.postalCode && (
-                        <ErrorMessage message={'Le code postal est requis.'} />
-                     )
+                     errors.postalCode && <ErrorMessage message={'Le code postal est requis.'} />
                   }
                   returnKeyType={'next'}
                />
@@ -116,11 +117,7 @@ export const AddBuildingForm = ({
                   onChange={onChange}
                   label={'Ville'}
                   isRequired={true}
-                  errorMessage={
-                     errors.cityId && (
-                        <ErrorMessage message={'La ville est requise.'} />
-                     )
-                  }
+                  errorMessage={errors.cityId && <ErrorMessage message={'La ville est requise.'} />}
                   placeholder={'Sélectionner une ville'}
                />
             )}
@@ -131,7 +128,7 @@ export const AddBuildingForm = ({
             rules={{
                required: true,
             }}
-            name="categoriesId"
+            name="categoryId"
             render={({ field: { value, onChange } }) => (
                <CustomDropDown
                   data={categoryDropDown}
@@ -140,9 +137,7 @@ export const AddBuildingForm = ({
                   label={'Catégorie'}
                   isRequired={true}
                   errorMessage={
-                     errors.categoriesId && (
-                        <ErrorMessage message={'La catégorie est requise'} />
-                     )
+                     errors.categoryId && <ErrorMessage message={'La catégorie est requise'} />
                   }
                   placeholder={'Sélectionner une catégorie'}
                />
@@ -163,11 +158,7 @@ export const AddBuildingForm = ({
                   label={"URL de l'image"}
                   isRequired={true}
                   errorMessage={
-                     errors.image && (
-                        <ErrorMessage
-                           message={"L'URL de l'image est requise."}
-                        />
-                     )
+                     errors.image && <ErrorMessage message={"L'URL de l'image est requise."} />
                   }
                   returnKeyType={'next'}
                />
@@ -187,12 +178,11 @@ export const AddBuildingForm = ({
             name="constructionYear"
             render={({ field: { value, onChange } }) => (
                <FormInput
-                  value={value}
+                  value={String(value)}
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Année de construction'}
                   keyboardType="numeric"
-                  returnKeyType={'next'}
                />
             )}
          />
@@ -226,11 +216,7 @@ export const AddBuildingForm = ({
                   isRequired={true}
                   placeholder={'Sélectionner un style'}
                   errorMessage={
-                     errors.style && (
-                        <ErrorMessage
-                           message={'Le style architectural est requis.'}
-                        />
-                     )
+                     errors.style && <ErrorMessage message={'Le style architectural est requis.'} />
                   }
                />
             )}
@@ -253,9 +239,7 @@ export const AddBuildingForm = ({
                   multiline={true}
                   numberOfLines={3}
                   errorMessage={
-                     errors.description && (
-                        <ErrorMessage message={'La description est requise.'} />
-                     )
+                     errors.description && <ErrorMessage message={'La description est requise.'} />
                   }
                   returnKeyType={'next'}
                />
@@ -279,7 +263,7 @@ export const AddBuildingForm = ({
                name="ticketPrice"
                render={({ field: { value, onChange } }) => (
                   <FormInput
-                     value={value}
+                     value={String(value)}
                      onChangeText={onChange}
                      onPress={() => onChange('')}
                      label={'Tarif'}
@@ -287,11 +271,8 @@ export const AddBuildingForm = ({
                      keyboardType="numeric"
                      containerStyle={{ width: '48%' }}
                      errorMessage={
-                        errors.ticketPrice && (
-                           <ErrorMessage message={'Le tarif est requis.'} />
-                        )
+                        errors.ticketPrice && <ErrorMessage message={'Le tarif est requis.'} />
                      }
-                     returnKeyType={'next'}
                   />
                )}
             />
@@ -306,13 +287,11 @@ export const AddBuildingForm = ({
                      value={value}
                      label={'Temps de visite'}
                      containerStyle={{ width: '48%' }}
-                     search={false}
+                     isSearch={false}
                      placeholder={'Sélectionner un temps de visite'}
                      errorMessage={
                         errors.visitDuration && (
-                           <ErrorMessage
-                              message={'Le temps de visite est requis.'}
-                           />
+                           <ErrorMessage message={'Le temps de visite est requis.'} />
                         )
                      }
                   />
@@ -336,12 +315,10 @@ export const AddBuildingForm = ({
                   placeholder={'Sélectionner un type de réservation'}
                   errorMessage={
                      errors.booking && (
-                        <ErrorMessage
-                           message={'Le type de réservation est requis.'}
-                        />
+                        <ErrorMessage message={'Le type de réservation est requis.'} />
                      )
                   }
-                  search={false}
+                  isSearch={false}
                />
             )}
          />
@@ -362,12 +339,10 @@ export const AddBuildingForm = ({
                   placeholder={'Sélectionner un statut'}
                   errorMessage={
                      errors.accessStatus && (
-                        <ErrorMessage
-                           message={"Le statut d'accès est requis."}
-                        />
+                        <ErrorMessage message={"Le statut d'accès est requis."} />
                      )
                   }
-                  search={false}
+                  isSearch={false}
                />
             )}
          />
@@ -382,7 +357,7 @@ export const AddBuildingForm = ({
                   onChange={onChange}
                   label={'Accessibilité PMR'}
                   placeholder={"Sélectionner un type d'accessibilité"}
-                  search={false}
+                  isSearch={false}
                />
             )}
          />
@@ -396,18 +371,12 @@ export const AddBuildingForm = ({
          </SectionTitle>
 
          <View style={styles.checkboxContainer}>
-            <Text style={styles.checkboxLabel}>
-               Les horaires sont les mêmes tous les jours
-            </Text>
+            <Text style={styles.checkboxLabel}>Les horaires sont les mêmes tous les jours</Text>
             <Controller
                control={control}
                name="schedules.sameForAllDays"
                render={({ field: { value, onChange } }) => (
-                  <Checkbox
-                     style={styles.checkbox}
-                     value={value}
-                     onValueChange={onChange}
-                  />
+                  <Checkbox value={value} onValueChange={onChange} />
                )}
             />
          </View>
@@ -425,7 +394,7 @@ export const AddBuildingForm = ({
                         placeholder={"Heure d'ouverture"}
                         containerStyle={{ width: '48%' }}
                         isLabel={false}
-                        search={false}
+                        isSearch={true}
                      />
                   )}
                />
@@ -441,7 +410,7 @@ export const AddBuildingForm = ({
                         placeholder={'Heure de fermeture'}
                         containerStyle={{ width: '48%' }}
                         isLabel={false}
-                        search={false}
+                        isSearch={true}
                      />
                   )}
                />
@@ -462,7 +431,7 @@ export const AddBuildingForm = ({
                            label={'Lundi'}
                            placeholder={"Heure d'ouverture"}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -477,7 +446,7 @@ export const AddBuildingForm = ({
                            onChange={onChange}
                            placeholder={'Heure de fermeture'}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -495,7 +464,7 @@ export const AddBuildingForm = ({
                            label={'Mardi'}
                            placeholder={"Heure d'ouverture"}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -510,7 +479,7 @@ export const AddBuildingForm = ({
                            onChange={onChange}
                            placeholder={'Heure de fermeture'}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -528,7 +497,7 @@ export const AddBuildingForm = ({
                            label={'Mercredi'}
                            placeholder={"Heure d'ouverture"}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -543,7 +512,7 @@ export const AddBuildingForm = ({
                            onChange={onChange}
                            placeholder={'Heure de fermeture'}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -561,7 +530,7 @@ export const AddBuildingForm = ({
                            label={'Jeudi'}
                            placeholder={"Heure d'ouverture"}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -576,7 +545,7 @@ export const AddBuildingForm = ({
                            onChange={onChange}
                            placeholder={'Heure de fermeture'}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -594,7 +563,7 @@ export const AddBuildingForm = ({
                            label={'Vendredi'}
                            placeholder={"Heure d'ouverture"}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -609,7 +578,7 @@ export const AddBuildingForm = ({
                            onChange={onChange}
                            placeholder={'Heure de fermeture'}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -627,7 +596,7 @@ export const AddBuildingForm = ({
                            label={'Samedi'}
                            placeholder={"Heure d'ouverture"}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -642,7 +611,7 @@ export const AddBuildingForm = ({
                            onChange={onChange}
                            placeholder={'Heure de fermeture'}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -660,7 +629,7 @@ export const AddBuildingForm = ({
                            label={'Dimanche'}
                            placeholder={"Heure d'ouverture"}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -675,7 +644,7 @@ export const AddBuildingForm = ({
                            onChange={onChange}
                            placeholder={'Heure de fermeture'}
                            containerStyle={{ width: '48%' }}
-                           search={false}
+                           isSearch={true}
                         />
                      )}
                   />
@@ -699,12 +668,10 @@ export const AddBuildingForm = ({
                   placeholder={"Sélectionner un type d'horaire"}
                   errorMessage={
                      errors.schedules?.type && (
-                        <ErrorMessage
-                           message={"Le type d'horaire est requis."}
-                        />
+                        <ErrorMessage message={"Le type d'horaire est requis."} />
                      )
                   }
-                  search={false}
+                  isSearch={false}
                />
             )}
          />
@@ -741,9 +708,7 @@ export const AddBuildingForm = ({
                   isRequired={true}
                   errorMessage={
                      errors.schedules?.officialHoursUrl && (
-                        <ErrorMessage
-                           message={"L'URL des horaires officiels est requise."}
-                        />
+                        <ErrorMessage message={"L'URL des horaires officiels est requise."} />
                      )
                   }
                   returnKeyType={'next'}
@@ -764,17 +729,17 @@ export const AddBuildingForm = ({
             rules={{
                required: true,
             }}
-            name="latitude"
+            name="coords.latitude"
             render={({ field: { value, onChange } }) => (
                <FormInput
-                  value={value}
+                  value={String(value)}
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Latitude'}
                   isRequired={true}
                   keyboardType="numbers-and-punctuation"
                   errorMessage={
-                     errors.latitude && (
+                     errors.coords?.latitude && (
                         <ErrorMessage message={'La latitude est requise.'} />
                      )
                   }
@@ -788,17 +753,17 @@ export const AddBuildingForm = ({
             rules={{
                required: true,
             }}
-            name="longitude"
+            name="coords.longitude"
             render={({ field: { value, onChange } }) => (
                <FormInput
-                  value={value}
+                  value={String(value)}
                   onChangeText={onChange}
                   onPress={() => onChange('')}
                   label={'Longitude'}
                   isRequired={true}
                   keyboardType="numbers-and-punctuation"
                   errorMessage={
-                     errors.longitude && (
+                     errors.coords?.longitude && (
                         <ErrorMessage message={'La longitude est requise'} />
                      )
                   }

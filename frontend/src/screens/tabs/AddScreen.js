@@ -1,9 +1,5 @@
 import { Alert, ScrollView } from 'react-native'
-import {
-   ScreenWrapper,
-   ContentContainer,
-   AddBuildingForm,
-} from '../../components/ui'
+import { ScreenWrapper, ContentContainer, AddBuildingForm } from '../../components/ui'
 import { HeaderSection } from '../../components/sections/HeaderSection'
 import ActionsSections from '../../components/sections/ActionsSections'
 import { useMemo, useRef } from 'react'
@@ -67,11 +63,14 @@ export const AddScreen = () => {
       const payload = {
          ...data,
          schedules: { ...data.schedules },
+         latitude: data.coords.latitude,
+         longitude: data.coords.longitude,
       }
 
       delete payload.schedules.sameForAllDays
       delete payload.schedules.globalStart
       delete payload.schedules.globalEnd
+      delete payload.coords
 
       try {
          await addBuildingHandler(payload)
@@ -114,10 +113,7 @@ export const AddScreen = () => {
                   categoryDropDown={categoryDropDown}
                />
 
-               <ActionsSections
-                  primaryTitle={'Valider'}
-                  primaryOnPress={handleSubmit(onSubmit)}
-               />
+               <ActionsSections primaryTitle={'Valider'} primaryOnPress={handleSubmit(onSubmit)} />
             </ContentContainer>
          </ScrollView>
       </ScreenWrapper>

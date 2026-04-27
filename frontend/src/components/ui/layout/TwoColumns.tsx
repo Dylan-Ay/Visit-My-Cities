@@ -2,7 +2,7 @@ import { View } from 'react-native'
 import { StyleSheet } from 'react-native'
 
 interface TwoColumnsProps {
-   children: React.ReactElement
+   children: React.ReactElement[]
 }
 
 export const TwoColumns = ({ children }: TwoColumnsProps) => {

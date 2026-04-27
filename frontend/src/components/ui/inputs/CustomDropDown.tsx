@@ -1,18 +1,15 @@
 import { ReactNode } from 'react'
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown'
-
-type PlacesDropDown = {
-   label: string
-   value: string
-}
+import { PlacesDropDown } from '../forms/types'
+import { TimeSlot } from '../../../types/building'
 
 interface CustomDropDownProps {
    data: PlacesDropDown[]
-   value: string
+   value: string | number | boolean | TimeSlot
    label?: string
    placeholder: string
-   errorMessage: ReactNode
+   errorMessage?: ReactNode
    onChange: (item: string) => void
    isLabel?: boolean
    isSearch?: boolean

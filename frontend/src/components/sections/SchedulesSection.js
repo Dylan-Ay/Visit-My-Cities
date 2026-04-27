@@ -16,11 +16,9 @@ export default function SchedulesSection({ buildingSchedules }) {
             {schedulesType != 'Variable' &&
                Object.entries(schedulesDays).map(([day, slots]) => (
                   <View style={styles.schedulesRow} key={day}>
-                     <Text style={styles.day}>
-                        {firstChartToUpperCase(day)}
-                     </Text>
+                     <Text style={styles.day}>{firstChartToUpperCase(day)}</Text>
                      <Text>
-                        {slots.length > 0
+                        {slots.length > 0 && slots[0].start.length > 0 && slots[0].end.length > 0
                            ? `${slots[0].start} - ${slots[0].end}`
                            : 'Fermé'}
                      </Text>
@@ -29,18 +27,12 @@ export default function SchedulesSection({ buildingSchedules }) {
 
             <View style={styles.noteContainer}>
                {schedulesType == 'Variable' && (
-                  <Text style={styles.variableSchedules}>
-                     Horaires Variables
-                  </Text>
+                  <Text style={styles.variableSchedules}>Horaires Variables</Text>
                )}
                <Text style={styles.note}>{schedulesNote}</Text>
                {schedulesUrl && (
-                  <Text
-                     style={styles.link}
-                     onPress={() => Linking.openURL(schedulesUrl)}
-                  >
-                     Consultez le site pour vérifier les horaires avant votre
-                     visite.
+                  <Text style={styles.link} onPress={() => Linking.openURL(schedulesUrl)}>
+                     Consultez le site pour vérifier les horaires avant votre visite.
                   </Text>
                )}
             </View>

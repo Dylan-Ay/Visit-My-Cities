@@ -1,13 +1,19 @@
 import { Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, View } from 'react-native'
 
-export const VisitInfoCard = ({ icon, label, value }) => {
+interface VisitInfoCardProps {
+   icon: keyof typeof Ionicons.glyphMap
+   label: string
+   value: string
+}
+
+export const VisitInfoCard = ({ icon, label, value }: VisitInfoCardProps) => {
    return (
       <View style={styles.container}>
          <Ionicons style={styles.icon} name={icon} />
          <View style={styles.textContainer}>
             <Text style={styles.label}>{label}</Text>
-            <Text style={styles.value} numberOfLines={2} ellipsizeMode="tail">
+            <Text numberOfLines={2} ellipsizeMode="tail">
                {value}
             </Text>
          </View>

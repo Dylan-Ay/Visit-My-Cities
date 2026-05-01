@@ -1,7 +1,13 @@
 import { Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, View } from 'react-native'
 
-export const KeyInfoItem = ({ icon, label, value }) => {
+interface KeyInfoItemProps {
+   icon: keyof typeof Ionicons.glyphMap
+   label: string
+   value: string
+}
+
+export const KeyInfoItem = ({ icon, label, value }: KeyInfoItemProps) => {
    return (
       <View style={styles.container}>
          <Ionicons style={styles.icon} name={icon} />

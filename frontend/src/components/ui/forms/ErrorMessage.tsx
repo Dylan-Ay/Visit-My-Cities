@@ -1,7 +1,11 @@
 import { Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, View } from 'react-native'
 
-export const ErrorMessage = ({ message }) => {
+interface ErroMessageProps {
+   message: React.ReactNode
+}
+
+export const ErrorMessage = ({ message }: ErroMessageProps) => {
    return (
       <View style={styles.errorContainer}>
          <Ionicons name="alert-circle-outline" style={styles.errorIcon} />

@@ -1,3 +1,5 @@
+import { VISIT_INFO_ICONS } from '../constants/visitInfoIcons'
+
 export type Coords = {
    latitude: number
    longitude: number
@@ -10,14 +12,7 @@ export type TimeSlot = {
    end: string
 }
 
-export type WeekDay =
-   | 'lundi'
-   | 'mardi'
-   | 'mercredi'
-   | 'jeudi'
-   | 'vendredi'
-   | 'samedi'
-   | 'dimanche'
+export type WeekDay = 'lundi' | 'mardi' | 'mercredi' | 'jeudi' | 'vendredi' | 'samedi' | 'dimanche'
 
 export type Schedules = {
    type: 'Variable' | 'Horaires' | 'Accès libre'
@@ -54,7 +49,7 @@ export type Building = {
 
 export type BuildingInfos = {
    label: string
-   icon: string
+   icon: (typeof VISIT_INFO_ICONS)[keyof typeof VISIT_INFO_ICONS]
    value: string | number
 }
 

@@ -71,9 +71,7 @@ export const getBuildingVisitInfos = (building: Building): BuildingInfos[] => {
    return buildingVisitInfos
 }
 
-export const orderDaysProperly = (
-   schedulesDays: Record<WeekDay, TimeSlot[]>
-) => {
+export const orderDaysProperly = (schedulesDays: Record<WeekDay, TimeSlot[]>) => {
    const orderedDays: Record<WeekDay, number> = {
       lundi: 0,
       mardi: 1,

@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 interface KeyInfoItemProps {
    icon: keyof typeof Ionicons.glyphMap
    label: string
-   value: string
+   value: string | number
 }
 
 export const KeyInfoItem = ({ icon, label, value }: KeyInfoItemProps) => {

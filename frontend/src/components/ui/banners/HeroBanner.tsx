@@ -1,6 +1,19 @@
-import { StyleSheet, ImageBackground, Text } from 'react-native'
+import {
+   StyleSheet,
+   ImageBackground,
+   Text,
+   StyleProp,
+   ImageStyle,
+   ImageSourcePropType,
+} from 'react-native'
 
-export const HeroBanner = ({ title, image, style }) => {
+interface HeroBannerProps {
+   title: string
+   image: ImageSourcePropType
+   style?: StyleProp<ImageStyle>
+}
+
+export const HeroBanner = ({ title, image, style }: HeroBannerProps) => {
    return (
       <ImageBackground source={image} style={styles.banner}>
          <Text style={[styles.bannerText, style]}>{title}</Text>

@@ -3,16 +3,17 @@ import { SectionTitle } from '../typography/SectionTitle'
 import { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 
-export const AccordionPanel = ({ title, children }) => {
+interface AccordionPanelProps {
+   title: string
+   children: React.ReactElement
+}
+
+export const AccordionPanel = ({ title, children }: AccordionPanelProps) => {
    const [isExpanded, setIsExpanded] = useState(false)
 
    return (
       <View style={styles.container}>
-         <Pressable
-            onPress={() =>
-               !isExpanded ? setIsExpanded(true) : setIsExpanded(false)
-            }
-         >
+         <Pressable onPress={() => (!isExpanded ? setIsExpanded(true) : setIsExpanded(false))}>
             <View style={styles.header}>
                <SectionTitle
                   style={styles.title}
@@ -20,11 +21,7 @@ export const AccordionPanel = ({ title, children }) => {
                   right={
                      <Ionicons
                         style={styles.icon}
-                        name={
-                           !isExpanded
-                              ? 'chevron-down-outline'
-                              : 'chevron-up-outline'
-                        }
+                        name={!isExpanded ? 'chevron-down-outline' : 'chevron-up-outline'}
                      />
                   }
                >

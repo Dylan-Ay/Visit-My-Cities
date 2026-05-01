@@ -5,7 +5,7 @@ interface PlacesCarouselProps<T> {
    renderItem: ListRenderItem<T>
    keyExtractor: (item: T, index: number) => string
    emptyComponent?: React.ReactElement
-   scrollEnabled: boolean
+   scrollEnabled?: boolean
 }
 
 export const PlacesCarousel = <T,>({

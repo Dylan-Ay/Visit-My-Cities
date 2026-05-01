@@ -1,9 +1,9 @@
-import { StyleProp, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native'
+import { StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, ViewStyle } from 'react-native'
 
 interface ActionButtonProps {
    title: string
    containerStyle?: StyleProp<ViewStyle>
-   textStyle?: StyleProp<ViewStyle>
+   textStyle?: StyleProp<TextStyle>
    onPress: () => void
 }
 

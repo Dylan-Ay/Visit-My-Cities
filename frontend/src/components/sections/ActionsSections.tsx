@@ -1,13 +1,21 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleProp, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { ActionButton } from '../ui'
+
+interface ActionsSectionsProps {
+   primaryTitle: string
+   secondaryTitle: string
+   primaryOnPress: () => void
+   secondaryOnPress: () => void
+   containerStyle: StyleProp<ViewStyle>
+}
 
 export default function ActionsSections({
    primaryTitle,
-   primaryOnPress,
    secondaryTitle,
+   primaryOnPress,
    secondaryOnPress,
    containerStyle,
-}) {
+}: ActionsSectionsProps) {
    return (
       <View style={[styles.inputsContainer, containerStyle]}>
          <ActionButton
@@ -17,10 +25,7 @@ export default function ActionsSections({
             onPress={primaryOnPress}
          />
          {secondaryTitle && secondaryOnPress && (
-            <TouchableOpacity
-               style={styles.secondaryBtn}
-               onPress={secondaryOnPress}
-            >
+            <TouchableOpacity onPress={secondaryOnPress}>
                <Text style={styles.secondaryText}>{secondaryTitle}</Text>
             </TouchableOpacity>
          )}

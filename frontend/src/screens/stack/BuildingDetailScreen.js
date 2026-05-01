@@ -1,14 +1,16 @@
 // prettier-ignore
 import { ContentContainer, HeroBanner, ScreenWrapper, SectionDivider } from '../../components/ui'
 import { ScrollView } from 'react-native'
-import KeyInfosSection from '../../components/sections/KeyInfosSection/KeyInfosSection'
 import DescriptionSection from '../../components/sections/DescriptionSection'
-import VisitInfoSection from '../../components/sections/VisitInfoSection/VisitInfoSection'
+import InfoSection from '../../components/sections/InfoSection'
 import SchedulesSection from '../../components/sections/SchedulesSection'
 import MapSection from '../../components/sections/MapSection'
 import useBuilding from '../../services/hooks/useBuilding'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
 import { Loader } from '../../components/ui/Loader'
+import { getBuildingKeyInfos, getBuildingVisitInfos } from '../../utils/buildings'
+import KeyInfosGrid from '../../components/sections/KeyInfosGrid'
+import VisitInfosGrid from '../../components/sections/VisitInfosGrid'
 
 export const BuildingDetailScreen = ({ route }) => {
    const { buildingId } = route.params
@@ -24,22 +26,20 @@ export const BuildingDetailScreen = ({ route }) => {
          <ScrollView>
             {!showLoader && building && (
                <>
-                  <HeroBanner
-                     title={building.name}
-                     image={{ uri: building.image }}
-                  />
+                  <HeroBanner title={building.name} image={{ uri: building.image }} />
 
                   <ContentContainer style={{ paddingBottom: 20 }}>
-                     <KeyInfosSection building={building} />
+                     <InfoSection title="Informations clés">
+                        <KeyInfosGrid items={getBuildingKeyInfos(building)} />
+                     </InfoSection>
                      <SectionDivider />
 
-                     <DescriptionSection
-                        text={building.description}
-                        linesNumber={4}
-                     />
+                     <DescriptionSection text={building.description} linesNumber={4} />
                      <SectionDivider />
 
-                     <VisitInfoSection building={building} />
+                     <InfoSection title={'Informations de visite'}>
+                        <VisitInfosGrid items={getBuildingVisitInfos(building)} />
+                     </InfoSection>
                      <SectionDivider />
 
                      <SchedulesSection buildingSchedules={building.schedules} />

@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 interface VisitInfoCardProps {
    icon: keyof typeof Ionicons.glyphMap
    label: string
-   value: string
+   value: string | number
 }
 
 export const VisitInfoCard = ({ icon, label, value }: VisitInfoCardProps) => {

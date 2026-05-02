@@ -1,8 +1,24 @@
 //prettier-ignore
 import { ContentContainer, HeroBanner, PlaceCard, SearchInput, SectionTitle } from '../ui'
-import { FlatList } from 'react-native'
+import { FlatList, ImageSourcePropType, StyleProp, ViewStyle } from 'react-native'
 
-export default function PlacesGridSection({
+interface PlaceCardProperties {
+   id: string
+   image: string
+   name: string
+}
+
+interface PlacesGridSectionProps<T> {
+   data: T[]
+   heroTitle: string
+   heroImg: ImageSourcePropType
+   searchInputPlaceHolder: string
+   sectionTitle: string
+   titleContainerStyle: StyleProp<ViewStyle>
+   onPressItem: (item: T) => void
+}
+
+export default function PlacesGridSection<T extends PlaceCardProperties>({
    data,
    heroTitle,
    heroImg,
@@ -10,7 +26,7 @@ export default function PlacesGridSection({
    sectionTitle,
    titleContainerStyle,
    onPressItem,
-}) {
+}: PlacesGridSectionProps<T>) {
    return (
       <FlatList
          data={data}
@@ -36,9 +52,7 @@ export default function PlacesGridSection({
                <HeroBanner title={heroTitle} image={heroImg} />
                <ContentContainer>
                   <SearchInput placeholder={searchInputPlaceHolder} />
-                  <SectionTitle containerStyle={titleContainerStyle}>
-                     {sectionTitle}
-                  </SectionTitle>
+                  <SectionTitle containerStyle={titleContainerStyle}>{sectionTitle}</SectionTitle>
                </ContentContainer>
             </>
          }

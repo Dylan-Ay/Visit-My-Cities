@@ -1,8 +1,9 @@
+import { ReactNode } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 
 interface ContentContainerProps {
-   children: React.ReactElement
-   style: StyleProp<ViewStyle>
+   children: ReactNode
+   style?: StyleProp<ViewStyle>
 }
 
 export const ContentContainer = ({ children, style }: ContentContainerProps) => (

@@ -1,7 +1,14 @@
 import { View } from 'react-native'
 import { MapViewCustom, SectionTitle } from '../ui'
+import { Coords } from '../../types/building'
 
-export default function MapSection({ name, address, region }) {
+interface MapSectionProps {
+   name: string
+   address: string
+   region: Coords
+}
+
+export default function MapSection({ name, address, region }: MapSectionProps) {
    return (
       <View>
          <SectionTitle style={{ fontSize: 22 }}>S'y rendre</SectionTitle>

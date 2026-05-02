@@ -1,8 +1,9 @@
+import { ReactNode } from 'react'
 import { AccordionPanel } from './AccordionPanel'
 
 interface AccordionProps {
    title: string
-   children: React.ReactElement
+   children: ReactNode
 }
 
 export const Accordion = ({ title, children }: AccordionProps) => {

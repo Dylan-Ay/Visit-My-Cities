@@ -3,8 +3,13 @@ import { Accordion } from '../ui'
 import { firstChartToUpperCase } from '../../utils/utils'
 import { Linking } from 'react-native'
 import { orderDaysProperly } from '../../utils/buildings'
+import { Schedules } from '../../types/building'
 
-export default function SchedulesSection({ buildingSchedules }) {
+interface SchedulesSectionProps {
+   buildingSchedules: Schedules
+}
+
+export default function SchedulesSection({ buildingSchedules }: SchedulesSectionProps) {
    const schedulesType = buildingSchedules.type
    const schedulesNote = buildingSchedules.note
    const schedulesUrl = buildingSchedules.officialHoursUrl

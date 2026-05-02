@@ -2,7 +2,12 @@ import { View } from 'react-native'
 import { SectionTitle } from '../ui'
 import { ExpandableText } from '../ui/typography/ExpandableText'
 
-export default function DescriptionSection({ linesNumber, text }) {
+interface DescriptionSectionProps {
+   linesNumber: number
+   text: string
+}
+
+export default function DescriptionSection({ linesNumber, text }: DescriptionSectionProps) {
    return (
       <View>
          <SectionTitle style={{ fontSize: 22 }}>Description</SectionTitle>

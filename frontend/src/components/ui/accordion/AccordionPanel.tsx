@@ -1,11 +1,11 @@
 import { Pressable, StyleSheet, View } from 'react-native'
 import { SectionTitle } from '../typography/SectionTitle'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 
 interface AccordionPanelProps {
    title: string
-   children: React.ReactElement
+   children: ReactNode
 }
 
 export const AccordionPanel = ({ title, children }: AccordionPanelProps) => {

@@ -1,7 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { SectionTitle } from '../ui'
 
-export function HeaderSection({ title, subTitle }) {
+interface HeaderSectionProps {
+   title: string
+   subTitle: string
+}
+
+export function HeaderSection({ title, subTitle }: HeaderSectionProps) {
    return (
       <View style={styles.header}>
          <SectionTitle style={{ fontSize: 30 }}>{title}</SectionTitle>

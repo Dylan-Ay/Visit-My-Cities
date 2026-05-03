@@ -3,7 +3,7 @@ import { ContentContainer, HeroBanner, PlaceCard, SearchInput, SectionTitle } fr
 import { FlatList, ImageSourcePropType, StyleProp, ViewStyle } from 'react-native'
 
 interface PlaceCardProperties {
-   id: string
+   id: number
    image: string
    name: string
 }
@@ -30,7 +30,7 @@ export default function PlacesGridSection<T extends PlaceCardProperties>({
    return (
       <FlatList
          data={data}
-         keyExtractor={(item) => item.id}
+         keyExtractor={(item) => String(item.id)}
          numColumns={2}
          renderItem={({ item }) => (
             <ContentContainer

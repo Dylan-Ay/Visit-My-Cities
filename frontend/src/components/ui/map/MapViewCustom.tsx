@@ -10,8 +10,6 @@ interface MapViewCustomProps {
 }
 
 export const MapViewCustom = ({ name, address, region }: MapViewCustomProps) => {
-   const fullAddress = `${address.at(0)} • ${address.at(1)}`
-
    return (
       <View style={styles.container}>
          <MapView style={styles.map} region={region}>
@@ -24,7 +22,7 @@ export const MapViewCustom = ({ name, address, region }: MapViewCustomProps) => 
          </MapView>
          <View style={styles.addressContainer}>
             <Text style={styles.name}>{name}</Text>
-            <Text style={styles.address}>{fullAddress}</Text>
+            <Text style={styles.address}>{address}</Text>
             <ActionButton
                title={"Afficher l'itinéraire"}
                onPress={() =>

@@ -1,7 +1,7 @@
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 
 interface SectionDividerProps {
-   style: StyleProp<ViewStyle>
+   style?: StyleProp<ViewStyle>
 }
 
 export const SectionDivider = ({ style }: SectionDividerProps) => {

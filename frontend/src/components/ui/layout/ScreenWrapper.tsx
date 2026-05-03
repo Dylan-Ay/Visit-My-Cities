@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 interface ScreenWrapperProps {
    children: React.ReactElement
-   useEdges: boolean
+   useEdges?: boolean
 }
 
 export const ScreenWrapper = ({ children, useEdges = true }: ScreenWrapperProps) => {

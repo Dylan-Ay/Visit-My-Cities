@@ -6,7 +6,7 @@ interface ActionsSectionsProps {
    secondaryTitle: string
    primaryOnPress: () => void
    secondaryOnPress: () => void
-   containerStyle: StyleProp<ViewStyle>
+   containerStyle?: StyleProp<ViewStyle>
 }
 
 export default function ActionsSections({

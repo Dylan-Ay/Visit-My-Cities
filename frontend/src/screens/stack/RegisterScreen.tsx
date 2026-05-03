@@ -1,21 +1,30 @@
-import { Alert, ScrollView, StyleSheet } from 'react-native'
+import { Alert, ScrollView, StyleSheet, View } from 'react-native'
 import { ContentContainer, FormInput, ScreenWrapper } from '../../components/ui'
-import { View } from 'react-native'
-import ActionsSections from '../../components/sections/ActionsSections'
 import { HeaderSection } from '../../components/sections/HeaderSection'
+import ActionsSections from '../../components/sections/ActionsSections'
 import { StackActions } from '@react-navigation/native'
-import { useUserStore } from '../../store/useUserStore'
 import { useState } from 'react'
-import { login } from '../../services/api/auth.service'
 import { validators } from '../../utils/validation'
+import { register } from '../../services/api/auth.service'
+import { RootStackParamList } from '../../navigation/types'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-export const LoginScreen = ({ navigation }) => {
+interface RegisterScreenProps {
+   navigation: NativeStackNavigationProp<RootStackParamList, 'Register'>
+}
+
+export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
    const [email, setEmail] = useState('')
+   const [name, setName] = useState('')
    const [password, setPassword] = useState('')
 
-   const handleLogin = async () => {
-      if (!validators.required(email) || !validators.required(password)) {
-         Alert.alert("L'adresse email et le mot de passe sont requis.")
+   const handleRegister = async () => {
+      if (
+         !validators.required(email) ||
+         !validators.required(name) ||
+         !validators.required(password)
+      ) {
+         Alert.alert("Le nom, l'adresse email et le mot de passe sont requis.")
          return
       }
 
@@ -30,10 +39,8 @@ export const LoginScreen = ({ navigation }) => {
       }
 
       try {
-         const { user, access_token: token } = await login(email, password)
-         useUserStore.getState().setUser({ user, token })
-
-         navigation.navigate('Tabs', { screen: 'Profil' })
+         await register(name, email, password)
+         navigation.navigate('Login')
       } catch (error) {
          Alert.alert('Une erreur est survenue')
          console.log(error)
@@ -45,14 +52,23 @@ export const LoginScreen = ({ navigation }) => {
          <ScrollView
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
+            automaticallyAdjustKeyboardInsets={true}
          >
             <ContentContainer>
                <HeaderSection
-                  title={'Connexion'}
-                  subTitle={'Connectez-vous à Visit My Cities'}
+                  title={'Inscription'}
+                  subTitle={
+                     'Incrivez-vous à Visit My Cities pour avoir accès à davantage de fonctionnalités.'
+                  }
                />
 
                <View style={styles.inputsContainer}>
+                  <FormInput
+                     value={name}
+                     onChangeText={setName}
+                     label={'Nom et Prénom'}
+                     returnKeyType={'next'}
+                  />
                   <FormInput
                      value={email}
                      onChangeText={setEmail}
@@ -64,26 +80,22 @@ export const LoginScreen = ({ navigation }) => {
                      value={password}
                      onChangeText={setPassword}
                      label={'Mot de passe'}
-                     keyboardType={'default'}
                      secureTextEntry={true}
                      returnKeyType={'send'}
                   />
                </View>
 
                <ActionsSections
-                  primaryTitle={'Se Connecter'}
-                  primaryOnPress={handleLogin}
-                  secondaryTitle={'Créer un compte'}
-                  secondaryOnPress={() =>
-                     navigation.dispatch(StackActions.replace('RegisterScreen'))
-                  }
+                  primaryTitle={'Valider'}
+                  primaryOnPress={handleRegister}
+                  secondaryTitle={'Se connecter'}
+                  secondaryOnPress={() => navigation.dispatch(StackActions.replace('Login'))}
                />
             </ContentContainer>
          </ScrollView>
       </ScreenWrapper>
    )
 }
-
 const styles = StyleSheet.create({
    inputsContainer: {
       gap: 24,

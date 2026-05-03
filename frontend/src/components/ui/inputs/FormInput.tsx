@@ -18,7 +18,7 @@ interface FormInputProps {
    placeholder?: string
    errorMessage?: ReactNode
    onChangeText: (item: string) => void
-   onPress: () => void
+   onPress?: () => void
    keyboardType?: KeyboardTypeOptions
    returnKeyType?: ReturnKeyTypeOptions
    secureTextEntry?: boolean

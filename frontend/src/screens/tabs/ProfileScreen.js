@@ -1,9 +1,5 @@
 import { Image } from 'react-native'
-import {
-   ContentContainer,
-   ScreenWrapper,
-   SectionDivider,
-} from '../../components/ui'
+import { ContentContainer, ScreenWrapper, SectionDivider } from '../../components/ui'
 import { View } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { Text } from 'react-native'
@@ -33,14 +29,13 @@ export const ProfileScreen = ({ navigation }) => {
                <Text style={styles.title}>Bienvenue sur Visit My Cities</Text>
                <View style={styles.textContainer}>
                   <Text style={styles.text}>
-                     Visit My Cities vous permet de découvrir les différents
-                     bâtiments et monuments du monde entier. Vous allez avoir
-                     accès à des informations détaillées sur chaque bâtiment
-                     d'une ville.
+                     Visit My Cities vous permet de découvrir les différents bâtiments et monuments
+                     du monde entier. Vous allez avoir accès à des informations détaillées sur
+                     chaque bâtiment d'une ville.
                   </Text>
                   <Text style={styles.text}>
-                     Vous avez la possibilité de planifier vos voyages à
-                     l'avance par ville, grâce à votre liste de favoris.
+                     Vous avez la possibilité de planifier vos voyages à l'avance par ville, grâce à
+                     votre liste de favoris.
                   </Text>
                </View>
                <SectionDivider style={{ width: '100%' }} />
@@ -49,26 +44,16 @@ export const ProfileScreen = ({ navigation }) => {
                   <View style={styles.infoContainer}>
                      <Text style={styles.infoTitle}>Mes informations :</Text>
                      <Text style={styles.infoText}>Nom : {user?.username}</Text>
-                     <Text style={styles.infoText}>
-                        Adresse email : {user?.email}
-                     </Text>
+                     <Text style={styles.infoText}>Adresse email : {user?.email}</Text>
                   </View>
                )}
 
                <ActionsSections
                   containerStyle={!isLoggedIn && { marginTop: 28 }}
                   primaryTitle={!isLoggedIn ? 'Connexion' : 'Déconnexion'}
-                  primaryOnPress={
-                     !isLoggedIn
-                        ? () => navigation.navigate('LoginScreen')
-                        : handleLogout
-                  }
+                  primaryOnPress={!isLoggedIn ? () => navigation.navigate('Login') : handleLogout}
                   secondaryTitle={!isLoggedIn && 'Créer un compte'}
-                  secondaryOnPress={
-                     !isLoggedIn
-                        ? () => navigation.navigate('RegisterScreen')
-                        : null
-                  }
+                  secondaryOnPress={!isLoggedIn ? () => navigation.navigate('Register') : null}
                />
             </View>
          </ContentContainer>

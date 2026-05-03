@@ -22,7 +22,7 @@ export default function TabNavigator() {
          }}
       >
          <Tab.Screen
-            name="Accueil"
+            name="Home"
             component={HomeScreen}
             options={{
                tabBarLabel: 'Accueil',
@@ -42,7 +42,7 @@ export default function TabNavigator() {
             }}
          />
          <Tab.Screen
-            name="Visiter"
+            name="Visit"
             component={VisitScreen}
             options={{
                tabBarLabel: 'A Visiter',
@@ -53,31 +53,23 @@ export default function TabNavigator() {
          />
          {isLoggedIn && userRole === 'ROLE_EXPERT' && (
             <Tab.Screen
-               name="Ajouter"
+               name="Add"
                component={AddScreen}
                options={{
                   tabBarLabel: 'Ajouter',
                   tabBarIcon: ({ color, size }) => (
-                     <Ionicons
-                        name="add-circle-outline"
-                        color={color}
-                        size={size}
-                     />
+                     <Ionicons name="add-circle-outline" color={color} size={size} />
                   ),
                }}
             />
          )}
          <Tab.Screen
-            name="Profil"
+            name="Profile"
             component={ProfileScreen}
             options={{
                tabBarLabel: 'Profil',
                tabBarIcon: ({ color, size }) => (
-                  <Ionicons
-                     name="person-circle-outline"
-                     color={color}
-                     size={size}
-                  />
+                  <Ionicons name="person-circle-outline" color={color} size={size} />
                ),
             }}
          />

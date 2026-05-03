@@ -14,11 +14,7 @@ const Stack = createStackNavigator()
 export default function RootStack() {
    return (
       <Stack.Navigator>
-         <Stack.Screen
-            name="Tabs"
-            component={TabNavigator}
-            options={{ headerShown: false }}
-         />
+         <Stack.Screen name="Tabs" component={TabNavigator} options={{ headerShown: false }} />
          <Stack.Screen
             name="CityDetail"
             component={CityDetailScreen}
@@ -48,9 +44,7 @@ export default function RootStack() {
                      onPress={() => navigation.goBack()}
                   />
                ),
-               headerRight: () => (
-                  <FavoriteBuildingHeaderButton route={route} />
-               ),
+               headerRight: () => <FavoriteBuildingHeaderButton route={route} />,
             })}
          />
          <Stack.Screen
@@ -69,7 +63,7 @@ export default function RootStack() {
             })}
          />
          <Stack.Screen
-            name="LoginScreen"
+            name="Login"
             component={LoginScreen}
             options={({ navigation }) => ({
                headerTransparent: true,
@@ -85,7 +79,7 @@ export default function RootStack() {
             })}
          />
          <Stack.Screen
-            name="RegisterScreen"
+            name="Register"
             component={RegisterScreen}
             options={({ navigation }) => ({
                headerTransparent: true,

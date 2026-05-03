@@ -4,8 +4,16 @@ import useBuildingsByCity from '../../services/hooks/useBuildingsByCity'
 import { Loader } from '../../components/ui/Loader'
 import useCity from '../../services/hooks/useCity'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
+import { RootStackParamList } from '../../navigation/types'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RouteProp } from '@react-navigation/native'
 
-export const CityDetailScreen = ({ navigation, route }) => {
+interface CityDetailScreenProps {
+   navigation: NativeStackNavigationProp<RootStackParamList, 'CityDetail'>
+   route: RouteProp<RootStackParamList, 'CityDetail'>
+}
+
+export const CityDetailScreen = ({ navigation, route }: CityDetailScreenProps) => {
    const { cityId } = route.params
    const { city } = useCity(cityId)
    const { buildingsByCity, isLoading } = useBuildingsByCity(cityId)

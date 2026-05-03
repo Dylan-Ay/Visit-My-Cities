@@ -11,11 +11,18 @@ import { Loader } from '../../components/ui/Loader'
 import { getBuildingKeyInfos, getBuildingVisitInfos } from '../../utils/buildings'
 import KeyInfosGrid from '../../components/sections/KeyInfosGrid'
 import VisitInfosGrid from '../../components/sections/VisitInfosGrid'
+import { RouteProp } from '@react-navigation/native'
+import { RootStackParamList } from '../../navigation/types'
 
-export const BuildingDetailScreen = ({ route }) => {
+interface BuildingDetailScreenProps {
+   route: RouteProp<RootStackParamList, 'BuildingDetail'>
+}
+
+export const BuildingDetailScreen = ({ route }: BuildingDetailScreenProps) => {
    const { buildingId } = route.params
    const { building, isLoading } = useBuilding(buildingId)
    const showLoader = useDelayLoader(isLoading)
+   const fullAddress = `${building?.address} • ${building?.postalCode}`
 
    if (showLoader) {
       return <Loader />
@@ -47,7 +54,7 @@ export const BuildingDetailScreen = ({ route }) => {
 
                      <MapSection
                         name={building.name}
-                        address={[building.address, building.postalCode]}
+                        address={fullAddress}
                         region={building.coords}
                      />
                      <SectionDivider />

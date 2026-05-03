@@ -14,7 +14,7 @@ interface PlacesGridSectionProps<T> {
    heroImg: ImageSourcePropType
    searchInputPlaceHolder: string
    sectionTitle: string
-   titleContainerStyle: StyleProp<ViewStyle>
+   titleContainerStyle?: StyleProp<ViewStyle>
    onPressItem: (item: T) => void
 }
 

@@ -4,8 +4,16 @@ import useBuildingsByCategory from '../../services/hooks/useBuildingsByCategory'
 import useCategory from '../../services/hooks/useCategory'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
 import { Loader } from '../../components/ui/Loader'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RouteProp } from '@react-navigation/native'
+import { RootStackParamList } from '../../navigation/types'
 
-export const CategoryDetailScreen = ({ navigation, route }) => {
+interface CategoryDetailScreenProps {
+   navigation: NativeStackNavigationProp<RootStackParamList, 'CategoryDetail'>
+   route: RouteProp<RootStackParamList, 'CategoryDetail'>
+}
+
+export const CategoryDetailScreen = ({ navigation, route }: CategoryDetailScreenProps) => {
    const { categoryId } = route.params
    const { category } = useCategory(categoryId)
    const { buildingsByCategory, isLoading } = useBuildingsByCategory(categoryId)

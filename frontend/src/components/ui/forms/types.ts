@@ -1,10 +1,10 @@
-import { CreateBuildingPayload, TimeSlot } from '../../../types/building'
+import { CreateBuildingPayload } from '../../../types/building'
 
 export type FormsValues = CreateBuildingPayload & {
    schedules: {
       sameForAllDays?: boolean
-      globalStart?: TimeSlot
-      globalEnd?: TimeSlot
+      globalStart?: string
+      globalEnd?: string
    }
 }
 

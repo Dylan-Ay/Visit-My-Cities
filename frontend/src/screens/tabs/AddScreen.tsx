@@ -11,6 +11,8 @@ import { useForm } from 'react-hook-form'
 import { addBuildingDefaultValues } from '../config/addBuildingDefaultValues'
 import { useAddBuilding } from '../../services/hooks/useAddBuilding'
 import { useScrollToTop } from '@react-navigation/native'
+import { FormsValues } from '../../components/ui/forms/types'
+import { WeekDay } from '../../types/building'
 
 export const AddScreen = () => {
    const { cities, isLoadingCity } = useCities()
@@ -18,7 +20,7 @@ export const AddScreen = () => {
    const { addBuildingHandler, isLoadingBuild } = useAddBuilding()
    const isLoadingGlobal = isLoadingCity || isLoadingCat || isLoadingBuild
    const showGlobalLoader = useDelayLoader(isLoadingGlobal)
-   const scrollViewRef = useRef(null)
+   const scrollViewRef = useRef<ScrollView>(null)
 
    useScrollToTop(scrollViewRef)
 
@@ -47,15 +49,15 @@ export const AddScreen = () => {
       handleSubmit,
       reset,
    } = useForm({
-      defaultValues: addBuildingDefaultValues,
+      defaultValues: addBuildingDefaultValues as unknown as FormsValues,
    })
 
-   const onSubmit = async (data) => {
+   const onSubmit = async (data: FormsValues) => {
       if (data.schedules.sameForAllDays) {
-         const days = Object.keys(data.schedules.days)
-         days.forEach((day) => {
-            data.schedules.days[day][0].start = data.schedules.globalStart
-            data.schedules.days[day][0].end = data.schedules.globalEnd
+         const days = Object.keys(data.schedules.days) as WeekDay[]
+         days.forEach((day: WeekDay) => {
+            data.schedules.days[day][0].start = data.schedules.globalStart as string
+            data.schedules.days[day][0].end = data.schedules.globalEnd as string
          })
       }
       const buildingName = data.name
@@ -70,7 +72,6 @@ export const AddScreen = () => {
       delete payload.schedules.sameForAllDays
       delete payload.schedules.globalStart
       delete payload.schedules.globalEnd
-      delete payload.coords
 
       try {
          await addBuildingHandler(payload)
@@ -80,7 +81,7 @@ export const AddScreen = () => {
             animated: true,
          })
 
-         reset(addBuildingDefaultValues)
+         reset(addBuildingDefaultValues as unknown as FormsValues)
 
          Alert.alert(`Le bâtiment ${buildingName} a bien été ajouté !`)
       } catch {}

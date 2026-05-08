@@ -3,9 +3,9 @@ import { ActionButton } from '../ui'
 
 interface ActionsSectionsProps {
    primaryTitle: string
-   secondaryTitle: string
+   secondaryTitle?: string
    primaryOnPress: () => void
-   secondaryOnPress: () => void
+   secondaryOnPress?: () => void
    containerStyle?: StyleProp<ViewStyle>
 }
 

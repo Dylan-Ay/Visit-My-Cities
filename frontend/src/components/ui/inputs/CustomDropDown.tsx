@@ -6,7 +6,7 @@ import { TimeSlot } from '../../../types/building'
 
 interface CustomDropDownProps {
    data: PlacesDropDown[]
-   value: string | number | boolean | TimeSlot
+   value?: string | number | boolean | TimeSlot
    label?: string
    placeholder: string
    errorMessage?: ReactNode

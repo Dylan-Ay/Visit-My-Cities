@@ -2,16 +2,14 @@ import { View } from 'react-native'
 import { SectionTitle, CategoryButton, PlacesCarousel } from '../ui'
 import { groupCategories } from '../../utils/utils'
 import { Category } from '../../types/category'
-import { RootStackParamList } from '../../navigation/types'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 interface CategorySectionProps {
-   navigation: NativeStackNavigationProp<RootStackParamList, 'CategoryDetail'>
    data: Category[]
    title: string
+   onPress: (id: number) => void
 }
 
-export default function CategorySection({ navigation, data, title }: CategorySectionProps) {
+export default function CategorySection({ data, title, onPress }: CategorySectionProps) {
    const groupedCategories = groupCategories(data ?? [])
 
    return (
@@ -29,11 +27,7 @@ export default function CategorySection({ navigation, data, title }: CategorySec
                         id={cat.id}
                         name={cat.name}
                         icon={cat.icon}
-                        onPress={() =>
-                           navigation.navigate('CategoryDetail', {
-                              categoryId: cat.id,
-                           })
-                        }
+                        onPress={() => onPress(cat.id)}
                      />
                   ))}
                </View>

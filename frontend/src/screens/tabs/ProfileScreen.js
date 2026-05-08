@@ -15,7 +15,7 @@ export const ProfileScreen = ({ navigation }) => {
       await removeAccessToken()
       useUserStore.getState().logout()
 
-      navigation.navigate('Accueil')
+      navigation.navigate('Home')
    }
 
    return (

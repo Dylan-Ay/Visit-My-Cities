@@ -9,8 +9,13 @@ import useCities from '../../services/hooks/useCities'
 import useCategories from '../../services/hooks/useCategories'
 import { Loader } from '../../components/ui/Loader'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
+import { HomeTab } from '../../navigation/types'
 
-export const HomeScreen = ({ navigation }) => {
+interface HomeScreenProps {
+   navigation: HomeTab
+}
+
+export const HomeScreen = ({ navigation }: HomeScreenProps) => {
    const { buildings, isLoadingBuild } = useBuildings()
    const { cities, isLoadingCity } = useCities()
    const { categories, isLoadingCat } = useCategories()
@@ -72,7 +77,7 @@ export const HomeScreen = ({ navigation }) => {
                <CategorySection
                   title={'Catégories'}
                   data={categories}
-                  navigation={navigation}
+                  onPress={(id) => navigation.navigate('CategoryDetail', { categoryId: id })}
                />
             </ContentContainer>
          </ScrollView>

@@ -1,4 +1,6 @@
-import { NavigatorScreenParams } from '@react-navigation/native'
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
+import { CompositeNavigationProp, NavigatorScreenParams } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 export type TabsParamList = {
    Home: undefined
@@ -16,3 +18,13 @@ export type RootStackParamList = {
    CityDetail: { cityId: number }
    CategoryDetail: { categoryId: number }
 }
+
+export type ExplorerTab = CompositeNavigationProp<
+   BottomTabNavigationProp<TabsParamList, 'Explorer'>,
+   NativeStackNavigationProp<RootStackParamList>
+>
+
+export type HomeTab = CompositeNavigationProp<
+   BottomTabNavigationProp<TabsParamList, 'Home'>,
+   NativeStackNavigationProp<RootStackParamList>
+>

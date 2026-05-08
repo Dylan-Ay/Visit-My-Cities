@@ -3,8 +3,13 @@ import PlacesGridSection from '../../components/sections/PlacesGridSection'
 import useCities from '../../services/hooks/useCities'
 import { Loader } from '../../components/ui/Loader'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
+import { ExplorerTab } from '../../navigation/types'
 
-export const ExplorerScreen = ({ navigation }) => {
+interface ExplorerScreenProps {
+   navigation: ExplorerTab
+}
+
+export const ExplorerScreen = ({ navigation }: ExplorerScreenProps) => {
    const { cities, isLoadingCity } = useCities()
    const showLoader = useDelayLoader(isLoadingCity)
 

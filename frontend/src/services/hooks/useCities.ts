@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 import { City } from '../../types/city'
 
 export default function useCities() {
-   const [cities, setCities] = useState<City[] | null>(null)
+   const [cities, setCities] = useState<City[]>([])
    const [isLoadingCity, setLoadingCity] = useState(false)
 
    useEffect(() => {

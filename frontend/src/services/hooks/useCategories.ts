@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 import { Category } from '../../types/category'
 
 export default function useCategories() {
-   const [categories, setCategories] = useState<Category[] | null>(null)
+   const [categories, setCategories] = useState<Category[]>([])
    const [isLoadingCat, setLoadingCat] = useState(false)
 
    useEffect(() => {

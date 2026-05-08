@@ -14,8 +14,10 @@ export const addBuildingDefaultValues = {
    booking: '',
    accessStatus: '',
    accessiblePRM: '',
-   latitude: '',
-   longitude: '',
+   coords: {
+      latitude: '',
+      longitude: '',
+   },
    schedules: {
       note: '',
       days: {

@@ -3,13 +3,13 @@ import { SectionTitle, PlacesCarousel } from '../ui'
 import { ReactElement } from 'react'
 
 interface HasId {
-   id: string
+   id: number
 }
 
 interface PlacesCarouselSectionProps<T> {
    data: T[]
    title: string
-   titleStyle: StyleProp<TextProps>
+   titleStyle?: StyleProp<TextProps>
    renderItem: ListRenderItem<T>
    emptyComponent?: ReactElement
    scrollEnabled?: boolean
@@ -29,7 +29,7 @@ export default function PlacesCarouselSection<T extends HasId>({
 
          <PlacesCarousel
             data={data}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => String(item.id)}
             renderItem={renderItem}
             emptyComponent={emptyComponent}
             scrollEnabled={scrollEnabled}

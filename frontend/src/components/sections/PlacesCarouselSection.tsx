@@ -1,4 +1,4 @@
-import { ListRenderItem, StyleProp, TextProps, View } from 'react-native'
+import { ListRenderItem, StyleProp, TextStyle, View } from 'react-native'
 import { SectionTitle, PlacesCarousel } from '../ui'
 import { ReactElement } from 'react'
 
@@ -9,7 +9,7 @@ interface HasId {
 interface PlacesCarouselSectionProps<T> {
    data: T[]
    title: string
-   titleStyle?: StyleProp<TextProps>
+   titleStyle?: StyleProp<TextStyle>
    renderItem: ListRenderItem<T>
    emptyComponent?: ReactElement
    scrollEnabled?: boolean

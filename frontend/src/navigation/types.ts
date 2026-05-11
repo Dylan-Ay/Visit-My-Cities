@@ -28,3 +28,13 @@ export type HomeTab = CompositeNavigationProp<
    BottomTabNavigationProp<TabsParamList, 'Home'>,
    NativeStackNavigationProp<RootStackParamList>
 >
+
+export type ProfileTab = CompositeNavigationProp<
+   BottomTabNavigationProp<TabsParamList, 'Profile'>,
+   NativeStackNavigationProp<RootStackParamList>
+>
+
+export type VisitTab = CompositeNavigationProp<
+   BottomTabNavigationProp<TabsParamList, 'Visit'>,
+   NativeStackNavigationProp<RootStackParamList>
+>

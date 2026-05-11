@@ -6,8 +6,13 @@ import { Text } from 'react-native'
 import ActionsSections from '../../components/sections/ActionsSections'
 import { useUserStore } from '../../store/useUserStore'
 import { removeAccessToken } from '../../auth/tokenStorage'
+import { ProfileTab } from '../../navigation/types'
 
-export const ProfileScreen = ({ navigation }) => {
+interface ProfileScreenProps {
+   navigation: ProfileTab
+}
+
+export const ProfileScreen = ({ navigation }: ProfileScreenProps) => {
    const isLoggedIn = useUserStore((state) => state.isLoggedIn())
    const user = useUserStore((state) => state.user)
 
@@ -40,7 +45,7 @@ export const ProfileScreen = ({ navigation }) => {
                </View>
                <SectionDivider style={{ width: '100%' }} />
 
-               {isLoggedIn && user.email && (
+               {isLoggedIn && user?.email && (
                   <View style={styles.infoContainer}>
                      <Text style={styles.infoTitle}>Mes informations :</Text>
                      <Text style={styles.infoText}>Nom : {user?.username}</Text>
@@ -52,8 +57,8 @@ export const ProfileScreen = ({ navigation }) => {
                   containerStyle={!isLoggedIn && { marginTop: 28 }}
                   primaryTitle={!isLoggedIn ? 'Connexion' : 'Déconnexion'}
                   primaryOnPress={!isLoggedIn ? () => navigation.navigate('Login') : handleLogout}
-                  secondaryTitle={!isLoggedIn && 'Créer un compte'}
-                  secondaryOnPress={!isLoggedIn ? () => navigation.navigate('Register') : null}
+                  secondaryTitle={!isLoggedIn ? 'Créer un compte' : ''}
+                  secondaryOnPress={!isLoggedIn ? () => navigation.navigate('Register') : undefined}
                />
             </View>
          </ContentContainer>

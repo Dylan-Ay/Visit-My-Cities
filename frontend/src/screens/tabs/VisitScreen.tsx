@@ -1,11 +1,6 @@
 import { ScrollView } from 'react-native'
 import PlacesCarouselSection from '../../components/sections/PlacesCarouselSection'
-import {
-   ScreenWrapper,
-   PlaceCard,
-   ContentContainer,
-   SectionDivider,
-} from '../../components/ui'
+import { ScreenWrapper, PlaceCard, ContentContainer, SectionDivider } from '../../components/ui'
 import { CarouselItem } from '../../components/ui/layout/CarouselItem'
 import { EmptyState } from '../../components/ui/EmptyState'
 import { useFavoriteStore } from '../../store/useFavoriteStore'
@@ -15,8 +10,13 @@ import useCities from '../../services/hooks/useCities'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
 import { Loader } from '../../components/ui/Loader'
 import { HeaderSection } from '../../components/sections/HeaderSection'
+import { VisitTab } from '../../navigation/types'
 
-export const VisitScreen = ({ navigation }) => {
+interface VisitScreenProps {
+   navigation: VisitTab
+}
+
+export const VisitScreen = ({ navigation }: VisitScreenProps) => {
    const buildingsFavIds = useFavoriteStore((state) => state.favoriteBuildings)
    const citiesFavIds = useFavoriteStore((state) => state.favoriteCities)
    const { buildings, isLoadingBuild } = useBuildings()
@@ -37,9 +37,7 @@ export const VisitScreen = ({ navigation }) => {
             <ContentContainer>
                <HeaderSection
                   title={'Vos favoris'}
-                  subTitle={
-                     'Toutes vos villes et bâtiments préférés, réunis au même endroit.'
-                  }
+                  subTitle={'Toutes vos villes et bâtiments préférés, réunis au même endroit.'}
                />
 
                <PlacesCarouselSection

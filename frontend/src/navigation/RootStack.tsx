@@ -8,8 +8,9 @@ import { FavoriteCityHeaderButton } from '../components/ui/inputs/FavoriteCityHe
 import { FavoriteBuildingHeaderButton } from '../components/ui/inputs/FavoriteBuildingHeaderButton'
 import { LoginScreen } from '../screens/stack/LoginScreen'
 import { RegisterScreen } from '../screens/stack/RegisterScreen'
+import { RootStackParamList } from './types'
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator<RootStackParamList>()
 
 export default function RootStack() {
    return (

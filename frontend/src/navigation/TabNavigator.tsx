@@ -6,8 +6,9 @@ import { VisitScreen } from '../screens/tabs/VisitScreen'
 import { AddScreen } from '../screens/tabs/AddScreen'
 import { ProfileScreen } from '../screens/tabs/ProfileScreen'
 import { useUserStore } from '../store/useUserStore'
+import { TabsParamList } from './types'
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator<TabsParamList>()
 
 export default function TabNavigator() {
    const isLoggedIn = useUserStore((state) => state.isLoggedIn())

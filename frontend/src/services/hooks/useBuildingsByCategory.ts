@@ -4,9 +4,7 @@ import { Alert } from 'react-native'
 import { Building } from '../../types/building'
 
 export default function useBuildingsByCategory(id: number) {
-   const [buildingsByCategory, setBuildingsByCategory] = useState<Building[]>(
-      []
-   )
+   const [buildingsByCategory, setBuildingsByCategory] = useState<Building[]>([])
    const [isLoading, setIsLoading] = useState(false)
 
    useEffect(() => {

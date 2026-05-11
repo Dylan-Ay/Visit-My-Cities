@@ -26,9 +26,7 @@ export const useFavoriteStore = create<FavoriteState>()(
                   }
                }
 
-               const newFavoriteCities = state.favoriteCities.filter(
-                  (el) => el !== id
-               )
+               const newFavoriteCities = state.favoriteCities.filter((el) => el !== id)
                return {
                   favoriteCities: newFavoriteCities,
                }
@@ -41,9 +39,7 @@ export const useFavoriteStore = create<FavoriteState>()(
                   }
                }
 
-               const newFavoriteBuildings = state.favoriteBuildings.filter(
-                  (el) => el !== id
-               )
+               const newFavoriteBuildings = state.favoriteBuildings.filter((el) => el !== id)
                return {
                   favoriteBuildings: newFavoriteBuildings,
                }
@@ -54,8 +50,7 @@ export const useFavoriteStore = create<FavoriteState>()(
                favoriteBuildings: [],
             }),
          isFavoriteCity: (id: number) => get().favoriteCities.includes(id),
-         isFavoriteBuilding: (id: number) =>
-            get().favoriteBuildings.includes(id),
+         isFavoriteBuilding: (id: number) => get().favoriteBuildings.includes(id),
       }),
 
       {

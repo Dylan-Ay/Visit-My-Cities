@@ -11,21 +11,14 @@ export const ExpandableText = ({ linesNumber, text }: ExpandableTextProps) => {
 
    return (
       <View>
-         <Text
-            numberOfLines={!isExpanded ? linesNumber : 0}
-            ellipsizeMode="tail"
-         >
+         <Text numberOfLines={!isExpanded ? linesNumber : 0} ellipsizeMode="tail">
             {text}
          </Text>
          <TouchableOpacity
             style={styles.button}
-            onPress={() =>
-               !isExpanded ? setIsExpanded(true) : setIsExpanded(false)
-            }
+            onPress={() => (!isExpanded ? setIsExpanded(true) : setIsExpanded(false))}
          >
-            <Text style={styles.textButton}>
-               {!isExpanded ? 'Voir plus' : 'Voir moins'}
-            </Text>
+            <Text style={styles.textButton}>{!isExpanded ? 'Voir plus' : 'Voir moins'}</Text>
          </TouchableOpacity>
       </View>
    )

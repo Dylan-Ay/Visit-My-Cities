@@ -1,11 +1,4 @@
-import {
-   StyleProp,
-   StyleSheet,
-   Text,
-   TextStyle,
-   View,
-   ViewStyle,
-} from 'react-native'
+import { StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
 
 interface SectionTitleProps {
    children: React.ReactNode
@@ -14,12 +7,7 @@ interface SectionTitleProps {
    right?: React.ReactNode
 }
 
-export const SectionTitle = ({
-   children,
-   containerStyle,
-   style,
-   right,
-}: SectionTitleProps) => {
+export const SectionTitle = ({ children, containerStyle, style, right }: SectionTitleProps) => {
    return (
       <View style={[styles.container, containerStyle]}>
          <Text style={[styles.sectionTitle, style]}>{children}</Text>

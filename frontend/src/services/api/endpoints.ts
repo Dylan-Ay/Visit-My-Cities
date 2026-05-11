@@ -1,6 +1,6 @@
 export const API_BASE_URL: string =
-   process.env.EXPO_PUBLIC_API_URL_TELEPHONE ??
-   process.env.EXPO_PUBLIC_API_URL_ANDROID_EMULATOR ??
+   process.env.EXPO_PUBLIC_API_URL_TELEPHONE ||
+   process.env.EXPO_PUBLIC_API_URL_ANDROID_EMULATOR ||
    process.env.EXPO_PUBLIC_API_URL_IOS_SIMULATOR
 
 export const API_ROUTES = {
@@ -11,8 +11,7 @@ export const API_ROUTES = {
    BUILDING: {
       FINDALL: '/building/buildingsdto',
       FIND_BY_ID: (id: number) => `/building/buildingdto/${id}`,
-      FIND_BUILDINGS_BY_CITY: (id: number) =>
-         `/building/buildingsdto/city/${id}`,
+      FIND_BUILDINGS_BY_CITY: (id: number) => `/building/buildingsdto/city/${id}`,
       SEARCH_BUILDINGS_BY_CITY: (name: string) =>
          `/buildingdto/cityname/${encodeURIComponent(name)}`,
       ADD_BUILDING: `/building/add/add`,
@@ -25,7 +24,6 @@ export const API_ROUTES = {
    CATEGORY: {
       FINDALL: '/category/categories',
       FIND_BY_ID: (id: number) => `/category/${id}`,
-      FIND_BUILDINGS_BY_CATEGORY: (id: number) =>
-         `/building/buildingsdto/category/${id}`,
+      FIND_BUILDINGS_BY_CATEGORY: (id: number) => `/building/buildingsdto/category/${id}`,
    },
 }

@@ -423,8 +423,7 @@ export const buildings = [
             dimanche: [{ start: '00:00', end: '23:59' }],
          },
          note: "La place est accessible toute la journée. Depuis le 2 février 2026, l'accès au bord de la fontaine est payant à certaines heures : du lundi au vendredi de 11h30 à 22h00 et le week-end de 09h00 à 22h00.",
-         officialHoursUrl:
-            'https://www.turismoroma.it/en/places/trevi-fountain',
+         officialHoursUrl: 'https://www.turismoroma.it/en/places/trevi-fountain',
       },
       coords: {
          latitude: 41.9009,
@@ -589,8 +588,7 @@ export const buildings = [
             dimanche: [{ start: '10:00', end: '23:00' }],
          },
          note: 'La dernière admission est 45 minutes avant la fermeture. Fermé le 1er janvier, 1er mai, 8 mai matin, 14 juillet matin, 11 novembre matin et 25 décembre. Vérifiez les horaires officiels pour les exceptions et cérémonies.',
-         official_hours_url:
-            'https://www.paris-arc-de-triomphe.fr/visiter/informations-pratiques',
+         official_hours_url: 'https://www.paris-arc-de-triomphe.fr/visiter/informations-pratiques',
       },
    },
 ]

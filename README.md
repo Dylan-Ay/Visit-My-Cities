@@ -93,7 +93,7 @@ Once the environment variables are configured, restart the development server an
 - Allow users to suggest a new landmark
   
 **Stacks used :**
-- React Native (Zustand, Expo, React Hook Form)
+- React Native (TypeScript, Zustand, Expo, React Hook Form)
 - Spring Boot
 - MySQL
 - PhpMyAdmin

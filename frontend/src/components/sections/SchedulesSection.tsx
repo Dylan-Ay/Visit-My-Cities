@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { Accordion } from '../ui'
-import { firstChartToUpperCase } from '../../utils/utils'
+import { firstChartToUpperCase, getTodayDay } from '../../utils/utils'
 import { Linking } from 'react-native'
 import { orderDaysProperly } from '../../utils/buildings'
 import { Schedules } from '../../types/building'
@@ -14,13 +14,17 @@ export default function SchedulesSection({ buildingSchedules }: SchedulesSection
    const schedulesNote = buildingSchedules.note
    const schedulesUrl = buildingSchedules.officialHoursUrl
    const schedulesDays = orderDaysProperly(buildingSchedules.days)
+   const todayDay = getTodayDay()
 
    return (
       <View>
          <Accordion title={'Horaires'}>
             {schedulesType != 'Variable' &&
                Object.entries(schedulesDays).map(([day, slots]) => (
-                  <View style={styles.schedulesRow} key={day}>
+                  <View
+                     style={[styles.schedulesRow, todayDay == day ? styles.active : '']}
+                     key={day}
+                  >
                      <Text style={styles.day}>{firstChartToUpperCase(day)}</Text>
                      <Text>
                         {slots.length > 0 && slots[0].start.length > 0 && slots[0].end.length > 0
@@ -50,14 +54,18 @@ const styles = StyleSheet.create({
    schedulesRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingVertical: 10,
+      padding: 10,
+      borderRadius: 16,
+   },
+   active: {
+      backgroundColor: 'rgb(200, 209, 244)',
    },
    day: {
       fontWeight: 600,
    },
    noteContainer: {
       padding: 16,
-      marginTop: 10,
+      marginTop: 16,
       backgroundColor: 'rgb(230, 230, 230)',
       borderRadius: 16,
       gap: 10,

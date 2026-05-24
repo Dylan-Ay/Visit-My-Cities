@@ -68,3 +68,8 @@ export const generateTimeSlots = () => {
 
    return slots
 }
+
+export const getTodayDay = () => {
+   const today = new Date()
+   return new Intl.DateTimeFormat('fr-FR', { weekday: 'long' }).format(today)
+}

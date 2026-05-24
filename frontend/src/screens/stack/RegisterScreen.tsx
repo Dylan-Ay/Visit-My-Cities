@@ -39,7 +39,7 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
       }
 
       try {
-         await register(name, email, password)
+         await register(name, email.toLowerCase(), password)
          navigation.navigate('Login')
       } catch (error) {
          Alert.alert('Une erreur est survenue')

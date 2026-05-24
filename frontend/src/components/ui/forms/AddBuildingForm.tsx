@@ -289,11 +289,6 @@ export const AddBuildingForm = ({
                      containerStyle={{ width: '48%' }}
                      isSearch={false}
                      placeholder={'Sélectionner un temps de visite'}
-                     errorMessage={
-                        errors.visitDuration && (
-                           <ErrorMessage message={'Le temps de visite est requis.'} />
-                        )
-                     }
                   />
                )}
             />

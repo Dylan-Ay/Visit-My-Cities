@@ -30,11 +30,6 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
          return
       }
 
-      if (!validators.minLength(password, 8)) {
-         Alert.alert('Le mot de passe doit contenir au minimum 8 caractères.')
-         return
-      }
-
       try {
          const { user, access_token: token } = await login(email, password)
          useUserStore.getState().setUser({ user, token })
@@ -43,7 +38,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
             screen: 'Profile',
          })
       } catch (error) {
-         Alert.alert('Une erreur est survenue')
+         Alert.alert('Identifiant ou mot de passe incorrect.')
          console.log(error)
       }
    }

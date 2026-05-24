@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { getCities } from '../api/cities.service'
+import { getCities } from '../../api/cities.service'
 import { Alert } from 'react-native'
-import { City } from '../../types/city'
+import { City } from '../../../types/city'
 
 export default function useCities() {
    const [cities, setCities] = useState<City[]>([])

@@ -1,5 +1,5 @@
-import { CreateBuildingPayload } from '../../types/building'
-import { addBuilding } from '../api/buildings.service'
+import { CreateBuildingPayload } from '../../../types/building'
+import { addBuilding } from '../../api/buildings.service'
 import { useState } from 'react'
 
 export function useAddBuilding() {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { getBuildings } from '../api/buildings.service'
+import { getBuildings } from '../../api/buildings.service'
 import { Alert } from 'react-native'
-import { Building } from '../../types/building'
+import { Building } from '../../../types/building'
 
 export default function useBuildings() {
    const [buildings, setBuildings] = useState<Building[]>([])

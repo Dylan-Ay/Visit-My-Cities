@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { getBuildingsByCity } from '../api/buildings.service'
+import { getBuildingsByCity } from '../../api/buildings.service'
 import { Alert } from 'react-native'
-import { Building } from '../../types/building'
+import { Building } from '../../../types/building'
 
 export default function useBuildingsByCity(id: number) {
    const [buildingsByCity, setBuildingsByCity] = useState<Building[]>([])

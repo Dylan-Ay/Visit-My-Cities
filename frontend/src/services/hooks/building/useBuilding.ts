@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Alert } from 'react-native'
-import { getCityById } from '../api/cities.service'
-import { City } from '../../types/city'
+import { getBuildingById } from '../../api/buildings.service'
+import { Building } from '../../../types/building'
 
-export default function useCity(id: number) {
-   const [city, setCity] = useState<City | null>(null)
+export default function useBuilding(id: number) {
+   const [building, setBuilding] = useState<Building | null>(null)
    const [isLoading, setIsLoading] = useState(false)
 
    useEffect(() => {
@@ -14,8 +14,8 @@ export default function useCity(id: number) {
    const loadBuildings = async () => {
       try {
          setIsLoading(true)
-         const data = await getCityById(id)
-         setCity(data)
+         const data = await getBuildingById(id)
+         setBuilding(data)
       } catch (error) {
          Alert.alert('Une erreur est survenue')
          console.log(error)
@@ -24,5 +24,5 @@ export default function useCity(id: number) {
       }
    }
 
-   return { city, isLoading }
+   return { building, isLoading }
 }

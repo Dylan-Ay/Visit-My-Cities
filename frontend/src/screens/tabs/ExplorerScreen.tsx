@@ -1,6 +1,6 @@
 import { ScreenWrapper } from '../../components/ui'
 import PlacesGridSection from '../../components/sections/PlacesGridSection'
-import useCities from '../../services/hooks/useCities'
+import useCities from '../../services/hooks/city/useCities'
 import { Loader } from '../../components/ui/Loader'
 import useDelayLoader from '../../services/hooks/useDelayedLoader'
 import { ExplorerTab } from '../../navigation/types'

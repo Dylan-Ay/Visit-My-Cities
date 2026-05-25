@@ -52,7 +52,7 @@ public class Building {
         @Column(nullable = false)
         private String accessStatus;
 
-        @Column(name = "accesible_PRM")
+        @Column(name = "accesible_PRM", columnDefinition = "boolean")
         private boolean accessiblePRM;
 
         @Column(nullable = false)
@@ -61,7 +61,7 @@ public class Building {
         @Column(nullable = false)
         private Double longitude;
 
-        @Column(columnDefinition = "TEXT", nullable = false)
+        @Column(columnDefinition = "TEXT")
         private String schedules;
 
         @ManyToOne

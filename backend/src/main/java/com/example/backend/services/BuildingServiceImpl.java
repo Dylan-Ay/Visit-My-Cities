@@ -40,7 +40,6 @@ public class BuildingServiceImpl implements IBuildingService{
         building.setImage(dto.getImage());
         building.setAddress(dto.getAddress());
         building.setPostalCode(dto.getPostalCode());
-        building.setCountry(dto.getCountry());
         building.setConstructionYear(dto.getConstructionYear());
         building.setArchitect(dto.getArchitect());
         building.setStyle(dto.getStyle());

@@ -1,7 +1,11 @@
 package com.example.backend.entities;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -10,49 +14,67 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "batiment")
 public class Building {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
+        @Column(unique = true, nullable = false)
         private String name;
+
+        @Column(nullable = false)
         private String image;
+
+        @Column(nullable = false)
         private String address;
+
+        @Column(nullable = false)
         private String postalCode;
-        private String country;
+
         private Integer constructionYear;
         private String architect;
+
+        @Column(nullable = false)
         private String style;
 
-        @Column(columnDefinition = "TEXT")
+        @Column(columnDefinition = "TEXT", nullable = false)
         private String description;
 
+        @Column(nullable = false)
         private Integer ticketPrice;
+
         private String visitDuration;
+
+        @Column(nullable = false)
         private String booking;
+
+        @Column(nullable = false)
         private String accessStatus;
+
+        @Column(name = "accesible_PRM")
         private boolean accessiblePRM;
+
+        @Column(nullable = false)
         private Double latitude;
+
+        @Column(nullable = false)
         private Double longitude;
 
-        @Column(columnDefinition = "TEXT")
+        @Column(columnDefinition = "TEXT", nullable = false)
         private String schedules;
 
-        @Column(columnDefinition = "TEXT")
-        private String coords;
+        @ManyToOne
+        @JoinColumn(nullable = false)
+        private City city;
 
         @ManyToOne
-        @JoinColumn(name = "city_id")
-        private City city;
-        @ManyToOne
         @JsonIgnore
+        @JoinColumn(nullable = false)
         private Category category;
+
         @OneToMany(mappedBy = "building")
         @JsonIgnore
         private List<Favorite> favorites;
-
-
 }
 

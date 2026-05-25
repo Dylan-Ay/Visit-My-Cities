@@ -84,7 +84,10 @@ export const AddScreen = () => {
          reset(addBuildingDefaultValues as unknown as FormsValues)
 
          Alert.alert(`Le bâtiment ${buildingName} a bien été ajouté !`)
-      } catch {}
+      } catch (error) {
+         console.log(error)
+         Alert.alert(`Le bâtiment ${buildingName} existe déjà.`)
+      }
    }
 
    if (showGlobalLoader) {

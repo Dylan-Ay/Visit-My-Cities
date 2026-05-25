@@ -12,6 +12,7 @@ export function useAddBuilding() {
          return result
       } catch (error) {
          console.log(error)
+         throw error
       } finally {
          setLoadingBuild(false)
       }

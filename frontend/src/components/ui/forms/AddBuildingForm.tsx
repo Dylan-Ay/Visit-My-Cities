@@ -353,6 +353,7 @@ export const AddBuildingForm = ({
                   label={'Accessibilité PMR'}
                   placeholder={"Sélectionner un type d'accessibilité"}
                   isSearch={false}
+                  isRequired={true}
                />
             )}
          />

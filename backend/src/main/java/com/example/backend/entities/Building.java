@@ -52,7 +52,7 @@ public class Building {
         @Column(nullable = false)
         private String accessStatus;
 
-        @Column(name = "accesible_PRM", columnDefinition = "boolean")
+        @Column(name = "accessible_PRM", columnDefinition = "boolean")
         private boolean accessiblePRM;
 
         @Column(nullable = false)

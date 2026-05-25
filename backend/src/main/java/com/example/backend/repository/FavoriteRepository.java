@@ -1,5 +1,5 @@
 package com.example.backend.repository;
-import com.example.backend.entities.AppUser;
+import com.example.backend.entities.User;
 import com.example.backend.entities.Building;
 import com.example.backend.entities.City;
 import com.example.backend.entities.Favorite;
@@ -16,8 +16,8 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
     //FROM mes_favoris
     //WHERE user_id = ? AND city_id = ?
     // Est-ce que cet utilisateur a déjà ajouté cette ville en favori ?
-    boolean existsByUserAndCity(AppUser user, City city);
-    boolean existsByUserAndBuilding(AppUser user, Building building);
-    Optional<List<Favorite>> findByUser(AppUser user);
+    boolean existsByUserAndCity(User user, City city);
+    boolean existsByUserAndBuilding(User user, Building building);
+    Optional<List<Favorite>> findByUser(User user);
 
 }

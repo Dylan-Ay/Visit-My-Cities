@@ -1,14 +1,11 @@
 package com.example.backend.services;
 
-import com.example.backend.entities.AppUser;
+import com.example.backend.entities.User;
 import com.example.backend.entities.Building;
 import com.example.backend.entities.City;
 import com.example.backend.entities.Favorite;
 import com.example.backend.exceptions.BuildingExistInFavoriesException;
-import com.example.backend.exceptions.BuildingNotFoundException;
 import com.example.backend.exceptions.CityExistInFavoriesException;
-import com.example.backend.repository.AppUserRepository;
-import com.example.backend.repository.CityRepository;
 import com.example.backend.repository.FavoriteRepository;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +28,7 @@ private final BuildingServiceImpl buildingService;
     }
 
     @Override
-    public void addCityToFavorite(AppUser user, Long city_id) {
+    public void addCityToFavorite(User user, Long city_id) {
 
         City city = cityService.getCityById(city_id);
         if(favoriteRepository.existsByUserAndCity(user, city)){
@@ -44,7 +41,7 @@ private final BuildingServiceImpl buildingService;
     }
 
     @Override
-    public void addBuildingToFavorite(AppUser user, Long building_id) {
+    public void addBuildingToFavorite(User user, Long building_id) {
 
         Building building = buildingService.getBuildingById(building_id);
         if(favoriteRepository.existsByUserAndBuilding(user, building)){
@@ -71,7 +68,7 @@ private final BuildingServiceImpl buildingService;
     //            System.out.println("city "+city);
     //        }
     @Override
-    public List<City> getFavoriteCities(AppUser user) {
+    public List<City> getFavoriteCities(User user) {
 
         List<Favorite> favorites = this.favoriteRepository.findByUser(user).orElseThrow(() ->new RuntimeException("cette utilisateur n'à rien dans ces favoris"));
         List<City>  cities =  favorites.stream()
@@ -84,7 +81,7 @@ private final BuildingServiceImpl buildingService;
 
 
     @Override
-    public List<Building> getFavoriteBuildings(AppUser user) {
+    public List<Building> getFavoriteBuildings(User user) {
 
         List<Favorite> favorites = this.favoriteRepository.findByUser(user).orElseThrow(() ->new RuntimeException("cette utilisateur n'à rien dans ces favoris"));
         List<Building>  buildings =  favorites.stream()

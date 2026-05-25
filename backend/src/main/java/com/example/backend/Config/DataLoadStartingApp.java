@@ -3,11 +3,11 @@ package com.example.backend.Config;
 import com.example.backend.entities.Building;
 import com.example.backend.entities.Category;
 import com.example.backend.entities.City;
-import com.example.backend.entities.AppUser;
+import com.example.backend.entities.User;
 import com.example.backend.repository.BuildingRepository;
 import com.example.backend.repository.CategoryRepository;
 import com.example.backend.repository.CityRepository;
-import com.example.backend.repository.AppUserRepository;
+import com.example.backend.repository.UserRepository;
 import com.example.backend.enums.AppRole;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +26,7 @@ public class DataLoadStartingApp {
 
     private final CityRepository cityRepository;
     private final BuildingRepository buildingRepository;
-    private final AppUserRepository appUserRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CategoryRepository categoryRepository;
 
@@ -61,13 +61,13 @@ if(categoryRepository.count() == 0){
     }
 
     private void ajouter_un_utilisateur(String username, String email, String password, AppRole role) {
-        if (appUserRepository.findByEmail(email).isEmpty()) {
-            AppUser user = new AppUser();
+        if (userRepository.findByEmail(email).isEmpty()) {
+            User user = new User();
             user.setUsername(username);
             user.setEmail(email);
             user.setPassword(passwordEncoder.encode(password));
             user.setRole(role);
-            appUserRepository.save(user);
+            userRepository.save(user);
         }
     }
 

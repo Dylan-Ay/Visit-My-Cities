@@ -21,7 +21,7 @@ public class Favorite {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private AppUser user;
+    private User user;
     @ManyToOne
     @JoinColumn(name = "building_id")
     private Building building;

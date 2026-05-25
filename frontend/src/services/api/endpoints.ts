@@ -1,7 +1,4 @@
-export const API_BASE_URL: string =
-   process.env.EXPO_PUBLIC_API_URL_IOS_SIMULATOR ??
-   process.env.EXPO_PUBLIC_API_URL_TELEPHONE ??
-   process.env.EXPO_PUBLIC_API_URL_ANDROID_EMULATOR
+export const API_BASE_URL: string = 'http://192.168.1.41:8080'
 
 export const API_ROUTES = {
    AUTH: {

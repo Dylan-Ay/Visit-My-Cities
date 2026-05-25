@@ -1,6 +1,5 @@
 package com.example.backend.services;
 
-import com.example.backend.entities.AppUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -10,8 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
 

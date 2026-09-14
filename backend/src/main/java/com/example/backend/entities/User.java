@@ -1,6 +1,6 @@
 package com.example.backend.entities;
 
-import com.example.backend.enums.UserRole;
+import com.example.backend.enums.UserRoleType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -33,5 +33,5 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private UserRole role;
+    private UserRoleType role;
 }

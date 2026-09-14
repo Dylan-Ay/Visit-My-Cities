@@ -1,5 +1,7 @@
 package com.example.backend.dto;
 
+import com.example.backend.enums.AccessStatusType;
+import com.example.backend.enums.BookingType;
 import lombok.Data;
 
 @Data
@@ -15,8 +17,8 @@ public class BuildingCreateDTO {
     private String description;
     private Integer ticketPrice;
     private String visitDuration;
-    private String booking;
-    private String accessStatus;
+    private BookingType booking;
+    private AccessStatusType accessStatus;
     private boolean accessiblePRM;
     private Double latitude;
     private Double longitude;

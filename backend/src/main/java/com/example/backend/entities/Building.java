@@ -1,5 +1,7 @@
 package com.example.backend.entities;
 
+import com.example.backend.enums.AccessStatusType;
+import com.example.backend.enums.BookingType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -53,11 +55,13 @@ public class Building {
 
     private String visitDuration;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String booking;
+    private BookingType booking;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String accessStatus;
+    private AccessStatusType accessStatus;
 
     @Column(name = "accessible_PRM")
     private boolean accessiblePRM;

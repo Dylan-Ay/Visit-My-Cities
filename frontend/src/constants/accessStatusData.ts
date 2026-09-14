@@ -1,14 +1,14 @@
 export const ACCESS_STATUS_DATA = [
    {
       label: 'Visitable',
-      value: 'Visitable',
+      value: 'OPEN',
    },
    {
       label: 'Accès libre',
-      value: 'Accès libre',
+      value: 'FREE_ACCESS',
    },
    {
       label: 'Accès restreint',
-      value: 'Accès restreint',
+      value: 'RESTRICTED_ACCESS',
    },
 ]

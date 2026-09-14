@@ -14,67 +14,73 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name", "city"})
+    }
+)
+
 public class Building {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        @Column(unique = true, nullable = false)
-        private String name;
+    @Column(unique = true, nullable = false)
+    private String name;
 
-        @Column(nullable = false)
-        private String image;
+    @Column(nullable = false)
+    private String image;
 
-        @Column(nullable = false)
-        private String address;
+    @Column(nullable = false)
+    private String address;
 
-        @Column(nullable = false)
-        private String postalCode;
+    @Column(nullable = false)
+    private String postalCode;
 
-        private Integer constructionYear;
-        private String architect;
+    private Integer constructionYear;
 
-        @Column(nullable = false)
-        private String style;
+    private String architect;
 
-        @Column(columnDefinition = "TEXT", nullable = false)
-        private String description;
+    @Column(nullable = false)
+    private String style;
 
-        @Column(nullable = false)
-        private Integer ticketPrice;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String description;
 
-        private String visitDuration;
+    @Column(nullable = false)
+    private Integer ticketPrice;
 
-        @Column(nullable = false)
-        private String booking;
+    private String visitDuration;
 
-        @Column(nullable = false)
-        private String accessStatus;
+    @Column(nullable = false)
+    private String booking;
 
-        @Column(name = "accessible_PRM", columnDefinition = "boolean")
-        private boolean accessiblePRM;
+    @Column(nullable = false)
+    private String accessStatus;
 
-        @Column(nullable = false)
-        private Double latitude;
+    @Column(name = "accessible_PRM")
+    private boolean accessiblePRM;
 
-        @Column(nullable = false)
-        private Double longitude;
+    @Column(nullable = false)
+    private Double latitude;
 
-        @Column(columnDefinition = "TEXT")
-        private String schedules;
+    @Column(nullable = false)
+    private Double longitude;
 
-        @ManyToOne
-        @JoinColumn(nullable = false)
-        private City city;
+    @Column(columnDefinition = "TEXT")
+    private String schedules;
 
-        @ManyToOne
-        @JsonIgnore
-        @JoinColumn(nullable = false)
-        private Category category;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private City city;
 
-        @OneToMany(mappedBy = "building")
-        @JsonIgnore
-        private List<Favorite> favorites;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(nullable = false)
+    private Category category;
+
+    @OneToMany(mappedBy = "building")
+    @JsonIgnore
+    private List<Favorite> favorites;
 }
-

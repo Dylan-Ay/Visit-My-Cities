@@ -4,11 +4,11 @@ import com.example.backend.entities.Building;
 import com.example.backend.entities.Category;
 import com.example.backend.entities.City;
 import com.example.backend.entities.User;
+import com.example.backend.enums.UserRole;
 import com.example.backend.repository.BuildingRepository;
 import com.example.backend.repository.CategoryRepository;
 import com.example.backend.repository.CityRepository;
 import com.example.backend.repository.UserRepository;
-import com.example.backend.enums.AppRole;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +34,8 @@ public class DataLoadStartingApp {
 
     @PostConstruct
     public void init() throws JsonProcessingException {
-        ajouter_un_utilisateur("Dylan Doe", "dylan@expert.com", "12345678", AppRole.ROLE_EXPERT);
-        ajouter_un_utilisateur("John Doe", "john@visiteur.com", "12345678", AppRole.ROLE_VISITEUR);
+        ajouter_un_utilisateur("Dylan Doe", "dylan@expert.com", "12345678", UserRole.ROLE_EXPERT);
+        ajouter_un_utilisateur("John Doe", "john@visiteur.com", "12345678", UserRole.ROLE_VISITEUR);
 
         // --- Villes et Bâtiments ---
         if (cityRepository.count() == 0) {
@@ -60,7 +60,7 @@ if(categoryRepository.count() == 0){
 
     }
 
-    private void ajouter_un_utilisateur(String username, String email, String password, AppRole role) {
+    private void ajouter_un_utilisateur(String username, String email, String password, UserRole role) {
         if (userRepository.findByEmail(email).isEmpty()) {
             User user = new User();
             user.setUsername(username);

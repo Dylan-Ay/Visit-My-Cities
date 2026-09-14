@@ -1,7 +1,7 @@
 package com.example.backend.services;
 
 import com.example.backend.entities.User;
-import com.example.backend.enums.AppRole;
+import com.example.backend.enums.UserRole;
 import com.example.backend.exceptions.AuthentificationNotFoundException;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.security.UserLoader;
@@ -32,7 +32,7 @@ public class AuthentificationService {
 
     public User register(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(AppRole.ROLE_VISITEUR);
+        user.setRole(UserRole.ROLE_VISITEUR);
         return this.userRepository.save(user);
     }
 

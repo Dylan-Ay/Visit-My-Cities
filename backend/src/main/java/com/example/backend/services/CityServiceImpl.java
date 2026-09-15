@@ -55,12 +55,10 @@ public class CityServiceImpl implements ICityService{
 
         City cityToDelete = getCityById(id);
         this.cityRepository.delete(cityToDelete);
-
     }
 
     @Override
     public City getCityByName(String name) {
-       // City city = this.cityRepository.findByName()
-       return  this.cityRepository.findByName(name).orElseThrow(() -> new CityNotFoundException("Ville avec le nom : " + name + " n'existe pas !"));
+       return this.cityRepository.findByName(name).orElseThrow(() -> new CityNotFoundException("La ville : " + name + " n'existe pas !"));
     }
 }

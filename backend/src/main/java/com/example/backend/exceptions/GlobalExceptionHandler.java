@@ -30,8 +30,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
 
-    @ExceptionHandler(CityExistInFavoriesException.class)
-        public ResponseEntity<ErrorMessage> handleCityFavoriteException(CityExistInFavoriesException e){
+    @ExceptionHandler(CityExistInFavoritesException.class)
+        public ResponseEntity<ErrorMessage> handleCityFavoriteException(CityExistInFavoritesException e){
 
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.value(), e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);

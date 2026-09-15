@@ -10,10 +10,10 @@ import java.util.List;
 public interface IBuildingService {
     Building getBuildingById(Long id);
     List<Building> getAllBuildings();
-    List<Building> getBuildingsByCityId(Long id);
     List<Building> getBuildingsByCityName(String name);
     Building updateBuilding(Long id, Building building);
     void deleteBuilding(Long id);
+    List<Building> getBuildingsByCityId(Long id);
     List<Building> getBuildingsByCategorieId(Long id);
 
     void saveBuilding(BuildingCreateDTO dto) throws JsonProcessingException;
@@ -22,5 +22,4 @@ public interface IBuildingService {
     List<BuildingDTO> getBuildingsDtoByCityId(Long id);
     List<BuildingDTO> getBuildingsByCategoryId(Long id);
     List<BuildingDTO> getBuildingsDtoByCityName(String cityName);
-
 }

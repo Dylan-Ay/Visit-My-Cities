@@ -3,7 +3,7 @@ import com.example.backend.entities.User;
 import com.example.backend.entities.Building;
 import com.example.backend.entities.City;
 import com.example.backend.repository.UserRepository;
-import com.example.backend.services.FavoriteSrviceImpl;
+import com.example.backend.services.FavoriteServiceImpl;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,11 +15,11 @@ import java.util.List;
 @RequestMapping("/favorites")
 public class FavoriteController {
 
-    private final FavoriteSrviceImpl favoriteSrvice;
+    private final FavoriteServiceImpl favoriteSrvice;
 
     private final UserRepository userRepository;
 
-    public FavoriteController(FavoriteSrviceImpl favoriteSrvice, UserRepository userRepository) {
+    public FavoriteController(FavoriteServiceImpl favoriteSrvice, UserRepository userRepository) {
         this.favoriteSrvice = favoriteSrvice;
         this.userRepository = userRepository;
     }

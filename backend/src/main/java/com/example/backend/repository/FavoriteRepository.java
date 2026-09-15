@@ -11,13 +11,7 @@ import java.util.Optional;
 
 public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
 
-
-    //SELECT COUNT(*) > 0
-    //FROM mes_favoris
-    //WHERE user_id = ? AND city_id = ?
-    // Est-ce que cet utilisateur a déjà ajouté cette ville en favori ?
     boolean existsByUserAndCity(User user, City city);
     boolean existsByUserAndBuilding(User user, Building building);
     Optional<List<Favorite>> findByUser(User user);
-
 }

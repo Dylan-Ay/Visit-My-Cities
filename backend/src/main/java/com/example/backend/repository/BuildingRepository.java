@@ -7,8 +7,7 @@ import java.util.List;
 
 public interface BuildingRepository extends JpaRepository<Building, Long> {
 
-    List<Building> findByCity_Id(Long id);
-    List<Building> findByCity_Name(String name);
-    List<Building> findByCategory_Id(Long id);
-    List<Building> getBuildingsDtoByCityName(Long id);
+    List<Building> findByCityName(String cityName);
+    List<Building> findByCityId(Long id);
+    List<Building> findByCategoryId(Long id);
 }

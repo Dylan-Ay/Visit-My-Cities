@@ -83,16 +83,16 @@ public class BuildingServiceImpl implements IBuildingService{
 
     @Override
     public List<Building> getBuildingsByCityId(Long id) {
-        List<Building> buildings =  this.buildingRepository.findByCity_Id(id);
+        List<Building> buildings =  this.buildingRepository.findByCityId(id);
         if(buildings.isEmpty()){
-            throw  new BuildingNotFoundException("Aucun batîment trouvé pour cette ville.");
+            throw  new BuildingNotFoundException("Aucun bâtiment trouvé pour cette ville.");
         }
         return buildings;
     }
 
     @Override
     public List<Building> getBuildingsByCityName(String name) {
-        List<Building> buildings = this.buildingRepository.findByCity_Name(name);
+        List<Building> buildings = this.buildingRepository.findByCityName(name);
         if(buildings.isEmpty()){
             throw new BuildingNotFoundException("Aucun batiment trouvé avce " + name);
         }
@@ -125,12 +125,13 @@ public class BuildingServiceImpl implements IBuildingService{
 
     @Override
     public List<Building> getBuildingsByCategorieId(Long id) {
-      List<Building> buildings = this.buildingRepository.findByCategory_Id(id);
+      List<Building> buildings = this.buildingRepository.findByCategoryId(id);
+
       if(buildings.isEmpty()){
           throw new BuildingNotFoundException("Aucun batiment dans cette catégorie");
       }
-      return buildings;
 
+      return buildings;
     }
 
 
@@ -148,10 +149,11 @@ public List<BuildingDTO> getAllBuildingsDTO() {
         return buildingMapper.toDTO(b);
 }
 
+
     public List<BuildingDTO> getBuildingsDtoByCityId(Long id) {
 
-        List<Building> buildings =  this.buildingRepository.findByCity_Id(id);
-        List<BuildingDTO> buildingsDTO = new ArrayList<>(); //je cree une liste de buidibg dto puis la remplir puis retourner
+        List<Building> buildings =  this.buildingRepository.findByCityId(id);
+        List<BuildingDTO> buildingsDTO = new ArrayList<>();
         if(buildings.isEmpty()){
             throw  new BuildingNotFoundException("Aucun batîment trouvé pour cette ville.");
         }
@@ -163,19 +165,22 @@ public List<BuildingDTO> getAllBuildingsDTO() {
         return buildingsDTO;
     }
 
+
     public List<BuildingDTO> getBuildingsByCategoryId(Long id){
 
-         List<Building> buildings =  this.buildingRepository.findByCategory_Id(id);
+        List<Building> buildings =  this.buildingRepository.findByCategoryId(id);
         List<BuildingDTO> buildingsDTO = new ArrayList<>();
+
         for(Building b : buildings){
             buildingsDTO.add(buildingMapper.toDTO(b));
         }
-        return  buildingsDTO;
 
+        return  buildingsDTO;
     }
+
     @Override
     public List<BuildingDTO> getBuildingsDtoByCityName(String cityName) {
-        List<Building> buildings = this.buildingRepository.findByCity_Name(cityName);
+        List<Building> buildings = this.buildingRepository.findByCityName(cityName);
         List<BuildingDTO> buildingsDTO = new ArrayList<>();
         if(buildings.isEmpty()){
             throw new BuildingNotFoundException("Aucun batiment trouvé avce " + cityName);

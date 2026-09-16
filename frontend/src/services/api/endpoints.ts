@@ -1,5 +1,4 @@
-export const API_BASE_URL: string = 'http://192.168.1.41:8080'
-
+export const API_BASE_URL: string = process.env.EXPO_PUBLIC_API_URL_IOS_SIMULATOR
 export const API_ROUTES = {
    AUTH: {
       REGISTER: '/auth/register',
@@ -19,8 +18,8 @@ export const API_ROUTES = {
       DELETE: (id: number) => `/city/delete/${id}`,
    },
    CATEGORY: {
-      FINDALL: '/category/categories',
-      FIND_BY_ID: (id: number) => `/category/${id}`,
+      FINDALL: '/categories',
+      FIND_BY_ID: (id: number) => `/categories/${id}`,
       FIND_BUILDINGS_BY_CATEGORY: (id: number) => `/building/buildingsdto/category/${id}`,
    },
 }

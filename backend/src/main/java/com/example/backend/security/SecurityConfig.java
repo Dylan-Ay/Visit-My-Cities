@@ -24,74 +24,63 @@ public class SecurityConfig {
     }
 
     @Bean
-        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
 
-                http
-                        .csrf(csrf -> csrf.disable())
-                        .sessionManagement(session ->
-                                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                        .authorizeHttpRequests(auth -> auth
+                        // Routes publiques
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/auth/**",
+                                "/register/**",
+                                "/cities",
+                                "/cities/*",
+                                "/building/buildings",
+                                "/categories",
+                                "/categories/*",
+                                "/building/categorie/*",
+                                "/city/*",
+                                "/building/*",
+                                "/building/city/*",
+                                "/building/cityname/*",
+                                "/building/buildingdto/*",
+                                "/building/buildingsdto/city/*",
+                                "/building/buildingsdto/category/*",
+                                "/building/buildingdto/cityname/*"
+                        ).permitAll()
 
-                                // public tout le monde
-                                .requestMatchers(
-                                        "/swagger-ui/**",
-                                        "/v3/api-docs/**",
-                                        "/auth/**",
-                                        "/register/**",
-                                        "/city/cities",
-                                        "/city/city/*",
-                                        "/building/buildings",
-                                        "/categories",
-                                        "/categories/*",
-                                        "/building/categorie/*",
-                                        "/city/*",
-                                        "/building/*",
-                                        "/building/city/*",
-                                        "/building/cityname/*",
-                                        "/building/buildingdto/*",
-                                        "/building/buildingsdto/city/*",
-                                        "/building/buildingsdto/category/*",
-                                        "/building/buildingdto/cityname/*"
-                                ).permitAll()
+                        // Routes rôle EXPERT
+                        .requestMatchers(
+                                "/city/add/**",
+                                "/city/delete/**",
+                                "/building/update/**",
+                                "/building/delete/**",
+                                "/building/add/**"
+                        ).hasRole("EXPERT")
 
-                                // EXPERT juste c tt
-                                .requestMatchers(
-                                        "/city/add/**",
-                                        "/city/update/**",
-                                        "/city/delete/**",
-                                        "/building/update/**",
-                                        "/building/delete/**",
-                                        "/building/add/**"
-                                ).hasRole("EXPERT")
+                        // Routes avec authentification
+                        .requestMatchers(
+                                "/comment/**",
+                                "/like/**",
+                                "/favorites/**"
+                        ).authenticated() // permitAll() pour tester sans token
 
-                                //auhentifier c tt
-                                .requestMatchers(
-                                        "/comment/**",
-                                        "/like/**",
-                                        "/favorites/**"
-                                ).authenticated() //permitAll() ici ca fait pas mal pour tester sans token
+                        .anyRequest().authenticated() // permitAll() pour tester sans token
+                    )
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
 
-                                .anyRequest().authenticated() //permitAll() ici aussi
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
-                        )
-
-                        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
-    return http.build();
-
-        }
-
-        @Bean
-         public PasswordEncoder passwordEncoder(){
-            return new BCryptPasswordEncoder();
-            }
-
-            @Bean
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config){
-            return config.getAuthenticationManager();
-            }
-
-
+        return config.getAuthenticationManager();
+    }
 }
-
-

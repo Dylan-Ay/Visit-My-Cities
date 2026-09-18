@@ -96,7 +96,7 @@ if(categoryRepository.count() == 0){
         City rome = new City(null, "Rome", "Italie", null, "00186",
                 "https://www.webcity.fr/wp-content/uploads/2017/11/monument-rome-1.jpg", null, null);
         City barcelone = new City(null, "Barcelone", "Espagne", null, "08013",
-                "https://jacheteenespagne.com/wp-content/uploads/2024/06/0bda496746574de3ac1ec5c68616272b-1.jpg", null, null);
+                "https://www.locabarcelona.com/wp-content/uploads/2024/12/Plaza-Espana.jpg", null, null);
 //ajouter les ville a la bdd
         cityRepository.saveAll(List.of(paris, tokyo, newYork, londres, rome, barcelone));
 

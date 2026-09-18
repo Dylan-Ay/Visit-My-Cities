@@ -154,11 +154,8 @@ public List<BuildingDTO> getAllBuildingsDTO() {
 
         List<Building> buildings =  this.buildingRepository.findByCityId(id);
         List<BuildingDTO> buildingsDTO = new ArrayList<>();
-        if(buildings.isEmpty()){
-            throw  new BuildingNotFoundException("Aucun batîment trouvé pour cette ville.");
-        }
 
-        for(Building b : buildings){
+        for (Building b : buildings){
             buildingsDTO.add(buildingMapper.toDTO(b));
         }
 

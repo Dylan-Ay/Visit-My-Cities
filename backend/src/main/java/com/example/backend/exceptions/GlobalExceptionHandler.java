@@ -10,8 +10,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private final HttpServletRequest request;
+
+    public GlobalExceptionHandler(HttpServletRequest request) {
+        this.request = request;
+    }
+
     @ExceptionHandler(CategoryNotFoundException.class)
-    public ResponseEntity<ErrorMessage> handleCategoryNotFound(CategoryNotFoundException e, HttpServletRequest request){
+    public ResponseEntity<ErrorMessage> handleCategoryNotFound(CategoryNotFoundException e){
 
         int httpStatus = HttpStatus.NOT_FOUND.value();
         ErrorMessage errorMessage = new ErrorMessage(httpStatus,e.getMessage(), request.getRequestURI());
@@ -21,13 +27,16 @@ public class GlobalExceptionHandler {
                 .body(errorMessage);
     }
 
-//    @ExceptionHandler(CityNotFoundException.class)
-//    public ResponseEntity<ErrorMessage> handleCityNotFound(CityNotFoundException e){
-//
-//        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.value(),e.getMessage());
-//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-//    }
-//
+    @ExceptionHandler(CityNotFoundException.class)
+    public ResponseEntity<ErrorMessage> handleCityNotFound(CityNotFoundException e){
+
+        int httpStatus = HttpStatus.NOT_FOUND.value();
+        ErrorMessage errorMessage = new ErrorMessage(httpStatus,e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(errorMessage);
+    }
 
 //    @ExceptionHandler(BuildingNotFoundException.class)
 //    public ResponseEntity<ErrorMessage> handleBuildingNotFound(BuildingNotFoundException e){

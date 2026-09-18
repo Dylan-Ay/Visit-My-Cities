@@ -6,11 +6,10 @@ import java.util.List;
 
 public interface ICityService {
 
-
     List<City> getAllCities();
     City getCityById(Long id);
-    City saveCity(City city);
+    City getCityByName(String name);
+    City createCity(City city);
     City updateCity(Long id, City city);
     void deleteCity(Long id);
-    City getCityByName(String name);
 }

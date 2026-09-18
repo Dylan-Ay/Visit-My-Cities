@@ -2,14 +2,13 @@ package com.example.backend.controllers;
 
 import com.example.backend.entities.City;
 import com.example.backend.services.CityServiceImpl;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/city")
+@RequestMapping("/cities")
 public class CityController {
 
     private final CityServiceImpl cityServiceImpl;
@@ -18,35 +17,45 @@ public class CityController {
         this.cityServiceImpl = cityServiceImpl;
     }
 
-    @PostMapping("/add/add")
-    public ResponseEntity<City> saveCity(@RequestBody City city){
-        return new ResponseEntity<>(this.cityServiceImpl.saveCity(city), HttpStatus.CREATED);
-    }
-    @GetMapping("/cities")
+    @GetMapping
     public ResponseEntity<List<City>> getAllCities(){
-        return new ResponseEntity<>(this.cityServiceImpl.getAllCities(), HttpStatus.OK);
+        return ResponseEntity.ok(
+                this.cityServiceImpl.getAllCities()
+        );
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<City> getCityById(@PathVariable Long id){
-        return new ResponseEntity<>(this.cityServiceImpl.getCityById(id), HttpStatus.OK);
+        return ResponseEntity.ok(
+                this.cityServiceImpl.getCityById(id)
+        );
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteCityById(@PathVariable Long id){
+    @GetMapping("/search")
+    public ResponseEntity<City> getCityByName(@RequestParam String name){
+        return ResponseEntity.ok(
+                this.cityServiceImpl.getCityByName(name)
+        );
+    }
+
+    @PostMapping
+    public ResponseEntity<City> createCity(@RequestBody City city){
+        return ResponseEntity.ok(
+                this.cityServiceImpl.createCity(city)
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCity(@PathVariable Long id){
          this.cityServiceImpl.deleteCity(id);
-         return  ResponseEntity.noContent().build();
+         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<City> updateCity(@PathVariable Long id, @RequestBody City city){
 
-        return new ResponseEntity<>(this.cityServiceImpl.updateCity(id, city), HttpStatus.OK);
-
-    }
-
-    @GetMapping("/city/{name}")
-    public ResponseEntity<City> getCityByName(@PathVariable String name){
-        return new ResponseEntity<>(this.cityServiceImpl.getCityByName(name),HttpStatus.OK);
+        return ResponseEntity.ok(
+                this.cityServiceImpl.updateCity(id, city)
+        );
     }
 }

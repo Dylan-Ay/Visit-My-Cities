@@ -13,9 +13,11 @@ export const API_ROUTES = {
       ADD_BUILDING: `/building/add/add`,
    },
    CITY: {
-      FINDALL: '/city/cities',
-      FIND_BY_ID: (id: number) => `/city/${id}`,
-      DELETE: (id: number) => `/city/delete/${id}`,
+      FINDALL: '/cities',
+      FIND_BY_ID: (id: number) => `/cities/${id}`,
+      ADD_CITY: `/cities/add`,
+      DELETE: (id: number) => `/cities/${id}`,
+      UPDATE: (id: number) => `/cities/${id}`
    },
    CATEGORY: {
       FINDALL: '/categories',

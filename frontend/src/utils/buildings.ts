@@ -52,9 +52,8 @@ export const getBuildingVisitInfos = (building: Building): BuildingInfos[] => {
          label: 'Statut',
          icon: VISIT_INFO_ICONS.status,
          value:
-            ACCESS_STATUS_DATA.find(
-               status => status.value === building.accessStatus
-            )?.label ?? 'Non renseigné',
+            ACCESS_STATUS_DATA.find((status) => status.value === building.accessStatus)?.label ??
+            'Non renseigné',
       },
       {
          label: 'Accessibilité',
@@ -70,9 +69,8 @@ export const getBuildingVisitInfos = (building: Building): BuildingInfos[] => {
          label: 'Réservation',
          icon: VISIT_INFO_ICONS.ticket,
          value:
-            BOOKING_DATA.find(
-               booking => booking.value === building.booking
-            )?.label ?? 'Non renseigné',
+            BOOKING_DATA.find((booking) => booking.value === building.booking)?.label ??
+            'Non renseigné',
       },
    ]
 

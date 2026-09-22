@@ -17,7 +17,7 @@ export const API_ROUTES = {
       FIND_BY_ID: (id: number) => `/cities/${id}`,
       ADD_CITY: `/cities/add`,
       DELETE: (id: number) => `/cities/${id}`,
-      UPDATE: (id: number) => `/cities/${id}`
+      UPDATE: (id: number) => `/cities/${id}`,
    },
    CATEGORY: {
       FINDALL: '/categories',

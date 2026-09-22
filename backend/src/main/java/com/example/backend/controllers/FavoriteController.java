@@ -15,58 +15,42 @@ import java.util.List;
 @RequestMapping("/favorites")
 public class FavoriteController {
 
-    private final FavoriteServiceImpl favoriteSrvice;
+    private final FavoriteServiceImpl favoriteService;
 
     private final UserRepository userRepository;
 
     public FavoriteController(FavoriteServiceImpl favoriteSrvice, UserRepository userRepository) {
-        this.favoriteSrvice = favoriteSrvice;
+        this.favoriteService = favoriteSrvice;
         this.userRepository = userRepository;
-    }
-
-
-    //ici c'est faux car spring lors de l'authentification nous renvoi un userDetails
-    //donc quand je met AppUser ce n'est pas ca quon recuperer car @AuthenticationPrincipal nous donne le user connecter or
-    //ce nest pas un AppUser c'est un UserDetails donc ca devient :
-    /*
-    @PostMapping("/cites/{city_id}")
-    public void addCityToFavorite(@PathVariable Long city_id, @AuthenticationPrincipal AppUser user){
-        System.out.println("mon user " + user);
-        this.favoriteSrvice.addCityToFavorite(user, city_id);
-    }
-     */
-    @PostMapping("/cites/add/{city_id}")
-    public void addCityToFavorite(@PathVariable Long city_id, @AuthenticationPrincipal UserDetails userDetails){
-        System.out.println("Mon user " + userDetails);
-        User user = userRepository.findByEmail(userDetails.getUsername()).
-                orElseThrow(() -> new UsernameNotFoundException("Utilisateur n'exisite pas"));
-        this.favoriteSrvice.addCityToFavorite(user, city_id);
-    }
-
-    @PostMapping("/buildings/add/{building_id}")
-    public void addBuildingToFavorite(@PathVariable Long building_id, @AuthenticationPrincipal UserDetails userDetails){
-       // System.out.println("Mon user " + userDetails);
-        User user = userRepository.findByEmail(userDetails.getUsername()).
-                orElseThrow(() -> new UsernameNotFoundException("Utilisateur n'exisite pas."));
-        this.favoriteSrvice.addBuildingToFavorite(user, building_id);
     }
 
     @GetMapping("/cities")
     public List<City> getFavoriteCities(@AuthenticationPrincipal UserDetails userDetails){
         User user = userRepository.findByEmail(userDetails.getUsername()).
-                orElseThrow(() ->new UsernameNotFoundException("Utilisateur n'existe pas."));
+                orElseThrow(() ->new UsernameNotFoundException("L'utilisateur n'existe pas"));
 
-        return this.favoriteSrvice.getFavoriteCities(user);
+        return this.favoriteService.getFavoriteCitiesByUser(user);
     }
 
     @GetMapping("/buildings")
     public List<Building> getFavoriteBuildings(@AuthenticationPrincipal UserDetails userDetails){
         User user = userRepository.findByEmail(userDetails.getUsername()).
-                orElseThrow(() -> new UsernameNotFoundException("Utilisateur n'existe pas."));
+                orElseThrow(() -> new UsernameNotFoundException("L'utilisateur n'existe pas"));
 
-        return this.favoriteSrvice.getFavoriteBuildings(user);
+        return this.favoriteService.getFavoriteBuildingsByUser(user);
     }
 
+    @PostMapping("/cities/{city_id}")
+    public void addCityToFavorite(@PathVariable Long city_id, @AuthenticationPrincipal UserDetails userDetails){
+        User user = userRepository.findByEmail(userDetails.getUsername()).
+                orElseThrow(() -> new UsernameNotFoundException("L'utilisateur n'existe pas"));
+        this.favoriteService.addCityToFavorite(user, city_id);
+    }
 
-
+    @PostMapping("/buildings/{building_id}")
+    public void addBuildingToFavorite(@PathVariable Long building_id, @AuthenticationPrincipal UserDetails userDetails){
+        User user = userRepository.findByEmail(userDetails.getUsername()).
+                orElseThrow(() -> new UsernameNotFoundException("L'utilisateur n'existe pas"));
+        this.favoriteService.addBuildingToFavorite(user, building_id);
+    }
 }

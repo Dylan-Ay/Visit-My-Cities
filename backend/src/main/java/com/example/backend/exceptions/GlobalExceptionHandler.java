@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
         ErrorMessage errorMessage = new ErrorMessage(httpStatus,e.getMessage(), request.getRequestURI());
 
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
+                .status(httpStatus)
                 .body(errorMessage);
     }
 
@@ -45,25 +45,34 @@ public class GlobalExceptionHandler {
 //        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
 //    }
 
-//    @ExceptionHandler({UsernameNotFoundException.class, BadCredentialsException.class, AuthentificationNotFoundException.class})
-//    public ResponseEntity<ErrorMessage> handleEmailNotFound(Exception e){
-//
-//        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.UNAUTHORIZED.value(),e.getMessage());
-//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-//    }
-//
-//    @ExceptionHandler(CityExistInFavoritesException.class)
-//        public ResponseEntity<ErrorMessage> handleCityFavoriteException(CityExistInFavoritesException e){
-//
-//        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.value(), e.getMessage());
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-//        }
-//
-//    @ExceptionHandler(BuildingExistInFavoriesException.class)
-//    public ResponseEntity<ErrorMessage> handleBuildingFavoriteException(BuildingExistInFavoriesException e){
-//
-//        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.value(), e.getMessage());
-//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-//    }
+    @ExceptionHandler({UserNotFoundException.class, BadCredentialsException.class, AuthentificationNotFoundException.class})
+    public ResponseEntity<ErrorMessage> handleUserNotFoundException(Exception e){
+
+        int httpStatus = HttpStatus.NOT_FOUND.value();
+        ErrorMessage errorMessage = new ErrorMessage(httpStatus,e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity
+                .status(httpStatus)
+                .body(errorMessage);
     }
 
+    @ExceptionHandler(CityExistInFavoritesException.class)
+    public ResponseEntity<ErrorMessage> handleCityFavoriteException(CityExistInFavoritesException e){
+
+        int httpStatus = HttpStatus.CONFLICT.value();
+        ErrorMessage errorMessage = new ErrorMessage(httpStatus,e.getMessage(), request.getRequestURI());
+        return ResponseEntity
+                .status(httpStatus)
+                .body(errorMessage);
+    }
+
+    @ExceptionHandler(BuildingExistInFavoritesException.class)
+    public ResponseEntity<ErrorMessage> handleBuildingFavoriteException(BuildingExistInFavoritesException e){
+
+        int httpStatus = HttpStatus.CONFLICT.value();
+        ErrorMessage errorMessage = new ErrorMessage(httpStatus,e.getMessage(), request.getRequestURI());
+        return ResponseEntity
+                .status(httpStatus)
+                .body(errorMessage);
+    }
+}

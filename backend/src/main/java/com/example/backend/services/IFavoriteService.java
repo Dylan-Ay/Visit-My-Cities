@@ -10,8 +10,8 @@ public interface IFavoriteService {
 
     void addCityToFavorite(User user, Long city_id);
     void addBuildingToFavorite(User user, Long building_id);
-    List<City> getFavoriteCities(User user);
-    List<Building> getFavoriteBuildings(User user);
+    List<City> getFavoriteCitiesByUser(User user);
+    List<Building> getFavoriteBuildingsByUser(User user);
 }
 
 

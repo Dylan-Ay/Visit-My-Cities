@@ -4,13 +4,12 @@ import com.example.backend.entities.User;
 import com.example.backend.entities.Building;
 import com.example.backend.entities.City;
 import com.example.backend.entities.Favorite;
-import com.example.backend.exceptions.BuildingExistInFavoriesException;
+import com.example.backend.exceptions.BuildingExistInFavoritesException;
 import com.example.backend.exceptions.CityExistInFavoritesException;
 import com.example.backend.repository.FavoriteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 
 @Service
 public class FavoriteServiceImpl implements IFavoriteService{
@@ -32,14 +31,14 @@ public class FavoriteServiceImpl implements IFavoriteService{
         City city = cityService.getCityById(city_id);
 
         if (favoriteRepository.existsByUserAndCity(user, city)){
-            throw new CityExistInFavoritesException("La ville existe déjà dans les favoris");
+            throw new CityExistInFavoritesException("La ville " + city.getName() + " existe déjà dans les favoris de l'utilisateur " + user.getUsername());
         }
 
-        Favorite newFavoriteC = new Favorite();
-        newFavoriteC.setCity(city);
-        newFavoriteC.setUser(user);
+        Favorite newFavoriteCity = new Favorite();
+        newFavoriteCity.setCity(city);
+        newFavoriteCity.setUser(user);
 
-       favoriteRepository.save(newFavoriteC);
+       favoriteRepository.save(newFavoriteCity);
     }
 
     @Override
@@ -48,30 +47,31 @@ public class FavoriteServiceImpl implements IFavoriteService{
         Building building = buildingService.getBuildingById(building_id);
 
         if (favoriteRepository.existsByUserAndBuilding(user, building)){
-            throw new BuildingExistInFavoriesException("Le bâtiment existe déjà dans les favoris");
+            throw new BuildingExistInFavoritesException("Le bâtiment " + building.getName() + " existe déjà dans les favoris de l'utilisateur " + user.getUsername());
         }
 
-        Favorite newFavoriteB = new Favorite();
-        newFavoriteB.setBuilding(building);
-        newFavoriteB.setUser(user);
+        Favorite newFavoriteBuilding = new Favorite();
+        newFavoriteBuilding.setBuilding(building);
+        newFavoriteBuilding.setUser(user);
 
-        favoriteRepository.save(newFavoriteB);
+        favoriteRepository.save(newFavoriteBuilding);
     }
 
     @Override
-    public List<City> getFavoriteCities(User user) {
+    public List<City> getFavoriteCitiesByUser(User user) {
 
-        List<Favorite> favorites = this.favoriteRepository.findByUser(user).orElseThrow(() ->new RuntimeException("Cet utilisateur n'a aucune ville en favori"));
+        List<Favorite> favorites = this.favoriteRepository.findByUser(user);
 
         return favorites.stream()
             .map(favorite -> favorite.getCity())
             .filter(city -> city!= null).toList();
+
     }
 
     @Override
-    public List<Building> getFavoriteBuildings(User user) {
+    public List<Building> getFavoriteBuildingsByUser(User user) {
 
-        List<Favorite> favorites = this.favoriteRepository.findByUser(user).orElseThrow(() ->new RuntimeException("Cet utilisateur n'a aucun bâtiment en favori"));
+        List<Favorite> favorites = this.favoriteRepository.findByUser(user);
 
         return favorites.stream()
             .map(favorite -> favorite.getBuilding())

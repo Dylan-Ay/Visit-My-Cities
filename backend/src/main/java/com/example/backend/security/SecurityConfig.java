@@ -66,9 +66,9 @@ public class SecurityConfig {
                                 "/comment/**",
                                 "/like/**",
                                 "/favorites/**"
-                        ).authenticated() // permitAll() pour tester sans token
+                        ).authenticated()
 
-                        .anyRequest().authenticated() // permitAll() pour tester sans token
+                        .anyRequest().authenticated()
                     )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

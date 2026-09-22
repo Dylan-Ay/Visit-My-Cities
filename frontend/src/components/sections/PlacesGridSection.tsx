@@ -1,5 +1,5 @@
 //prettier-ignore
-import { ContentContainer, HeroBanner, PlaceCard, SearchInput, SectionTitle } from '../ui'
+import { ContentContainer, HeroBanner, NoContentText, PlaceCard, SearchInput, SectionTitle } from '../ui'
 import { FlatList, ImageSourcePropType, StyleProp, Text, ViewStyle } from 'react-native'
 
 interface PlaceCardProperties {
@@ -32,7 +32,7 @@ export default function PlacesGridSection<T extends PlaceCardProperties>({
          data={data}
          keyExtractor={(item) => String(item.id)}
          numColumns={2}
-         ListEmptyComponent={<Text style={{textAlign: 'center', marginTop: 40}}>Aucun monument ou bâtiment n'a encore été enregistré pour "{heroTitle}".</Text>}
+         ListEmptyComponent={<NoContentText elementTitle={heroTitle}></NoContentText>}
          renderItem={({ item }) => (
             <ContentContainer
                style={{
@@ -55,7 +55,9 @@ export default function PlacesGridSection<T extends PlaceCardProperties>({
                   {data.length > 0 && (
                      <>
                         <SearchInput placeholder={searchInputPlaceHolder} />
-                        <SectionTitle containerStyle={titleContainerStyle}>{sectionTitle}</SectionTitle>   
+                        <SectionTitle containerStyle={titleContainerStyle}>
+                           {sectionTitle}
+                        </SectionTitle>
                      </>
                   )}
                </ContentContainer>

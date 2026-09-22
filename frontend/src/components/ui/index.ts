@@ -4,6 +4,7 @@ export * from './layout/SectionDivider'
 
 export * from './typography/HeaderTitle'
 export * from './typography/SectionTitle'
+export * from './typography/NoContentText'
 
 export * from './inputs/SearchInput'
 export * from './inputs/CategoryButton'

@@ -40,23 +40,10 @@ public class CityServiceImpl implements ICityService{
     public City updateCity(Long id, City city) {
         City cityToUpdate = getCityById(id);
 
-        if (city.getName() != null){
-            cityToUpdate.setName(city.getName());
-        }
-
-        if (city.getCountry() != null){
-           cityToUpdate.setCountry(city.getCountry());
-        }
-
-        if (city.getDescription() != null){
-           cityToUpdate.setDescription(city.getDescription());
-        }
-
-        if (city.getPostalCode() != null){
-           cityToUpdate.setPostalCode(city.getPostalCode());
-        }
-
-       System.out.println(cityToUpdate.getName());
+        cityToUpdate.setName(city.getName());
+        cityToUpdate.setCountry(city.getCountry());
+        cityToUpdate.setDescription(city.getDescription());
+        cityToUpdate.setPostalCode(city.getPostalCode());
 
        return this.cityRepository.save(cityToUpdate);
     }

@@ -19,8 +19,8 @@ public class FavoriteController {
 
     private final UserRepository userRepository;
 
-    public FavoriteController(FavoriteServiceImpl favoriteSrvice, UserRepository userRepository) {
-        this.favoriteService = favoriteSrvice;
+    public FavoriteController(FavoriteServiceImpl favoriteService, UserRepository userRepository) {
+        this.favoriteService = favoriteService;
         this.userRepository = userRepository;
     }
 

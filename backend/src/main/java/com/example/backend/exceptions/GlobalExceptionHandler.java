@@ -38,12 +38,16 @@ public class GlobalExceptionHandler {
                 .body(errorMessage);
     }
 
-//    @ExceptionHandler(BuildingNotFoundException.class)
-//    public ResponseEntity<ErrorMessage> handleBuildingNotFound(BuildingNotFoundException e){
-//
-//        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.value(),e.getMessage());
-//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-//    }
+    @ExceptionHandler(BuildingNotFoundException.class)
+    public ResponseEntity<ErrorMessage> handleBuildingNotFound(BuildingNotFoundException e){
+
+        int httpStatus = HttpStatus.NOT_FOUND.value();
+        ErrorMessage errorMessage = new ErrorMessage(httpStatus,e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity
+                .status(httpStatus)
+                .body(errorMessage);
+    }
 
     @ExceptionHandler({UserNotFoundException.class, BadCredentialsException.class, AuthentificationNotFoundException.class})
     public ResponseEntity<ErrorMessage> handleUserNotFoundException(Exception e){

@@ -38,18 +38,12 @@ public class SecurityConfig {
                                 "/register/**",
                                 "/cities",
                                 "/cities/*",
-                                "/building/buildings",
+                                "/buildings",
+                                "/buildings/**",
                                 "/categories",
                                 "/categories/*",
                                 "/building/categorie/*",
-                                "/city/*",
-                                "/building/*",
-                                "/building/city/*",
-                                "/building/cityname/*",
-                                "/building/buildingdto/*",
-                                "/building/buildingsdto/city/*",
-                                "/building/buildingsdto/category/*",
-                                "/building/buildingdto/cityname/*"
+                                "/city/*"
                         ).permitAll()
 
                         // Routes rôle EXPERT

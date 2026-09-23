@@ -5,11 +5,10 @@ export const API_ROUTES = {
       LOGIN: '/auth/login',
    },
    BUILDING: {
-      FINDALL: '/building/buildingsdto',
-      FIND_BY_ID: (id: number) => `/building/buildingdto/${id}`,
-      FIND_BUILDINGS_BY_CITY: (id: number) => `/building/buildingsdto/city/${id}`,
-      SEARCH_BUILDINGS_BY_CITY: (name: string) =>
-         `/buildingdto/cityname/${encodeURIComponent(name)}`,
+      FINDALL: '/buildings',
+      FIND_BY_ID: (id: number) => `/buildings/${id}`,
+      FIND_BUILDINGS_BY_CITY: (id: number) => `/buildings/city/${id}`,
+      FIND_BUILDINGS_BY_CATEGORY: (id: number) => `/buildings/category/${id}`,
       ADD_BUILDING: `/building/add/add`,
    },
    CITY: {
@@ -23,6 +22,5 @@ export const API_ROUTES = {
    CATEGORY: {
       FINDALL: '/categories',
       FIND_BY_ID: (id: number) => `/categories/${id}`,
-      FIND_BUILDINGS_BY_CATEGORY: (id: number) => `/building/buildingsdto/category/${id}`,
    },
 }

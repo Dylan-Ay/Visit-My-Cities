@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getBuildingsByCategory } from '../../api/categories.service'
+import { getBuildingsByCategory } from '../../api/buildings.service'
 import { Alert } from 'react-native'
 import { Building } from '../../../types/building'
 

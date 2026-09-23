@@ -6,6 +6,8 @@ import com.example.backend.entities.Building;
 import com.example.backend.entities.Category;
 import com.example.backend.entities.City;
 import com.example.backend.exceptions.BuildingNotFoundException;
+import com.example.backend.exceptions.CategoryNotFoundException;
+import com.example.backend.exceptions.CityNotFoundException;
 import com.example.backend.repository.BuildingRepository;
 import com.example.backend.repository.CategoryRepository;
 import com.example.backend.repository.CityRepository;
@@ -13,7 +15,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,7 +32,41 @@ public class BuildingServiceImpl implements IBuildingService{
         this.buildingMapper = buildingMapper;
     }
 
-    //-----------------------------------building service dto juste en bas ----------------------------------------------
+    @Override
+    public List<BuildingDTO> getAllBuildings() {
+        return this.buildingRepository.findAll()
+                .stream()
+                .map(buildingMapper::toDTO)
+                .toList();
+    }
+
+    @Override
+    public Building getBuildingById(Long id) {
+        return this.buildingRepository.findById(id)
+                .orElseThrow(() -> new BuildingNotFoundException("Aucun bâtiment n'a été trouvé avec cet id."));
+    }
+
+    @Override
+    public List<BuildingDTO> getBuildingsByCityId(Long id) {
+        this.cityRepository.findById(id)
+                .orElseThrow(() -> new CityNotFoundException("Aucune ville n'a été trouvé avec cet id."));
+
+        return this.buildingRepository.findByCityId(id)
+                .stream()
+                .map(buildingMapper::toDTO)
+                .toList();
+    }
+
+    @Override
+    public List<BuildingDTO> getBuildingsByCategoryId(Long id) {
+        this.categoryRepository.findById(id)
+                .orElseThrow(() -> new CategoryNotFoundException("Aucune catégorie n'a été trouvé avec cet id."));
+
+        return this.buildingRepository.findByCategoryId(id)
+                .stream()
+                .map(buildingMapper::toDTO)
+                .toList();
+    }
 
     @Override
     public void saveBuilding(BuildingCreateDTO dto) throws JsonProcessingException {
@@ -72,34 +107,6 @@ public class BuildingServiceImpl implements IBuildingService{
     }
 
     @Override
-    public Building getBuildingById(Long id) {
-        return this.buildingRepository.findById(id).orElseThrow(() -> new BuildingNotFoundException("Aucun batiment trouvé avec cette id."));
-    }
-
-    @Override
-    public List<Building> getAllBuildings() {
-        return this.buildingRepository.findAll();
-    }
-
-    @Override
-    public List<Building> getBuildingsByCityId(Long id) {
-        List<Building> buildings =  this.buildingRepository.findByCityId(id);
-        if(buildings.isEmpty()){
-            throw  new BuildingNotFoundException("Aucun bâtiment trouvé pour cette ville.");
-        }
-        return buildings;
-    }
-
-    @Override
-    public List<Building> getBuildingsByCityName(String name) {
-        List<Building> buildings = this.buildingRepository.findByCityName(name);
-        if(buildings.isEmpty()){
-            throw new BuildingNotFoundException("Aucun batiment trouvé avce " + name);
-        }
-        return buildings;
-    }
-
-    @Override
     public Building updateBuilding(Long id, Building building) {
         Building buildingToUpdate = getBuildingById(id);
         if(building.getName() != null){
@@ -124,119 +131,8 @@ public class BuildingServiceImpl implements IBuildingService{
     }
 
     @Override
-    public List<Building> getBuildingsByCategorieId(Long id) {
-      List<Building> buildings = this.buildingRepository.findByCategoryId(id);
-
-      if(buildings.isEmpty()){
-          throw new BuildingNotFoundException("Aucun batiment dans cette catégorie");
-      }
-
-      return buildings;
-    }
-
-
-//------------------------------dto service -----------------------------------------------------------------------
-public List<BuildingDTO> getAllBuildingsDTO() {
-    return buildingRepository.findAll()
-            .stream()
-            .map(buildingMapper::toDTO)
-            .toList();
-}
-
-    @Override
     public BuildingDTO getBuildingDtoById(Long id) {
         Building b =  this.buildingRepository.findById(id).orElseThrow(() -> new BuildingNotFoundException("batiment existe pas "));
         return buildingMapper.toDTO(b);
-}
-
-
-    public List<BuildingDTO> getBuildingsDtoByCityId(Long id) {
-
-        List<Building> buildings =  this.buildingRepository.findByCityId(id);
-        List<BuildingDTO> buildingsDTO = new ArrayList<>();
-
-        for (Building b : buildings){
-            buildingsDTO.add(buildingMapper.toDTO(b));
-        }
-
-        return buildingsDTO;
     }
-
-
-    public List<BuildingDTO> getBuildingsByCategoryId(Long id){
-
-        List<Building> buildings =  this.buildingRepository.findByCategoryId(id);
-        List<BuildingDTO> buildingsDTO = new ArrayList<>();
-
-        for(Building b : buildings){
-            buildingsDTO.add(buildingMapper.toDTO(b));
-        }
-
-        return  buildingsDTO;
-    }
-
-    @Override
-    public List<BuildingDTO> getBuildingsDtoByCityName(String cityName) {
-        List<Building> buildings = this.buildingRepository.findByCityName(cityName);
-        List<BuildingDTO> buildingsDTO = new ArrayList<>();
-        if(buildings.isEmpty()){
-            throw new BuildingNotFoundException("Aucun batiment trouvé avce " + cityName);
-        }
-
-        for(Building b : buildings){
-            buildingsDTO.add(buildingMapper.toDTO(b));
-        }
-        return buildingsDTO;
-    }
-
-
-
-
-
-
-
-
-
-//    private BuildingDTO convertToDto(Building entity) {
-//
-//        BuildingDTO dto = new BuildingDTO();
-//
-//        dto.setId(entity.getId().toString());
-//        dto.setCityId(entity.getCity() != null ? entity.getCity().getId().toString() : null);
-//        dto.setName(entity.getName());
-//        dto.setImage(entity.getImage());
-//        dto.setAddress(entity.getAddress());
-//        dto.setPostalCode(entity.getPostalCode());
-//        dto.setCity(entity.getCity() != null ? entity.getCity().getName() : null);
-//        dto.setCountry(entity.getCountry());
-//        dto.setConstructionYear(entity.getConstructionYear());
-//        dto.setArchitect(entity.getArchitect());
-//        dto.setStyle(entity.getStyle());
-//        dto.setDescription(entity.getDescription());
-//        dto.setTicketPrice(entity.getTicketPrice());
-//        dto.setVisitDuration(entity.getVisitDuration());
-//        dto.setBooking(entity.getBooking());
-//        dto.setAccessStatus(entity.getAccessStatus());
-//        dto.setAccessiblePRM(entity.isAccessiblePRM());
-//
-//        try {
-//            if (entity.getSchedules() != null) {
-//                BuildingDTO.ScheduleDTO schedules =
-//                        objectMapper.readValue(entity.getSchedules(), BuildingDTO.ScheduleDTO.class);
-//                dto.setSchedules(schedules);
-//            }
-//
-//            if (entity.getCoords() != null) {
-//                BuildingDTO.CoordsDTO coords =
-//                        objectMapper.readValue(entity.getCoords(), BuildingDTO.CoordsDTO.class);
-//                dto.setCoords(coords);
-//            }
-//
-//        } catch (Exception e) {
-//            throw new RuntimeException("Erreur conversion JSON vers DTO", e);
-//        }
-//
-//        return dto;
-//    }
-
 }

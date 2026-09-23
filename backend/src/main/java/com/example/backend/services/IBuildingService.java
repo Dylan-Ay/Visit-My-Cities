@@ -8,18 +8,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import java.util.List;
 
 public interface IBuildingService {
+
+    List<BuildingDTO> getAllBuildings();
     Building getBuildingById(Long id);
-    List<Building> getAllBuildings();
-    List<Building> getBuildingsByCityName(String name);
+    BuildingDTO getBuildingDtoById(Long id);
+    List<BuildingDTO> getBuildingsByCityId(Long id);
+    List<BuildingDTO> getBuildingsByCategoryId(Long id);
+
+
     Building updateBuilding(Long id, Building building);
     void deleteBuilding(Long id);
-    List<Building> getBuildingsByCityId(Long id);
-    List<Building> getBuildingsByCategorieId(Long id);
-
     void saveBuilding(BuildingCreateDTO dto) throws JsonProcessingException;
-    List<BuildingDTO> getAllBuildingsDTO();
-    BuildingDTO getBuildingDtoById(Long id);
-    List<BuildingDTO> getBuildingsDtoByCityId(Long id);
-    List<BuildingDTO> getBuildingsByCategoryId(Long id);
-    List<BuildingDTO> getBuildingsDtoByCityName(String cityName);
 }

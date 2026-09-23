@@ -14,8 +14,8 @@ export function getBuildingsByCity(id: number) {
    return client(API_ROUTES.BUILDING.FIND_BUILDINGS_BY_CITY(id))
 }
 
-export function searchBuildingsByCity(id: string) {
-   return client(API_ROUTES.BUILDING.SEARCH_BUILDINGS_BY_CITY(id))
+export function getBuildingsByCategory(id: number) {
+   return client(API_ROUTES.BUILDING.FIND_BUILDINGS_BY_CATEGORY(id))
 }
 
 export function addBuilding(data: CreateBuildingPayload) {

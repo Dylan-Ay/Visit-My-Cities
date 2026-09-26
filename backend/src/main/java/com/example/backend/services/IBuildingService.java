@@ -15,8 +15,7 @@ public interface IBuildingService {
     List<BuildingDTO> getBuildingsByCityId(Long id);
     List<BuildingDTO> getBuildingsByCategoryId(Long id);
 
-
+    void createBuilding(BuildingCreateDTO dto) throws JsonProcessingException;
     Building updateBuilding(Long id, Building building);
     void deleteBuilding(Long id);
-    void saveBuilding(BuildingCreateDTO dto) throws JsonProcessingException;
 }

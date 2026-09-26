@@ -9,7 +9,7 @@ export const API_ROUTES = {
       FIND_BY_ID: (id: number) => `/buildings/${id}`,
       FIND_BUILDINGS_BY_CITY: (id: number) => `/buildings/city/${id}`,
       FIND_BUILDINGS_BY_CATEGORY: (id: number) => `/buildings/category/${id}`,
-      ADD_BUILDING: `/building/add/add`,
+      ADD_BUILDING: `/buildings`,
    },
    CITY: {
       FINDALL: '/cities',

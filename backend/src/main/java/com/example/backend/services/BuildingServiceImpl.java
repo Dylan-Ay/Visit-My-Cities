@@ -47,6 +47,13 @@ public class BuildingServiceImpl implements IBuildingService{
     }
 
     @Override
+    public BuildingDTO getBuildingDtoById(Long id) {
+        Building building = this.buildingRepository.findById(id)
+                .orElseThrow(() -> new BuildingNotFoundException("Aucun bâtiment n'a été trouvé avec cet id."));
+        return buildingMapper.toDTO(building);
+    }
+
+    @Override
     public List<BuildingDTO> getBuildingsByCityId(Long id) {
         this.cityRepository.findById(id)
                 .orElseThrow(() -> new CityNotFoundException("Aucune ville n'a été trouvé avec cet id."));
@@ -69,7 +76,7 @@ public class BuildingServiceImpl implements IBuildingService{
     }
 
     @Override
-    public void saveBuilding(BuildingCreateDTO dto) throws JsonProcessingException {
+    public void createBuilding(BuildingCreateDTO dto) throws JsonProcessingException {
         Building building = new Building();
         building.setName(dto.getName());
         building.setImage(dto.getImage());
@@ -128,11 +135,5 @@ public class BuildingServiceImpl implements IBuildingService{
     public void deleteBuilding(Long id) {
       Building buildingToDelete = this.buildingRepository.findById(id).orElseThrow(() -> new BuildingNotFoundException("Batiment non trouvé."));
         this.buildingRepository.delete(buildingToDelete);
-    }
-
-    @Override
-    public BuildingDTO getBuildingDtoById(Long id) {
-        Building b =  this.buildingRepository.findById(id).orElseThrow(() -> new BuildingNotFoundException("batiment existe pas "));
-        return buildingMapper.toDTO(b);
     }
 }

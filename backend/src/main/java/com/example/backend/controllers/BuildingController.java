@@ -50,9 +50,9 @@ public class BuildingController {
         );
     }
 
-    @PostMapping("/add/add")
-    public ResponseEntity<Void> addBuilding(@RequestBody BuildingCreateDTO dto) throws JsonProcessingException {
-        this.buildingServiceImpl.saveBuilding(dto);
+    @PostMapping
+    public ResponseEntity<Void> createBuilding(@RequestBody BuildingCreateDTO dto) throws JsonProcessingException {
+        this.buildingServiceImpl.createBuilding(dto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

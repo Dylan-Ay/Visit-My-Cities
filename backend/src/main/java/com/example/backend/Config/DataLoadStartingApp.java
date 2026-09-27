@@ -36,33 +36,29 @@ public class DataLoadStartingApp {
 
     @PostConstruct
     public void init() throws JsonProcessingException {
-        ajouter_un_utilisateur("Dylan Doe", "dylan@expert.com", "12345678", UserRoleType.ROLE_EXPERT);
-        ajouter_un_utilisateur("John Doe", "john@visiteur.com", "12345678", UserRoleType.ROLE_VISITEUR);
+        addUser("Dylan Doe", "dylan@expert.com", "12345678", UserRoleType.ROLE_EXPERT);
+        addUser("John Doe", "john@visiteur.com", "12345678", UserRoleType.ROLE_VISITEUR);
 
-        // --- Villes et Bâtiments ---
         if (cityRepository.count() == 0) {
-            ajouter_categorie();
+            addCategory();
             initializeData();
-
         }
     }
 
-    private void ajouter_categorie(){
-if(categoryRepository.count() == 0){
-    List<Category> categories= List.of(
-
-            new Category(null, "Musées","🏛", "https://www.ecomusee-montmorillonnais.org/wp-content/uploads/2023/11/musees.jpg"),
-            new Category(null, "Ponts","🌉", "https://cms.visitczechia.com/cms/getmedia/f5078b1a-8314-4d4e-b751-aa41692036ef/prague-troja-bridge-shutterstock_633423338-Nadezda-Murmakova.jpg?width=1000&height=666"),
-            new Category(null, "Lieux de culte","⛪", "https://cdn.generationvoyage.fr/2014/10/lieux-de-culte-sites-religieux-spectaculaires-monde-24.jpg"),
-            new Category(null, "Gratte-ciels","🏙", "https://ewnqp79wvj7.exactdn.com/wp-content/uploads/2024/07/One-World-Trade-Center-New-York-gratte-ciel.jpeg"),
-            new Category(null, "Châteaux & Palais","🏰", "https://www.barnes-proprietes-chateaux.com/wp-content/uploads/2017/01/chateau-chantilly-renaissance.jpg"),
-            new Category(null, "Bâtiments civils", "🏢", "https://media.istockphoto.com/id/1140466131/photo/shenzhen-downtown-area-during-sunset.jpg?s=612x612&w=0&k=20&c=t5AlLy589h5yGMQtOQ8dIrkWD67yYWyauDqkqyo6VPY="));
-    categoryRepository.saveAll(categories);
-}
-
+    private void addCategory(){
+        if(categoryRepository.count() == 0){
+            List<Category> categories= List.of(
+                    new Category(null, "Musées","🏛", "https://www.ecomusee-montmorillonnais.org/wp-content/uploads/2023/11/musees.jpg"),
+                    new Category(null, "Ponts","🌉", "https://cms.visitczechia.com/cms/getmedia/f5078b1a-8314-4d4e-b751-aa41692036ef/prague-troja-bridge-shutterstock_633423338-Nadezda-Murmakova.jpg?width=1000&height=666"),
+                    new Category(null, "Lieux de culte","⛪", "https://cdn.generationvoyage.fr/2014/10/lieux-de-culte-sites-religieux-spectaculaires-monde-24.jpg"),
+                    new Category(null, "Gratte-ciels","🏙", "https://ewnqp79wvj7.exactdn.com/wp-content/uploads/2024/07/One-World-Trade-Center-New-York-gratte-ciel.jpeg"),
+                    new Category(null, "Châteaux & Palais","🏰", "https://www.barnes-proprietes-chateaux.com/wp-content/uploads/2017/01/chateau-chantilly-renaissance.jpg"),
+                    new Category(null, "Bâtiments civils", "🏢", "https://media.istockphoto.com/id/1140466131/photo/shenzhen-downtown-area-during-sunset.jpg?s=612x612&w=0&k=20&c=t5AlLy589h5yGMQtOQ8dIrkWD67yYWyauDqkqyo6VPY="));
+            categoryRepository.saveAll(categories);
+        }
     }
 
-    private void ajouter_un_utilisateur(String username, String email, String password, UserRoleType role) {
+    private void addUser(String username, String email, String password, UserRoleType role) {
         if (userRepository.findByEmail(email).isEmpty()) {
             User user = new User();
             user.setUsername(username);
@@ -73,34 +69,36 @@ if(categoryRepository.count() == 0){
         }
     }
 
+    // --- Initialisation des données ---
     private void initializeData() throws JsonProcessingException {
+        Category museums = categoryRepository.findById(1L).get(); //Musée
+        Category bridges = categoryRepository.findById(2L).get(); //Ponts
+        Category placesOfWorship = categoryRepository.findById(3L).get(); //Lieux de culte
+        Category skycrapers = categoryRepository.findById(4L).get(); //Gratte-ciels
+        Category castlesAndPalaces = categoryRepository.findById(5L).get(); //Chateaux & palais
+        Category civilBuilding = categoryRepository.findById(6L).get(); //Bâtiments civils
 
-        Category musee = categoryRepository.findById(1L).get(); //Musée
-        Category pont = categoryRepository.findById(2L).get(); //Ponts
-        Category lieuxDeCulte = categoryRepository.findById(3L).get(); //Lieux de culte
-        Category gc = categoryRepository.findById(4L).get(); //Gratte-ciels
-        Category cp = categoryRepository.findById(5L).get(); //Chateaux & palais
-        Category bc = categoryRepository.findById(6L).get(); //Bâtiments civils
-
-
-        // création des villes manuellement en dur
         City paris = new City(null, "Paris", "France", "", "75000",
                 "https://www.allsuites.com/wp-content/uploads/2024/09/Paris.jpg", null, null);
 
         City tokyo = new City(null, "Tokyo", "Japon", null, "111-0032",
                 "https://cdn-blog.superprof.com/blog_fr/wp-content/uploads/2018/03/palais-imperial-tokyo.jpg", null, null);
+
         City newYork = new City(null, "New York", "États-Unis", null, "NY 10001",
                 "https://cdn-imgix.headout.com/tour/30357/TOUR-IMAGE/6cdcf542-452d-4897-beed-76cf68f154e4-1act-de005e04-05d9-4715-96b0-6a089d5c3460.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&ar=16%3A9&crop=faces&fit=crop", null, null);
-        City londres = new City(null, "Londres", "Royaume-Uni", null, "SW1A 1AA",
+
+        City london = new City(null, "Londres", "Royaume-Uni", null, "SW1A 1AA",
                 "https://media.clondres.com/resize/uploads/sites/5/2018/03/big-ben-londres-696x478.jpg?format=auto", null, null);
+
         City rome = new City(null, "Rome", "Italie", null, "00186",
                 "https://www.webcity.fr/wp-content/uploads/2017/11/monument-rome-1.jpg", null, null);
-        City barcelone = new City(null, "Barcelone", "Espagne", null, "08013",
-                "https://www.locabarcelona.com/wp-content/uploads/2024/12/Plaza-Espana.jpg", null, null);
-//ajouter les ville a la bdd
-        cityRepository.saveAll(List.of(paris, tokyo, newYork, londres, rome, barcelone));
 
-        creer_un_batiment(paris, musee,
+        City barcelona = new City(null, "Barcelone", "Espagne", null, "08013",
+                "https://www.locabarcelona.com/wp-content/uploads/2024/12/Plaza-Espana.jpg", null, null);
+
+        cityRepository.saveAll(List.of(paris, tokyo, newYork, london, rome, barcelona));
+
+        createBuilding(paris, museums,
                 "Musée du Louvre",
                 "https://i.notretemps.com/2000x1125/smart/2023/10/19/musee-du-louvre.jpg",
                 "Rue de Rivoli",
@@ -108,44 +106,84 @@ if(categoryRepository.count() == 0){
                 1793,
                 "Multiples architectes",
                 "Classique",
-
                 "Ancien palais royal transformé en musée à la Révolution française, le Musée du Louvre est aujourd'hui l'un des plus grands et des plus célèbres " +
                         "musées du monde. Situé au cœur de Paris, il abrite des collections exceptionnelles couvrant plusieurs millénaires d'histoire et de civilisations. De l'Égypte antique à l'art occidental du XIXᵉ siècle, ses galeries rassemblent des œuvres emblématiques comme la Joconde ou la Vénus de Milo. Son architecture mêle héritage classique et modernité, notamment avec la pyramide de verre inaugurée en 1989. Symbole culturel majeur, le Louvre attire chaque année des millions de visiteurs venus admirer la richesse artistique qu'il conserve.",
-
                 17,
                 "2h-4h",
                 BookingType.RECOMMENDED,
                 AccessStatusType.OPEN,
                 true,
-                48.8606, 2.3376, louvreHoraires());
+                48.8606, 2.3376,
+                louvreSchedules());
 
-
-        creer_un_batiment(paris,  bc,"Tour Eiffel", "https://www.secretdeparis.com/blog/wp-content/uploads/2025/04/eiffel-tower-975004_1280.jpg",
-                "Champ de Mars, 5 Avenue Anatole France", "75007", 1889, "Gustave Eiffel", "Industrielle",
+        createBuilding(paris, civilBuilding,
+                "Tour Eiffel",
+                "https://www.secretdeparis.com/blog/wp-content/uploads/2025/04/eiffel-tower-975004_1280.jpg",
+                "Champ de Mars, 5 Avenue Anatole France",
+                "75007",
+                1889,
+                "Gustave Eiffel",
+                "Industrielle",
                 "Construite pour l'Exposition universelle de 1889, la Tour Eiffel est devenue le symbole emblématique de Paris et de la France. Imaginée par l'ingénieur Gustave Eiffel, elle devait initialement être démontée après l'événement et illustrer le savoir-faire industriel français de la fin du XIXᵉ siècle. Haute de 324 mètres, elle fut pendant plus de quarante ans la plus haute structure du monde. Entièrement réalisée en fer puddlé, elle incarne l'audace technique et l'innovation de son époque. D'abord vivement critiquée, elle est aujourd'hui l'un des monuments les plus visités au monde et offre des panoramas exceptionnels sur la capitale.",
-                29, "1h30-2h30", BookingType.REQUIRED, AccessStatusType.OPEN, true,
-                48.8584, 2.2945, tourEiffelHoraires());
+                29,
+                "1h30-2h30",
+                BookingType.REQUIRED,
+                AccessStatusType.OPEN,
+                true,
+                48.8584, 2.2945,
+                tourEiffelSchedules());
 
-        creer_un_batiment(tokyo,  lieuxDeCulte,"Sanctuaire Asakusa", "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg?s=612x612&w=0&k=20&c=0mRZPy-eg603K8FPB7k_O73e7tqHLv4PIDjWIKcXXH4=",
-                "2-3-1 Asakusa, Taito City", "111-0032", 645, "Inconnu", "Traditionnelle japonaise",
+        createBuilding(tokyo, placesOfWorship,
+                "Sanctuaire Asakusa",
+                "https://media.istockphoto.com/id/1329537420/fr/photo/tokyo-japon-27-octobre-2017-tokyo-japon-horizon-de-la-ville-au-temple-asakusa.jpg?s=612x612&w=0&k=20&c=0mRZPy-eg603K8FPB7k_O73e7tqHLv4PIDjWIKcXXH4=",
+                "2-3-1 Asakusa, Taito City",
+                "111-0032",
+                645,
+                "Inconnu",
+                "Traditionnelle japonaise",
                 "Fondé au VIIᵉ siècle, le sanctuaire d'Asakusa, également connu sous le nom de Sensō-ji, est l'un des plus anciens et des plus vénérés temples bouddhistes de Tokyo. Reconstruit à plusieurs reprises au fil des siècles, il demeure un symbole spirituel majeur de la capitale japonaise. Son imposante porte Kaminarimon et sa pagode à cinq étages attirent fidèles et visiteurs venus découvrir l'architecture traditionnelle japonaise. Entouré d'une rue commerçante animée, le sanctuaire incarne l'équilibre entre héritage religieux et vie urbaine moderne. Lieu de festivals et de cérémonies, il conserve une atmosphère solennelle tout en restant profondément ancré dans le quotidien tokyoïte.",
-                0, "45-60 min", BookingType.NOT_REQUIRED, AccessStatusType.FREE_ACCESS, false,
-                35.7148, 139.7967, asakusaHoraires());
+                0,
+                "45-60 min",
+                BookingType.NOT_REQUIRED,
+                AccessStatusType.FREE_ACCESS,
+                false,
+                35.7148, 139.7967,
+                asakusaSchedules());
 
-        creer_un_batiment(tokyo, bc,"Tokyo Tower", "https://byfood.b-cdn.net/api/public/assets/59153/content?optimizer=image",
-                "4-2-8 Shibakoen, Minato City", "105-0011", 1958, "Tachū Naitō", "Moderne",
+        createBuilding(tokyo, civilBuilding,
+                "Tokyo Tower", "https://byfood.b-cdn.net/api/public/assets/59153/content?optimizer=image",
+                "4-2-8 Shibakoen, Minato City",
+                "105-0011",
+                1958,
+                "Tachū Naitō",
+                "Moderne",
                 "Inaugurée en 1958, la Tokyo Tower s'inspire de la Tour Eiffel tout en affirmant une identité propre au Japon d'après-guerre. Haute de 333 mètres, elle fut construite pour soutenir les antennes de diffusion télévisuelle et symboliser le renouveau économique du pays. Peinte en blanc et orange pour répondre aux normes aériennes, elle domine le paysage tokyoïte et offre des plateformes panoramiques spectaculaires. Mélange de fonctionnalité technique et d'esthétique moderne, la tour est devenue un repère iconique de la capitale. Elle demeure aujourd'hui un lieu touristique incontournable, particulièrement appréciée au coucher du soleil et de nuit.",
-                9, "1h-1h30", BookingType.RECOMMENDED, AccessStatusType.OPEN, true,
-                35.6586, 139.7454, tokyoTowerHoraires());
+                9,
+                "1h-1h30",
+                BookingType.RECOMMENDED,
+                AccessStatusType.OPEN,
+                true,
+                35.6586, 139.7454,
+                tokyoTowerSchedules());
 
-
-        creer_un_batiment(newYork,  gc, "Empire State Building", "https://cdn.calendarz.com/uploads/events/may/1/41113/empire-state-building_compressed.jpg",
-                "20 W 34th St", "NY 10001", 1931, "Shreve, Lamb & Harmon", "Art déco",
+        createBuilding(newYork, skycrapers,
+                "Empire State Building",
+                "https://cdn.calendarz.com/uploads/events/may/1/41113/empire-state-building_compressed.jpg",
+                "20 W 34th St",
+                "NY 10001",
+                1931,
+                "Shreve, Lamb & Harmon",
+                "Art déco",
                 "Achevé en 1931 au cœur de Manhattan, l'Empire State Building est l'un des gratte-ciel les plus célèbres au monde. Construit en pleine Grande Dépression, il incarnait l'ambition et la résilience américaines. Son style Art déco, caractérisé par des lignes élancées et des détails géométriques, en fait un chef-d'œuvre architectural du XXᵉ siècle. Pendant près de quarante ans, il fut le plus haut immeuble du monde. Ses observatoires offrent une vue panoramique exceptionnelle sur New York et ses environs. Véritable icône de la skyline new-yorkaise, il demeure un symbole fort de modernité et de puissance urbaine.",
-                41, "1h-2h", BookingType.RECOMMENDED, AccessStatusType.OPEN, true,
-                40.7484, -73.9857, ESBHoraires());
+                41,
+                "1h-2h",
+                BookingType.RECOMMENDED,
+                AccessStatusType.OPEN,
+                true,
+                40.7484, -73.9857,
+                empireStateBuilding());
 
-        creer_un_batiment(newYork,  bc,
+        createBuilding(newYork, civilBuilding,
                 "Statue de la Liberté",
                 "https://cdn.sortiraparis.com/images/80/66131/1184658-connaissez-vous-les-origines-parisiennes-de-la-statue-de-la-liberte-de-new-york.jpg",
                 "Liberty Island",
@@ -160,9 +198,9 @@ if(categoryRepository.count() == 0){
                 AccessStatusType.OPEN,
                 true,
                 40.6892, -74.0445,
-                statueLiberteHoraires());
+                statueLiberteSchedules());
 
-        creer_un_batiment(londres,    cp,
+        createBuilding(london, castlesAndPalaces,
                 "Buckingham Palace",
                 "https://cdn-imgix.headout.com/media/images/31a4bf553f447246bf5bd92b00cb1707-12286-london-changing-of-the-guard-tour-with-optional-buckingham-palace-entry-11.jpg",
                 "Buckingham Palace",
@@ -177,9 +215,9 @@ if(categoryRepository.count() == 0){
                 AccessStatusType.RESTRICTED_ACCESS,
                 true,
                 51.5014, -0.1419,
-                buckinghamHoraires());
+                buckinghamSchedules());
 
-        creer_un_batiment(londres,    pont,
+        createBuilding(london, bridges,
                 "Tower Bridge",
                 "https://cdn.britannica.com/35/156335-050-62245FCA/Tower-Bridge-River-Thames-London.jpg",
                 "Tower Bridge Rd",
@@ -194,9 +232,9 @@ if(categoryRepository.count() == 0){
                 AccessStatusType.OPEN,
                 true,
                 51.5055, -0.0754,
-                towerBridgeHoraires());
+                towerBridgeSchedules());
 
-        creer_un_batiment(rome,     bc,
+        createBuilding(rome, civilBuilding,
                 "Fontaine de Trevi",
                 "https://as2.ftcdn.net/v2/jpg/01/21/87/47/1000_F_121874733_ObMVN0dprpejLPmvkQumpLRvxOWOI7sW.jpg",
                 "Piazza di Trevi",
@@ -211,9 +249,9 @@ if(categoryRepository.count() == 0){
                 AccessStatusType.OPEN,
                 true,
                 41.9009, 12.4833,
-                treviHoraires());
+                treviSchedules());
 
-        creer_un_batiment(rome,      lieuxDeCulte,
+        createBuilding(rome, placesOfWorship,
                 "Le Panthéon",
                 "https://voyageur-attitude.fr/wp-content/uploads/Le-Pantheon-1024x644.jpg",
                 "Piazza della Rotonda",
@@ -228,9 +266,9 @@ if(categoryRepository.count() == 0){
                 AccessStatusType.OPEN,
                 false,
                 41.8986, 12.4769,
-                pantheonHoraires());
+                pantheonSchedules());
 
-        creer_un_batiment(barcelone, lieuxDeCulte,
+        createBuilding(barcelona, placesOfWorship,
                 "Sagrada Família",
                 "https://lelephant-larevue.fr/wp-content/uploads/2018/03/%CE%A3%CE%B1%CE%B3%CF%81%CE%B1%CC%81%CE%B4%CE%B1_%CE%A6%CE%B1%CE%BC%CE%B9%CC%81%CE%BB%CE%B9%CE%B1_2941.jpg",
                 "Carrer de Mallorca, 401",
@@ -245,10 +283,10 @@ if(categoryRepository.count() == 0){
                 AccessStatusType.OPEN,
                 true,
                 41.4036, 2.1744,
-                sagradaFamiliaHoraires()
+                sagradaFamiliaSchedules()
         );
 
-        creer_un_batiment(barcelone, bc,
+        createBuilding(barcelona, civilBuilding,
                 "Parc Güell",
                 "https://www.guidesulysse.com/images/destinations/iStock-534846887.jpg",
                 "Carrer d'Olot, 5",
@@ -263,19 +301,14 @@ if(categoryRepository.count() == 0){
                 AccessStatusType.OPEN,
                 true,
                 41.4145, 2.1527,
-                parcGuellHoraires()
+                parcGuellSchedules()
         );
     }
 
+    private void createBuilding(City city, Category category, String name, String image, String address, String postalCode, int year, String architect, String style, String description, Integer ticketPrice, String visitDuration, BookingType booking, AccessStatusType accessStatus, boolean accessible, double lat, double lng, Map<String, Object> horaires) throws JsonProcessingException {
 
-
-
-
-    private void creer_un_batiment(City city, Category category, String name, String image, String address, String postalCode,
-                                   int year, String architect, String style, String description,
-                                   Integer ticketPrice, String visitDuration, BookingType booking, AccessStatusType accessStatus, boolean accessible,
-                                   double lat, double lng, Map<String, Object> horaires) throws JsonProcessingException {
         Building building = new Building();
+
         building.setCity(city);
         building.setName(name);
         building.setImage(image);
@@ -294,20 +327,15 @@ if(categoryRepository.count() == 0){
         building.setLongitude(lng);
         building.setCategory(category);
 
-        // Stocker les horaires en JSON String //modifier les horaires pour stocker les horaires
-        //avec le mapper on transforme la Map en string pour stocker en bdd puisqhe la bd stock que de text et string
-        //puis je le met dans schedules avec setSchedules
         building.setSchedules(mapper.writeValueAsString(horaires));
 
         buildingRepository.save(building);
     }
 
-    // --- Horaires exemple pour chaque bâtiment ---
-    private Map<String, Object> louvreHoraires() {
+    // --- Horaires ---
+    private Map<String, Object> louvreSchedules() {
 
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Horaires");
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -319,19 +347,16 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","09:00","end","18:00")));
         days.put("dimanche", List.of(Map.of("start","09:00","end","18:00")));
 
-        horaires.put("days", days);
+        schedules.put("type", "Horaires");
+        schedules.put("days", days);
+        schedules.put("note", "Fermé le mardi. La dernière admission est 1h avant la fermeture, l'évacuation 30 min avant.");
+        schedules.put("officialHoursUrl", "https://www.louvre.fr/visiter");
 
-        horaires.put("note", "Fermé le mardi. La dernière admission est 1h avant la fermeture, l'évacuation 30 min avant.");
-
-        horaires.put("officialHoursUrl", "https://www.louvre.fr/visiter");
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> tourEiffelHoraires() {
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Horaires");
+    private Map<String, Object> tourEiffelSchedules() {
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
         days.put("lundi", List.of(Map.of("start","09:30","end","23:00")));
@@ -342,19 +367,17 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","09:30","end","23:00")));
         days.put("dimanche", List.of(Map.of("start","09:30","end","23:00")));
 
-        horaires.put("days", days);
+        schedules.put("type", "Horaires");
+        schedules.put("days", days);
+        schedules.put("note", "Horaires susceptibles de varier selon la saison et l'affluence. Vérifier le jour même si besoin.");
+        schedules.put("officialHoursUrl", "https://www.toureiffel.paris/fr/tarifs-horaires");
 
-        horaires.put("note", "Horaires susceptibles de varier selon la saison et l'affluence. Vérifier le jour même si besoin.");
-        horaires.put("officialHoursUrl", "https://www.toureiffel.paris/fr/tarifs-horaires");
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> asakusaHoraires() {
+    private Map<String, Object> asakusaSchedules() {
 
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Horaires");
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -366,20 +389,17 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","06:00","end","17:00")));
         days.put("dimanche", List.of(Map.of("start","06:00","end","17:00")));
 
-        horaires.put("days", days);
+        schedules.put("type", "Horaires");
+        schedules.put("days", days);
+        schedules.put("note", "En général : le hall principal est ouvert de 06h00 à 17h00 (il peut ouvrir à 06h30 d'octobre à mars). Les abords et l'enceinte sont accessibles en continu.");
+        schedules.put("officialHoursUrl", null);
 
-        horaires.put("note", "En général : le hall principal est ouvert de 06h00 à 17h00 (il peut ouvrir à 06h30 d'octobre à mars). Les abords et l'enceinte sont accessibles en continu.");
-
-        horaires.put("officialHoursUrl", null);
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> tokyoTowerHoraires() {
+    private Map<String, Object> tokyoTowerSchedules() {
 
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Horaires");
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -391,20 +411,17 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","09:00","end","23:00")));
         days.put("dimanche", List.of(Map.of("start","09:00","end","23:00")));
 
-        horaires.put("days", days);
+        schedules.put("type", "Horaires");
+        schedules.put("days", days);
+        schedules.put("note", "Pour le Main Deck : la dernière admission est à 22h30. Le Top Deck Tour est ouvert de 09h00 à 22h45 (dernier tour aux alentours de 22h15).");
+        schedules.put("officialHoursUrl", "https://www.tokyotower.co.jp/fee/");
 
-        horaires.put("note", "Pour le Main Deck : la dernière admission est à 22h30. Le Top Deck Tour est ouvert de 09h00 à 22h45 (dernier tour aux alentours de 22h15).");
-
-        horaires.put("officialHoursUrl", "https://www.tokyotower.co.jp/fee/");
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> ESBHoraires() {
+    private Map<String, Object> empireStateBuilding() {
 
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Variable");
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -416,20 +433,17 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of());
         days.put("dimanche", List.of());
 
-        horaires.put("days", days);
+        schedules.put("type", "Variable");
+        schedules.put("days", days);
+        schedules.put("note", "Les horaires varient d'un jour à l'autre. Par exemple du 6 janvier au 12 février, ce sera ouvert de 10h00 à 21h00 (l'entrée ferme à 20h00).");
+        schedules.put("officialHoursUrl", "https://www.esbnyc.com/fr/visit/hours-of-operation");
 
-        horaires.put("note", "Les horaires varient d'un jour à l'autre. Par exemple du 6 janvier au 12 février, ce sera ouvert de 10h00 à 21h00 (l'entrée ferme à 20h00).");
-
-        horaires.put("officialHoursUrl", "https://www.esbnyc.com/fr/visit/hours-of-operation");
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> statueLiberteHoraires() {
+    private Map<String, Object> statueLiberteSchedules() {
 
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Horaires");
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -441,20 +455,17 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","09:00","end","16:30")));
         days.put("dimanche", List.of(Map.of("start","09:00","end","16:30")));
 
-        horaires.put("days", days);
+        schedules.put("type", "Horaires");
+        schedules.put("days", days);
+        schedules.put("note", "Accès uniquement via le ferry, les horaires de départ et de retour sont variables). Prévoir assez de temps.");
+        schedules.put("officialHoursUrl", "https://www.nps.gov/stli/planyourvisit/index.htm");
 
-        horaires.put("note", "Accès uniquement via le ferry, les horaires de départ et de retour sont variables). Prévoir assez de temps.");
-
-        horaires.put("officialHoursUrl", "https://www.nps.gov/stli/planyourvisit/index.htm");
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> buckinghamHoraires() {
+    private Map<String, Object> buckinghamSchedules() {
 
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Variable");
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -466,20 +477,17 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of());
         days.put("dimanche", List.of());
 
-        horaires.put("days", days);
+        schedules.put("type", "Variable");
+        schedules.put("days", days);
+        schedules.put("note", "Ouverture au public surtout en été pour les State Rooms (en 2026 : du 9 juillet au 27 septembre). Hors saison : seulement certaines dates notamment en visites guidées).");
+        schedules.put("officialHoursUrl", "https://www.rct.uk/visit/buckingham-palace");
 
-        horaires.put("note", "Ouverture au public surtout en été pour les State Rooms (en 2026 : du 9 juillet au 27 septembre). Hors saison : seulement certaines dates notamment en visites guidées).");
-
-        horaires.put("officialHoursUrl", "https://www.rct.uk/visit/buckingham-palace");
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> towerBridgeHoraires() {
+    private Map<String, Object> towerBridgeSchedules() {
 
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Horaires");
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -491,20 +499,17 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","09:30","end","18:00")));
         days.put("dimanche", List.of(Map.of("start","09:30","end","18:00")));
 
-        horaires.put("days", days);
+        schedules.put("type", "Horaires");
+        schedules.put("days", days);
+        schedules.put("note", "Dernière entrée à 17h00.");
+        schedules.put("officialHoursUrl", "https://www.towerbridge.org.uk/");
 
-        horaires.put("note", "Dernière entrée à 17h00.");
-
-        horaires.put("officialHoursUrl", "https://www.towerbridge.org.uk/");
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> treviHoraires() {
+    private Map<String, Object> treviSchedules() {
 
-        Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Accès libre");
+        Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -516,21 +521,18 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","00:00","end","23:59")));
         days.put("dimanche", List.of(Map.of("start","00:00","end","23:59")));
 
-        horaires.put("days", days);
-
-        horaires.put("note", "La place est accessible toute la journée. Depuis le 2 février 2026, l'accès au bord de la fontaine est payant à certaines heures : du lundi au vendredi de 11h30 à 22h00 et le week-end de 09h00 à 22h00."
+        schedules.put("type", "Accès libre");
+        schedules.put("days", days);
+        schedules.put("note", "La place est accessible toute la journée. Depuis le 2 février 2026, l'accès au bord de la fontaine est payant à certaines heures : du lundi au vendredi de 11h30 à 22h00 et le week-end de 09h00 à 22h00."
         );
+        schedules.put("officialHoursUrl", "https://www.turismoroma.it/en/places/trevi-fountain");
 
-        horaires.put("officialHoursUrl", "https://www.turismoroma.it/en/places/trevi-fountain");
-
-        return horaires;
+        return schedules;
     }
 
-    private Map<String, Object> pantheonHoraires() {
+    private Map<String, Object> pantheonSchedules() {
 
         Map<String, Object> horaires = new HashMap<>();
-
-        horaires.put("type", "Horaires");
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
 
@@ -542,19 +544,17 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","09:00","end","19:00")));
         days.put("dimanche", List.of(Map.of("start","09:00","end","19:00")));
 
+        horaires.put("type", "Horaires");
         horaires.put("days", days);
-
         horaires.put("note", "Dernière entrée à 18:45. Fermé : 1er janvier, 15 août, 25 décembre (et variations possibles lors de célébrations).");
-
         horaires.put("officialHoursUrl","https://www.pantheonroma.com/en/openings-info");
 
         return horaires;
     }
 
-    private Map<String, Object> sagradaFamiliaHoraires() {
-        Map<String, Object> horaires = new HashMap<>();
+    private Map<String, Object> sagradaFamiliaSchedules() {
 
-        horaires.put("type", "Horaires");
+        Map<String, Object> horaires = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
         days.put("lundi", List.of(Map.of("start","09:00","end","18:00")));
@@ -565,15 +565,15 @@ if(categoryRepository.count() == 0){
         days.put("samedi", List.of(Map.of("start","09:00","end","18:00")));
         days.put("dimanche", List.of(Map.of("start","10:30","end","18:00")));
 
+        horaires.put("type", "Horaires");
         horaires.put("days", days);
-
         horaires.put("note", "Horaires saisonniers (différents de Mars à Octobre et d'Avril à Septembre).");
         horaires.put("officialHoursUrl", "https://sagradafamilia.org/fr/schedules-how-to-get");
 
         return horaires;
     }
 
-    private Map<String, Object> parcGuellHoraires() {
+    private Map<String, Object> parcGuellSchedules() {
         Map<String, Object> horaires = new HashMap<>();
 
         horaires.put("type", "Horaires");

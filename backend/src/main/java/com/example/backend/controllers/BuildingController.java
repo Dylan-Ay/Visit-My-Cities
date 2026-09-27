@@ -1,8 +1,7 @@
 package com.example.backend.controllers;
 
-import com.example.backend.dto.BuildingCreateDTO;
+import com.example.backend.dto.BuildingRequestDTO;
 import com.example.backend.dto.BuildingDTO;
-import com.example.backend.entities.Building;
 import com.example.backend.services.BuildingServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,6 @@ public class BuildingController {
 
     public BuildingController(BuildingServiceImpl buildingServiceImpl) {
         this.buildingServiceImpl = buildingServiceImpl;
-
     }
 
     @GetMapping
@@ -51,19 +49,21 @@ public class BuildingController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createBuilding(@RequestBody BuildingCreateDTO dto) throws JsonProcessingException {
+    public ResponseEntity<Void> createBuilding(@RequestBody BuildingRequestDTO dto) throws JsonProcessingException {
         this.buildingServiceImpl.createBuilding(dto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBuilding(@PathVariable Long id){
         this.buildingServiceImpl.deleteBuilding(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Building> updateBuilding(@PathVariable Long id, @RequestBody Building building){
-        return new ResponseEntity<>(this.buildingServiceImpl.updateBuilding(id,building), HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<BuildingDTO> updateBuilding(@PathVariable Long id, @RequestBody BuildingRequestDTO building) throws JsonProcessingException{
+        return ResponseEntity.ok(
+                this.buildingServiceImpl.updateBuilding(id,building)
+        );
     }
 }

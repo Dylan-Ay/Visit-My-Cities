@@ -5,7 +5,7 @@ import com.example.backend.enums.BookingType;
 import lombok.Data;
 
 @Data
-public class BuildingCreateDTO {
+public class BuildingRequestDTO {
     private String name;
     private String image;
     private String address;

@@ -2,11 +2,11 @@ package com.example.backend.controllers;
 import com.example.backend.entities.User;
 import com.example.backend.entities.Building;
 import com.example.backend.entities.City;
+import com.example.backend.exceptions.UserNotFoundException;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.services.FavoriteServiceImpl;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class FavoriteController {
     @GetMapping("/cities")
     public List<City> getFavoriteCities(@AuthenticationPrincipal UserDetails userDetails){
         User user = userRepository.findByEmail(userDetails.getUsername()).
-                orElseThrow(() ->new UsernameNotFoundException("L'utilisateur n'existe pas"));
+                orElseThrow(() ->new UserNotFoundException("L'utilisateur n'existe pas"));
 
         return this.favoriteService.getFavoriteCitiesByUser(user);
     }
@@ -35,7 +35,7 @@ public class FavoriteController {
     @GetMapping("/buildings")
     public List<Building> getFavoriteBuildings(@AuthenticationPrincipal UserDetails userDetails){
         User user = userRepository.findByEmail(userDetails.getUsername()).
-                orElseThrow(() -> new UsernameNotFoundException("L'utilisateur n'existe pas"));
+                orElseThrow(() -> new UserNotFoundException("L'utilisateur n'existe pas"));
 
         return this.favoriteService.getFavoriteBuildingsByUser(user);
     }
@@ -43,14 +43,14 @@ public class FavoriteController {
     @PostMapping("/cities/{city_id}")
     public void addCityToFavorite(@PathVariable Long city_id, @AuthenticationPrincipal UserDetails userDetails){
         User user = userRepository.findByEmail(userDetails.getUsername()).
-                orElseThrow(() -> new UsernameNotFoundException("L'utilisateur n'existe pas"));
+                orElseThrow(() -> new UserNotFoundException("L'utilisateur n'existe pas"));
         this.favoriteService.addCityToFavorite(user, city_id);
     }
 
     @PostMapping("/buildings/{building_id}")
     public void addBuildingToFavorite(@PathVariable Long building_id, @AuthenticationPrincipal UserDetails userDetails){
         User user = userRepository.findByEmail(userDetails.getUsername()).
-                orElseThrow(() -> new UsernameNotFoundException("L'utilisateur n'existe pas"));
+                orElseThrow(() -> new UserNotFoundException("L'utilisateur n'existe pas"));
         this.favoriteService.addBuildingToFavorite(user, building_id);
     }
 }

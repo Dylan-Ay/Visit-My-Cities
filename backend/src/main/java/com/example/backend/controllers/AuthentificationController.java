@@ -1,9 +1,9 @@
 package com.example.backend.controllers;
 
 import com.example.backend.entities.User;
+import com.example.backend.exceptions.UserNotFoundException;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.services.AuthentificationService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +14,8 @@ import java.util.Map;
 @RequestMapping("/auth")
 public class AuthentificationController {
 
-
-
     private final AuthentificationService authentificationService;
     private final UserRepository userRepository;
-
 
     public AuthentificationController(AuthentificationService authentificationService, UserRepository userRepository) {
         this.authentificationService = authentificationService;
@@ -28,7 +25,9 @@ public class AuthentificationController {
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user){
 
-       return  new ResponseEntity<>(this.authentificationService.register(user), HttpStatus.OK);
+       return ResponseEntity.ok(
+               this.authentificationService.register(user)
+       );
     }
 
     @PostMapping("/login")
@@ -36,7 +35,7 @@ public class AuthentificationController {
 
         String token = authentificationService.login(user.getEmail(), user.getPassword());
         User foundUser = userRepository.findByEmail(user.getEmail())
-                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable"));
 
         Map<String, Object> response = new HashMap<>();
         response.put("access_token", token);
@@ -48,7 +47,5 @@ public class AuthentificationController {
         response.put("user", userInfo);
 
         return ResponseEntity.ok(response);
-
     }
-
 }

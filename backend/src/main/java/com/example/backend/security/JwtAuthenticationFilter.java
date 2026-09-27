@@ -5,16 +5,15 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.jspecify.annotations.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
 @Component
-// filtre pour valider les requètes entrantes
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
@@ -26,13 +25,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
+    protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
 
         // 1. Lire le header Authorization
         String authHeader = request.getHeader("Authorization");
-        System.out.println("HEADER = " + authHeader);
-
 
         // 2. Si pas de token → on laisse passer
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -66,6 +62,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // 9. Continuer vers controller
         filterChain.doFilter(request, response);
-
     }
 }

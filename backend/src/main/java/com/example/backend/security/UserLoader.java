@@ -1,11 +1,12 @@
 package com.example.backend.security;
 
 import com.example.backend.entities.User;
+import com.example.backend.exceptions.UserNotFoundException;
 import com.example.backend.repository.UserRepository;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,15 +19,19 @@ public class UserLoader implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    @NullMarked
+    public UserDetails loadUserByUsername(String email) throws UserNotFoundException {
 
         User user = userRepository.findByEmail(email).orElseThrow(() ->
-                new UsernameNotFoundException("Email invalide"));
+                new UserNotFoundException("L'email " + email + " n'existe pas"));
 
-       return new org.springframework.security.core.userdetails.User(user.getEmail(),
+       return new org.springframework.security.core.userdetails.User(
+               user.getEmail(),
                user.getPassword(),
-               List.of(new SimpleGrantedAuthority(user.getRole().name())
+               List.of(
+                       new SimpleGrantedAuthority(
+                               user.getRole().name()
+                       )
                ));
     }
 }

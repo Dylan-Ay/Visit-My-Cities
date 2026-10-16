@@ -10,6 +10,7 @@ import com.example.backend.repository.FavoriteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class FavoriteServiceImpl implements IFavoriteService{
@@ -63,8 +64,8 @@ public class FavoriteServiceImpl implements IFavoriteService{
         List<Favorite> favorites = this.favoriteRepository.findByUser(user);
 
         return favorites.stream()
-            .map(favorite -> favorite.getCity())
-            .filter(city -> city!= null).toList();
+            .map(Favorite::getCity)
+            .filter(Objects::nonNull).toList();
 
     }
 
@@ -74,7 +75,7 @@ public class FavoriteServiceImpl implements IFavoriteService{
         List<Favorite> favorites = this.favoriteRepository.findByUser(user);
 
         return favorites.stream()
-            .map(favorite -> favorite.getBuilding())
-            .filter(building -> building != null).toList();
+            .map(Favorite::getBuilding)
+            .filter(Objects::nonNull).toList();
     }
 }

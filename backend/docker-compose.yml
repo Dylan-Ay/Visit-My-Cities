@@ -5,7 +5,7 @@ services:
     image: mysql:8
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: bd_mycity_test
+      MYSQL_DATABASE: db_visit_my_cities
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - "3306:3306"

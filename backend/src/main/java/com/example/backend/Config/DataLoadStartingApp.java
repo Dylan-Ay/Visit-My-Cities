@@ -45,9 +45,10 @@ public class DataLoadStartingApp {
         }
     }
 
+    // Création des catégories
     private void addCategory(){
         if(categoryRepository.count() == 0){
-            List<Category> categories= List.of(
+            List<Category> categories = List.of(
                     new Category(null, "Musées","🏛", "https://www.ecomusee-montmorillonnais.org/wp-content/uploads/2023/11/musees.jpg"),
                     new Category(null, "Ponts","🌉", "https://cms.visitczechia.com/cms/getmedia/f5078b1a-8314-4d4e-b751-aa41692036ef/prague-troja-bridge-shutterstock_633423338-Nadezda-Murmakova.jpg?width=1000&height=666"),
                     new Category(null, "Lieux de culte","⛪", "https://cdn.generationvoyage.fr/2014/10/lieux-de-culte-sites-religieux-spectaculaires-monde-24.jpg"),
@@ -58,25 +59,29 @@ public class DataLoadStartingApp {
         }
     }
 
+    // Création des utilisateurs
     private void addUser(String username, String email, String password, UserRoleType role) {
         if (userRepository.findByEmail(email).isEmpty()) {
             User user = new User();
+
             user.setUsername(username);
             user.setEmail(email);
             user.setPassword(passwordEncoder.encode(password));
             user.setRole(role);
+
             userRepository.save(user);
         }
     }
 
     // --- Initialisation des données ---
     private void initializeData() throws JsonProcessingException {
-        Category museums = categoryRepository.findById(1L).get(); //Musée
-        Category bridges = categoryRepository.findById(2L).get(); //Ponts
-        Category placesOfWorship = categoryRepository.findById(3L).get(); //Lieux de culte
-        Category skycrapers = categoryRepository.findById(4L).get(); //Gratte-ciels
-        Category castlesAndPalaces = categoryRepository.findById(5L).get(); //Chateaux & palais
-        Category civilBuilding = categoryRepository.findById(6L).get(); //Bâtiments civils
+
+        Category museums = categoryRepository.findById(1L).isPresent() ? categoryRepository.findById(1L).get() : null; // Musée
+        Category bridges = categoryRepository.findById(2L).isPresent() ? categoryRepository.findById(2L).get() : null; // Ponts
+        Category placesOfWorship = categoryRepository.findById(3L).isPresent() ? categoryRepository.findById(3L).get() : null; // Lieux de culte
+        Category skycrapers = categoryRepository.findById(4L).isPresent() ? categoryRepository.findById(4L).get() : null; // Gratte-ciels
+        Category castlesAndPalaces = categoryRepository.findById(5L).isPresent() ? categoryRepository.findById(5L).get() : null; // Chateaux & palais
+        Category civilBuilding = categoryRepository.findById(6L).isPresent() ? categoryRepository.findById(6L).get() : null; // Bâtiments civils
 
         City paris = new City(null, "Paris", "France", "", "75000",
                 "https://www.allsuites.com/wp-content/uploads/2024/09/Paris.jpg", null, null);
@@ -306,7 +311,6 @@ public class DataLoadStartingApp {
     }
 
     private void createBuilding(City city, Category category, String name, String image, String address, String postalCode, int year, String architect, String style, String description, Integer ticketPrice, String visitDuration, BookingType booking, AccessStatusType accessStatus, boolean accessible, double lat, double lng, Map<String, Object> horaires) throws JsonProcessingException {
-
         Building building = new Building();
 
         building.setCity(city);
@@ -332,9 +336,8 @@ public class DataLoadStartingApp {
         buildingRepository.save(building);
     }
 
-    // --- Horaires ---
+    // --- Création de l'objet "Horaires" de chaque monument ---
     private Map<String, Object> louvreSchedules() {
-
         Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -376,7 +379,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> asakusaSchedules() {
-
         Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -398,7 +400,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> tokyoTowerSchedules() {
-
         Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -420,7 +421,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> empireStateBuilding() {
-
         Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -442,7 +442,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> statueLiberteSchedules() {
-
         Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -464,7 +463,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> buckinghamSchedules() {
-
         Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -486,7 +484,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> towerBridgeSchedules() {
-
         Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -508,7 +505,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> treviSchedules() {
-
         Map<String, Object> schedules = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -531,7 +527,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> pantheonSchedules() {
-
         Map<String, Object> horaires = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();
@@ -553,7 +548,6 @@ public class DataLoadStartingApp {
     }
 
     private Map<String, Object> sagradaFamiliaSchedules() {
-
         Map<String, Object> horaires = new HashMap<>();
 
         Map<String, List<Map<String, String>>> days = new HashMap<>();

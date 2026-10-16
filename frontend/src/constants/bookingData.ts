@@ -1,14 +1,14 @@
 export const BOOKING_DATA = [
    {
       label: 'Recommandée',
-      value: 'Recommandée',
+      value: 'RECOMMENDED',
    },
    {
       label: 'Obligatoire',
-      value: 'Obligatoire',
+      value: 'REQUIRED',
    },
    {
       label: 'Non requis',
-      value: 'Non requis',
+      value: 'NOT_REQUIRED',
    },
 ]

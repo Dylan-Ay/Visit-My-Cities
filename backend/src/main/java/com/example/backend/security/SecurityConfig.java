@@ -3,10 +3,12 @@ package com.example.backend.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,74 +26,65 @@ public class SecurityConfig {
     }
 
     @Bean
-        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) {
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
 
-                http
-                        .csrf(csrf -> csrf.disable())
-                        .sessionManagement(session ->
-                                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                        .authorizeHttpRequests(auth -> auth
+                        // Routes rôle EXPERT
 
-                                // public tout le monde
-                                .requestMatchers(
-                                        "/swagger-ui/**",
-                                        "/v3/api-docs/**",
-                                        "/auth/**",
-                                        "/register/**",
-                                        "/city/cities",
-                                        "/city/city/*",
-                                        "/building/buildings",
-                                        "/category/categories",
-                                        "/category/*",
-                                        "/building/categorie/*",
-                                        "/city/*",
-                                        "/building/*",
-                                        "/building/city/*",
-                                        "/building/cityname/*",
-                                        "/building/buildingdto/*",
-                                        "/building/buildingsdto/city/*",
-                                        "/building/buildingsdto/category/*",
-                                        "/building/buildingdto/cityname/*"
-                                ).permitAll()
+                        .requestMatchers(
+                                HttpMethod.POST,
+                                "/buildings",
+                                "/cities"
+                        ).hasRole("EXPERT")
 
-                                // EXPERT juste c tt
-                                .requestMatchers(
-                                        "/city/add/**",
-                                        "/city/update/**",
-                                        "/city/delete/**",
-                                        "/building/update/**",
-                                        "/building/delete/**",
-                                        "/building/add/**"
-                                ).hasRole("EXPERT")
+                        .requestMatchers(
+                                HttpMethod.PUT,
+                                "/buildings/*",
+                                "/cities/*"
+                        ).hasRole("EXPERT")
 
-                                //auhentifier c tt
-                                .requestMatchers(
-                                        "/comment/**",
-                                        "/like/**",
-                                        "/favorites/**"
-                                ).authenticated() //permitAll() ici ca fait pas mal pour tester sans token
+                        .requestMatchers(
+                                HttpMethod.DELETE,
+                                "/buildings/*",
+                                "/cities/*"
+                        ).hasRole("EXPERT")
 
-                                .anyRequest().authenticated() //permitAll() ici aussi
+                        // Routes publiques
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/auth/**",
+                                "/register",
+                                "/buildings",
+                                "/buildings/**",
+                                "/cities",
+                                "/cities/*",
+                                "/categories",
+                                "/categories/*"
+                        ).permitAll()
 
-                        )
+                        // Routes nécessitant une authentification
+                        .requestMatchers(
+                                "/like/**",
+                                "/favorites/**"
+                        ).authenticated()
 
-                        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                        .anyRequest().authenticated()
+                    )
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
 
-    return http.build();
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
-        }
-
-        @Bean
-         public PasswordEncoder passwordEncoder(){
-            return new BCryptPasswordEncoder();
-            }
-
-            @Bean
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config){
-            return config.getAuthenticationManager();
-            }
-
-
+        return config.getAuthenticationManager();
+    }
 }
-
-

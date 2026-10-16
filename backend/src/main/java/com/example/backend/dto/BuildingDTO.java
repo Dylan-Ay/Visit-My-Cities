@@ -1,5 +1,7 @@
 package com.example.backend.dto;
 
+import com.example.backend.enums.AccessStatusType;
+import com.example.backend.enums.BookingType;
 import lombok.Data;
 
 import java.util.List;
@@ -20,8 +22,8 @@ public class BuildingDTO {
     private String description;
     private Integer ticketPrice;
     private String visitDuration;
-    private String booking;
-    private String accessStatus;
+    private BookingType booking;
+    private AccessStatusType accessStatus;
     private boolean accessiblePRM;
 
     // Objets imbriqués

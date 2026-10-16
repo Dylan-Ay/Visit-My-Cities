@@ -17,50 +17,39 @@ public class CityServiceImpl implements ICityService{
     }
 
     @Override
-    public City saveCity(City city) {
-        return this.cityRepository.save(city);
-    }
-
-    @Override
     public List<City> getAllCities() {
         return this.cityRepository.findAll();
     }
 
     @Override
     public City getCityById(Long id) {
-        return this.cityRepository.findById(id).orElseThrow(() ->new CityNotFoundException("Ville non trouvé."));
-    }
-
-    @Override
-    public City updateCity(Long id, City city) {
-        City cityExisted = getCityById(id);
-        if(city.getName() != null){
-            cityExisted.setName(city.getName());
-        }
-       if(city.getCountry() != null){
-           cityExisted.setCountry(city.getCountry());
-       }
-       if(city.getDescription() != null){
-           cityExisted.setDescription(city.getDescription());
-       }
-       if(city.getPostalCode() != null){
-           cityExisted.setPostalCode(city.getPostalCode());
-       }
-       return this.cityRepository.save(cityExisted);
-
-    }
-
-    @Override
-    public void deleteCity(Long id) {
-
-        City cityToDelete = getCityById(id);
-        this.cityRepository.delete(cityToDelete);
-
+        return this.cityRepository.findById(id).orElseThrow(() -> new CityNotFoundException("Aucune ville n'a été trouvé avec cet id"));
     }
 
     @Override
     public City getCityByName(String name) {
-       // City city = this.cityRepository.findByName()
-       return  this.cityRepository.findByName(name).orElseThrow(() -> new CityNotFoundException("Ville avec le nom : " + name + " n'existe pas !"));
+       return this.cityRepository.findByName(name).orElseThrow(() -> new CityNotFoundException("La ville '" + name + "' n'existe pas !"));
+    }
+
+    @Override
+    public City createCity(City city) {
+        return this.cityRepository.save(city);
+    }
+
+    @Override
+    public City updateCity(Long id, City city) {
+        City cityToUpdate = getCityById(id);
+
+        cityToUpdate.setName(city.getName());
+        cityToUpdate.setCountry(city.getCountry());
+        cityToUpdate.setDescription(city.getDescription());
+        cityToUpdate.setPostalCode(city.getPostalCode());
+
+       return this.cityRepository.save(cityToUpdate);
+    }
+
+    @Override
+    public void deleteCity(Long id) {
+        this.cityRepository.delete(getCityById(id));
     }
 }

@@ -7,38 +7,45 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ville")
+@Table(
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name", "country"})
+    }
+)
+
 public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nom")
+    @Column(unique = true, nullable = false)
     private String name;
 
-    @Column(name = "pays")
+    @Column(nullable = false)
     private String country;
 
     private String description;
 
-    @Column(name = "code_postal")
+    @Column(nullable = false)
     private String postalCode;
-    @Column(name = "image_url")
+
+    @Column(nullable = false)
     private String image ;
 
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL) //ici cascade All car quand je supprime une ville tout les batiment vont etre supprimer
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Building> buildings;
+    private List<Building> buildings = new ArrayList<>();
+
     @OneToMany(mappedBy = "city")
     @JsonIgnore
-    private List<Favorite> favorites;
-
-
+    private List<Favorite> favorites = new ArrayList<>();
 }

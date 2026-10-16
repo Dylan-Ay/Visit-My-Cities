@@ -26,11 +26,11 @@ export type Building = {
    cityId: number
    city: string
 
-   accessStatus: 'Visitable' | 'Accès libre' | 'Accès restreint'
+   accessStatus: 'OPEN' | 'FREE_ACCESS' | 'RESTRICTED_ACCESS'
    accessiblePRM: boolean
    address: string
    architect: string
-   booking: 'Recommandée' | 'Obligatoire' | 'Non requis'
+   booking: 'REQUIRED' | 'RECOMMENDED' | 'NOT_REQUIRED'
 
    constructionYear: number
 
@@ -69,8 +69,8 @@ export type CreateBuildingPayload = {
 
    ticketPrice: number
    visitDuration: string
-   booking: 'Recommandée' | 'Obligatoire' | 'Non requis'
-   accessStatus: 'Visitable' | 'Accès libre' | 'Accès restreint'
+   booking: 'REQUIRED' | 'RECOMMENDED' | 'NOT_REQUIRED'
+   accessStatus: 'OPEN' | 'FREE_ACCESS' | 'RESTRICTED_ACCESS'
    accessiblePRM: boolean
 
    schedules: Schedules

@@ -1,6 +1,6 @@
 package com.example.backend.enums;
 
-public enum AppRole {
+public enum UserRoleType {
     ROLE_VISITEUR,
     ROLE_EXPERT
 }

@@ -22,6 +22,7 @@ public class CategoryServiceImpl implements ICategoryService{
 
     @Override
     public Category getCategoryById(Long id) {
-        return this.categoryRepository.findById(id).orElseThrow(() -> new CategoryNotFoundException("Aucune catégorie trouvé avec cet id"));
+        return this.categoryRepository.findById(id)
+                .orElseThrow(() -> new CategoryNotFoundException("Aucune catégorie n'a été trouvé avec cet id"));
     }
 }

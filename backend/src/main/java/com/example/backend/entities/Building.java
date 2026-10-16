@@ -1,7 +1,13 @@
 package com.example.backend.entities;
+
+import com.example.backend.enums.AccessStatusType;
+import com.example.backend.enums.BookingType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -10,49 +16,75 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "batiment")
+@Table(
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name", "city"})
+    }
+)
+
 public class Building {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        private String name;
-        private String image;
-        private String address;
-        private String postalCode;
-        private String country;
-        private Integer constructionYear;
-        private String architect;
-        private String style;
+    @Column(unique = true, nullable = false)
+    private String name;
 
-        @Column(columnDefinition = "TEXT")
-        private String description;
+    @Column(nullable = false)
+    private String image;
 
-        private Integer ticketPrice;
-        private String visitDuration;
-        private String booking;
-        private String accessStatus;
-        private boolean accessiblePRM;
-        private Double latitude;
-        private Double longitude;
+    @Column(nullable = false)
+    private String address;
 
-        @Column(columnDefinition = "TEXT")
-        private String schedules;
+    @Column(nullable = false)
+    private String postalCode;
 
-        @Column(columnDefinition = "TEXT")
-        private String coords;
+    private Integer constructionYear;
 
-        @ManyToOne
-        @JoinColumn(name = "city_id")
-        private City city;
-        @ManyToOne
-        @JsonIgnore
-        private Category category;
-        @OneToMany(mappedBy = "building")
-        @JsonIgnore
-        private List<Favorite> favorites;
+    private String architect;
 
+    @Column(nullable = false)
+    private String style;
 
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String description;
+
+    @Column(nullable = false)
+    private Integer ticketPrice;
+
+    private String visitDuration;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private BookingType booking;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AccessStatusType accessStatus;
+
+    @Column(name = "accessible_PRM")
+    private boolean accessiblePRM;
+
+    @Column(nullable = false)
+    private Double latitude;
+
+    @Column(nullable = false)
+    private Double longitude;
+
+    @Column(columnDefinition = "TEXT")
+    private String schedules;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private City city;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(nullable = false)
+    private Category category;
+
+    @OneToMany(mappedBy = "building")
+    @JsonIgnore
+    private List<Favorite> favorites;
 }
-

@@ -1,29 +1,26 @@
-export const API_BASE_URL: string =
-   process.env.EXPO_PUBLIC_API_URL_IOS_SIMULATOR ??
-   process.env.EXPO_PUBLIC_API_URL_TELEPHONE ??
-   process.env.EXPO_PUBLIC_API_URL_ANDROID_EMULATOR
-
+export const API_BASE_URL: string = process.env.EXPO_PUBLIC_API_URL_IOS_SIMULATOR
 export const API_ROUTES = {
    AUTH: {
       REGISTER: '/auth/register',
       LOGIN: '/auth/login',
    },
    BUILDING: {
-      FINDALL: '/building/buildingsdto',
-      FIND_BY_ID: (id: number) => `/building/buildingdto/${id}`,
-      FIND_BUILDINGS_BY_CITY: (id: number) => `/building/buildingsdto/city/${id}`,
-      SEARCH_BUILDINGS_BY_CITY: (name: string) =>
-         `/buildingdto/cityname/${encodeURIComponent(name)}`,
-      ADD_BUILDING: `/building/add/add`,
+      FINDALL: '/buildings',
+      FIND_BY_ID: (id: number) => `/buildings/${id}`,
+      FIND_BUILDINGS_BY_CITY: (id: number) => `/buildings/city/${id}`,
+      FIND_BUILDINGS_BY_CATEGORY: (id: number) => `/buildings/category/${id}`,
+      ADD_BUILDING: `/buildings`,
    },
    CITY: {
-      FINDALL: '/city/cities',
-      FIND_BY_ID: (id: number) => `/city/${id}`,
-      DELETE: (id: number) => `/city/delete/${id}`,
+      FINDALL: '/cities',
+      FIND_BY_ID: (id: number) => `/cities/${id}`,
+      FIND_BY_NAME: (name: string) => `/cities/search?name=${name}`,
+      ADD_CITY: '/cities',
+      UPDATE_CITY: (id: number) => `/cities/${id}`,
+      DELETE_CITY: (id: number) => `/cities/${id}`,
    },
    CATEGORY: {
-      FINDALL: '/category/categories',
-      FIND_BY_ID: (id: number) => `/category/${id}`,
-      FIND_BUILDINGS_BY_CATEGORY: (id: number) => `/building/buildingsdto/category/${id}`,
+      FINDALL: '/categories',
+      FIND_BY_ID: (id: number) => `/categories/${id}`,
    },
 }

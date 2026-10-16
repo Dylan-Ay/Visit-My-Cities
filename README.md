@@ -94,11 +94,13 @@ Once the environment variables are configured, restart the development server an
   
 **Stacks used :**
 - React Native (TypeScript, Zustand, Expo, React Hook Form)
-- Spring Boot
+- Java / Spring Boot
 - MySQL
 - PhpMyAdmin
 - Postman
 - Docker
+- iOS Simulator / Android Studio
+- Trello and Kanban board for project management 
 
 ## Screenshots : ##
 
@@ -123,5 +125,3 @@ Once the environment variables are configured, restart the development server an
   <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/ProfileScreen.png" />
   <img width="275" height="596" alt="Screenshot_1772996707" src="frontend/assets/screenshots/ProfileScreenLogged.png" />
 </div>
-
-
